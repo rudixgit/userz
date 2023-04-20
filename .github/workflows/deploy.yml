@@ -14,6 +14,7 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
+          npx dotenv config -f .env
           echo $MAX_DIR
           printenv
       - name: Push changes
