@@ -26,6 +26,7 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
+          git diff-tree --no-commit-id --name-only -r HEAD
           files=$(git diff-tree --no-commit-id --name-only -r HEAD)
           echo $files
           declare -A dirs
