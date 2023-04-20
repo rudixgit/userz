@@ -30,8 +30,9 @@ else
   echo "No changes found."
 fi
 # Display the directory with the highest count
-echo ${max_dir}
-cd ./apps/${max_dir}
+echo $max_dir
+echo $max_dir > max_dir.txt
+cd ./apps/$max_dir
 pwd
 ls -la 
 npm install

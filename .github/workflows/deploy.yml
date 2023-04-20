@@ -15,6 +15,7 @@ jobs:
       - name: 😳 Build
         run: |
           bash ./wasp.sh
+          cat ./max_dir.txt
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
