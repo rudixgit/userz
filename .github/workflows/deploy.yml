@@ -14,7 +14,8 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
-          echo $MAX_DIR
+          export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+          echo $APP
           printenv
       - name: Push changes
         uses: ad-m/github-push-action@master
