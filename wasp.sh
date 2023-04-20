@@ -2,7 +2,7 @@
 
 # Get the list of changed files
 files=$(git diff-tree --no-commit-id --name-only -r HEAD)
-
+echo $files
 # Loop through each file and find the second directory path
 declare -A dirs
 for file in $files; do
@@ -24,8 +24,8 @@ for dir in "${!dirs[@]}"; do
 done
 
 # Display the directory with the highest count
-echo ${max_dir}
-cd ./apps/${max_dir}
+echo $max_dir
+cd ./apps/$max_dir
 pwd
 ls -la 
 npm install
