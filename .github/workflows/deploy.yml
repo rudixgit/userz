@@ -26,6 +26,7 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
+          ls -la
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
           sh ./wasp.sh
       - name: Push changes
