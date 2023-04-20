@@ -26,9 +26,20 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
-          ls -la
-          find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
-          bash ./wasp.sh
+          files=$(git diff-tree --no-commit-id --name-only -r HEAD)
+          echo $files
+          declare -A dirs
+          for file in $files; do dir=$(echo "$file" | cut -d'/' -f2)  ((dirs[$dir]++)) done
+          max_count=0
+          max_dir=""
+          for dir in "${!dirs[@]}"; do
+            count=${dirs[$dir]}
+            if (( count > max_count )); then
+              max_count=$count
+              max_dir=$dir
+            fi
+          done
+          echo $max_dir
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
