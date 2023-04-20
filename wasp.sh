@@ -26,13 +26,4 @@ done
 # Display the directory with the highest count
 echo $max_dir
 cd $max_dir
-npm install
-npm run build
-npm run export
-rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
-git config --global user.email "github-actions[bot]@users.noreply.github.com"
-git config --global user.name "Rudix"
-git checkout --orphan build
-git add --all
-git add -A .next out -f
-git commit  --allow-empty -n -m  "Add build directory"
+ls -la 
