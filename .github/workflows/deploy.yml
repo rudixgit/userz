@@ -3,6 +3,8 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      MAX_DIR: ${{ env.MAX_DIR }}
     steps:
       - uses: actions/setup-node@v3
         with:
@@ -14,9 +16,7 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
       - name: 😳 Build
         run: |
-          bash ./wasp.sh
-          cat ./changed_files.txt
-          cat ./max_dir.txt
+          echo $MAX_DIR
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
