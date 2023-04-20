@@ -5,12 +5,7 @@ files=$(git diff-tree --no-commit-id --name-only -r HEAD)
 echo $files
 # Loop through each file and find the second directory path
 declare -A dirs
-for file in $files; do
-  # Get the second directory path
-  dir=$(echo "$file" | cut -d'/' -f2)
-  # Increment the count for this directory
-  ((dirs[$dir]++))
-done
+for file in $files; do dir=$(echo "$file" | cut -d'/' -f2)  ((dirs[$dir]++)) done
 
 # Find the directory with the highest count
 max_count=0
