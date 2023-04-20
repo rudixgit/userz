@@ -28,7 +28,7 @@ jobs:
         run: |
           ls -la
           find . -type f -name "*.ts*" -print0 | xargs -0 sed -i 's/console/\/\/console/g'
-          sh ./wasp.sh
+          bash ./wasp.sh
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

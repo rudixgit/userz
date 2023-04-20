@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get the list of changed files
 files=$(git diff-tree --no-commit-id --name-only -r HEAD)
