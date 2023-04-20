@@ -32,13 +32,7 @@ jobs:
           for file in $files; do dir=$(echo "$file" | cut -d'/' -f2)  ((dirs[$dir]++)) done
           max_count=0
           max_dir=""
-          for dir in "${!dirs[@]}"; do
-            count=${dirs[$dir]}
-            if (( count > max_count )); then
-              max_count=$count
-              max_dir=$dir
-            fi
-          done
+          for dir in "${!dirs[@]}"; do count=${dirs[$dir]} if (( count > max_count )); then max_count=$count max_dir=$dir fi done
           echo $max_dir
       - name: Push changes
         uses: ad-m/github-push-action@master
