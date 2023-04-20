@@ -1,0 +1,186 @@
+stdout:
+0.0.0.0/5 dev CloudflareWARP table 65743 proto static scope link 
+8.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+11.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+12.0.0.0/6 dev CloudflareWARP table 65743 proto static scope link 
+16.0.0.0/4 dev CloudflareWARP table 65743 proto static scope link 
+32.0.0.0/3 dev CloudflareWARP table 65743 proto static scope link 
+64.0.0.0/3 dev CloudflareWARP table 65743 proto static scope link 
+96.0.0.0/6 dev CloudflareWARP table 65743 proto static scope link 
+100.0.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+100.128.0.0/9 dev CloudflareWARP table 65743 proto static scope link 
+101.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+102.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+104.0.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+104.16.0.0/15 dev CloudflareWARP table 65743 proto static scope link 
+104.18.0.0/16 dev CloudflareWARP table 65743 proto static scope link 
+104.19.0.0/17 dev CloudflareWARP table 65743 proto static scope link 
+104.19.128.0/18 dev CloudflareWARP table 65743 proto static scope link 
+104.19.192.0/19 dev CloudflareWARP table 65743 proto static scope link 
+104.19.224.0/21 dev CloudflareWARP table 65743 proto static scope link 
+104.19.232.0/22 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.0/28 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.16/29 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.25 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.26/31 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.28/30 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.32/27 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.64/26 dev CloudflareWARP table 65743 proto static scope link 
+104.19.236.128/25 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.0/28 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.16/29 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.25 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.26/31 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.28/30 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.32/27 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.64/26 dev CloudflareWARP table 65743 proto static scope link 
+104.19.237.128/25 dev CloudflareWARP table 65743 proto static scope link 
+104.19.238.0/23 dev CloudflareWARP table 65743 proto static scope link 
+104.19.240.0/20 dev CloudflareWARP table 65743 proto static scope link 
+104.20.0.0/14 dev CloudflareWARP table 65743 proto static scope link 
+104.24.0.0/13 dev CloudflareWARP table 65743 proto static scope link 
+104.32.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+104.64.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+104.128.0.0/9 dev CloudflareWARP table 65743 proto static scope link 
+105.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+106.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+108.0.0.0/6 dev CloudflareWARP table 65743 proto static scope link 
+112.0.0.0/4 dev CloudflareWARP table 65743 proto static scope link 
+128.0.0.0/3 dev CloudflareWARP table 65743 proto static scope link 
+160.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+162.0.0.0/9 dev CloudflareWARP table 65743 proto static scope link 
+162.128.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+162.144.0.0/13 dev CloudflareWARP table 65743 proto static scope link 
+162.152.0.0/14 dev CloudflareWARP table 65743 proto static scope link 
+162.156.0.0/15 dev CloudflareWARP table 65743 proto static scope link 
+162.158.0.0/16 dev CloudflareWARP table 65743 proto static scope link 
+162.159.0.0/17 dev CloudflareWARP table 65743 proto static scope link 
+162.159.128.0/18 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.0/29 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.8/31 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.11 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.12/30 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.16/28 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.32/27 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.64/26 dev CloudflareWARP table 65743 proto static scope link 
+162.159.192.128/25 dev CloudflareWARP table 65743 proto static scope link 
+162.159.193.0/24 dev CloudflareWARP table 65743 proto static scope link 
+162.159.194.0/23 dev CloudflareWARP table 65743 proto static scope link 
+162.159.196.0/22 dev CloudflareWARP table 65743 proto static scope link 
+162.159.200.0/21 dev CloudflareWARP table 65743 proto static scope link 
+162.159.208.0/20 dev CloudflareWARP table 65743 proto static scope link 
+162.159.224.0/19 dev CloudflareWARP table 65743 proto static scope link 
+162.160.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+162.192.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+163.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+164.0.0.0/6 dev CloudflareWARP table 65743 proto static scope link 
+168.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+169.0.0.0/9 dev CloudflareWARP table 65743 proto static scope link 
+169.128.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+169.192.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+169.224.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+169.240.0.0/13 dev CloudflareWARP table 65743 proto static scope link 
+169.248.0.0/14 dev CloudflareWARP table 65743 proto static scope link 
+169.252.0.0/15 dev CloudflareWARP table 65743 proto static scope link 
+169.255.0.0/16 dev CloudflareWARP table 65743 proto static scope link 
+170.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+172.0.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+172.32.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+172.64.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+172.128.0.0/9 dev CloudflareWARP table 65743 proto static scope link 
+173.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+174.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+176.0.0.0/4 dev CloudflareWARP table 65743 proto static scope link 
+192.0.1.0/24 dev CloudflareWARP table 65743 proto static scope link 
+192.0.2.0/23 dev CloudflareWARP table 65743 proto static scope link 
+192.0.4.0/22 dev CloudflareWARP table 65743 proto static scope link 
+192.0.8.0/21 dev CloudflareWARP table 65743 proto static scope link 
+192.0.16.0/20 dev CloudflareWARP table 65743 proto static scope link 
+192.0.32.0/19 dev CloudflareWARP table 65743 proto static scope link 
+192.0.64.0/18 dev CloudflareWARP table 65743 proto static scope link 
+192.0.128.0/17 dev CloudflareWARP table 65743 proto static scope link 
+192.1.0.0/16 dev CloudflareWARP table 65743 proto static scope link 
+192.2.0.0/15 dev CloudflareWARP table 65743 proto static scope link 
+192.4.0.0/14 dev CloudflareWARP table 65743 proto static scope link 
+192.8.0.0/13 dev CloudflareWARP table 65743 proto static scope link 
+192.16.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+192.32.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+192.64.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+192.128.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+192.160.0.0/13 dev CloudflareWARP table 65743 proto static scope link 
+192.169.0.0/16 dev CloudflareWARP table 65743 proto static scope link 
+192.170.0.0/15 dev CloudflareWARP table 65743 proto static scope link 
+192.172.0.0/14 dev CloudflareWARP table 65743 proto static scope link 
+192.176.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+192.192.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+193.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+194.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+196.0.0.0/6 dev CloudflareWARP table 65743 proto static scope link 
+200.0.0.0/5 dev CloudflareWARP table 65743 proto static scope link 
+208.0.0.0/4 dev CloudflareWARP table 65743 proto static scope link 
+224.0.1.0/24 dev CloudflareWARP table 65743 proto static scope link 
+224.0.2.0/23 dev CloudflareWARP table 65743 proto static scope link 
+224.0.4.0/22 dev CloudflareWARP table 65743 proto static scope link 
+224.0.8.0/21 dev CloudflareWARP table 65743 proto static scope link 
+224.0.16.0/20 dev CloudflareWARP table 65743 proto static scope link 
+224.0.32.0/19 dev CloudflareWARP table 65743 proto static scope link 
+224.0.64.0/18 dev CloudflareWARP table 65743 proto static scope link 
+224.0.128.0/17 dev CloudflareWARP table 65743 proto static scope link 
+224.1.0.0/16 dev CloudflareWARP table 65743 proto static scope link 
+224.2.0.0/15 dev CloudflareWARP table 65743 proto static scope link 
+224.4.0.0/14 dev CloudflareWARP table 65743 proto static scope link 
+224.8.0.0/13 dev CloudflareWARP table 65743 proto static scope link 
+224.16.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+224.32.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+224.64.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+224.128.0.0/9 dev CloudflareWARP table 65743 proto static scope link 
+225.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+226.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+228.0.0.0/6 dev CloudflareWARP table 65743 proto static scope link 
+232.0.0.0/6 dev CloudflareWARP table 65743 proto static scope link 
+236.0.0.0/7 dev CloudflareWARP table 65743 proto static scope link 
+238.0.0.0/8 dev CloudflareWARP table 65743 proto static scope link 
+239.0.0.0/9 dev CloudflareWARP table 65743 proto static scope link 
+239.128.0.0/10 dev CloudflareWARP table 65743 proto static scope link 
+239.192.0.0/11 dev CloudflareWARP table 65743 proto static scope link 
+239.224.0.0/12 dev CloudflareWARP table 65743 proto static scope link 
+239.240.0.0/13 dev CloudflareWARP table 65743 proto static scope link 
+239.248.0.0/14 dev CloudflareWARP table 65743 proto static scope link 
+239.252.0.0/15 dev CloudflareWARP table 65743 proto static scope link 
+239.254.0.0/16 dev CloudflareWARP table 65743 proto static scope link 
+239.255.0.0/17 dev CloudflareWARP table 65743 proto static scope link 
+239.255.128.0/18 dev CloudflareWARP table 65743 proto static scope link 
+239.255.192.0/19 dev CloudflareWARP table 65743 proto static scope link 
+239.255.224.0/20 dev CloudflareWARP table 65743 proto static scope link 
+239.255.240.0/21 dev CloudflareWARP table 65743 proto static scope link 
+239.255.248.0/22 dev CloudflareWARP table 65743 proto static scope link 
+239.255.252.0/23 dev CloudflareWARP table 65743 proto static scope link 
+239.255.254.0/24 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.0/25 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.128/26 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.192/27 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.224/28 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.240/29 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.248/31 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.251 dev CloudflareWARP table 65743 proto static scope link 
+239.255.255.252/30 dev CloudflareWARP table 65743 proto static scope link 
+default via 192.168.1.101 dev enp0s25 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
+172.18.0.0/16 dev br-1665aba6b595 proto kernel scope link src 172.18.0.1 
+192.168.1.0/24 dev enp0s25 proto kernel scope link src 192.168.1.4 
+local 127.0.0.0/8 dev lo table local proto kernel scope host src 127.0.0.1 
+local 127.0.0.1 dev lo table local proto kernel scope host src 127.0.0.1 
+broadcast 127.255.255.255 dev lo table local proto kernel scope link src 127.0.0.1 
+local 172.16.0.2 dev CloudflareWARP table local proto kernel scope host src 172.16.0.2 
+local 172.17.0.1 dev docker0 table local proto kernel scope host src 172.17.0.1 
+broadcast 172.17.255.255 dev docker0 table local proto kernel scope link src 172.17.0.1 linkdown 
+local 172.18.0.1 dev br-1665aba6b595 table local proto kernel scope host src 172.18.0.1 
+broadcast 172.18.255.255 dev br-1665aba6b595 table local proto kernel scope link src 172.18.0.1 
+local 192.168.1.4 dev enp0s25 table local proto kernel scope host src 192.168.1.4 
+broadcast 192.168.1.255 dev enp0s25 table local proto kernel scope link src 192.168.1.4 
+
+
+stderr:
+
+
+exit status: 0

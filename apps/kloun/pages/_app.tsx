@@ -1,14 +1,19 @@
-import type { AppProps } from 'next/app'
-import type { LayoutProps } from '@vercel/examples-ui/layout'
-import { getLayout } from '@vercel/examples-ui'
-import '@vercel/examples-ui/globals.css'
+import "../styles/global.css";
+import "../styles/other.css";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const Layout = getLayout<LayoutProps>(Component)
+import { ThemeProvider } from "next-themes";
 
+import type { AppProps } from "next/app";
+function MyApp({Component, pageProps}: AppProps) {
   return (
-    <Layout title="Monorepo" path="solutions/monorepo">
+    <ThemeProvider
+      enableSystem={false}
+      attribute="class"
+      defaultTheme={"light"}
+    >
       <Component {...pageProps} />
-    </Layout>
-  )
+    </ThemeProvider>
+  );
 }
+
+export default MyApp;

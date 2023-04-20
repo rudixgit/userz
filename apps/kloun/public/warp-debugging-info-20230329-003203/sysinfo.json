@@ -1,0 +1,52 @@
+{
+  "available_memory": 8465833984,
+  "used_memory": 1618845696,
+  "used_swap": 0,
+  "total_memory": 10084679680,
+  "host_name": "wasp",
+  "uptime": 2299,
+  "disks": [
+    {
+      "name": "/dev/sda2",
+      "total_space": 117552844800,
+      "available_space": 95704592384,
+      "mount_point": "/"
+    },
+    {
+      "name": "/dev/sdb2",
+      "total_space": 681573351424,
+      "available_space": 624599195648,
+      "mount_point": "/mnt/data"
+    }
+  ],
+  "distribution_id": "ubuntu",
+  "kernel_version": "6.2.0-18-generic",
+  "load_average": {
+    "one": 5.93,
+    "five": 5.52,
+    "fifteen": 3.68
+  },
+  "cpus": [
+    {
+      "name": "cpu0",
+      "cpu_usage": 0.0,
+      "frequency": 0,
+      "vendor_id": "GenuineIntel",
+      "brand": "Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz"
+    },
+    {
+      "name": "cpu1",
+      "cpu_usage": 0.0,
+      "frequency": 0,
+      "vendor_id": "GenuineIntel",
+      "brand": "Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz"
+    }
+  ],
+  "global_cpu_info": {
+    "name": "cpu",
+    "cpu_usage": 36.051212,
+    "frequency": 0,
+    "vendor_id": "GenuineIntel",
+    "brand": "Intel(R) Core(TM)2 Duo CPU     E8400  @ 3.00GHz"
+  }
+}

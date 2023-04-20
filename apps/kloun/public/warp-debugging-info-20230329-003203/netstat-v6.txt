@@ -1,0 +1,186 @@
+stdout:
+::/3 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2000::/6 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2400::/7 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2600::/14 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2604::/15 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606::/18 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4000::/22 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4400::/23 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4600::/24 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::/98 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::4000:0/99 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6000:0/101 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6800:0/108 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6810:0/111 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6812:0/112 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:0/113 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:8000/114 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:c000/115 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:e000/117 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:e800/118 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec00/124 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec10/125 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec19 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec1a/127 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec1c/126 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec20/123 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec40/122 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ec80/121 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed00/124 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed10/125 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed19 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed1a/127 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed1c/126 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed20/123 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed40/122 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ed80/121 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:ee00/119 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6813:f000/116 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6814:0/110 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6818:0/109 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6820:0/107 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6840:0/106 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6880:0/105 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6900:0/104 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6a00:0/103 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::6c00:0/102 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::7000:0/100 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::8000:0/97 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::1:0:0/96 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::2:0:0/95 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::4:0:0/94 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::8:0:0/93 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::10:0:0/92 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::20:0:0/91 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::40:0:0/90 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::80:0:0/89 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::100:0:0/88 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::200:0:0/87 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::400:0:0/86 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::800:0:0/85 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::1000:0:0/84 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::2000:0:0/83 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::4000:0:0/82 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700::8000:0:0/81 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:1::/80 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:2::/79 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:4::/78 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:8::/77 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:10::/76 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:20::/75 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:40::/74 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:80::/73 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:100::/72 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:200::/71 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:400::/70 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:800::/69 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:1000::/68 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:2000::/67 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:4000::/66 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:0:8000::/65 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:1::/64 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:2::/63 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:4::/62 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:8::/61 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:10::/60 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:20::/59 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:40::/58 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:80::/57 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:100::/56 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:200::/55 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:400::/54 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:800::/53 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:1000::/52 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:2000::/51 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:4000::/50 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:0:8000::/49 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:1::/48 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:2::/47 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:4::/46 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:8::/45 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:10::/44 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:20::/43 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:40::/42 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:80::/41 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:100::/40 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:200::/39 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:400::/38 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:800::/37 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:1000::/36 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:2000::/35 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:4000::/34 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4700:8000::/33 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4701::/32 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4702::/31 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4704::/30 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4708::/29 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4710::/28 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4720::/27 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4740::/26 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4780::/25 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:4800::/21 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:5000::/20 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:6000::/19 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2606:8000::/17 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2607::/16 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2608::/13 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2610::/12 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2620::/11 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2640::/10 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2680::/9 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2700::/8 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+2800::/5 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+3000::/4 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+4000::/2 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+8000::/2 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+c000::/3 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+e000::/4 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+f000::/5 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+f800::/6 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+fe00::/9 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+fec0::/10 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+ff00::/16 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+ff06::/15 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+ff08::/13 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+ff10::/12 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+ff20::/11 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+ff40::/10 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+ff80::/9 dev CloudflareWARP table 65743 proto static metric 1024 pref medium
+::1 dev lo proto kernel metric 256 pref medium
+2606:4700:110:82a7:3774:77ae:5ee8:abdd dev CloudflareWARP proto kernel metric 256 pref medium
+fd01:db8:1111::2 dev lo proto kernel metric 256 pref medium
+fd01:db8:1111::3 dev lo proto kernel metric 256 pref medium
+fdb4:f58e:1277:1b00::/64 dev enp0s25 proto kernel metric 256 expires 7061sec pref medium
+fe80::/64 dev enp0s25 proto kernel metric 256 pref medium
+fe80::/64 dev br-1665aba6b595 proto kernel metric 256 pref medium
+fe80::/64 dev vethd2c6be2 proto kernel metric 256 pref medium
+fe80::/64 dev veth0e31b7d proto kernel metric 256 pref medium
+fe80::/64 dev vethea0a05f proto kernel metric 256 pref medium
+fe80::/64 dev veth2226da3 proto kernel metric 256 pref medium
+fe80::/64 dev CloudflareWARP proto kernel metric 256 pref medium
+local ::1 dev lo table local proto kernel metric 0 pref medium
+local 2606:4700:110:82a7:3774:77ae:5ee8:abdd dev CloudflareWARP table local proto kernel metric 0 pref medium
+local fd01:db8:1111::2 dev lo table local proto kernel metric 0 pref medium
+local fd01:db8:1111::3 dev lo table local proto kernel metric 0 pref medium
+local fdb4:f58e:1277:1b00:219:99ff:fea8:3f3a dev enp0s25 table local proto kernel metric 0 pref medium
+local fe80::42:77ff:fe70:4c85 dev br-1665aba6b595 table local proto kernel metric 0 pref medium
+local fe80::219:99ff:fea8:3f3a dev enp0s25 table local proto kernel metric 0 pref medium
+local fe80::508b:4fff:fe9f:8b2b dev vethd2c6be2 table local proto kernel metric 0 pref medium
+local fe80::5538:4c6:c8c3:59b2 dev CloudflareWARP table local proto kernel metric 0 pref medium
+local fe80::e8c8:e9ff:fe03:97ac dev vethea0a05f table local proto kernel metric 0 pref medium
+local fe80::ece0:faff:fea6:9e55 dev veth2226da3 table local proto kernel metric 0 pref medium
+local fe80::f831:2fff:fe43:e851 dev veth0e31b7d table local proto kernel metric 0 pref medium
+multicast ff00::/8 dev enp0s25 table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev br-1665aba6b595 table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev vethd2c6be2 table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev veth0e31b7d table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev vethea0a05f table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev veth2226da3 table local proto kernel metric 256 pref medium
+multicast ff00::/8 dev CloudflareWARP table local proto kernel metric 256 pref medium
+
+
+stderr:
+
+
+exit status: 0

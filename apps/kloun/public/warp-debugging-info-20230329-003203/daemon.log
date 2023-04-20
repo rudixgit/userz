@@ -1,0 +1,373 @@
+2023-03-29T00:27:54.518Z  INFO warp::warp_service: Version: 2023.3.258
+2023-03-29T00:27:54.519Z DEBUG warp_settings::raw_settings: Loading settings from file "/var/lib/cloudflare-warp/settings.json"
+2023-03-29T00:27:54.520Z  INFO warp_settings::manager: User preferences not loaded e=No such file or directory (os error 2)
+2023-03-29T00:27:54.521Z DEBUG warp_settings::manager: Starting local policy file watch parent_path="/var/lib/cloudflare-warp"
+2023-03-29T00:27:54.539Z  INFO main_loop: warp_net::ipc: Bound ipc socket name="warp_service" path="/run/cloudflare-warp/warp_service"
+2023-03-29T00:27:54.539Z DEBUG watchdog: warp::watchdog: Kicking off watchdog
+2023-03-29T00:27:54.540Z  INFO main_loop: warp::warp_service: Warp IPC listening on "warp_service"
+2023-03-29T00:27:54.541Z  WARN main_loop: warp::warp_service: Failed to load Registration error=OsError(Os { code: 2, kind: NotFound, message: "No such file or directory" })
+2023-03-29T00:27:54.559Z DEBUG warp_api::addresses: Caching initial API IPs consumer=[104.19.236.24, 104.19.237.24, 2606:4700::6813:ec18, 2606:4700::6813:ed18] teams=[162.159.137.105, 162.159.138.105, 2606:4700:7::a29f:8969, 2606:4700:7::a29f:8a69]
+2023-03-29T00:27:54.559Z DEBUG warp::warp_api: Sending API request GET api.cloudflareclient.com./v0/client_config
+2023-03-29T00:27:54.560Z DEBUG warp::warp_api: Sending API request GET zero-trust-client.cloudflareclient.com./v0/client_config
+2023-03-29T00:27:54.919Z DEBUG run: warp_settings::manager: LayerManager update: NetworkDefaults(NetworkDefaults { split_config: Some(Exclude { ips: [(10.0.0.0/8, None), (100.64.0.0/10, None), (169.254.0.0/16, None), (172.16.0.0/12, None), (192.0.0.0/24, None), (192.168.0.0/16, None), (224.0.0.0/24, None), (240.0.0.0/4, None), (239.255.255.250/32, None), (255.255.255.255/32, None), (fe80::/10, None), (fd00::/8, None), (ff01::/16, None), (ff02::/16, None), (ff03::/16, None), (ff04::/16, None), (ff05::/16, None), (fc00::/7, None)], hosts: [] }) })
+2023-03-29T00:27:54.919Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2023-03-29T00:27:54.919Z  INFO main_loop: firewall: Firewall stopped
+2023-03-29T00:27:54.919Z  INFO main_loop: warp::warp_service: New User Settings
+2023-03-29T00:27:54.920Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2023-03-29T00:27:54.920Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2023-03-29T00:27:54.920Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2023-03-29T00:27:54.920Z  INFO warp::warp_service::ipc_loop: IPC: new connection privileged=false process_name="/usr/bin/warp-taskbar" pid=63391
+2023-03-29T00:27:54.920Z  INFO warp::warp_service: Spawning registration changed IPC loop
+2023-03-29T00:27:54.921Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="settings_changed"
+2023-03-29T00:27:54.921Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2023-03-29T00:27:54.922Z  INFO main_loop: firewall: Firewall stopped
+2023-03-29T00:27:54.922Z  INFO main_loop: warp::warp_service: New User Settings
+2023-03-29T00:27:54.922Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2023-03-29T00:27:54.922Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2023-03-29T00:27:54.922Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2023-03-29T00:27:54.922Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 035a2f72-bd9d-4143-a9d0-87197f1ca5f6; GetDaemonStatus
+2023-03-29T00:27:54.922Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Unable(RegistrationMissing)
+2023-03-29T00:27:54.922Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Unable(RegistrationMissing)
+2023-03-29T00:27:54.922Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 035a2f72-bd9d-4143-a9d0-87197f1ca5f6; Success
+2023-03-29T00:27:54.923Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 5d75ad9e-a171-4b8a-880b-161ea062a7d5; GetDaemonStatus
+2023-03-29T00:27:54.923Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Unable(RegistrationMissing)
+2023-03-29T00:27:54.923Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Unable(RegistrationMissing)
+2023-03-29T00:27:54.923Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 5d75ad9e-a171-4b8a-880b-161ea062a7d5; Success
+2023-03-29T00:28:03.809Z  INFO warp::warp_service::ipc_loop: IPC: new connection privileged=false process_name="/usr/bin/warp-cli" pid=63588
+2023-03-29T00:28:03.809Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 725da2e3-181e-4fa4-b546-6ffff983c87e; GetAppSettings
+2023-03-29T00:28:03.810Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 725da2e3-181e-4fa4-b546-6ffff983c87e; Application settings: GlobalConfiguration { always_on: false, switch_locked: false, auto_connect: None, operation_mode: Warp, disable_for_wifi: false, disable_for_ethernet: false, disable_for_networks: [], families: None, gateway_id: None, dns_log_until: DnsLogUntil(None), onboarding: true, split_config: Exclude { ips: [(10.0.0.0/8, None), (100.64.0.0/10, None), (169.254.0.0/16, None), (172.16.0.0/12, None), (192.0.0.0/24, None), (192.168.0.0/16, None), (224.0.0.0/24, None), (240.0.0.0/4, None), (239.255.255.250/32, None), (255.255.255.255/32, None), (fe80::/10, None), (fd00::/8, None), (ff01::/16, None), (ff02::/16, None), (ff03::/16, None), (ff04::/16, None), (ff05::/16, None), (fc00::/7, None)], hosts: [] }, fallback_domains: [FallbackDomain { suffix: "intranet", description: None, dns_server: None }, FallbackDomain { suffix: "internal", description: None, dns_server: None }, FallbackDomain { suffix: "private", description: None, dns_server: None }, FallbackDomain { suffix: "localdomain", description: None, dns_server: None }, FallbackDomain { suffix: "domain", description: None, dns_server: None }, FallbackDomain { suffix: "lan", description: None, dns_server: None }, FallbackDomain { suffix: "home", description: None, dns_server: None }, FallbackDomain { suffix: "host", description: None, dns_server: None }, FallbackDomain { suffix: "corp", description: None, dns_server: None }, FallbackDomain { suffix: "local", description: None, dns_server: None }, FallbackDomain { suffix: "localhost", description: None, dns_server: None }, FallbackDomain { suffix: "home.arpa", description: None, dns_server: None }, FallbackDomain { suffix: "invalid", description: None, dns_server: None }, FallbackDomain { suffix: "test", description: None, dns_server: None }], disable_auto_fallback: false, captive_portal: None, support_url: None, organization: None, auth_client_id: None, auth_client_secret: None, allow_mode_switch: None, unpause_time: None, allow_updates: true, allowed_to_leave: None, disable_connectivity_checks: None, override_warp_endpoint: None, override_doh_endpoint: None, override_api_endpoint: None, override_tunnel_mtu: None, non_primary_dns: None }
+2023-03-29T00:28:03.811Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: d09bd7c9-6ae2-40c2-804d-0541b1a103f4; GetAccount
+2023-03-29T00:28:03.811Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: d09bd7c9-6ae2-40c2-804d-0541b1a103f4; Error: Missing registration. Try running: warp-cli register
+2023-03-29T00:28:05.883Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 3344ff4c-4e87-4550-aa9b-8118914c108a; NewRegistration
+2023-03-29T00:28:05.884Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: RegistrationInProgress
+2023-03-29T00:28:05.884Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: RegistrationInProgress
+2023-03-29T00:28:05.884Z DEBUG warp::warp_service::ipc_handlers: Sending IPC update: ConfigurationUpdated
+2023-03-29T00:28:05.885Z DEBUG warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: ConfigurationUpdated
+2023-03-29T00:28:05.887Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="registration_change"
+2023-03-29T00:28:05.887Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 5ba7180b-a271-430c-9cfd-84be4eb6e6be; GetDaemonStatus
+2023-03-29T00:28:05.888Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Unable(RegistrationMissing)
+2023-03-29T00:28:05.888Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Unable(RegistrationMissing)
+2023-03-29T00:28:05.888Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 5ba7180b-a271-430c-9cfd-84be4eb6e6be; Success
+2023-03-29T00:28:05.889Z DEBUG warp::warp_api: Sending API request POST api.cloudflareclient.com./v0/reg
+2023-03-29T00:28:07.397Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="api_responses"
+2023-03-29T00:28:07.398Z DEBUG run: warp_settings::manager: LayerManager update: NetworkPolicy(None)
+2023-03-29T00:28:07.398Z DEBUG main_loop: warp::warp_service::api_handlers: Registration updated current_registration=NewInProgress
+2023-03-29T00:28:07.399Z DEBUG main_loop: warp::warp_service::api_handlers: Registration updated 0.00 hours old, refresh at 2023-03-30 0:28:07.397218189 +00:00:00
+Registration: 551e8e90-5aab-4ced-a8fb-2f68d2cb2741
+Public key: 3262485949736d57444577523432706c7771316f6f4a766c6536754f6e615a51596a7261364270413833343d
+Interface: WarpEndpoint { v4: 172.16.0.2, v6: 2606:4700:110:82a7:3774:77ae:5ee8:abdd }
+Endpoints: [WarpSocketAddrPair { v4: 162.159.192.10:2408, v6: [2606:4700:d0::a29f:c00a]:2408 }, WarpSocketAddrPair { v4: 162.159.192.10:500, v6: [2606:4700:d0::a29f:c00a]:500 }, WarpSocketAddrPair { v4: 162.159.192.10:1701, v6: [2606:4700:d0::a29f:c00a]:1701 }, WarpSocketAddrPair { v4: 162.159.192.10:4500, v6: [2606:4700:d0::a29f:c00a]:4500 }]
+
+Account: Free { id: AccountId(50ef421e-daae-4279-b388-10a6c0ffaab5), license: "5S32JPB8-OV538GF6-7b2q5sO1" }
+
+2023-03-29T00:28:07.399Z DEBUG warp::warp_service::ipc_handlers: Sending IPC update: ConfigurationUpdated
+2023-03-29T00:28:07.400Z DEBUG warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: ConfigurationUpdated
+2023-03-29T00:28:07.402Z  INFO main_loop: firewall: Firewall stopped
+2023-03-29T00:28:07.402Z  WARN main_loop: warp::warp_service: Disconnected, but reason unknown net_info=IPv4: [enp0s25; 192.168.1.4; Ethernet]; DNS servers:;   127.0.0.53:53; 
+
+2023-03-29T00:28:07.403Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2023-03-29T00:28:07.403Z  INFO main_loop: firewall: Firewall stopped
+2023-03-29T00:28:07.403Z  INFO main_loop: warp::warp_service: New User Settings
+2023-03-29T00:28:07.403Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2023-03-29T00:28:07.403Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2023-03-29T00:28:07.404Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2023-03-29T00:28:07.404Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 3344ff4c-4e87-4550-aa9b-8118914c108a; Success
+2023-03-29T00:28:07.406Z  INFO warp::warp_service::ipc_loop: IPC connection ended
+2023-03-29T00:28:07.406Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="status_change"
+2023-03-29T00:28:07.407Z  INFO main_loop: warp::warp_service: WARP status: Disconnected(Manual)
+2023-03-29T00:28:07.407Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Disconnected(Manual)
+2023-03-29T00:28:07.408Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Disconnected(Manual)
+2023-03-29T00:28:07.408Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="registration_change"
+2023-03-29T00:28:07.408Z  WARN main_loop: warp::warp_service: Disconnected, but reason unknown net_info=IPv4: [enp0s25; 192.168.1.4; Ethernet]; DNS servers:;   127.0.0.53:53; 
+
+2023-03-29T00:28:07.409Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: bdc356ba-ae45-4f81-bbe8-3fadfcb26435; GetDaemonStatus
+2023-03-29T00:28:07.409Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Disconnected(Manual)
+2023-03-29T00:28:07.410Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Disconnected(Manual)
+2023-03-29T00:28:07.410Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: bdc356ba-ae45-4f81-bbe8-3fadfcb26435; Success
+2023-03-29T00:28:07.410Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 8569f8c1-bc1d-4008-a8f0-925d740627cc; GetDaemonStatus
+2023-03-29T00:28:07.411Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Disconnected(Manual)
+2023-03-29T00:28:07.411Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Disconnected(Manual)
+2023-03-29T00:28:07.412Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 8569f8c1-bc1d-4008-a8f0-925d740627cc; Success
+2023-03-29T00:28:12.959Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+2023-03-29T00:28:12.975Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:28:13.685Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+2023-03-29T00:28:13.732Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+2023-03-29T00:28:13.756Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:28:29.039Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:28:29.052Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:28:30.362Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+DelNeighbour; Destination: ff02::1:ff59:ae0f; 
+2023-03-29T00:28:30.428Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:28:38.210Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.2; 
+2023-03-29T00:29:02.028Z  INFO warp::warp_service::ipc_loop: IPC: new connection privileged=false process_name="/usr/bin/warp-cli" pid=63922
+2023-03-29T00:29:02.028Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 0c90eac5-bbdc-4a35-89cb-d32e308afd54; GetAppSettings
+2023-03-29T00:29:02.034Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 0c90eac5-bbdc-4a35-89cb-d32e308afd54; Application settings: GlobalConfiguration { always_on: false, switch_locked: false, auto_connect: None, operation_mode: Warp, disable_for_wifi: false, disable_for_ethernet: false, disable_for_networks: [], families: None, gateway_id: None, dns_log_until: DnsLogUntil(None), onboarding: true, split_config: Exclude { ips: [(10.0.0.0/8, None), (100.64.0.0/10, None), (169.254.0.0/16, None), (172.16.0.0/12, None), (192.0.0.0/24, None), (192.168.0.0/16, None), (224.0.0.0/24, None), (240.0.0.0/4, None), (239.255.255.250/32, None), (255.255.255.255/32, None), (fe80::/10, None), (fd00::/8, None), (ff01::/16, None), (ff02::/16, None), (ff03::/16, None), (ff04::/16, None), (ff05::/16, None), (fc00::/7, None)], hosts: [] }, fallback_domains: [FallbackDomain { suffix: "intranet", description: None, dns_server: None }, FallbackDomain { suffix: "internal", description: None, dns_server: None }, FallbackDomain { suffix: "private", description: None, dns_server: None }, FallbackDomain { suffix: "localdomain", description: None, dns_server: None }, FallbackDomain { suffix: "domain", description: None, dns_server: None }, FallbackDomain { suffix: "lan", description: None, dns_server: None }, FallbackDomain { suffix: "home", description: None, dns_server: None }, FallbackDomain { suffix: "host", description: None, dns_server: None }, FallbackDomain { suffix: "corp", description: None, dns_server: None }, FallbackDomain { suffix: "local", description: None, dns_server: None }, FallbackDomain { suffix: "localhost", description: None, dns_server: None }, FallbackDomain { suffix: "home.arpa", description: None, dns_server: None }, FallbackDomain { suffix: "invalid", description: None, dns_server: None }, FallbackDomain { suffix: "test", description: None, dns_server: None }], disable_auto_fallback: false, captive_portal: None, support_url: None, organization: None, auth_client_id: None, auth_client_secret: None, allow_mode_switch: None, unpause_time: None, allow_updates: true, allowed_to_leave: None, disable_connectivity_checks: None, override_warp_endpoint: None, override_doh_endpoint: None, override_api_endpoint: None, override_tunnel_mtu: None, non_primary_dns: None }
+2023-03-29T00:29:02.037Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 8b288cff-a45d-40a6-9056-ea0bfdd160f2; GetAccount
+2023-03-29T00:29:02.037Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 8b288cff-a45d-40a6-9056-ea0bfdd160f2; Registration: ID: 551e8e90-5aab-4ced-a8fb-2f68d2cb2741; Public Key: d9b1d822c9960c4c11e36a65c2ad68a09be57bab8e9da650623adae81a40f37e; Managed: false; Account: Free { id: AccountId(50ef421e-daae-4279-b388-10a6c0ffaab5), license: "5S32JPB8-OV538GF6-7b2q5sO1" };
+2023-03-29T00:29:02.038Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: c14ee91b-b135-4676-8cc9-ff3845e10e72; SetAlwaysOn(true)
+2023-03-29T00:29:02.038Z  INFO main_loop: structlog: event="UserToggledV0" toggle="on" warp_colo="none" warp_metal="none"
+2023-03-29T00:29:02.040Z DEBUG run: warp_settings::manager: LayerManager update: UserOverrides(<mutator>)
+2023-03-29T00:29:02.040Z DEBUG run: warp_settings::manager: UserOverrides updated: UserOverrides { version: None, always_on: Some(true), operation_mode: None, disable_for_wifi: None, disable_for_ethernet: None, disable_for_networks: None, families: None, dns_log_until: DnsLogUntil(None), gateway_id: None, onboarding: None, organization: None, split_config: None, fallback_domains: None, proxy_port: None, disable_connectivity_checks: None, override_api_endpoint: None, override_doh_endpoint: None, override_warp_endpoint: None, override_tunnel_mtu: None }
+2023-03-29T00:29:02.041Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: c14ee91b-b135-4676-8cc9-ff3845e10e72; Success
+2023-03-29T00:29:02.041Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="settings_changed"
+2023-03-29T00:29:02.041Z DEBUG main_loop: warp::warp_service: Checking for registration vs settings account mismatch reg_is_teams=false settings_is_teams=false reg_org=None settings_org=None
+2023-03-29T00:29:02.041Z  INFO main_loop: firewall: Firewall starting
+2023-03-29T00:29:02.045Z  INFO warp::warp_service::ipc_loop: IPC connection ended
+2023-03-29T00:29:02.155Z DEBUG main_loop: firewall::linux: Firewall rules loaded
+2023-03-29T00:29:02.155Z DEBUG main_loop: firewall: Firewall allow private IPs
+2023-03-29T00:29:02.191Z DEBUG main_loop: firewall::linux: Firewall rules loaded
+2023-03-29T00:29:02.191Z  INFO main_loop: warp::warp_service: New User Settings
+2023-03-29T00:29:02.191Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC update: SettingsUpdated
+2023-03-29T00:29:02.191Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseUpdate: SettingsUpdated
+2023-03-29T00:29:02.191Z DEBUG main_loop: warp::warp_service: update_settings: no restart required
+2023-03-29T00:29:02.191Z DEBUG main_loop: firewall: Firewall allow private IPs
+2023-03-29T00:29:02.206Z DEBUG main_loop: firewall::linux: Firewall rules loaded
+2023-03-29T00:29:02.206Z  WARN main_loop: warp::warp_service: Disconnected, but reason unknown net_info=IPv4: [enp0s25; 192.168.1.4; Ethernet]; DNS servers:;   127.0.0.53:53; 
+
+2023-03-29T00:29:02.206Z DEBUG main_loop: firewall: Firewall allow private IPs
+2023-03-29T00:29:02.222Z DEBUG main_loop: firewall::linux: Firewall rules loaded
+2023-03-29T00:29:02.222Z  INFO main_loop: warp::warp_service: captive_portal_fw_until: Indefinitely
+2023-03-29T00:29:02.222Z DEBUG main_loop: warp::warp: Using auto fallback: true
+2023-03-29T00:29:02.222Z DEBUG main_loop: warp::warp: Current Network: IPv4: [enp0s25; 192.168.1.4; Ethernet]; DNS servers:;   127.0.0.53:53; 
+
+2023-03-29T00:29:02.223Z  INFO main_loop: warp::warp: Initiate WARP connection
+2023-03-29T00:29:02.223Z DEBUG main_loop: firewall: Firewall allow tunnel
+2023-03-29T00:29:02.242Z DEBUG main_loop: firewall::linux: Firewall rules loaded
+2023-03-29T00:29:02.243Z DEBUG main_loop: warp::warp::happy_eyeballs: Attempting Happy Eyeballs to 162.159.192.10:2408 / [2606:4700:d0::a29f:c00a]:2408
+2023-03-29T00:29:02.243Z DEBUG main_loop: warp::warp::happy_eyeballs: Start racer 192.168.1.4:34135 ---> 162.159.192.10:2408
+2023-03-29T00:29:02.243Z DEBUG main_loop: warp::warp::happy_eyeballs: Happy eyeballs to [2606:4700:d0::a29f:c00a]:2408 failed: Os { code: 101, kind: NetworkUnreachable, message: "Network is unreachable" }
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp::happy_eyeballs: Sent handshake initiation to 162.159.192.10:2408
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="status_change"
+2023-03-29T00:29:02.244Z  INFO main_loop: warp::warp_service: WARP status: Connecting
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 3026e1aa-453d-41f1-ad60-56c11a738e21; GetDaemonStatus
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connecting
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connecting
+2023-03-29T00:29:02.244Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 3026e1aa-453d-41f1-ad60-56c11a738e21; Success
+2023-03-29T00:29:02.284Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: fdb4:f58e:1277:1b00::1; 
+NewNeighbour; Destination: fdb4:f58e:1277:1b00::1; 
+2023-03-29T00:29:02.357Z DEBUG main_loop: warp::warp::happy_eyeballs: Got response from 162.159.192.10:2408
+2023-03-29T00:29:02.359Z DEBUG main_loop: warp::warp: Connected to 162.159.192.10:2408
+2023-03-29T00:29:02.360Z DEBUG main_loop: firewall: Firewall allow interface CloudflareWARP
+2023-03-29T00:29:02.377Z DEBUG main_loop: firewall::linux: Firewall rules loaded
+2023-03-29T00:29:02.381Z DEBUG main_loop: firewall: Firewall allow private IPs
+2023-03-29T00:29:02.389Z DEBUG main_loop: firewall::linux: Firewall rules loaded
+2023-03-29T00:29:02.434Z DEBUG main_loop: warp::warp::dns_recovery::unix: Applying DNS settings [127.0.2.2, 127.0.2.3, fd01:db8:1111::2, fd01:db8:1111::3]
+2023-03-29T00:29:02.434Z  INFO warp::warp: DnsOverWarp. Client addr is 172.16.0.2:0
+2023-03-29T00:29:02.435Z DEBUG main_loop: network_info::linux: detected system dns manager owner=SystemdResolved
+2023-03-29T00:29:02.435Z  INFO dns_proxy::proxy: Default fallbacks configured default_fallback_ips=[127.0.0.53:53] config=ResolverConfig { domain: None, search: [Name(".")], name_servers: NameServerConfigGroup([NameServerConfig { socket_addr: 127.0.0.53:53, protocol: Udp, tls_dns_name: None, trust_nx_responses: true, tls_config: None, bind_addr: None }, NameServerConfig { socket_addr: 127.0.0.53:53, protocol: Tcp, tls_dns_name: None, trust_nx_responses: true, tls_config: None, bind_addr: None }], None) } sys_options=ResolverOpts { ndots: 1, timeout: 2s, attempts: 0, rotate: false, check_names: true, edns0: true, validate: false, ip_strategy: Ipv4thenIpv6, cache_size: 32, use_hosts_file: true, positive_min_ttl: None, negative_min_ttl: None, positive_max_ttl: None, negative_max_ttl: None, num_concurrent_reqs: 8, preserve_intermediates: true, try_tcp_on_error: false, server_ordering_strategy: QueryStatistics, recursion_desired: true, authentic_data: false }
+2023-03-29T00:29:02.439Z DEBUG main_loop: warp::warp::connectivity_check: Resolved warp-svc. to [fd01:db8:1111::2, fd01:db8:1111::3, 127.0.2.2, 127.0.2.3]
+2023-03-29T00:29:02.457Z DEBUG main_loop: warp::warp::connectivity_check: Resolved connectivity.cloudflareclient.com to [2606:4700:7::a29f:8941, 2606:4700:7::a29f:8a41, 162.159.137.65, 162.159.138.65]
+2023-03-29T00:29:02.533Z DEBUG main_loop: warp::warp::connectivity_check: fl=74f52
+h=engage.cloudflareclient.com
+ip=78.142.24.29
+ts=1680049742.503
+visit_scheme=https
+uag=
+colo=SOF
+sliver=none
+http=http/2
+loc=BG
+tls=TLSv1.3
+sni=plaintext
+warp=off
+gateway=off
+rbi=off
+kex=X25519
+
+2023-03-29T00:29:02.564Z DEBUG main_loop: warp::warp::connectivity_check: fl=74f51
+h=connectivity.cloudflareclient.com
+ip=2a09:bac1:ca0:18::4a:33
+ts=1680049742.522
+visit_scheme=https
+uag=
+colo=SOF
+sliver=none
+http=http/2
+loc=BG
+tls=TLSv1.3
+sni=plaintext
+warp=on
+gateway=off
+rbi=off
+kex=X25519
+
+2023-03-29T00:29:02.565Z DEBUG main_loop: warp::warp: Trace status: Ok(TraceResult { metal_id: "74f51", timestamp: 2023-03-29 0:29:02.522000128 +00:00:00, colo: "SOF", warp: On, gateway: Off })
+2023-03-29T00:29:02.565Z DEBUG main_loop: warp::warp: Connect finished
+2023-03-29T00:29:02.565Z DEBUG main_loop: warp::warp: warp_start_status=Ok(())
+2023-03-29T00:29:02.566Z DEBUG main_loop: warp::warp_service: self.warp future resolved
+2023-03-29T00:29:02.566Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="tunnel_taskset_errors_fut"
+2023-03-29T00:29:02.566Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="status_change"
+2023-03-29T00:29:02.566Z  INFO main_loop: warp::warp_service: WARP status: Connected
+2023-03-29T00:29:02.567Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connected
+2023-03-29T00:29:02.567Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connected
+2023-03-29T00:29:03.438Z DEBUG main_loop: warp::warp_service: Entering main loop arm arm="network_changed"
+2023-03-29T00:29:03.438Z DEBUG main_loop: warp::warp_service: Network change detected new_info=IPv4: [enp0s25; 192.168.1.4; Ethernet]; DNS servers:;   127.0.2.2:53;   127.0.2.3:53;   [fd01:db8:1111::2]:53;   [fd01:db8:1111::3]:53; 
+ old_info=IPv4: [enp0s25; 192.168.1.4; Ethernet]; DNS servers:;   127.0.0.53:53; 
+
+2023-03-29T00:29:06.886Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.2; 
+2023-03-29T00:29:12.514Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: fe80::1; 
+2023-03-29T00:29:12.516Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: fe80::1; 
+2023-03-29T00:29:13.653Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:29:13.667Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:29:14.527Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+2023-03-29T00:29:14.586Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:29:29.666Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:29:30.295Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:29:30.303Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:29:31.484Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+2023-03-29T00:29:31.554Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:29:35.042Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:29:35.044Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:29:41.698Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: fdb4:f58e:1277:1b00::1; 
+2023-03-29T00:29:53.314Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: fe80::1; 
+2023-03-29T00:29:54.922Z DEBUG warp_api::authenticated: Uploading structured logs
+2023-03-29T00:30:02.182Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:30:07.554Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:30:14.482Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:30:14.485Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:30:15.321Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+2023-03-29T00:30:15.390Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:30:31.463Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+2023-03-29T00:30:31.465Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:30:33.045Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+DelNeighbour; Destination: ff02::1:ff00:6d93; 
+2023-03-29T00:30:33.110Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:30:34.946Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:30:40.322Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:30:40.324Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:31:15.278Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:31:15.289Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:31:16.400Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+DelNeighbour; Destination: ff02::1:ff89:fb1a; 
+2023-03-29T00:31:16.466Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:31:18.722Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:31:23.842Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:31:23.843Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; Destination: 192.168.1.101; 
+2023-03-29T00:31:32.987Z DEBUG warp::warp_service::network_change: Routes changed:
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:31:32.992Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+NewNeighbour; 
+NewNeighbour; 
+2023-03-29T00:31:34.332Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::16; 
+2023-03-29T00:31:34.371Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; Destination: ff02::1:ff60:c0f6; 
+2023-03-29T00:31:34.391Z DEBUG warp::warp_service::network_change: Routes changed:
+DelNeighbour; 
+DelNeighbour; 
+2023-03-29T00:31:49.730Z  INFO warp::warp_service::ipc_loop: IPC: new connection privileged=false process_name="/usr/bin/warp-diag" pid=65021
+2023-03-29T00:31:49.730Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: f594a77d-e274-459d-8060-bfbb268b15c4; GetDaemonStatus
+2023-03-29T00:31:49.730Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connected
+2023-03-29T00:31:49.730Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connected
+2023-03-29T00:31:49.730Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: f594a77d-e274-459d-8060-bfbb268b15c4; Success
+2023-03-29T00:31:49.731Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: c77e6f6d-3e56-4242-9294-322e2552857a; GetAppSettings
+2023-03-29T00:31:49.731Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: c77e6f6d-3e56-4242-9294-322e2552857a; Application settings: GlobalConfiguration { always_on: true, switch_locked: false, auto_connect: None, operation_mode: Warp, disable_for_wifi: false, disable_for_ethernet: false, disable_for_networks: [], families: None, gateway_id: None, dns_log_until: DnsLogUntil(None), onboarding: true, split_config: Exclude { ips: [(10.0.0.0/8, None), (100.64.0.0/10, None), (169.254.0.0/16, None), (172.16.0.0/12, None), (192.0.0.0/24, None), (192.168.0.0/16, None), (224.0.0.0/24, None), (240.0.0.0/4, None), (239.255.255.250/32, None), (255.255.255.255/32, None), (fe80::/10, None), (fd00::/8, None), (ff01::/16, None), (ff02::/16, None), (ff03::/16, None), (ff04::/16, None), (ff05::/16, None), (fc00::/7, None)], hosts: [] }, fallback_domains: [FallbackDomain { suffix: "intranet", description: None, dns_server: None }, FallbackDomain { suffix: "internal", description: None, dns_server: None }, FallbackDomain { suffix: "private", description: None, dns_server: None }, FallbackDomain { suffix: "localdomain", description: None, dns_server: None }, FallbackDomain { suffix: "domain", description: None, dns_server: None }, FallbackDomain { suffix: "lan", description: None, dns_server: None }, FallbackDomain { suffix: "home", description: None, dns_server: None }, FallbackDomain { suffix: "host", description: None, dns_server: None }, FallbackDomain { suffix: "corp", description: None, dns_server: None }, FallbackDomain { suffix: "local", description: None, dns_server: None }, FallbackDomain { suffix: "localhost", description: None, dns_server: None }, FallbackDomain { suffix: "home.arpa", description: None, dns_server: None }, FallbackDomain { suffix: "invalid", description: None, dns_server: None }, FallbackDomain { suffix: "test", description: None, dns_server: None }], disable_auto_fallback: false, captive_portal: None, support_url: None, organization: None, auth_client_id: None, auth_client_secret: None, allow_mode_switch: None, unpause_time: None, allow_updates: true, allowed_to_leave: None, disable_connectivity_checks: None, override_warp_endpoint: None, override_doh_endpoint: None, override_api_endpoint: None, override_tunnel_mtu: None, non_primary_dns: None }
+2023-03-29T00:31:49.732Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 8602980a-32fc-44c4-941f-d506bf7e4e3c; GetAccount
+2023-03-29T00:31:49.732Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 8602980a-32fc-44c4-941f-d506bf7e4e3c; Registration: ID: 551e8e90-5aab-4ced-a8fb-2f68d2cb2741; Public Key: d9b1d822c9960c4c11e36a65c2ad68a09be57bab8e9da650623adae81a40f37e; Managed: false; Account: Free { id: AccountId(50ef421e-daae-4279-b388-10a6c0ffaab5), license: "5S32JPB8-OV538GF6-7b2q5sO1" };
+2023-03-29T00:31:49.732Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 750fafd9-3753-493b-9fab-df3a85a0d29f; GetNetworkInfo
+2023-03-29T00:31:49.732Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 750fafd9-3753-493b-9fab-df3a85a0d29f; {"v4_iface":{"name":"enp0s25","addr":"192.168.1.4","kind":"Ethernet"},"v6_iface":null,"dns_servers":[{"address":"127.0.2.2"},{"address":"127.0.2.3"},{"address":"fd01:db8:1111::2"},{"address":"fd01:db8:1111::3"}],"captive_network":false}
+2023-03-29T00:31:49.732Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 2cc6a885-43ed-4574-a5a5-73752972a1b7; GetDevicePosture
+2023-03-29T00:31:49.732Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 2cc6a885-43ed-4574-a5a5-73752972a1b7; []
+2023-03-29T00:31:49.733Z  INFO warp::warp_service::ipc_loop: IPC connection ended
+2023-03-29T00:32:02.824Z  INFO warp::warp_service::ipc_loop: IPC: new connection privileged=false process_name="/usr/bin/warp-diag" pid=65081
+2023-03-29T00:32:02.824Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 39190e71-e52d-47bc-aec9-0a8f0e6c8a29; GetDaemonStatus
+2023-03-29T00:32:02.824Z DEBUG main_loop: warp::warp_service::ipc_handlers: Sending IPC status update: Connected
+2023-03-29T00:32:02.824Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc Broadcast ResponseStatus: Connected
+2023-03-29T00:32:02.824Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 39190e71-e52d-47bc-aec9-0a8f0e6c8a29; Success
+2023-03-29T00:32:02.830Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: e94fbb06-502d-4478-a010-0e8844234ab3; GetAppSettings
+2023-03-29T00:32:02.830Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: e94fbb06-502d-4478-a010-0e8844234ab3; Application settings: GlobalConfiguration { always_on: true, switch_locked: false, auto_connect: None, operation_mode: Warp, disable_for_wifi: false, disable_for_ethernet: false, disable_for_networks: [], families: None, gateway_id: None, dns_log_until: DnsLogUntil(None), onboarding: true, split_config: Exclude { ips: [(10.0.0.0/8, None), (100.64.0.0/10, None), (169.254.0.0/16, None), (172.16.0.0/12, None), (192.0.0.0/24, None), (192.168.0.0/16, None), (224.0.0.0/24, None), (240.0.0.0/4, None), (239.255.255.250/32, None), (255.255.255.255/32, None), (fe80::/10, None), (fd00::/8, None), (ff01::/16, None), (ff02::/16, None), (ff03::/16, None), (ff04::/16, None), (ff05::/16, None), (fc00::/7, None)], hosts: [] }, fallback_domains: [FallbackDomain { suffix: "intranet", description: None, dns_server: None }, FallbackDomain { suffix: "internal", description: None, dns_server: None }, FallbackDomain { suffix: "private", description: None, dns_server: None }, FallbackDomain { suffix: "localdomain", description: None, dns_server: None }, FallbackDomain { suffix: "domain", description: None, dns_server: None }, FallbackDomain { suffix: "lan", description: None, dns_server: None }, FallbackDomain { suffix: "home", description: None, dns_server: None }, FallbackDomain { suffix: "host", description: None, dns_server: None }, FallbackDomain { suffix: "corp", description: None, dns_server: None }, FallbackDomain { suffix: "local", description: None, dns_server: None }, FallbackDomain { suffix: "localhost", description: None, dns_server: None }, FallbackDomain { suffix: "home.arpa", description: None, dns_server: None }, FallbackDomain { suffix: "invalid", description: None, dns_server: None }, FallbackDomain { suffix: "test", description: None, dns_server: None }], disable_auto_fallback: false, captive_portal: None, support_url: None, organization: None, auth_client_id: None, auth_client_secret: None, allow_mode_switch: None, unpause_time: None, allow_updates: true, allowed_to_leave: None, disable_connectivity_checks: None, override_warp_endpoint: None, override_doh_endpoint: None, override_api_endpoint: None, override_tunnel_mtu: None, non_primary_dns: None }
+2023-03-29T00:32:02.831Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: f83edae7-a8a3-4219-8559-19194705b172; GetAccount
+2023-03-29T00:32:02.831Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: f83edae7-a8a3-4219-8559-19194705b172; Registration: ID: 551e8e90-5aab-4ced-a8fb-2f68d2cb2741; Public Key: d9b1d822c9960c4c11e36a65c2ad68a09be57bab8e9da650623adae81a40f37e; Managed: false; Account: Free { id: AccountId(50ef421e-daae-4279-b388-10a6c0ffaab5), license: "5S32JPB8-OV538GF6-7b2q5sO1" };
+2023-03-29T00:32:02.831Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: 4fa7ff40-01fa-4f3a-853f-40df014ac0f9; GetNetworkInfo
+2023-03-29T00:32:02.831Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: 4fa7ff40-01fa-4f3a-853f-40df014ac0f9; {"v4_iface":{"name":"enp0s25","addr":"192.168.1.4","kind":"Ethernet"},"v6_iface":null,"dns_servers":[{"address":"127.0.2.2"},{"address":"127.0.2.3"},{"address":"fd01:db8:1111::2"},{"address":"fd01:db8:1111::3"}],"captive_network":false}
+2023-03-29T00:32:02.831Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc request: c476df6c-5ef3-4ab6-8c80-51a1e7a7d5aa; GetDevicePosture
+2023-03-29T00:32:02.831Z DEBUG main_loop: warp::warp_service::ipc_handlers: Ipc response: c476df6c-5ef3-4ab6-8c80-51a1e7a7d5aa; []
+2023-03-29T00:32:02.834Z  INFO warp::warp_service::ipc_loop: IPC connection ended

@@ -1,0 +1,11 @@
+stdout:
+Distributor ID:	Ubuntu
+Description:	Ubuntu Lunar Lobster (development branch)
+Release:	23.04
+Codename:	lunar
+
+
+stderr:
+
+
+exit status: 0

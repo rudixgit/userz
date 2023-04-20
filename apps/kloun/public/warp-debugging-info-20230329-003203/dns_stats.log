@@ -1,0 +1,2 @@
+2023-03-29T00:29:02.435Z warp-dns-stats: Queries: 0, Success: 0.0%, TimedOut: 0.0%, NoRecordsFound: 0.0%, Other Error: 0.0%, Avg Duration: 0.00ms
+2023-03-29T00:31:02.435Z warp-dns-stats: Queries: 932, Success: 50.4%, TimedOut: 0.0%, NoRecordsFound: 49.6%, Other Error: 0.0%, Avg Duration: 0.34ms

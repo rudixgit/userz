@@ -1,0 +1,106 @@
+DNS Resolution:
+
+Inside Tunnel
+Resolved connectivity.cloudflareclient.com to [2606:4700:7::a29f:8941]:0; [2606:4700:7::a29f:8a41]:0; 162.159.138.65:0; 162.159.137.65:0
+
+
+Tunnel Endpoint: 162.159.192.10
+
+Trace Result:
+
+Inside Tunnel
+Trace connectivity.cloudflareclient.com via 2606:4700:7::a29f:8941:
+fl=74f51
+h=connectivity.cloudflareclient.com
+ip=2a09:bac1:ca0:18::4a:33
+ts=1680049922.988
+visit_scheme=https
+uag=
+colo=SOF
+sliver=none
+http=http/2
+loc=BG
+tls=TLSv1.3
+sni=plaintext
+warp=on
+gateway=off
+rbi=off
+kex=X25519
+
+Trace connectivity.cloudflareclient.com via 2606:4700:7::a29f:8a41:
+fl=74f51
+h=connectivity.cloudflareclient.com
+ip=2a09:bac1:ca0:18::4a:33
+ts=1680049923.055
+visit_scheme=https
+uag=
+colo=SOF
+sliver=none
+http=http/2
+loc=BG
+tls=TLSv1.3
+sni=plaintext
+warp=on
+gateway=off
+rbi=off
+kex=X25519
+
+Trace connectivity.cloudflareclient.com via 162.159.138.65:
+fl=74f51
+h=connectivity.cloudflareclient.com
+ip=104.28.202.147
+ts=1680049923.159
+visit_scheme=https
+uag=
+colo=SOF
+sliver=none
+http=http/2
+loc=BG
+tls=TLSv1.3
+sni=plaintext
+warp=on
+gateway=off
+rbi=off
+kex=X25519
+
+Trace connectivity.cloudflareclient.com via 162.159.137.65:
+fl=74f51
+h=connectivity.cloudflareclient.com
+ip=104.28.202.147
+ts=1680049923.265
+visit_scheme=https
+uag=
+colo=SOF
+sliver=none
+http=http/2
+loc=BG
+tls=TLSv1.3
+sni=plaintext
+warp=on
+gateway=off
+rbi=off
+kex=X25519
+
+
+
+Outside Tunnel
+Trace engage.cloudflareclient.com via 162.159.192.10:
+fl=74f28
+h=engage.cloudflareclient.com
+ip=78.142.24.29
+ts=1680049923.376
+visit_scheme=https
+uag=
+colo=SOF
+sliver=none
+http=http/2
+loc=BG
+tls=TLSv1.3
+sni=plaintext
+warp=off
+gateway=off
+rbi=off
+kex=X25519
+
+
+

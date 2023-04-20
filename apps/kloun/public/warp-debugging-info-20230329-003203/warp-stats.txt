@@ -1,0 +1,5 @@
+Endpoints: 162.159.192.10, ::
+Time since last handshake: 60s
+Sent: 46.8MB; Received: 39.0MB
+Estimated latency: 14ms
+Estimated loss: 0.12%;
