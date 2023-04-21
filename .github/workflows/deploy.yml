@@ -16,10 +16,22 @@ jobs:
         run: |
           export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
           echo $APP
-          printenv
+          cd $APP
+          npm install
+          npm run build
+          npm run export
+          rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
+      - name: 🚀 Deploy
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Rudix"
+          git checkout --orphan $APP
+          git add --all
+          git add -A .next out -f
+          git commit  --allow-empty -n -m  "Add build directory"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: build
+          branch: $APP
           force: true
