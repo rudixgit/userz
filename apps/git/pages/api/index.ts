@@ -23,10 +23,7 @@ async function publish(branch: string) {
   const install = await shh(`cd /app/${branch} && pnpm install`)
   console.log(test, clone, install, '<=== test');
 
-  await shh(`rm -rf /tmp/${branch}`);
-
-
-
+  //await shh(`rm -rf /tmp/${branch}`);
 
 }
 
