@@ -30,7 +30,7 @@ jobs:
         mv ./.next ../../
         rm -rf ./.next/cache ./.next/static 
         cd ../../
-        rm -rf ./apps
+        rm -rf ./apps 
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
@@ -40,8 +40,6 @@ jobs:
           ${{ runner.os }}-pnpm-store-
     - name: 🚀 Deploy
       run: |
-        
-        export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
         git checkout --orphan "${{ env.APP }}"
