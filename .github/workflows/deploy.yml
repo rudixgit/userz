@@ -28,9 +28,11 @@ jobs:
         pnpm run export
         mv ./out ../../
         mv ./.next ../../
+        rm -rf ../../package.json
+        mv package.json ../../
         rm -rf ./.next/cache ./.next/static 
         cd ../../
-        rm -rf ./apps package.json
+        rm -rf ./apps
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
@@ -43,7 +45,7 @@ jobs:
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
-        git checkout --orphan "${{ env.APP }}"
+        git checkout --orphan "$APP"
         git add --all
         git add -A .next out -f
         git commit  --allow-empty -n -m  "Add build directory"
