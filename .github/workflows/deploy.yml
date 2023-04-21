@@ -26,11 +26,11 @@ jobs:
         pnpm install
         pnpm run build
         pnpm run export
+        rm -rf ./.next/cache ./.next/static 
         mv ./out ../../
         mv ./.next ../../
         rm -rf ../../package.json
         mv package.json ../../
-        rm -rf ./.next/cache ./.next/static 
         cd ../../
         rm -rf ./apps
     - uses: actions/cache@v3
