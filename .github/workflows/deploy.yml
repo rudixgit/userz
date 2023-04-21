@@ -29,11 +29,12 @@ jobs:
         pnpm install
         pnpm run build
         pnpm run export
-        rm -rf ./.next/cache ./.next/static 
+        rm -rf ./.next/cache ./.next/static ../../package.json
         mv ./out ../../
         mv ./.next ../../
+        mv package.json ../../
         cd ../../
-        rm -rf ./apps
+        rm -rf ./apps ./packages ./.github
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
@@ -45,12 +46,6 @@ jobs:
       env:
         dotenv_path: .env
       run: |
-        if [[ -n "$APP" ]]; then
-          git checkout --orphan "$APP"
-        else
-          echo "APP environment variable is not set"
-          exit 1
-        fi
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
         git checkout --orphan "$APP"
