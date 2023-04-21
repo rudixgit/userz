@@ -4,12 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: 🧐 Load .env file
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: ./
-        mode: ''
-        load-mode: strict
     - uses: actions/setup-node@v3
       with:
         node-version: 20
@@ -20,6 +14,12 @@ jobs:
       with:
         version: 7
         run_install: false
+    - name: 🧐 Load .env file
+      uses: xom9ikk/dotenv@v2
+      with:
+        path: ./
+        mode: ''
+        load-mode: strict
     - name: 😳 Build
       env:
         dotenv_path: .env
