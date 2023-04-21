@@ -18,21 +18,7 @@ jobs:
         version: 7
         run_install: false
     - name: 😳 Build
-      run: |
-        printf "\n%s\n" "STORE_PATH=$(pnpm store path)" >> .env
-        export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
-        echo $APP
-        cd ./apps/$APP
-        pnpm install
-        pnpm run build
-        pnpm run export
-        rm -rf ./.next/cache ./.next/static 
-        mv ./out ../../
-        mv ./.next ../../
-        rm -rf ../../package.json
-        mv package.json ../../
-        cd ../../
-        rm -rf ./apps
+      run: "printf \"\\n%s\\n\" \"STORE_PATH=$(pnpm store path)\" >> .env\nexport $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)\necho $APP\ncd ./apps/$APP\npnpm install\npnpm run build\npnpm run export\nrm -rf ./.next/cache ./.next/static \nmv ./out ../../\nmv ./.next ../../\nrm -rf ../../package.json\nmv package.json ../../\ncd ../../\nrm -rf ./apps\n"
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
@@ -45,7 +31,7 @@ jobs:
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
-        git checkout --orphan "$APP"
+        git checkout --orphan ${{ env.APP }}
         git add --all
         git add -A .next out -f
         git commit  --allow-empty -n -m  "Add build directory"
