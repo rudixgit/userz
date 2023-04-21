@@ -20,9 +20,9 @@ jobs:
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         echo $APP
         cd ./apps/$APP
-        npm install
-        npm run build
-        npm run export
+        pnpm install
+        pnpm run build
+        pnpm run export
         rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
     - name: 🚀 Deploy
       run: |
