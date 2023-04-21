@@ -4,34 +4,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - uses: oNaiPs/secrets-to-env-action@v1
-        with:
-          secrets: ${{ toJSON(secrets) }}
-       - uses: pnpm/action-setup@v2
-         with:
-          version: 6.0.2
-      - name: 😳 Build
-        run: |
-          export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
-          echo $APP
-          cd ./apps/$APP
-          pnpm install
-          pnpm run build
-          pnpm run export
-          rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
-      - name: 🚀 Deploy
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "Rudix"
-          git checkout --orphan $APP
-          git add --all
-          git add -A .next out -f
-          git commit  --allow-empty -n -m  "Add build directory"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: $APP
-          force: true
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 20
+    - name: Checkout
+      uses: actions/checkout@v3
+    - uses: oNaiPs/secrets-to-env-action@v1
+      with:
+        secrets: ${{ toJSON(secrets) }}
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 6.0.2
+    - name: 😳 Build
+      run: |
+        export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+        echo $APP
+        cd ./apps/$APP
+        npm install
+        npm run build
+        npm run export
+        rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
+    - name: 🚀 Deploy
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "Rudix"
+        git checkout --orphan $APP
+        git add --all
+        git add -A .next out -f
+        git commit  --allow-empty -n -m  "Add build directory"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: $APP
+        force: true
