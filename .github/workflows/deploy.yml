@@ -27,6 +27,8 @@ jobs:
         pnpm run build
         pnpm run export
         rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
+        mv ./out ../../
+        mv ./.next ../../
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
