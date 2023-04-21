@@ -14,7 +14,8 @@
   "dependencies": {
     "next": "^13.3.0",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "tailwind": "link:@acme/ui/tailwind"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
