@@ -34,6 +34,7 @@ jobs:
         cd ../../
         rm -rf ./apps
         APP=$APP
+        echo "::set-env name=APP::$APP"
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
@@ -43,6 +44,12 @@ jobs:
           ${{ runner.os }}-pnpm-store-
     - name: 🚀 Deploy
       run: |
+        if [[ -n "$APP" ]]; then
+          git checkout --orphan "$APP"
+        else
+          echo "APP environment variable is not set"
+          exit 1
+        fi
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
         git checkout --orphan "$APP"
