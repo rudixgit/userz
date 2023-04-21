@@ -1,16 +1,16 @@
-import {chunk, shuffle} from "lodash";
+import { chunk, shuffle } from "lodash";
 
 import FacebookShare from "@/components/FacebookShare";
-import {FormatJoke} from "@/components/JokeText";
+import { FormatJoke } from "@/components/JokeText";
 import JokeThumbnail from "@/components/JokeThumbnail";
 import Main from "@/components/Layouts/Main";
 import Meta from "@/components/Layouts/Meta";
 import Nav from "@/components/Nav";
 import Rudsense from "@/components/Rudsense";
 import db from "@/data/client";
-import {Cat, catsdata} from "@/utils/formatter";
+import { Cat, catsdata } from "@/utils/formatter";
 
-import {Doc} from "../../data/structure";
+import { Doc } from "../../data/structure";
 
 const SingleJoke = (props: {
   joke: Doc;
@@ -100,6 +100,12 @@ export const getServerSideProps = async ({
   const {jokeid} = query;
 
   const joke = await db.get(jokeid as string);
+  if (joke.error) { 
+    return {
+      notFound: true,
+    }
+   }
+
   const jokes = await db.view("joke/random", {
     key: Math.floor(Math.random() * 1938).toString(),
     update: "lazy",
