@@ -6,8 +6,6 @@ jobs:
     steps:
     - name: 🧐 Load .env file
       uses: xom9ikk/dotenv@v2
-      with:
-        load-mode: strict
     - uses: actions/setup-node@v3
       with:
         node-version: 20
