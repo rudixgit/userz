@@ -13,10 +13,13 @@ jobs:
       with:
         secrets: ${{ toJSON(secrets) }}
     - uses: pnpm/action-setup@v2
+      id: pnpm-install
       with:
-        version: 6.0.2
+        version: 7
+        run_install: false
     - name: 😳 Build
       run: |
+        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         echo $APP
         cd ./apps/$APP
@@ -24,6 +27,13 @@ jobs:
         pnpm run build
         pnpm run export
         rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
+    - uses: actions/cache@v3
+      name: Cache pnpm store directory
+      with:
+        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
     - name: 🚀 Deploy
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
