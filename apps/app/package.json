@@ -15,7 +15,7 @@
     "@acme/utils": "workspace:*",
     "@swc/helpers": "^0.4.12",
     "@vercel/examples-ui": "^1.0.4",
-    "next": "canary",
+    "next": "^13.3.0",
     "react": "latest",
     "react-dom": "latest"
   },
