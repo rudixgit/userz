@@ -11,8 +11,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@acme/ui": "workspace:*",
-    "@acme/utils": "workspace:*",
     "@apollo/client": "^3.7.12",
     "@ctrl/react-adsense": "^1.6.2",
     "@heroicons/react": "^1.0.6",

@@ -24,7 +24,7 @@ jobs:
       run: |
         echo $APP
         cd ./apps/$APP
-        pnpm install
+        pnpm install --no-frozen-lockfile
         pnpm run build
         pnpm run export
         rm -rf ./.next/cache ./.next/static ../../package.json
