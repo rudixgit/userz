@@ -21,8 +21,6 @@ jobs:
         mode: ''
         load-mode: strict
     - name: 😳 Build
-      env:
-        dotenv_path: .env
       run: |
         echo $APP
         cd ./apps/$APP
@@ -43,8 +41,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
     - name: 🚀 Deploy
-      env:
-        dotenv_path: .env
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
@@ -53,8 +49,6 @@ jobs:
         git add -A .next out -f
         git commit  --allow-empty -n -m  "Add build directory" 
     - name: 🥊 Push changes
-      env:
-        dotenv_path: .env
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
