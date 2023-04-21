@@ -7,7 +7,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 20
-    - name: Checkout
+    - name: 🔽 Checkout
       uses: actions/checkout@v3
     - uses: oNaiPs/secrets-to-env-action@v1
       with:
@@ -28,9 +28,9 @@ jobs:
         pnpm run export
         rm -rf ./.next/cache ./.next/static ./app ./styles ./ui ./.github ./.nova ./lib ./src *.ts public package-lock.json ./vscode ./Applications.sketch ./.eslintrc.js ./.npmrc ./pnpm-lock.yaml
     - uses: actions/cache@v3
-      name: Cache pnpm store directory
+      name: 📥 Cache pnpm store directory
       with:
-        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        path: "/home/runner/setup-pnpm/node_modules/"
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
@@ -43,7 +43,7 @@ jobs:
         git add --all
         git add -A .next out -f
         git commit  --allow-empty -n -m  "Add build directory"
-    - name: Push changes
+    - name: 🥊 Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
