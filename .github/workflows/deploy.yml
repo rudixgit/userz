@@ -19,7 +19,7 @@ jobs:
         run_install: false
     - name: 😳 Build
       run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
+        echo "STORE_PATH=$(pnpm store path)" >> ./.env
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         echo $APP
         cd ./apps/$APP
