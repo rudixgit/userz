@@ -1,5 +1,7 @@
 name: Deploy
 on: push
+env:
+  APP: ''
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,6 +33,7 @@ jobs:
         mv ./.next ../../
         cd ../../
         rm -rf ./apps
+        APP=$APP
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
@@ -39,22 +42,16 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
     - name: 🚀 Deploy
-      env:
-        APP: ${{ env.APP }}
       run: |
-        ls -la
-        export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
         git checkout --orphan "$APP"
         git add --all
         git add -A .next out -f
-        git commit  --allow-empty -n -m  "Add build directory"
+        git commit  --allow-empty -n -m  "Add build directory" 
     - name: 🥊 Push changes
-      env:
-        APP: ${{ env.APP }}
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: "prod"
+        branch: ${{ env.APP }}
         force: true
