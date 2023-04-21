@@ -1,0 +1,31 @@
+{
+  "name": "git",
+  "version": "0.0.1",
+  "repository": "https://github.com/vercel/examples.git",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start --port 3033",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@acme/ui": "workspace:*",
+    "@acme/utils": "workspace:*",
+    "@swc/helpers": "^0.4.12",
+    "@vercel/examples-ui": "^1.0.4",
+    "next": "^13.3.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "simple-git": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/react": "latest",
+    "eslint": "^8.11.0",
+    "eslint-config-next": "canary",
+    "typescript": "4.8.4"
+  }
+}
