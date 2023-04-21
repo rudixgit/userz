@@ -3,6 +3,7 @@
 # Dependencies 1
 node_modules
 .pnp
+pnpm-lock.yaml
 .pnp.js
 
 # Testing
