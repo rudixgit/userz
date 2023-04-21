@@ -33,7 +33,7 @@ jobs:
     - uses: actions/cache@v3
       name: 📥 Cache pnpm store directory
       with:
-        path: "/home/runner/setup-pnpm/node_modules/"
+        path: "/home/runner/setup-pnpm/node_modules/.bin/store/v3/"
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
@@ -42,7 +42,7 @@ jobs:
         export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "Rudix"
-        git checkout --orphan $APP
+        git checkout --orphan $(echo $APP)
         git add --all
         git add -A .next out -f
         git commit  --allow-empty -n -m  "Add build directory"
