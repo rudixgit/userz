@@ -121,12 +121,7 @@ export const getServerSideProps: GetServerSideProps = async ({query, res}) => {
         content: x,
       }))
     : (data?.html as {type: string; content: string}[]);
-  res.setHeader(
-    "Last-Modified",
-    data.date
-      ? new Date(data.date).toUTCString()
-      : new Date("2021-04-19").toUTCString()
-  );
+ 
 
   const news = await db.view("newsbg/news", {
     reduce: false,
@@ -153,5 +148,5 @@ export const getServerSideProps: GetServerSideProps = async ({query, res}) => {
 };
 
 export default NewsItem;
-
+export const runtime = "experimental-edge";
 //export const runtime = "experimental-edge";d
