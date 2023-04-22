@@ -50,7 +50,9 @@ const NewsItem = ({
               </div>
             )}
             <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
-            {date && (
+          </div>
+          <div>
+          {date && (
               <time dateTime={date}>
                 <TimeAgo
                   date={new Date(date).toISOString()}
@@ -103,7 +105,8 @@ function getLastP(arr: {type: string; content: string}[]) {
     return acc;
   }, 0);
   const filteredArr = arr.slice(0, lastPElemIndex + 1);
-  const arrx = uniqBy(filteredArr, function (e) {
+  const removeNoImages = filteredArr.filter((x) => x.type === "p" || (x.type === "img" && x.content.includes('http')));
+  const arrx = uniqBy(removeNoImages, function (e) {
     return e.content;
   });
   return arrx;
