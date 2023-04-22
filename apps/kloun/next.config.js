@@ -2,8 +2,6 @@
 
 const nextConfig = {
   //output: "standalone",
-  reactStrictMode: true,
-  swcMinify: true,
   trailingSlash: true,
   assetPrefix:
     process.env.LOGNAME === "arpecop"
@@ -13,7 +11,6 @@ const nextConfig = {
     unoptimized: true,
     domains: ["static.dir.bg", "kloun.pages.dev"],
   },
-
   async rewrites() {
     return [
       {

@@ -2,15 +2,20 @@ import Link from 'next/link';
 import React from 'react';
 
 import { slugify } from '@/utils/formatter';
-
+import TimeAgo from 'react-timeago';
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
+import bgStrings from '@/components/bg';
+const formatter = buildFormatter(bgStrings);
 const NewsThumbnail = ({
   title,
   image,
   uid,
+  date
 }: {
   title: string;
   image?: string;
   uid: string;
+  date?: string;
 }) => (
   <article className="relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3">
     <Link
@@ -18,7 +23,15 @@ const NewsThumbnail = ({
       passHref
       className="newswrap"
     >
-      <div className="flex  w-full items-center ">
+      <div className="flex  w-full items-center">
+        <div className="absolute h-36 w-1/3  bg-gradient-to-b from-gray-900 to-transparent pl-2 text-xs"> {date && (
+
+          <TimeAgo
+            date={new Date(date).toISOString()}
+            formatter={formatter}
+          />
+
+        )}  </div>
         <div className="flex items-center justify-center">
           {image && (
             <img

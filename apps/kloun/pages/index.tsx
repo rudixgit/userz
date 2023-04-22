@@ -21,7 +21,7 @@ const MoreButton = ({
 }): JSX.Element => {
   return (
     <Link
-      href={{pathname: "/", query: {type}}}
+      href={{ pathname: "/", query: { type } }}
       passHref={true}
       className="btn dark:btn-ghost border-2"
     >
@@ -30,10 +30,10 @@ const MoreButton = ({
   );
 };
 
-const Index = ({cats, news}: {cats: Cat[]; news: News[]}) => {
+const Index = ({ cats, news }: { cats: Cat[]; news: News[] }) => {
   const router = useRouter();
   const {
-    query: {type},
+    query: { type },
   } = router;
 
   return (
@@ -53,17 +53,19 @@ const Index = ({cats, news}: {cats: Cat[]; news: News[]}) => {
         <>
           <h1 className="text-5xl font-light">Актуално</h1>
           <div className="flex flex-wrap">
-            {news.map(({id, title, image}) => (
-              <NewsThumbnail uid={id} title={title} image={image} key={id} />
+            {news.map(({ id, title, image, date }) => (
+              <NewsThumbnail uid={id} title={title} image={image} date={date} key={id} />
             ))}
           </div>
-          <Link
-            href={{pathname: "/news/"}}
-            passHref={true}
-            className="btn dark:btn-ghost border-2"
-          >
-            Още новини
-          </Link>
+          <div className='flex flex-wrap justify-end mb-2'>
+            <Link
+              href={{ pathname: "/news/" }}
+              passHref={true}
+              className="btn dark:btn-ghost border-2"
+            >
+              Още новини
+            </Link>
+          </div>
           <h1 className="text-5xl font-light">Вицове</h1>
           <Nav cats={cats} limit={9} prefix="cat" />
           <div className="flex flex-wrap justify-end mb-2">
@@ -99,13 +101,13 @@ export const getServerSideProps = async () => {
   });
 
   const cats = catsx.rows
-    .filter((x: {value: number}) => x.value > 1)
-    .map((x: {key: string; value: number}) => ({
+    .filter((x: { value: number }) => x.value > 1)
+    .map((x: { key: string; value: number }) => ({
       cat: x.key.replace("JOK", ""),
       slug: slugify(x.key.replace("JOK", "")),
       count: x.value,
     }))
-    .sort((a: {count: number}, b: {count: number}) => b.count - a.count);
+    .sort((a: { count: number }, b: { count: number }) => b.count - a.count);
   return {
     props: {
       cats,
@@ -113,6 +115,6 @@ export const getServerSideProps = async () => {
     },
   };
 };
- 
+
 //export const config = { amp: true }
 export default Index;

@@ -1,4 +1,4 @@
-import type {GetServerSideProps} from "next";
+import type { GetServerSideProps } from "next";
 import { uniqBy } from 'lodash';
 import TimeAgo from 'react-timeago';
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
@@ -10,12 +10,12 @@ import NewsThumbnail from '@/components/NewsThumbnail';
 import Rudsense from '@/components/Rudsense';
 import db from '@/data/client';
 
-import type {News} from "@/pages/news/";
+import type { News } from "@/pages/news/";
 const formatter = buildFormatter(bgStrings);
 
 const NewsItem = ({
   news,
-  newsbg_by_pk: {title, image, parsed, date},
+  newsbg_by_pk: { title, image, parsed, date },
 }: {
   news: News[];
   newsbg_by_pk: News;
@@ -52,7 +52,7 @@ const NewsItem = ({
             <h1 className="font-bold sm:text-2xl md:text-4xl">{title}</h1>
           </div>
           <div>
-          {date && (
+            {date && (
               <time dateTime={date}>
                 <TimeAgo
                   date={new Date(date).toISOString()}
@@ -64,7 +64,7 @@ const NewsItem = ({
           <Rudsense />
           <div className="flex">
             <article className="leading-relaxed" id="article">
-              {parsed?.html.map(({type, content}, i: number) =>
+              {parsed?.html.map(({ type, content }, i: number) =>
                 type === "p" ? (
                   <p key={i}>{content}</p>
                 ) : (
@@ -76,8 +76,8 @@ const NewsItem = ({
         </div>
       </article>
       <div className="flex flex-wrap">
-        {news.map(({id, title, image}) => (
-          <NewsThumbnail uid={id} title={title} image={image} key={id} />
+        {news.map(({ id, title, image, date }) => (
+          <NewsThumbnail uid={id} title={title} date={date} image={image} key={id} />
         ))}
       </div>
     </Main>
@@ -96,7 +96,7 @@ function countAlphanumeric(str: string) {
 //   return nums.length > chars.length / 2;
 // }
 
-function getLastP(arr: {type: string; content: string}[]) {
+function getLastP(arr: { type: string; content: string }[]) {
   const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
   const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
     if (curr.type === "p") {
@@ -112,16 +112,16 @@ function getLastP(arr: {type: string; content: string}[]) {
   return arrx;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({query, res}) => {
-  const {newsid, slug} = query as {newsid: string; slug?: string};
+export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
+  const { newsid, slug } = query as { newsid: string; slug?: string };
   const data = await db.get(newsid);
   const content = data?.content
     ? JSON.parse(data?.content).html.map((x: string) => ({
-        type: "p",
-        content: x,
-      }))
-    : (data?.html as {type: string; content: string}[]);
- 
+      type: "p",
+      content: x,
+    }))
+    : (data?.html as { type: string; content: string }[]);
+
 
   const news = await db.view("newsbg/news", {
     reduce: false,
@@ -147,4 +147,4 @@ export const getServerSideProps: GetServerSideProps = async ({query, res}) => {
   };
 };
 export default NewsItem;
- 
+

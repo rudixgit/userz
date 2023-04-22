@@ -12,7 +12,7 @@ export type News = {
   id: string;
   description?: string;
   date?: string;
-  parsed?: {html: {type: string; content: string}[]; description?: string};
+  parsed?: { html: { type: string; content: string }[]; description?: string };
   content: string;
 };
 
@@ -23,7 +23,7 @@ export type RootNewsProps = {
   items: number;
 };
 
-const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
+const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
   return (
     <Main adsense meta={<Meta title={"Новини"} description="Новини" />}>
       <div className="my-10 flex w-full flex-col">
@@ -31,8 +31,8 @@ const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
           <div className="w-full">
             <Rudsense />
           </div>
-          {newsbg.map(({id, title, image}) => (
-            <NewsThumbnail uid={id} title={title} image={image} key={id} />
+          {newsbg.map(({ id, title, image, date }) => (
+            <NewsThumbnail uid={id} title={title} image={image} date={date} key={id} />
           ))}
           <div className="w-full joke">
             <Rudsense />
@@ -49,7 +49,7 @@ const Index = ({newsbg, pagenum, items}: RootNewsProps): JSX.Element => {
   );
 };
 
-export const getServerSideProps = async (context: {query: {page?: string}}) => {
+export const getServerSideProps = async (context: { query: { page?: string } }) => {
   const pagenum = context.query.page ? Number(context.query.page) : 1;
   const agregate = await db.view("newsbg/agregate", {
     update: "lazy",
@@ -74,4 +74,3 @@ export const getServerSideProps = async (context: {query: {page?: string}}) => {
 };
 
 export default Index;
-export const runtime = "experimental-edge";
