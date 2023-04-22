@@ -113,6 +113,6 @@ export const getServerSideProps = async () => {
     },
   };
 };
-
+export const runtime = "experimental-edge";
 //export const config = { amp: true }
 export default Index;
