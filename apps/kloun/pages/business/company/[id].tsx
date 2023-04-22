@@ -62,7 +62,7 @@ const Index = ({
     </Main>
   );
 };
-
+export const runtime = "experimental-edge";
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
   const id = query.id as string;
   const data = await db.get(id);

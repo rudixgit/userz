@@ -79,5 +79,5 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
     props: {movie: data},
   };
 };
-export const config = {amp: true};
+export const runtime = "experimental-edge";
 export default Item;

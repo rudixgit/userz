@@ -266,5 +266,5 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     },
   };
 };
-
+export const runtime = "experimental-edge";
 //x
