@@ -73,7 +73,7 @@ const Index = ({
     </Main>
   );
 };
-export const runtime = "experimental-edge";
+ 
 export const getServerSideProps = async ({
   query,
 }: {
