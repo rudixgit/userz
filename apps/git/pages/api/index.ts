@@ -17,11 +17,11 @@ async function publish(branch: string) {
   await shh('echo "CLONING DONE"')
   await shh(`cd /app/${branch} && pnpm install`)
 
-  await shh(`rsync -avh --delete --exclude='.git'  /tmp/${branch} /app/`)
+  const rsync = await shh(`rsync -avh --delete --exclude='.git'  /tmp/${branch} /app/`)
   const install = await shh(`cd /app/${branch} && pnpm install`)
-  console.log(install, '<=== install');
+  console.log(install, rsync, '<=== install');
 
-  //await shh(`rm -rf /tmp/${branch}`);
+  await shh(`rm -rf /tmp/${branch}`);
 
 }
 

@@ -27,7 +27,7 @@ jobs:
           pnpm install --no-frozen-lockfile
           pnpm run build
           pnpm run export
-          rm -rf ./.next/cache ./.next/static pnpm-workspace.yaml pnpm-lock.yaml ../../package.json
+          rm -rf ./.next/cache ./.next/static ./pnpm-workspace.yaml ./pnpm-lock.yaml ../../package.json
           mv ./out ../../
           mv ./.next ../../
           mv package.json ../../
