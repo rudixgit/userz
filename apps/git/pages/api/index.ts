@@ -7,7 +7,8 @@ function shh(cmd: string) {
       if (error) {
         console.warn(error);
       }
-      resolve(stdout ? stdout : stderr);
+      const out = stdout || stderr
+      resolve(out.toString().split('\n').slice(-10).join('\n'));
     });
   });
 }
@@ -18,9 +19,9 @@ async function publish(branch: string) {
   await shh('echo "CLONING DONE"')
   await shh(`cd /app/${branch} && pnpm install`)
   const rsync = await shh(`rsync -avh --delete --exclude='.git'  /tmp/${branch} /app/`)
-  const install = await shh(`cd /app/${branch} && pnpm install`)
-  await shh(`cd /app/${branch} && pm2 start &&  pm2 restart ${branch}`)
-  console.log(rsync, install, '<=== install');
+  const install = await shh(`cd /app/${branch} && pnpm install --prod`)
+  const start = await shh(`cd /app/${branch} && pm2 start &&  pm2 restart ${branch}`)
+  console.log(rsync, install, start, '<=== install');
   await shh(`rm -rf /tmp/${branch}`);
 }
 
