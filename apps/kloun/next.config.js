@@ -21,10 +21,6 @@ const nextConfig = {
         destination: "/api/ads",
       },
       {
-        source: "/amp.js",
-        destination: "/api/amp",
-      },
-      {
         source: "/news/:page",
         destination: "/news/?page=:page",
       },
