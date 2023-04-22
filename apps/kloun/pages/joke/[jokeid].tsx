@@ -1,16 +1,16 @@
-import { chunk, shuffle } from "lodash";
+import { chunk, shuffle } from 'lodash';
 
-import FacebookShare from "@/components/FacebookShare";
-import { FormatJoke } from "@/components/JokeText";
-import JokeThumbnail from "@/components/JokeThumbnail";
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import Nav from "@/components/Nav";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
-import { Cat, catsdata } from "@/utils/formatter";
+import FacebookShare from '@/components/FacebookShare';
+import { FormatJoke } from '@/components/JokeText';
+import JokeThumbnail from '@/components/JokeThumbnail';
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import Nav from '@/components/Nav';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
+import { Cat, catsdata } from '@/utils/formatter';
 
-import { Doc } from "../../data/structure";
+import { Doc } from '../../data/structure';
 
 const SingleJoke = (props: {
   joke: Doc;

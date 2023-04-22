@@ -1,8 +1,0 @@
-stdout:
-Linux wasp 6.2.0-18-generic #18-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 16 00:09:48 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
-
-
-stderr:
-
-
-exit status: 0

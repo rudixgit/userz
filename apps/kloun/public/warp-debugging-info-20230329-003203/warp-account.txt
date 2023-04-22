@@ -1,5 +1,0 @@
-Account type: Free
-Device ID: 551e8e90-5aab-4ced-a8fb-2f68d2cb2741
-Public key: d9b1d822c9960c4c11e36a65c2ad68a09be57bab8e9da650623adae81a40f37e
-Account ID: 50ef421edaae4279b38810a6c0ffaab5
-License: 5S32JPB8-OV538GF6-7b2q5sO1

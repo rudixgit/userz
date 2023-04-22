@@ -1,5 +1,5 @@
 import type {Cat} from "@/utils/formatter";
-import Link from "next/link";
+import Link from 'next/link';
 
 export interface NavProps {
   cats: Cat[];

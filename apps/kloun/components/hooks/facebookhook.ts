@@ -1,8 +1,8 @@
-import {throttle} from "lodash";
-import {SetStateAction, useEffect, useRef, useState} from "react";
+import { throttle } from 'lodash';
+import { SetStateAction, useEffect, useRef, useState } from 'react';
 
-import {doMutation, doQuery, gql} from "@/pages/api/graphql";
-import {FbApp} from "@/pages/facebook/facebookindex";
+import { doMutation, doQuery, gql } from '@/pages/api/graphql';
+import { FbApp } from '@/pages/facebook/facebookindex';
 
 export type FBResult = {
   [key: string]: string | number;

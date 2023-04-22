@@ -1,11 +1,11 @@
 //import Head from "next/head";
-import {encode} from "html-entities";
-import {NextSeo} from "next-seo";
-import {useRouter} from "next/router";
+import { encode } from 'html-entities';
+import { NextSeo } from 'next-seo';
+import { useRouter } from 'next/router';
 
-import {AppConfig} from "@/utils/AppConfig";
+import { AppConfig } from '@/utils/AppConfig';
 
-import {profanityRemove} from "../../utils/formatter";
+import { profanityRemove } from '../../utils/formatter';
 
 type IMetaProps = {
   title: string;

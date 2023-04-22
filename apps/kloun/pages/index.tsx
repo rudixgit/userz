@@ -1,16 +1,16 @@
-import Link from "next/link";
-import {useRouter} from "next/router";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import Nav from "@/components/Nav";
-import NewsThumbnail from "@/components/NewsThumbnail";
-import Program from "@/components/Program";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
-import {Cat, slugify} from "@/utils/formatter";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import Nav from '@/components/Nav';
+import NewsThumbnail from '@/components/NewsThumbnail';
+import Program from '@/components/Program';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
+import { Cat, slugify } from '@/utils/formatter';
 
-import {News} from "./news";
+import { News } from './news';
 
 const MoreButton = ({
   text,

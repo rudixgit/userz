@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import {eng} from "stopword";
-import textrank from "textrank-node";
+import { eng } from 'stopword';
+import textrank from 'textrank-node';
 
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import NoSSR from "@/components/NoSSR";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import NoSSR from '@/components/NoSSR';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
 
 export type Tweet = {
   screenName: string;

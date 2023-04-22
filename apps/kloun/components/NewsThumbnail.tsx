@@ -1,7 +1,7 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link';
+import React from 'react';
 
-import {slugify} from "@/utils/formatter";
+import { slugify } from '@/utils/formatter';
 
 const NewsThumbnail = ({
   title,

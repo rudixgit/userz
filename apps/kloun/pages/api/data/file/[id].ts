@@ -1,7 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 
-import {readFileSync} from "fs";
-import path from "path";
+import { readFileSync } from 'fs';
+import path from 'path';
 
 type Params = {
   [key: string]: string;

@@ -1,7 +1,7 @@
 import type {GetServerSideProps} from "next";
 import type {News} from "@/pages/news/";
 
-import db from "@/data/client";
+import db from '@/data/client';
 
 const NewsItem = ({
   newsbg_by_pk: {parsed},

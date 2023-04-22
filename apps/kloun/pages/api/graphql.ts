@@ -1,5 +1,5 @@
-import {DocumentNode, print} from "graphql";
-import {gql} from "graphql-tag";
+import { DocumentNode, print } from 'graphql';
+import { gql } from 'graphql-tag';
 
 type Variables = {[key: string]: string | number | boolean};
 

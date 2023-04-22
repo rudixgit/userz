@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
 function Rudsense({type}: {type?: string}) {
   if (type === "thumbs") {

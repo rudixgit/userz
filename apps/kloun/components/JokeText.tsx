@@ -1,6 +1,6 @@
-import {formattedjoke} from "@/utils/formatter";
+import { formattedjoke } from '@/utils/formatter';
 
-import Rudsense from "./Rudsense";
+import Rudsense from './Rudsense';
 
 export const remappedJokeFunction = (joke: string) => {
   let i1 = 0;

@@ -1,8 +1,8 @@
-import {MouseEvent, useEffect, useState} from "react";
+import { MouseEvent, useEffect, useState } from 'react';
 
-import {FormatJoke} from "@/components/JokeText";
+import { FormatJoke } from '@/components/JokeText';
 
-import FacebookShare from "./FacebookShare";
+import FacebookShare from './FacebookShare';
 
 import type {Doc} from "../data/structure";
 interface Props {

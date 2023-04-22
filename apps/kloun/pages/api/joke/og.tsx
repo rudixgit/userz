@@ -1,10 +1,10 @@
-import {NextRequest} from "next/server";
+import { NextRequest } from 'next/server';
 
-import {doQuery, gql} from "@/pages/api/graphql";
+import { doQuery, gql } from '@/pages/api/graphql';
 // import { profanityFilter } from "@/utils/formatter";
-import {ImageResponse} from "@vercel/og";
+import { ImageResponse } from '@vercel/og';
 
-import {remappedJokeFunction} from "../../../components/JokeText";
+import { remappedJokeFunction } from '../../../components/JokeText';
 
 export const config = {
   runtime: "edge",

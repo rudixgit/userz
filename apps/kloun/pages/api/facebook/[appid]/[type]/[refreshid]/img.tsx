@@ -1,6 +1,6 @@
-import {NextRequest} from "next/server";
+import { NextRequest } from 'next/server';
 
-import {ImageResponse} from "@vercel/og";
+import { ImageResponse } from '@vercel/og';
 
 export const config = {
   runtime: "edge",

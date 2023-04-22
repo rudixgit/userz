@@ -1,8 +1,8 @@
 import type {GetServerSideProps} from "next";
 
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import {doQuery, gql} from "@/pages/api/graphql";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import { doQuery, gql } from '@/pages/api/graphql';
 
 import type {Movie} from "@/pages/movies/";
 const Item = ({movie}: {movie: Movie}): JSX.Element => {

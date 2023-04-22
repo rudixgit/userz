@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
-import {shuffle} from "lodash";
-import Link from "next/link";
+import { shuffle } from 'lodash';
+import Link from 'next/link';
 
 // import { useRouter } from 'next/router';
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import Pagination from "@/components/Pagination";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import Pagination from '@/components/Pagination';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
 
 export type User = {
   id: string;

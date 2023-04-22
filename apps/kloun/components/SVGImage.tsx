@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from 'react';
 
 function SVGImage({src}: {src: string; params?: {[key: string]: string}}) {
   const [newsrc, setNewSrc] = useState<string>("");

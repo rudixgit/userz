@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 
-import {Buffer} from "buffer";
+import { Buffer } from 'buffer';
 
 //const encrypted = Buffer.from("").toString("hex");
 export const fbtoken = Buffer.from(

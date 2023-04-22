@@ -1,13 +1,13 @@
-import JokeThumbnail from "@/components/JokeThumbnail";
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import Pagination from "@/components/Pagination";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
+import JokeThumbnail from '@/components/JokeThumbnail';
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import Pagination from '@/components/Pagination';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
 // import { getPaging } from '@/components/NewPagination';
-import {deslugify, slugify} from "@/utils/formatter";
+import { deslugify, slugify } from '@/utils/formatter';
 
-import {Doc} from "../../data/structure";
+import { Doc } from '../../data/structure';
 
 const CatPage = ({
   jokes,

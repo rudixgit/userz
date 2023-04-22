@@ -1,9 +1,9 @@
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import NewsThumbnail from "@/components/NewsThumbnail";
-import Pagination from "@/components/Pagination";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import NewsThumbnail from '@/components/NewsThumbnail';
+import Pagination from '@/components/Pagination';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
 
 export type News = {
   title: string;

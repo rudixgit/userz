@@ -1,6 +1,0 @@
-Queries: 0
-Average Duration: 0.00ms
-Success: 0.0%
-Timed Out: 0.0%
-No Records Found: 0.0%
-Other Error: 0.0%

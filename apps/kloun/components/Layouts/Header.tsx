@@ -1,9 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 /* eslint-disable @next/next/no-script-component-in-head */
-import {useState} from "react";
+import { useState } from 'react';
 
-import MenuNavBar from "../MenuNavBar";
+import MenuNavBar from '../MenuNavBar';
 
 export default function Header() {
   const [menu, setMenu] = useState<boolean>(false);

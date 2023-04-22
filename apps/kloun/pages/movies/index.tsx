@@ -1,17 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 import type {GetServerSideProps} from "next";
-import Link from "next/link";
+import Link from 'next/link';
 
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import Rudsense from "@/components/Rudsense";
-import {doQuery, gql} from "@/pages/api/graphql";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import Rudsense from '@/components/Rudsense';
+import { doQuery, gql } from '@/pages/api/graphql';
 
-import Pagination, {
-  getPaging,
-  refreshToken,
-} from "../../components/NewPagination";
+import Pagination, { getPaging, refreshToken } from '../../components/NewPagination';
 
 export type Movie = {
   title: string;

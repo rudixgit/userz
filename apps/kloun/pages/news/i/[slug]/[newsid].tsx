@@ -1,17 +1,16 @@
 import type {GetServerSideProps} from "next";
-import {uniqBy} from "lodash";
+import { uniqBy } from 'lodash';
+import TimeAgo from 'react-timeago';
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import NewsThumbnail from "@/components/NewsThumbnail";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
+import bgStrings from '@/components/bg';
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import NewsThumbnail from '@/components/NewsThumbnail';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
 
 import type {News} from "@/pages/news/";
-import TimeAgo from "react-timeago";
-
-import bgStrings from "@/components/bg";
-import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 const formatter = buildFormatter(bgStrings);
 
 const NewsItem = ({

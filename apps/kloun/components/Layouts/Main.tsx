@@ -1,10 +1,10 @@
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import Script from "next/script";
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Script from 'next/script';
 /* eslint-disable @next/next/no-script-component-in-head */
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 
-import Footer from "./Footer";
+import Footer from './Footer';
 
 const Header = dynamic(() => import("./Header"), {ssr: false});
 

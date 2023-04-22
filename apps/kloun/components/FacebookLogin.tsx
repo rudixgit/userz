@@ -1,9 +1,9 @@
-import {useRouter} from "next/router";
-import React, {useEffect, useState} from "react";
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 
-import {getCookie, setCookie} from "@/utils/cookies";
+import { getCookie, setCookie } from '@/utils/cookies';
 
-import {FbApp} from "../pages/facebook/facebookindex";
+import { FbApp } from '../pages/facebook/facebookindex';
 
 function FBLogin({
   app,

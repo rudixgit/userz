@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const Analytics = ({className}: {className: string}) => (
   <div className={className}>

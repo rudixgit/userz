@@ -1,5 +1,5 @@
-import {TwitterFeed} from "@/data/twittertypes";
-import {ItemTweet, Tweet} from "@/pages/twitter/[id]";
+import { TwitterFeed } from '@/data/twittertypes';
+import { ItemTweet, Tweet } from '@/pages/twitter/[id]';
 
 import type {NextRequest} from "next/server";
 

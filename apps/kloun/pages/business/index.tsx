@@ -1,14 +1,14 @@
 import type {GetServerSideProps} from "next";
-import Link from "next/link";
+import Link from 'next/link';
 
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import Nav from "@/components/Nav";
-import Pagination from "@/components/Pagination";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import Nav from '@/components/Nav';
+import Pagination from '@/components/Pagination';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
 
-import {Cat, slugify} from "../../utils/formatter";
+import { Cat, slugify } from '../../utils/formatter';
 
 export type Company = {
   _id: string;

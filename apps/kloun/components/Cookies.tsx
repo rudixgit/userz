@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from 'react';
 
 const Cookies = () => {
   const elementRef = useRef<HTMLDivElement>(null);

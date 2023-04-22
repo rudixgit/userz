@@ -1,12 +1,12 @@
 import type {NextApiRequest, NextApiResponse} from "next";
-import {readFileSync} from "fs";
-import {find, flattenDeep, toPairs} from "lodash";
-import path from "path";
-import satori from "satori";
-import {optimize} from "svgo";
-import {INode, parse, stringify} from "svgson";
+import { readFileSync } from 'fs';
+import { find, flattenDeep, toPairs } from 'lodash';
+import path from 'path';
+import satori from 'satori';
+import { optimize } from 'svgo';
+import { INode, parse, stringify } from 'svgson';
 
-import {getKasmet} from "@/components/hooks/facebookhook";
+import { getKasmet } from '@/components/hooks/facebookhook';
 
 type Replacement = {
   lookforid: string;

@@ -1,14 +1,14 @@
 import type {GetServerSideProps} from "next";
-import {useState} from "react";
+import { useState } from 'react';
 
-import FBLogin from "@/components/FacebookLogin";
-import FacebookShare from "@/components/FacebookShare";
-import {getCookie, useFacebookRandom} from "@/components/hooks/facebookhook";
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import LoadingResult, {ResultWrapper} from "@/components/LoadingResult";
-import Nav from "@/components/Nav";
-import Rudsense from "@/components/Rudsense";
+import FBLogin from '@/components/FacebookLogin';
+import FacebookShare from '@/components/FacebookShare';
+import { getCookie, useFacebookRandom } from '@/components/hooks/facebookhook';
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import LoadingResult, { ResultWrapper } from '@/components/LoadingResult';
+import Nav from '@/components/Nav';
+import Rudsense from '@/components/Rudsense';
 
 export type FbApp = {
   count: number;

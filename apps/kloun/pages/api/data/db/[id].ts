@@ -1,5 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from "next";
-import db from "@/data/client";
+import db from '@/data/client';
 
 type Params = {
   [key: string]: string;

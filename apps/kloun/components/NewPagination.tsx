@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import {doMutation, doQuery, gql} from "@/pages/api/graphql";
+import { doMutation, doQuery, gql } from '@/pages/api/graphql';
 
 const prefix = "v2";
 

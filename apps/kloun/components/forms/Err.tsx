@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from 'react';
 
 const Err = ({err}: {err: {message: string}}): JSX.Element => {
   const [close, setClose] = useState(false);

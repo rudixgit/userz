@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 import type {GetServerSideProps} from "next";
-import Main from "@/components/Layouts/Main";
-import Meta from "@/components/Layouts/Meta";
-import Rudsense from "@/components/Rudsense";
-import db from "@/data/client";
+import Main from '@/components/Layouts/Main';
+import Meta from '@/components/Layouts/Meta';
+import Rudsense from '@/components/Rudsense';
+import db from '@/data/client';
 
 const Index = ({
   title,

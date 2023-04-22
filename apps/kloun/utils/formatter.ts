@@ -1,6 +1,6 @@
-import {badwords} from "./badwords";
-import business from "./data/business.json";
-import jokes from "./data/jokes.json";
+import { badwords } from './badwords';
+import business from './data/business.json';
+import jokes from './data/jokes.json';
 
 export interface Cat {
   cat: string;

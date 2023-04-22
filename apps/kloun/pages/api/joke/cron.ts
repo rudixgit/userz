@@ -1,12 +1,12 @@
-import {shuffle} from "lodash";
-import {NextApiRequest, NextApiResponse} from "next";
+import { shuffle } from 'lodash';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-import {numToString} from "@/components/NewPagination";
-import {doMutation, doQuery, gql} from "@/pages/api/graphql";
-import {profanityRemove} from "@/utils/formatter";
+import { numToString } from '@/components/NewPagination';
+import { doMutation, doQuery, gql } from '@/pages/api/graphql';
+import { profanityRemove } from '@/utils/formatter';
 
-import {Doc} from "../../../data/structure";
-import {fbtoken} from "../refetch";
+import { Doc } from '../../../data/structure';
+import { fbtoken } from '../refetch';
 
 export const cronidjokes = "crommercheim";
 

@@ -1,5 +1,5 @@
-import fs from "fs";
-import {NextApiRequest, NextApiResponse} from "next";
+import fs from 'fs';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 type Value = string | object;
 
