@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import simpleGit from 'simple-git';
 function shh(cmd: string) {
   const exec = require('child_process').exec;
   return new Promise((resolve, reject) => {
@@ -14,14 +13,13 @@ function shh(cmd: string) {
 }
 
 async function publish(branch: string) {
+  await shh(`git clone --branch ${branch} https://github.com/arpecop/monext.git /tmp/${branch}`)
+  await shh('echo "CLONING DONE"')
+  await shh(`cd /app/${branch} && pnpm install`)
 
-  const clone = await shh(`git clone --branch ${branch} https://github.com/arpecop/monext.git /tmp/${branch}`)
-  const test = await shh("pwd")
-
-
-  await shh(`rsync -av --update --exclude='.git'  /tmp/${branch} /app/`)
+  await shh(`rsync -avh --delete --exclude='.git'  /tmp/${branch} /app/`)
   const install = await shh(`cd /app/${branch} && pnpm install`)
-  console.log(test, clone, install, '<=== test');
+  console.log(install, '<=== install');
 
   //await shh(`rm -rf /tmp/${branch}`);
 

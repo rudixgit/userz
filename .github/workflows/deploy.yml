@@ -4,53 +4,53 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 20
-    - name: 🔽 Checkout
-      uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-      id: pnpm-install
-      with:
-        version: 7
-        run_install: false
-    - name: 🧐 Load .env file
-      uses: xom9ikk/dotenv@v2
-      with:
-        path: ./
-        mode: ''
-        load-mode: strict
-    - name: 😳 Build
-      run: |
-        echo $APP
-        cd ./apps/$APP
-        pnpm install --no-frozen-lockfile
-        pnpm run build
-        pnpm run export
-        rm -rf ./.next/cache ./.next/static ../../package.json
-        mv ./out ../../
-        mv ./.next ../../
-        mv package.json ../../
-        cd ../../
-        rm -rf ./apps ./packages ./.github
-    - uses: actions/cache@v3
-      name: 📥 Cache pnpm store directory
-      with:
-        path: "/home/runner/.pnpm-store"
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
-    - name: 🚀 Deploy
-      run: |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "Rudix"
-        git checkout --orphan "$APP"
-        git add --all
-        git add -A .next out -f
-        git commit  --allow-empty -n -m  "Add build directory" 
-    - name: 🥊 Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ env.APP }}
-        force: true
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: 🔽 Checkout
+        uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: 🧐 Load .env file
+        uses: xom9ikk/dotenv@v2
+        with:
+          path: ./
+          mode: ''
+          load-mode: strict
+      - name: 😳 Build
+        run: |
+          echo $APP
+          cd ./apps/$APP
+          pnpm install --no-frozen-lockfile
+          pnpm run build
+          pnpm run export
+          rm -rf ./.next/cache ./.next/static pnpm-workspace.yaml pnpm-lock.yaml ../../package.json
+          mv ./out ../../
+          mv ./.next ../../
+          mv package.json ../../
+          cd ../../
+          rm -rf ./apps ./packages ./.github
+      - uses: actions/cache@v3
+        name: 📥 Cache pnpm store directory
+        with:
+          path: '/home/runner/.pnpm-store'
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: 🚀 Deploy
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Rudix"
+          git checkout --orphan "$APP"
+          git add --all
+          git add -A .next out -f
+          git commit  --allow-empty -n -m  "Add build directory"
+      - name: 🥊 Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.APP }}
+          force: true
