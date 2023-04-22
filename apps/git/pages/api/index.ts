@@ -13,26 +13,23 @@ function shh(cmd: string) {
 }
 
 async function publish(branch: string) {
+  await shh(`mkdir -p /app/${branch}`);
   await shh(`git clone --branch ${branch} https://github.com/arpecop/monext.git /tmp/${branch}`)
   await shh('echo "CLONING DONE"')
   await shh(`cd /app/${branch} && pnpm install`)
   const rsync = await shh(`rsync -avh --delete --exclude='.git'  /tmp/${branch} /app/`)
   const install = await shh(`cd /app/${branch} && pnpm install`)
-  await shh(`pm2 restart ${branch}`)
+  await shh(`cd /app/${branch} && pm2 start &&  pm2 restart ${branch}`)
   console.log(rsync, install, '<=== install');
   await shh(`rm -rf /tmp/${branch}`);
-
 }
 
-publish('git').then(() => {
-
-}).catch((err) => {
-
-});
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
+    publish('git');
+    publish('kloun');
     res.status(405).send({ message: 'Only POST requests allowed' })
     return
   }
