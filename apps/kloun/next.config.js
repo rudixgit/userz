@@ -4,8 +4,8 @@ const nextConfig = {
   //output: "standalone",
   trailingSlash: true,
   assetPrefix:
-    process.env.LOGNAME === "arpecop"
-      ? "http://localhost:3000"
+    process.env.NODE_ENV === "production"
+      ? undefined
       : "https://kloun.monext.pages.dev",
   images: {
     unoptimized: true,
