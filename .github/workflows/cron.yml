@@ -1,0 +1,49 @@
+name: Curl URL every 5 minutes
+#         find public -type f -regex '.*\.\(jpg\|ttf\|woff\|webarchive\|woff2\|sketch\|gif\)' -print0 | xargs -0 touch -d '2020-01-01 00:00:00' rm -rf .next/cache pnpm-lock.yaml .nmpmrc
+on:
+  schedule:
+    - cron: '*/5 6-23 * * *'
+      timezone: Europe/Sofia
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: 😳 Build
+        run: |
+          rm -rf package.json
+          npm install -g typescript
+          npm install -g ts-node
+          npm install jsdom @mozilla/readability sanitize-html @swc/wasm nano @types/node ulid
+      - name: twentyfour
+        run: |
+          tsc ./.github/crons/_24.ts
+          node ./.github/crons/_24.js
+      - name: dnevnik
+        run: |
+          tsc ./.github/crons/_dnevnik.ts
+          node ./.github/crons/_dnevnik.js
+      - name: nova
+        run: |
+          tsc ./.github/crons/_nova.ts
+          node ./.github/crons/_nova.js
+      - name: mediapool
+        run: |
+          tsc ./.github/crons/_mediapool.ts
+          node ./.github/crons/_mediapool.js
+      - name: darik
+        run: |
+          tsc ./.github/crons/_darik.ts
+          node ./.github/crons/_darik.js
+      - name: sega
+        run: |
+          tsc ./.github/crons/_sega.ts
+          node ./.github/crons/_sega.js
+      - name: dir
+        run: |
+          tsc ./.github/crons/_dir.ts
+          node ./.github/crons/_dir.js

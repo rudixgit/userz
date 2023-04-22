@@ -5,8 +5,8 @@ const nextConfig = {
   trailingSlash: true,
   assetPrefix:
     process.env.NODE_ENV === "production"
-      ? undefined
-      : "https://kloun.monext.pages.dev",
+      ? "https://kloun.monext.pages.dev"
+      : undefined,
   images: {
     unoptimized: true,
     domains: ["static.dir.bg", "kloun.pages.dev"],
