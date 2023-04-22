@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 function shh(cmd: string) {
   const exec = require('child_process').exec;
@@ -14,14 +14,15 @@ function shh(cmd: string) {
 }
 
 async function publish(branch: string) {
-  await shh(`mkdir -p /app/${branch}`);
-  await shh(`git clone --branch ${branch} https://github.com/arpecop/monext.git /tmp/${branch}`)
-  await shh('echo "CLONING DONE"')
-  await shh(`cd /app/${branch} && pnpm install`)
-  const rsync = await shh(`rsync -av --exclude='.git'  /tmp/${branch} /app/`)
-  const install = await shh(`cd /app/${branch} && pnpm install --prod`)
-  const start = await shh(`cd /app/${branch} && pm2 delete ${branch} &&  pm2 start`)
-  console.log(rsync, install, start, '<=== install');
+  await shh(`pm2 delete ${branch}`)
+  const x = await shh(`sudo rm -rf /tmp/${branch}`);
+  const y = await shh(`mkdir -p /app/${branch}`);
+  const z = await shh(`git clone --branch ${branch} git@github.com:arpecop/monext.git /tmp/${branch}`)
+  console.log(x, y, z)
+  const rsync = await shh(`rsync -av --delete --exclude='.git' --exclude='out' /tmp/${branch} /app/`)
+  //const install = await shh(`cd /app/${branch} && pnpm install node-html-parser --prod`)
+  const start = await shh(`cd /app/${branch} && pm2 start`)
+  console.log(rsync, start, '<=== install');
   await shh(`rm -rf /tmp/${branch}`);
 }
 
