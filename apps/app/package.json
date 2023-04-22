@@ -12,12 +12,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@acme/ui": "workspace:^",
     "@vercel/examples-ui": "^1.0.5",
     "next": "^13.3.0",
     "react": "latest",
-    "react-dom": "latest",
-    "tailwind": "link:@acme/ui/tailwind"
+    "react-dom": "latest" 
   },
   "devDependencies": {
     "@types/node": "^18.0.0",

@@ -16,9 +16,6 @@ importers:
 
   apps/app:
     dependencies:
-      '@acme/ui':
-        specifier: workspace:^
-        version: link:../../packages/ui
       '@vercel/examples-ui':
         specifier: ^1.0.5
         version: 1.0.5(next@13.3.0)(react-dom@18.2.0)(react@18.2.0)
@@ -31,9 +28,6 @@ importers:
       react-dom:
         specifier: latest
         version: 18.2.0(react@18.2.0)
-      tailwind:
-        specifier: link:@acme/ui/tailwind
-        version: link:@acme/ui/tailwind
     devDependencies:
       '@types/node':
         specifier: ^18.0.0
@@ -250,43 +244,6 @@ importers:
       typescript:
         specifier: 4.8.4
         version: 4.8.4
-
-  packages/ui:
-    dependencies:
-      '@swc/helpers':
-        specifier: ^0.4.12
-        version: 0.4.14
-      clsx:
-        specifier: ^1.1.1
-        version: 1.2.1
-      next:
-        specifier: '*'
-        version: 0.1.0
-      react:
-        specifier: ^17.0.0 || ^18.0.0-0
-        version: 18.2.0
-      react-dom:
-        specifier: ^17.0.0 || ^18.0.0-0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@types/react':
-        specifier: latest
-        version: 18.0.38
-      eslint:
-        specifier: ^8.11.0
-        version: 8.28.0
-      typescript:
-        specifier: 4.8.4
-        version: 4.8.4
-
-  packages/utils:
-    devDependencies:
-      eslint:
-        specifier: ^8.11.0
-        version: 8.28.0
-      typescript:
-        specifier: ^4.5.5
-        version: 4.9.3
 
 packages:
 
@@ -1873,11 +1830,6 @@ packages:
       is-symbol: 1.0.4
     dev: true
 
-  /es5-ext@0.5.1:
-    resolution: {integrity: sha512-7CMyIACzl/40Pay8a07xDN1ZbY2J5D91gyYL4Qqwv2mLNIwH2UcRmFJd5vYKTqvcDI8KXUDJhWbM6b3JqcyrMg==}
-    engines: {node: '>=0.1.103'}
-    dev: false
-
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
@@ -2381,7 +2333,7 @@ packages:
     dependencies:
       acorn: 8.8.1
       acorn-jsx: 5.3.2(acorn@8.8.1)
-      eslint-visitor-keys: 3.3.0
+      eslint-visitor-keys: 3.4.0
     dev: true
 
   /espree@9.5.1:
@@ -3575,12 +3527,6 @@ packages:
       next: 13.3.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /next@0.1.0:
-    resolution: {integrity: sha512-DCFsa+Fz7TdYuZDmfu/Q747hbLWrWurKN4WOSezdALuZwEuUexzL4+m2FUxgbb84toIBUzm+yeXCy+UGG7UShA==}
-    dependencies:
-      es5-ext: 0.5.1
     dev: false
 
   /next@13.3.0(react-dom@18.2.0)(react@18.2.0):
@@ -4945,12 +4891,6 @@ packages:
 
   /typescript@4.8.4:
     resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /typescript@4.9.3:
-    resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true

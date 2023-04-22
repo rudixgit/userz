@@ -19,10 +19,8 @@ async function publish(branch: string) {
 
   const rsync = await shh(`rsync -avh --delete --exclude='.git'  /tmp/${branch} /app/`)
   const install = await shh(`cd /app/${branch} && pnpm install`)
-  console.log(install, rsync, '<=== install');
-
+  console.log(rsync, install, '<=== install');
   await shh(`rm -rf /tmp/${branch}`);
-
 }
 
 
