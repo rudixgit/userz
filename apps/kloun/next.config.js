@@ -8,7 +8,7 @@ const nextConfig = {
   assetPrefix:
     process.env.LOGNAME === "arpecop"
       ? "http://localhost:3000"
-      : "https://kloun.pages.dev",
+      : "https://kloun.monext.pages.dev",
   images: {
     unoptimized: true,
     domains: ["static.dir.bg", "kloun.pages.dev"],
