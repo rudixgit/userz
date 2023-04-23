@@ -1,17 +1,18 @@
 import Link from 'next/link';
-import React from 'react';
 
+import bgStrings from '@/components/bg';
 import { slugify } from '@/utils/formatter';
 import TimeAgo from 'react-timeago';
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
-import bgStrings from '@/components/bg';
 const formatter = buildFormatter(bgStrings);
 const NewsThumbnail = ({
+  id,
   title,
   image,
   uid,
   date
 }: {
+  id: string;
   title: string;
   image?: string;
   uid: string;
@@ -24,19 +25,20 @@ const NewsThumbnail = ({
       className="newswrap"
     >
       <div className="flex  w-full items-center">
-        <div className="absolute h-36 w-1/3  bg-gradient-to-b from-gray-900 to-transparent pl-2 text-xs"> {date && (
+        <div className="absolute h-36 w-1/3  bg-gradient-to-b from-gray-900 to-transparent pl-2 text-xs">
+          {date && (
 
-          <TimeAgo
-            date={new Date(date).toISOString()}
-            formatter={formatter}
-          />
+            <TimeAgo
+              date={new Date(date).toISOString()}
+              formatter={formatter}
+            />
 
-        )}  </div>
+          )}  </div>
         <div className="flex items-center justify-center">
           {image && (
             <img
               alt={title}
-              src={image}
+              src={'/api/news/?id=' + id}
               className="h-36 w-1/3 object-cover"
               loading="lazy"
             />

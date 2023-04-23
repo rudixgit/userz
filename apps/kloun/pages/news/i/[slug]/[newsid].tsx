@@ -1,5 +1,5 @@
-import type { GetServerSideProps } from "next";
 import { uniqBy } from 'lodash';
+import type { GetServerSideProps } from "next";
 import TimeAgo from 'react-timeago';
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
 
@@ -76,8 +76,8 @@ const NewsItem = ({
         </div>
       </article>
       <div className="flex flex-wrap">
-        {news.map(({ id, title, image, date }) => (
-          <NewsThumbnail uid={id} title={title} date={date} image={image} key={id} />
+        {news.map(({ id, title, date, key, image }) => (
+          <NewsThumbnail uid={id} id={key} title={title} image={image} date={date} key={key} />
         ))}
       </div>
     </Main>

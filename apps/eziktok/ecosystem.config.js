@@ -1,11 +1,14 @@
 module.exports = {
-    apps: [
-        {
-            name: "app",
-            script: "pnpm start --port 3002",
-            env: {
-                NODE_ENV: "production",
-            },
-        }
-    ],
-};
+  apps: [
+    {
+      name: 'eziktok',
+      script: './.next/standalone/apps/eziktok/server.js',
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3002,
+        RAMDISK_ENABLED: true,
+        RAMDISK_SIZE: '150M'
+      }
+    }
+  ]
+}

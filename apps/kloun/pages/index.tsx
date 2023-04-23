@@ -53,8 +53,8 @@ const Index = ({ cats, news }: { cats: Cat[]; news: News[] }) => {
         <>
           <h1 className="text-5xl font-light">Актуално</h1>
           <div className="flex flex-wrap">
-            {news.map(({ id, title, image, date }) => (
-              <NewsThumbnail uid={id} title={title} image={image} date={date} key={id} />
+            {news.map(({ id, title, date, key, image }) => (
+              <NewsThumbnail uid={id} id={key} title={title} image={image} date={date} key={key} />
             ))}
           </div>
           <div className='flex flex-wrap justify-end mb-2'>
@@ -94,11 +94,11 @@ export const getServerSideProps = async () => {
     group: true,
   });
   const news = await db.view("newsbg/news", {
-    reduce: false,
     limit: 30,
     update: "lazy",
     descending: true,
   });
+
 
   const cats = catsx.rows
     .filter((x: { value: number }) => x.value > 1)

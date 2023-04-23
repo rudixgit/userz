@@ -10,6 +10,7 @@ export type News = {
   image: string;
   nid: string;
   id: string;
+  key: string;
   description?: string;
   date?: string;
   parsed?: { html: { type: string; content: string }[]; description?: string };
@@ -31,8 +32,8 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
           <div className="w-full">
             <Rudsense />
           </div>
-          {newsbg.map(({ id, title, image, date }) => (
-            <NewsThumbnail uid={id} title={title} image={image} date={date} key={id} />
+          {newsbg.map(({ id, title, date, key, image }) => (
+            <NewsThumbnail uid={id} id={key} title={title} image={image} date={date} key={key} />
           ))}
           <div className="w-full joke">
             <Rudsense />
