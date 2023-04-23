@@ -3,7 +3,7 @@
 const nextConfig = {
   //output: "standalone",
   output: 'standalone',
-  trailingSlash: true,
+  trailingSlash: false,
   assetPrefix:
     process.env.NODE_ENV === 'production'
       ? 'https://kloun.monext.pages.dev'
@@ -12,7 +12,7 @@ const nextConfig = {
     unoptimized: true,
     domains: ['static.dir.bg', 'kloun.pages.dev']
   },
-  async rewrites () {
+  async rewrites() {
     return [
       {
         source: '/ads.txt',
@@ -77,7 +77,7 @@ const nextConfig = {
       }
     ]
   },
-  exportPathMap: async function (
+  exportPathMap: async function(
     defaultPathMap,
     { dev, dir, outDir, distDir, buildId }
   ) {
@@ -85,7 +85,7 @@ const nextConfig = {
       '/other/about': { page: '/other/about' }
     }
   },
-  async headers () {
+  async headers() {
     return [
       {
         // Apply these headers to all routes in your application.
