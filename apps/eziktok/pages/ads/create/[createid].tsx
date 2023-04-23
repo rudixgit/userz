@@ -1,7 +1,7 @@
 import CatButton from "@/components/ads/CatButton";
 import Layout from "@/components/Main";
 
-import { Ad } from "src/API";
+import { Ad } from "../../../API";
 
 import { AdsDataSchema } from "..";
 import loadFetchFile from "@/components/helpers/loadFetchFile";

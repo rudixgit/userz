@@ -1,5 +1,5 @@
 import { NextApiRequest } from "next";
-import { Ad } from "src/API";
+import { Ad } from "../../../API";
 
 import Layout from "@/components/Main";
 

@@ -93,10 +93,10 @@
     @apply btn btn-disabled;
   }
   .inputx {
-    @apply input input-bordered input-accent bg-gray-800 dark:bg-white;
+    @layer input input-bordered input-accent bg-gray-800 dark:bg-white;
   }
   .inputerror {
-    @apply input input-bordered input-secondary border-2 bg-gray-800 dark:bg-white;
+    @layer input input-bordered input-secondary border-2 bg-gray-800 dark:bg-white;
   }
   .text-shadow-none {
     text-shadow: none;
@@ -108,7 +108,7 @@
     font-family: "Museo" !important;
   }
   .rotateswap {
-    @apply swap-rotate;
+    @layer swap-rotate;
   }
   .textinput {
     @apply input input-bordered dark:bg-white;
@@ -133,10 +133,10 @@
     @apply heading float-left mx-2 text-4xl normal-case;
   }
   .dropselector {
-    @apply select select-ghost w-full max-w-xs;
+    @layer select select-ghost w-full max-w-xs;
   }
   .btncircleone {
-    @apply btn btn-ghost btn-circle;
+    @layer btn btn-ghost btn-circle;
   }
   h1 {
     @apply heading text-2xl font-extralight;

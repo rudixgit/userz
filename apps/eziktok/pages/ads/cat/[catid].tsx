@@ -8,7 +8,7 @@ import Link from "next/link";
 import AdItem from "@/components/ads/AdItem";
 import Layout from "@/components/Main";
 
-import { Ad } from "src/API";
+import { Ad } from "../../../API";
 import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 const CatId = ({

@@ -5,7 +5,7 @@ import Layout from "@/components/Main";
 import loadFetchFile from "@/components/helpers/loadFetchFile";
 
 import { NextApiRequest } from "next";
-import { Ad } from "src/API";
+import { Ad } from "../../../API";
 
 import { AdsContainer, AdsDataSchema, Field } from "..";
 
