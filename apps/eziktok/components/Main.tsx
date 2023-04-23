@@ -35,7 +35,7 @@ const Layout = ({
 
       <div className='bg-gradient-to-r from-fuchsia-500 via-red-600 to-orange-400 h-0.5 block dark:hidden' />
       <div className='bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400 h-0.5 hidden dark:block' />
-      <link rel='stylesheet' type='text/css' href='/other.css' />
+      <link rel='stylesheet' type='text/css' href='https://eziktok.monext.pages.dev/other.css' />
 
       {disableContainer ? (
         <main className='z-20  my-4 grow'>
