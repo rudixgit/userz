@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  trailingSlash: true,
-  async rewrites () {
+  async rewrites() {
     return [
       {
         source: '/ads/p/:page',
@@ -18,10 +17,12 @@ const nextConfig = {
       }
     ]
   },
+
+  trailingSlash: false,
   assetPrefix:
     process.env.NODE_ENV === 'production'
       ? 'https://eziktok.monext.pages.dev'
-      : undefined
+      : undefined,
 }
-
 module.exports = nextConfig
+
