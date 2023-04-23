@@ -12,7 +12,7 @@ function generateSiteMap(posts: News[]) {
 			.map(({ id, title }) => {
 				return `
 	   <url>
-		   <loc>${`https://kloun.lol//news/i/${slugify(title)}/${id}`}</loc>
+		   <loc>${`https://kloun.lol/news/i/${slugify(title)}/${id}`}</loc>
 	   </url>
 	 `;
 			})
