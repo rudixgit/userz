@@ -106,15 +106,23 @@ function getLastP(arr: { type: string; content: string }[]) {
   }, 0);
   const filteredArr = arr.slice(0, lastPElemIndex + 1);
   const removeNoImages = filteredArr.filter((x) => x.type === "p" || (x.type === "img" && x.content.includes('http')));
-  const arrx = uniqBy(removeNoImages, function (e) {
+  const arrx = uniqBy(removeNoImages, function(e) {
     return e.content;
   });
   return arrx;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { newsid, slug } = query as { newsid: string; slug?: string };
   const data = await db.get(newsid);
+
+  if (data.error) {
+    return {
+      notFound: true,
+    }
+  }
+
+
   const content = data?.content
     ? JSON.parse(data?.content).html.map((x: string) => ({
       type: "p",
