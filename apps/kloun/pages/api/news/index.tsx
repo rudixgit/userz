@@ -6,7 +6,7 @@ export const config = {
   runtime: 'edge',
 };
 
-export default async function (request: NextRequest) {
+export default async function(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const id = searchParams.get('id');
   const data = await db.view("newsbg/news", {
@@ -31,9 +31,9 @@ export default async function (request: NextRequest) {
       </div>
     ),
     {
-      width: 150,
-      height: 250,
+      width: 120,
+      height: 180,
     },
   );
 }
-//     
+//

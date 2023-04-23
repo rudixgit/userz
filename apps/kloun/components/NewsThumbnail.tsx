@@ -24,22 +24,20 @@ const NewsThumbnail = ({
       passHref
       className="newswrap"
     >
-      <div className="flex  w-full items-center">
-        <div className="absolute h-36 w-1/3  bg-gradient-to-b from-gray-900 to-transparent pl-2 text-xs">
+      <div className="flex items-center">
+        <div className="absolute bg-gradient-to-t from-gray-900 to-transparent pl-2 text-xs h-full flex items-end" style={{ width: 120 }}>
           {date && (
-
             <TimeAgo
               date={new Date(date).toISOString()}
               formatter={formatter}
             />
 
-          )}  </div>
+          )}</div>
         <div className="flex items-center justify-center">
           {image && (
             <img
               alt={title}
-              src={`https://kloun.lol/api/news/${id}.png`}
-              className="h-36 w-1/3 object-cover"
+              src={`/api/news/${id}.png`}
               loading="lazy"
             />
           )}

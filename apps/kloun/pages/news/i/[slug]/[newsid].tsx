@@ -28,7 +28,7 @@ const NewsItem = ({
       meta={
         <Meta
           title={title}
-          description={parsed?.html[0].content || title}
+          description={title}
           image={image}
           imgtype="image/jpeg"
         />
