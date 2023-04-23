@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export",
+    "export": "mv public out",
     "start": "next start",
     "lint": "next lint"
   },
