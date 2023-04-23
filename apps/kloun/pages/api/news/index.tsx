@@ -25,15 +25,14 @@ export default async function (request: NextRequest) {
           textAlign: 'center',
           alignItems: 'center',
           justifyContent: 'center',
-
         }}
       >
-        <img src={data.image} style={{ width: '120%' }} />
+        <img src={data.image} style={{ height: '100%' }} />
       </div>
     ),
     {
-      width: 600,
-      height: 300,
+      width: 150,
+      height: 250,
     },
   );
 }

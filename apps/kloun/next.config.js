@@ -19,6 +19,10 @@ const nextConfig = {
         destination: '/api/ads'
       },
       {
+        source: '/api/news/:page.png',
+        destination: '/api/news/?id=:page'
+      },
+      {
         source: '/news/:page',
         destination: '/news/?page=:page'
       },

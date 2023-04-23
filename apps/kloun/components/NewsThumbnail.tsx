@@ -38,7 +38,7 @@ const NewsThumbnail = ({
           {image && (
             <img
               alt={title}
-              src={'/api/news/?id=' + id}
+              src={`/api/news/${id}.png`}
               className="h-36 w-1/3 object-cover"
               loading="lazy"
             />
