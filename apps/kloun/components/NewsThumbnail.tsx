@@ -27,11 +27,12 @@ const NewsThumbnail = ({
       <div className="flex items-center">
         <div className="absolute bg-gradient-to-t from-gray-900 to-transparent pl-2 text-xs h-full flex items-end" style={{ width: 120 }}>
           {date && (
-            <TimeAgo
-              date={new Date(date).toISOString()}
-              formatter={formatter}
-            />
-
+            <div className='-mt-2'>
+              <TimeAgo
+                date={new Date(date).toISOString()}
+                formatter={formatter}
+              />
+            </div>
           )}</div>
         <div className="flex items-center justify-center">
           {image && (
