@@ -4,6 +4,7 @@ import type { News } from "@/pages/news/";
 import db from '@/data/client';
 import { shuffle } from "lodash";
 import Head from "next/head";
+import { slugify } from "@/utils/formatter";
 
 const NewsItem = ({
 	title,
@@ -32,6 +33,7 @@ const NewsItem = ({
 					<img src={content} key={i} />
 				)
 			)}
+			<strong><a href={`https://kloun.lol/news/i/${slugify(bg_version.title)}}/${bg_version.id}`}>{bg_version.title}</a></strong>
 		</article>
 
 
