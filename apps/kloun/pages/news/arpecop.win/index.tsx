@@ -1,8 +1,10 @@
 import Main from '@/components/Layouts/Main';
 import Meta from '@/components/Layouts/Meta';
-import NewsThumbnail from '@/components/NewsThumbnail';
+
 import Pagination from '@/components/Pagination';
 import db from '@/data/client';
+import { slugify } from '@/utils/formatter';
+import Link from 'next/link';
 
 export type News = {
 	title: string;
@@ -25,11 +27,26 @@ export type RootNewsProps = {
 
 const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 	return (
-		<Main adsense meta={<Meta title={"Новини"} description="Новини" />}>
+		<div className='container mx-auto'>
+			<p className='text-5xl'>arpecop.win</p>
+			<p>Modern Bulgaria chronicles and analysis</p>
 			<div className="my-10 flex w-full flex-col">
 				<div className="flex flex-wrap">
-					{newsbg.map(({ id, title, date, key, image }) => (
-						<NewsThumbnail uid={id} id={key} title={title} image={image} date={date} key={key} />
+					{newsbg.map(({ title, key }) => (
+
+						<article className="relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3" key={key}>
+							<a
+								href={`https://kloun.lol/news/i/${slugify(title)}/${key}/`}
+								className="newswrap"
+							>
+								<div className="flex items-center">
+									<h3 className="px-2 font-bold text-slate-300 dark:text-gray-800">
+										{title}
+									</h3>
+								</div>
+
+							</a>
+						</article>
 					))}
 				</div>
 			</div>
@@ -39,7 +56,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 				pageSize={30}
 				prefix={`/`}
 			/>
-		</Main>
+		</div>
 	);
 };
 
@@ -50,13 +67,14 @@ export const getServerSideProps = async (context: { query: { page?: string } }) 
 		reduce: true,
 	});
 
-	const data = await db.view("newsbg/news", {
+	const data = await db.view("newsbg/newsen", {
 		reduce: false,
 		limit: 30,
 		skip: pagenum * 30 - 30,
 		update: "lazy",
 		descending: true,
 	});
+	console.log(data.rows[0])
 
 	return {
 		props: {

@@ -1,5 +1,5 @@
 const url = "http://db.kloun.lol/";
-type Variables = {[key: string]: string | number | boolean};
+type Variables = { [key: string]: string | number | boolean };
 const serialize = (obj: Variables) => {
   return Object.entries(obj)
     .map(
@@ -8,14 +8,13 @@ const serialize = (obj: Variables) => {
     )
     .join("&");
 };
-async function fetcher(query: {[key: string]: string | number | boolean}) {
-  const {db, id, _view, _design, params, insert} = query;
+async function fetcher(query: { [key: string]: string | number | boolean }) {
+  const { db, id, _view, _design, params, insert } = query;
   const body = JSON.stringify(query);
   const isPost = body?.includes("_id") || insert;
-  const buildurl = `${url}${db ? db + "/" : "db/"}${
-    _design ? `_design/${_design}/_view/${_view}?${params}` : ""
-  }${id || ""}`;
-
+  const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
+    }${id || ""}`;
+  console.log(buildurl)
   const response = await fetch(buildurl, {
     method: isPost ? "POST" : "GET",
     headers: {
@@ -28,9 +27,9 @@ async function fetcher(query: {[key: string]: string | number | boolean}) {
   return d;
 }
 async function get(id: string) {
-  const d = await fetcher({id, nocdn: "yes"});
+  const d = await fetcher({ id, nocdn: "yes" });
   if (d.error) {
-    return Promise.resolve({error: "not found"});
+    return Promise.resolve({ error: "not found" });
   }
   d.id = d._id;
   return Promise.resolve(d);
@@ -43,16 +42,17 @@ async function view(id: string, params: Variables) {
     _view: split[1],
     params: serialize(params),
   });
-  const rows = d.rows.map((x: {key: string; id: string; value: Variables}) => {
-    const val = typeof x.value === "string" ? {value: x.value} : {...x.value};
-    return {...val, id: x.id, key: x.key, value: x.value};
+  const rows = d.rows.map((x: { key: string; id: string; value: Variables; doc: Variables }) => {
+
+    const val = typeof x.value === "string" ? { value: x.value } : { ...x.value, ...x.doc };
+    return { ...val, id: x.id, key: x.key, value: x.value };
   });
   if (rows.length === 1) {
     return Promise.resolve(rows[0]);
   }
-  return Promise.resolve({...d, rows});
+  return Promise.resolve({ ...d, rows });
 }
-async function insert(obj: {[key: string]: string | number | boolean}) {
+async function insert(obj: { [key: string]: string | number | boolean }) {
   const ins = await fetcher(obj);
   return Promise.resolve(ins);
 }
@@ -62,7 +62,7 @@ async function multiple(db: string, obj: string[]) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({keys: obj}),
+    body: JSON.stringify({ keys: obj }),
   });
   const d = await response.json();
   return Promise.resolve(d.rows);
