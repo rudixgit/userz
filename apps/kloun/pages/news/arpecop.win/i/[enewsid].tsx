@@ -33,7 +33,7 @@ const NewsItem = ({
 					<img src={content} key={i} />
 				)
 			)}
-			<strong><a href={`https://kloun.lol/news/i/${slugify(bg_version.title)}}/${bg_version.id}`}>{bg_version.title}</a></strong>
+			<strong className="text-lg"><a href={`https://kloun.lol/news/i/${slugify(bg_version.title)}}/${bg_version.id}`}>{bg_version.title}</a></strong>
 		</article>
 
 
