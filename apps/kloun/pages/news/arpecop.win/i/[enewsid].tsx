@@ -23,8 +23,6 @@ const NewsItem = ({
 		<Head>
 			<title>{title.substring(0, 55)}</title>
 		</Head>
-
-
 		<article className="leading-relaxed container mx-auto" id="article">
 			{parsed?.html.map(({ type, content }, i: number) =>
 				type === "p" ? (
