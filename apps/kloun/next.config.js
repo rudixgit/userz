@@ -26,6 +26,10 @@ const nextConfig = {
         destination: '/news/?page=:page'
       },
       {
+        source: '/news/arpecop.win/:page',
+        destination: '/news/arpecop.win/?page=:page'
+      },
+      {
         source: '/img/:appid/:id.png',
         destination: '/api/facebook/:appid/svg/:id/img/'
       },
@@ -41,7 +45,6 @@ const nextConfig = {
         source: '/fb/:appid',
         destination: '/facebook/facebookindex?appid=:appid'
       },
-
       {
         source: '/fb/:appid/:id',
         destination: '/facebook/facebookindex?id=:id&appid=:appid'
