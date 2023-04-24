@@ -35,7 +35,7 @@ const nextConfig = {
         destination: '/facebook/result'
       },
       {
-        source: '/fb/',
+        source: '/fb',
         destination: '/facebook/facebookindex'
       },
       {
@@ -49,6 +49,10 @@ const nextConfig = {
       },
       {
         source: '/tw/',
+        destination: '/twitter/twitter'
+      },
+      {
+        source: '/tw',
         destination: '/twitter/twitter'
       },
       {
