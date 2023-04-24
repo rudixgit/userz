@@ -2,6 +2,7 @@
 
 import Pagination from '@/components/Pagination';
 import db from '@/data/client';
+import Head from 'next/head';
 import Image from 'next/image'
 
 type News = {
@@ -26,6 +27,9 @@ export type RootNewsProps = {
 const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 	return (
 		<div className='container mx-auto'>
+			<Head>
+				<title>arpecop.win</title>
+			</Head>
 			<p className='text-5xl'>arpecop.win</p>
 			<p>Modern Bulgaria chronicles and analysis</p>
 			<div className="my-10 flex w-full flex-col">
@@ -46,7 +50,6 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 						</a>
 					</article>
 				))}
-
 			</div>
 			<Pagination
 				items={items}

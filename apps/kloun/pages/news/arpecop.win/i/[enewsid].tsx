@@ -2,29 +2,39 @@ import type { GetServerSideProps } from "next";
 import type { News } from "@/pages/news/";
 
 import db from '@/data/client';
+import { shuffle } from "lodash";
+import Head from "next/head";
 
 const NewsItem = ({
+	title,
 	newsbg_by_pk: { parsed },
+	bg_version
 }: {
+	title: string;
 	newsbg_by_pk: News;
 	slug: string;
+	bg_version: {
+		title: string;
+		id: string;
+	}
 }): JSX.Element => (
 	<>
-		<article className="pt-8 flex w-full flex-col">
-			<div className="container mx-auto">
-				<div className="flex">
-					<article className="leading-relaxed" id="article">
-						{parsed?.html.map(({ type, content }, i: number) =>
-							type === "p" ? (
-								<p key={i}>{content}</p>
-							) : (
-								<img src={content} key={i} />
-							)
-						)}
-					</article>
-				</div>
-			</div>
+		<Head>
+			<title>{title.substring(0, 55)}</title>
+		</Head>
+
+
+		<article className="leading-relaxed container mx-auto" id="article">
+			{parsed?.html.map(({ type, content }, i: number) =>
+				type === "p" ? (
+					<p key={i}>{content}</p>
+				) : (
+					<img src={content} key={i} />
+				)
+			)}
 		</article>
+
+
 	</>
 );
 
@@ -38,7 +48,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		}))
 		: (data?.html as { type: string; content: string }[]);
 
+	const bg_version = await db.view("newsbg/news", {
+		limit: 1,
+		update: "false",
+		descending: true,
+		key: data.nid,
+	})
+	console.log(bg_version)
+
+
 	const props = {
+		title: shuffle(content)[0].content,
+		bg_version,
 		newsbg_by_pk: {
 			...data,
 			parsed: {
