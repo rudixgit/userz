@@ -77,14 +77,6 @@ const nextConfig = {
       }
     ]
   },
-  exportPathMap: async function(
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      '/other/about': { page: '/other/about' }
-    }
-  },
   async headers() {
     return [
       {
