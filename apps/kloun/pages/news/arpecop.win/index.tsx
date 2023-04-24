@@ -28,7 +28,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 	return (
 		<div className='container mx-auto'>
 			<Head>
-				<title>arpecop.win</title>
+				<title>arpecop.win - Modern Bulgaria chronicles and analysis</title>
 			</Head>
 			<p className='text-5xl'>arpecop.win</p>
 			<p>Modern Bulgaria chronicles and analysis</p>
@@ -51,12 +51,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 					</article>
 				))}
 			</div>
-			<Pagination
-				items={items}
-				currentPage={pagenum}
-				pageSize={30}
-				prefix={`/`}
-			/>
+
 		</div >
 	);
 };
