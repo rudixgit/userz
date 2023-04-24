@@ -30,6 +30,10 @@ const nextConfig = {
         destination: '/news/arpecop.win/?page=:page'
       },
       {
+        source: '/news/arpecop.win/_next/image',
+        destination: '/_next/image'
+      },
+      {
         source: '/img/:appid/:id.png',
         destination: '/api/facebook/:appid/svg/:id/img/'
       },
