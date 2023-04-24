@@ -54,8 +54,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		descending: true,
 		key: data.nid,
 	})
-	console.log(bg_version)
-
 
 	const props = {
 		title: shuffle(content)[0].content,
