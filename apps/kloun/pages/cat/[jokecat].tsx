@@ -106,7 +106,7 @@ export default CatPage;
 export const getServerSideProps = async ({
   query,
 }: {
-  query: {page: string; jokecat: string};
+  query: { page: string; jokecat: string };
 }) => {
   const pagenum = Number(query.page) || 1;
   const skip = pagenum * 30 - 30;

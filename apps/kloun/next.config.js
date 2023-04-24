@@ -9,8 +9,7 @@ const nextConfig = {
       ? 'https://kloun.monext.pages.dev'
       : undefined,
   images: {
-    unoptimized: true,
-    domains: ['static.dir.bg', 'kloun.pages.dev']
+    domains: ['static.dir.bg', 'nstatic.nova.bg', 'cache1.24chasa.bg', 'cache2.24chasa.bg', 'mm.netinfo.bg', 'www.mediapool.bg', 'kloun.pages.dev', 'www.segabg.com', 'img.dnevnik.bg', 'm.dnevnik.bg', 'www.24chasa.bg', 'kloun.monext.pages.dev']
   },
   async rewrites() {
     return [

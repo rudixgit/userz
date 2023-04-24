@@ -1,12 +1,10 @@
-import Main from '@/components/Layouts/Main';
-import Meta from '@/components/Layouts/Meta';
+
 
 import Pagination from '@/components/Pagination';
 import db from '@/data/client';
-import { slugify } from '@/utils/formatter';
-import Link from 'next/link';
+import Image from 'next/image'
 
-export type News = {
+type News = {
 	title: string;
 	image: string;
 	nid: string;
@@ -14,7 +12,7 @@ export type News = {
 	key: string;
 	description?: string;
 	date?: string;
-	parsed?: { html: { type: string; content: string }[]; description?: string };
+	html: { type: string; content: string }[]
 	content: string;
 };
 
@@ -31,24 +29,24 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 			<p className='text-5xl'>arpecop.win</p>
 			<p>Modern Bulgaria chronicles and analysis</p>
 			<div className="my-10 flex w-full flex-col">
-				<div className="flex flex-wrap">
-					{newsbg.map(({ title, key }) => (
+				{newsbg.map(({ title, key, image, id }) => (
+					<article className="relative w-full grow cursor-pointer p-2" key={key}>
+						<a
+							href={`/i/${id}`}
+						>
+							<div className='float-left pr-4 pt-2'>
+								<Image src={image} width={256} height={154} alt=""
+									quality={30}
+									className="rounded-md"
+								/>
+							</div>
+							<p className="px-2   text-lg font-light text-slate-300 dark:text-gray-800">
+								{title}
+							</p>
+						</a>
+					</article>
+				))}
 
-						<article className="relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3" key={key}>
-							<a
-								href={`https://kloun.lol/news/i/${slugify(title)}/${key}/`}
-								className="newswrap"
-							>
-								<div className="flex items-center">
-									<h3 className="px-2 font-bold text-slate-300 dark:text-gray-800">
-										{title}
-									</h3>
-								</div>
-
-							</a>
-						</article>
-					))}
-				</div>
 			</div>
 			<Pagination
 				items={items}
@@ -56,7 +54,7 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 				pageSize={30}
 				prefix={`/`}
 			/>
-		</div>
+		</div >
 	);
 };
 
@@ -67,18 +65,25 @@ export const getServerSideProps = async (context: { query: { page?: string } }) 
 		reduce: true,
 	});
 
-	const data = await db.view("newsbg/newsen", {
+	const data1 = await db.view("newsbg/newsen", {
+		include_docs: true,
 		reduce: false,
 		limit: 30,
 		skip: pagenum * 30 - 30,
 		update: "lazy",
 		descending: true,
-	});
-	console.log(data.rows[0])
+	})
+
+	const data = data1.rows.map((x: News) => {
+		return ({
+			...x,
+			title: x.html.sort((a: { content: string }, b: { content: string }) => b.content.length - a.content.length)[0].content
+		})
+	})
 
 	return {
 		props: {
-			newsbg: data.rows,
+			newsbg: data,
 			pagenum,
 			items: Number(agregate.value),
 		},

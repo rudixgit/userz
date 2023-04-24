@@ -47,7 +47,7 @@ const CatId = ({
         <p>{data.description}</p>
         <div className='flex justify-end'>
           <Link
-            href={`/ads/create/${maincat.slug}/${data.slug}/`}
+            href={`/ads/create/${maincat.slug}/${data.slug}`}
             className='btn'
           >
             Пусни обява тук

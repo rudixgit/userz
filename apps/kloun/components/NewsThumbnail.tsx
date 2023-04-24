@@ -20,7 +20,7 @@ const NewsThumbnail = ({
 }) => (
   <article className="relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3">
     <Link
-      href={`/news/i/${slugify(title)}/${uid}/`}
+      href={`/news/i/${slugify(title)}/${uid}`}
       passHref
       className="newswrap"
     >

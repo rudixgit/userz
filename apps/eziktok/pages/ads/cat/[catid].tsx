@@ -40,7 +40,7 @@ const CatId = ({
         <h1 className='text-5xl leadingtext'>{data.name}</h1>
         <p>{data.description}</p>
         <div className='flex justify-end'>
-          <Link href={`/ads/create/${data.slug}/`} className='btn'>
+          <Link href={`/ads/create/${data.slug}`} className='btn'>
             Пусни обява тук
           </Link>
         </div>

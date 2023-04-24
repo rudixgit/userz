@@ -4,7 +4,7 @@ import { FormatJoke } from '@/components/JokeText';
 
 import FacebookShare from './FacebookShare';
 
-import type {Doc} from "../data/structure";
+import type { Doc } from "../data/structure";
 interface Props {
   item: Doc;
   id?: string;
@@ -14,8 +14,8 @@ interface Props {
   onClick?: (event: MouseEvent) => void;
 }
 
-const JokeThumbnail = ({item, showcats, short, hideReadMore}: Props) => {
-  const {joke, cat, id} = item;
+const JokeThumbnail = ({ item, showcats, short, hideReadMore }: Props) => {
+  const { joke, cat, id } = item;
   const jlen = joke.length <= 150;
   const [popup, setPopup] = useState(false);
   const [expandedJoke, setexpandedJoke] = useState<string>("");
@@ -36,7 +36,7 @@ const JokeThumbnail = ({item, showcats, short, hideReadMore}: Props) => {
       {showcats && item.cat !== "Разни" && (
         <a
           className="joketop text-shadow"
-          href={`/cat/${cat.replace(/ /g, "%20")}/`}
+          href={`/cat/${cat.replace(/ /g, "%20")}`}
         >
           <h2>{cat.replace("JOK", "")}</h2>
         </a>
