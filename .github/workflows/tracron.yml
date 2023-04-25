@@ -10,10 +10,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 19
-			- name: Checkout
-			uses: actions/checkout@v3
-			- name: 😳 Build
-			run: |
-				npm install
-				cd ./.github/crons/trans
-				node ./cron.mjs
+      - name: Checkout
+      - uses: actions/checkout@v3
+      - name: 😳 Build
+        run: |
+          npm install
+          cd ./.github/crons/trans
+          node ./cron.mjs
