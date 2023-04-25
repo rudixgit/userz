@@ -1,4 +1,4 @@
-name: Curl URL every 5 minutes
+name: Artron
 on:
   schedule:
     - cron: '*/5 6-23 * * *'
