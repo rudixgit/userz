@@ -1,11 +1,10 @@
 import async from 'async'
 import nano from 'nano'
-const n1 = nano('https://arpecop:maximus@db.kloun.lol')
+const n1 = nano('https://secede.kloun.lol')
 
 const dbprod = n1.use('db')
 
 import { trans } from './server.mjs'
-let processattime = 3
 
 async function go(id) {
 	const bodyprod = await dbprod.get(id)
@@ -34,13 +33,6 @@ async function go(id) {
 	])
 	try {
 		delete bodyprod.content
-		// await db.insert({
-		//      ...bodyprod,
-		//      _id: id,
-		//      trans: '1',
-		//      html: bgx
-		// })
-
 		await dbprod.insert({
 			...bodyprod,
 			_id: id,
@@ -60,27 +52,28 @@ async function go(id) {
 
 async function receiveMessages() {
 	dbprod.view('company', 'cronews', {
-		limit: 100,
+		limit: 10,
 		descending: true,
 		update: true
 	}).then(data => {
-		console.log(`new batch start from ${data.rows[0].id}`, reallimit)
-		async.eachOfLimit(
-			data.rows,
-			reallimit,
-			(message, _key, cb) => {
-
-				go(message.id).then(() => {
-					cb()
-				})
-
-			},
-			() => {
-				processattime = processattime + 1
-				console.log('done -=====-')
-				//receiveMessages()
-			}
-		)
+		console.log(`new batch start from ${data.rows[0].id}`)
+		if (data.rows[0]) {
+			async.eachOfLimit(
+				data.rows,
+				10,
+				(message, _key, cb) => {
+					go(message.id).then(() => {
+						cb()
+					})
+				},
+				() => {
+					console.log('done -=====-')
+					//receiveMessages()
+				}
+			)
+		} else {
+			console.log('done no new -=====-')
+		}
 	})
 }
 
