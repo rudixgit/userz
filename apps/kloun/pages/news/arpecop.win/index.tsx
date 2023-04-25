@@ -33,14 +33,11 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 			<p className='text-5xl'>arpecop.win</p>
 			<p>Modern Bulgaria chronicles and analysis</p>
 			<div className="my-10 flex w-full flex-col">
-				{newsbg.map(({ title, key, image, id }) => (
+				{newsbg.map(({ title, key, id }) => (
 					<article className="relative w-full grow cursor-pointer p-2" key={key}>
-						<a
-							href={`/i/${id}`}
-						>
+						<a href={`/i/${id}`}>
 							<div className='float-left pr-4 pt-2'>
-								<Image src={image} width={256} height={154} alt=""
-									quality={30}
+								<img src={`https://arpecop.win/api/news/${key}.png`} width={256} alt=""
 									className="rounded-md"
 								/>
 							</div>
