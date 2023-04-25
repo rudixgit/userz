@@ -1,9 +1,9 @@
 
 
-import Pagination from '@/components/Pagination';
+
 import db from '@/data/client';
 import Head from 'next/head';
-import Image from 'next/image'
+
 
 type News = {
 	title: string;
@@ -19,12 +19,11 @@ type News = {
 
 export type RootNewsProps = {
 	newsbg: News[];
-	pagenum: number;
 	newsbg_by_pk?: News;
-	items: number;
+
 };
 
-const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
+const Index = ({ newsbg }: RootNewsProps): JSX.Element => {
 	return (
 		<div className='container mx-auto'>
 			<Head>
@@ -48,7 +47,6 @@ const Index = ({ newsbg, pagenum, items }: RootNewsProps): JSX.Element => {
 					</article>
 				))}
 			</div>
-
 		</div >
 	);
 };
