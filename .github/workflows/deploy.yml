@@ -20,7 +20,7 @@ jobs:
           path: ./
           mode: ''
           load-mode: strict
-      - name: Cache node modules
+      - name: Cache
         id: cache-npm
         uses: actions/cache@v3
         env:
