@@ -20,13 +20,25 @@ jobs:
           path: ./
           mode: ''
           load-mode: strict
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: 😳 Build
         run: |
           echo $APP
           cd ./apps/$APP
-          pnpm install --no-frozen-lockfile
-          pnpm run build
-          pnpm run export
+          npm install
+          npm run build
+          npm run export
           rm -rf ./.next/cache ./pnpm*  ../../package.json ../../pnpm*
           mv ./out ../../
           mv ./.next ../../
@@ -34,13 +46,6 @@ jobs:
           mv ecosystem.config.js ../../
           cd ../../
           rm -rf ./apps ./packages ./.github
-      - uses: actions/cache@v3
-        name: 📥 Cache pnpm store directory
-        with:
-          path: '/home/runner/.pnpm-store'
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: 🚀 Deploy
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
