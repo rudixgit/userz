@@ -18,16 +18,14 @@ const NewsThumbnail = ({
   uid: string;
   date?: string;
 }) => (
-  <article className="relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3">
+  <article className="relative flex w-full grow cursor-pointer p-2 md:w-1/2 lg:w-1/3" style={{ height: 180 }}>
     <Link
       href={`/news/i/${slugify(title)}/${uid}`}
       passHref
       className="newswrap"
     >
       <div className="flex items-center">
-
         <div className="flex items-center justify-center relative">
-
           {image && (
             <img
               alt={title}
