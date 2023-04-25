@@ -22,6 +22,7 @@ const NewsItem = ({
 	<>
 		<Head>
 			<title>{title.substring(0, 55)}</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
 		</Head>
 		<article className="leading-relaxed container mx-auto" id="article">
 			{parsed?.html.map(({ type, content }, i: number) =>

@@ -28,6 +28,7 @@ const Index = ({ newsbg }: RootNewsProps): JSX.Element => {
 		<div className='container mx-auto'>
 			<Head>
 				<title>arpecop.win - Modern Bulgaria chronicles and analysis</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<p className='text-5xl'>arpecop.win</p>
 			<p>Modern Bulgaria chronicles and analysis</p>
