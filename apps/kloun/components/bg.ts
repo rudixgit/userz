@@ -2,7 +2,7 @@ const strings = {
   prefixAgo: null,
   prefixFromNow: null,
   suffixAgo: "",
-  suffixFromNow: "от сега",
+  suffixFromNow: "",
   seconds: "по-малко от минута",
   minute: "преди 1 минута",
   minutes: "преди %d минути",

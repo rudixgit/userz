@@ -29,8 +29,10 @@ const NewsThumbnail = ({
           {image && (
             <img
               alt={title}
-              src={`/api/news/${id}.png`}
+              src={`https://kloun.lol/api/news/${id}.png`}
               loading="lazy"
+              width={120}
+              height={180}
             />
           )}
           <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="" width={120} height={180} style={{ width: 120, height: 180 }} className="bg-gradient-to-t from-gray-900 to-transparent pl-2 text-xs h-full   absolute left-0" />
