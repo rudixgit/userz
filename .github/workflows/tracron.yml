@@ -23,6 +23,5 @@ jobs:
             node ./cron.mjs
           else
             echo "Output length is less than or equal to 50 characters"
-            exit 1
           fi
      
