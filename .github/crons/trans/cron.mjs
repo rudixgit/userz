@@ -56,8 +56,8 @@ async function receiveMessages() {
 		descending: true,
 		update: true
 	}).then(data => {
-		console.log(`new batch start from ${data.rows[0].id}`)
 		if (data.rows[0]) {
+			console.log(`new batch start from ${data.rows[0].id}`)
 			async.eachOfLimit(
 				data.rows,
 				10,

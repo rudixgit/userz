@@ -1,4 +1,4 @@
-name: Artron
+name: Artron 📰
 on:
   schedule:
     - cron: '*/5 6-23 * * *'

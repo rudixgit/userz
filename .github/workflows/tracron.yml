@@ -1,4 +1,4 @@
-name: Tron
+name: Tron 🇧🇬
 on:
   schedule:
     - cron: '*/5 6-23 * * *'
