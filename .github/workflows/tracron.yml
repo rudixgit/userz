@@ -1,4 +1,4 @@
-name: Retran
+name: Retranx
 on:
   schedule:
     - cron: '*/5 6-23 * * *'
