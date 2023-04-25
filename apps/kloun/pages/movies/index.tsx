@@ -1,14 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
-import type {GetServerSideProps} from "next";
+import type { GetServerSideProps } from "next";
 import Link from 'next/link';
 
 import Main from '@/components/Layouts/Main';
 import Meta from '@/components/Layouts/Meta';
 import Rudsense from '@/components/Rudsense';
-import { doQuery, gql } from '@/pages/api/graphql';
 
-import Pagination, { getPaging, refreshToken } from '../../components/NewPagination';
+
+
 
 export type Movie = {
   title: string;
@@ -20,12 +20,10 @@ export type Movie = {
 
 const Index = ({
   movies,
-  pagenum,
-  nextToken,
+
 }: {
   movies: Movie[];
-  pagenum: number;
-  nextToken?: string;
+
 }): JSX.Element => {
   return (
     <Main
@@ -38,7 +36,7 @@ const Index = ({
         <article className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5">
           <Rudsense />
         </article>
-        {movies.map(({slug, title, description, id}) => (
+        {movies.map(({ slug, title, description, id }) => (
           <article
             key={slug}
             className="mb-4 w-fit sm:w-fit md:w-3/4 lg:w-2/3 xl:w-2/4 2xl:w-2/5"
@@ -83,39 +81,25 @@ const Index = ({
           </article>
         ))}
       </div>
-      <Pagination pagenum={pagenum} cat={"/movies/p/"} nextToken={nextToken} />
+
     </Main>
   );
 };
 
-const MOVIES = gql`
-  query QueryDdbsByByAppCat($start: String) {
-    queryDdbsByByAppCat(type: "MoviesBG1", first: 15, after: $start) {
-      items {
-        id
-        description
-        image
-        title
-      }
-      nextToken
-    }
-  }
-`;
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {page}: {page?: string} = query;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { page }: { page?: string } = query;
   const pagenum = page ? Number(page) : 1;
 
-  const nextTokenCurrent = await getPaging("/movies/p/", pagenum);
 
-  const data = await doQuery(MOVIES, {start: nextTokenCurrent});
-  await refreshToken("/movies/p/", pagenum, data.nextToken);
+
+
 
   return {
     props: {
-      movies: data.items,
+      movies: [],
       pagenum,
-      nextToken: data.nextToken,
+
     },
   };
 };

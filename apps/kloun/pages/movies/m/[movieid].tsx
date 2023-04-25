@@ -1,11 +1,11 @@
-import type {GetServerSideProps} from "next";
+import type { GetServerSideProps } from "next";
 
 import Main from '@/components/Layouts/Main';
 import Meta from '@/components/Layouts/Meta';
-import { doQuery, gql } from '@/pages/api/graphql';
 
-import type {Movie} from "@/pages/movies/";
-const Item = ({movie}: {movie: Movie}): JSX.Element => {
+
+import type { Movie } from "@/pages/movies/";
+const Item = ({ movie }: { movie: Movie }): JSX.Element => {
   return (
     <Main
       hideFooter
@@ -39,44 +39,12 @@ const Item = ({movie}: {movie: Movie}): JSX.Element => {
   );
 };
 
-export const USERS = gql`
-  query MyQuery2($offset: Int!) {
-    movies_aggregate {
-      aggregate {
-        count
-      }
-    }
-    movies(limit: 30, offset: $offset) {
-      id
-      slug
-      title
-      year
-      description
-    }
-  }
-`;
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {movieid} = query;
-
-  const data = await doQuery(
-    gql`
-      query MyQuery($id: String!) {
-        getDdb(id: $id) {
-          id
-          title
-          description
-          image
-        }
-      }
-    `,
-    {
-      id: movieid as string,
-    }
-  );
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  // const {movieid} = query; 
 
   return {
-    props: {movie: data},
+    props: { movie: {} },
   };
 };
 export const runtime = "experimental-edge";

@@ -1,7 +1,7 @@
 import { throttle } from 'lodash';
 import { SetStateAction, useEffect, useRef, useState } from 'react';
 
-import { doMutation, doQuery, gql } from '@/pages/api/graphql';
+
 import { FbApp } from '@/pages/facebook/facebookindex';
 
 export type FBResult = {
@@ -17,38 +17,12 @@ export async function loadImage(imageUrl: string): Promise<void> {
   });
 }
 export const getKasmet = async (id: string) => {
-  const get = await doQuery(
-    gql`
-      query MyQuery($id: String!) {
-        getDdb(id: $id) {
-          data
-        }
-      }
-    `,
-    {
-      id,
-    }
-  );
 
-  return JSON.parse(get.data);
+  return JSON.parse('');
 };
 export const insertKasmet = async (id: string, data: string) => {
-  const d = await doMutation(
-    gql`
-      mutation MyMutation($id: String!, $data: AWSJSON) {
-        createDdb(
-          input: {id: $id, subcat: $id, data: $data, nid: "A", deepness: 1}
-        ) {
-          id
-        }
-      }
-    `,
-    {
-      id,
-      data,
-    }
-  );
-  return d;
+
+  return 'd';
 };
 export const getCookie = (key: string) => localStorage.getItem(key);
 
@@ -67,7 +41,7 @@ export function useFacebookRandom(app?: FbApp) {
   const throttled = useRef(
     throttle((newValue) => {
       insertKasmet("test", JSON.stringify(newValue)).then((d) => {
-        setCookie("result", d.id);
+        setCookie("result", '1');
       });
     }, 1500)
   );
