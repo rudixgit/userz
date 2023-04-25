@@ -14,7 +14,7 @@ jobs:
        uses: actions/checkout@v3
      - name: 😳 Build
        run: |
-          url="https://db.kloun.lol/db/_design/company/_view/cronews"
+          url="https://db.kloun.lol/db/_design/company/_view/cronews?limit=100"
           response=$(curl -s "$url")
           length=${#response}
           if [[ $length -gt 200 ]]; then
