@@ -45,7 +45,6 @@ export const trans = async ({ url, from, to }) => {
 			return element && element.textContent === 'император';
 		});
 	}
-
 	const myDivHtml = await page.evaluate(() => {
 		const myDiv = document.getElementById("article");
 		return myDiv.innerHTML;
