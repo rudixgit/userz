@@ -60,7 +60,7 @@ async function receiveMessages() {
 			console.log(`new batch start from ${data.rows[0].id}`)
 			async.eachOfLimit(
 				data.rows,
-				50,
+				51,
 				(message, _key, cb) => {
 					go(message.id).then(() => {
 						cb()
@@ -87,6 +87,3 @@ async function receiveMessages() {
 receiveMessages().then(() => {
 
 })
-
-
-
