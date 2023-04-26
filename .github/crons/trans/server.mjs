@@ -24,9 +24,10 @@ export async function parseSanitizedHTML(html) {
 function timeout(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
-const browser = await puppeteer.launch();
+
 
 export const trans = async ({ url, from, to }) => {
+	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	page.setDefaultNavigationTimeout(120000)
 	await page.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1');
@@ -51,6 +52,7 @@ export const trans = async ({ url, from, to }) => {
 		return myDiv.innerHTML;
 	});
 	await page.close();
+	await browser.close()
 	//await browser.disconnect();
 	const clean = sanitizeHtml(myDivHtml, {
 		allowedTags: ["p", "img"],
