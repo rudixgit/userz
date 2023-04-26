@@ -32,8 +32,9 @@
   }
 
   body {
-    @apply m-0 p-0  bg bg-[url('/images/bgg.svg')];
+    @apply m-0 p-0  bg;
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background-image: url("/images/bgg.svg")
   }
   .adsx {
     @apply w-full;
