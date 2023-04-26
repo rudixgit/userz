@@ -1,7 +1,7 @@
 name: Artron 📰
 on:
   schedule:
-    - cron: '*/5 6-23 * * *'
+    - cron: '*/5 9-2 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
