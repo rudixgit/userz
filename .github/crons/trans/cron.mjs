@@ -52,7 +52,7 @@ async function go(id) {
 
 async function receiveMessages() {
 	dbprod.view('company', 'cronews', {
-		limit: 50,
+		limit: 10,
 		descending: true,
 		update: true
 	}).then(data => {
@@ -60,7 +60,7 @@ async function receiveMessages() {
 			console.log(`new batch start from ${data.rows[0].id}`)
 			async.eachOfLimit(
 				data.rows,
-				5,
+				10,
 				(message, _key, cb) => {
 					try {
 						go(message.id).then(() => {
