@@ -52,7 +52,7 @@ async function go(id) {
 
 async function receiveMessages() {
 	dbprod.view('company', 'cronews', {
-		limit: 10,
+		limit: 50,
 		descending: true,
 		update: true
 	}).then(data => {
