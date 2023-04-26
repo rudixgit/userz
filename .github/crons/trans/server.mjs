@@ -29,13 +29,11 @@ function timeout(ms) {
 export const trans = async ({ url, from, to }) => {
 	const browser = await puppeteer.launch({ headless: 'new' });
 	const page = await browser.newPage();
-	page.setDefaultNavigationTimeout(120000)
 	await page.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1');
 	await page.goto(
-		`https://kloun-lol.translate.goog/news/tr/${url}/?_x_tr_sl=${from}&_x_tr_tl=${to}`, { waitUntil: "domcontentloaded", timeout: 0 }
+		`https://kloun-lol.translate.goog/news/tr/${url}/?_x_tr_sl=${from}&_x_tr_tl=${to}`, { waitUntil: "domcontentloaded", timeout: 120000 }
 	);
-	await page.waitForSelector("#emp", { visible: true });
-	await timeout(3000);
+	await page.waitForSelector("#emp", { visible: true, timeout: 120000 });
 	if (from === 'bg') {
 		await page.waitForFunction(() => {
 			const element = document.getElementById('emp');
