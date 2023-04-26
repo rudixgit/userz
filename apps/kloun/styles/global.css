@@ -32,7 +32,7 @@
   }
 
   body {
-    @apply m-0 p-0  bg;
+    @apply m-0 p-0  bg bg-[url('/images/bgg.svg')];
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
   }
   .adsx {
@@ -73,7 +73,7 @@
     @apply w-full grow p-2 md:w-1/2 lg:w-1/3;
   }
   .jokewrap {
-    @apply flex h-full grow items-center rounded-lg border border-gray-800 bg-gray-900 p-4 py-5 text-gray-400 backdrop-blur-sm dark:border-gray-500 dark:bg-white dark:text-gray-900;
+    @apply flex h-full grow items-center rounded-lg border border-gray-50   p-4 py-5 text-gray-400 backdrop-blur-sm dark:text-gray-900;
   }
   .newswrap {
     @apply jokewrap p-0 m-0 overflow-hidden;

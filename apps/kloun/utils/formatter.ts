@@ -39,7 +39,7 @@ export function cyrillicToLatin(text: string) {
     "ch",
     "sh",
     "shch",
-    "",
+    "u",
     "y",
     "",
     "e",

@@ -22,8 +22,13 @@ module.exports = {
       '6xl': '4rem'
     },
     extend: {
+      backgroundImage: {
+        'barkpattern': "url('/images/bgg.svg')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      },
       colors: {
         gray: {
+          50: '#123646',
           100: '#f7fafc',
           200: '#edf2f7',
           300: '#e2e8f0',
