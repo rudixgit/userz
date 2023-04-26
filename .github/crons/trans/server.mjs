@@ -27,7 +27,7 @@ function timeout(ms) {
 
 
 export const trans = async ({ url, from, to }) => {
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({ headless: 'new' });
 	const page = await browser.newPage();
 	page.setDefaultNavigationTimeout(120000)
 	await page.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1');
