@@ -4,14 +4,16 @@ import type { News } from "@/pages/news/";
 import db from '@/data/client';
 import { shuffle } from "lodash";
 import Head from "next/head";
-import { slugify } from "@/utils/formatter";
+import { cyrillicToLatin, slugify } from "@/utils/formatter";
 
 const NewsItem = ({
 	title,
+	news,
 	newsbg_by_pk: { parsed },
 	bg_version
 }: {
 	title: string;
+	news: News[];
 	newsbg_by_pk: News;
 	slug: string;
 	bg_version: {
@@ -34,8 +36,13 @@ const NewsItem = ({
 			)}
 			<strong className="text-lg"><a href={`https://kloun.lol/news/i/${slugify(bg_version.title)}}/${bg_version.id}`}>{bg_version.title}</a></strong>
 		</article>
-
-
+		<div className="container mx-auto">
+			{news.map(({ id, title, key }) => (
+				<div key={key}>
+					<a href={"https://arpecop.win/i/" + id}>{cyrillicToLatin(title)}</a>
+				</div>
+			))}
+		</div>
 	</>
 );
 
@@ -56,9 +63,19 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		key: data.nid,
 	})
 
+	const news = await db.view("newsbg/newsen", {
+		reduce: false,
+		limit: 10,
+		update: "lazy",
+		start_key: data.nid,
+		descending: true,
+		skip: 1,
+	});
+
 	const props = {
 		title: shuffle(content)[0].content,
 		bg_version,
+		news: news.rows,
 		newsbg_by_pk: {
 			...data,
 			parsed: {

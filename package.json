@@ -6,6 +6,7 @@
     "apps/*"
   ],
   "devDependencies": {
+    "@types/async": "^3.2.20",
     "eslint": "^8.39.0"
   },
   "dependencies": {

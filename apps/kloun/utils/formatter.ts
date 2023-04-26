@@ -9,6 +9,64 @@ export interface Cat {
   altcount?: number;
   althref?: string;
 }
+
+export function cyrillicToLatin(text: string) {
+  var cyrillic = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
+  var latin = [
+    "a",
+    "b",
+    "v",
+    "g",
+    "d",
+    "e",
+    "zh",
+    "z",
+    "i",
+    "y",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "r",
+    "s",
+    "t",
+    "u",
+    "f",
+    "kh",
+    "ts",
+    "ch",
+    "sh",
+    "shch",
+    "",
+    "y",
+    "",
+    "e",
+    "yu",
+    "ya"
+  ];
+
+  // Iterate over each character in the input text
+  var output = "";
+  for (var i = 0; i < text.length; i++) {
+    var char = text.charAt(i);
+    var index = cyrillic.indexOf(char.toLowerCase());
+    if (index !== -1) {
+      // Replace the character with the corresponding Latin character
+      var latinChar = latin[index];
+      // Preserve the original case of the character
+      if (char.toUpperCase() === char) {
+        latinChar = latinChar.toUpperCase();
+      }
+      output += latinChar;
+    } else {
+      // Preserve non-Cyrillic characters
+      output += char;
+    }
+  }
+  return output;
+}
 export function slugify(string: string) {
   let slug = string.replace(/\s+/g, "-");
 
@@ -48,7 +106,7 @@ export function slugify(string: string) {
     э: "e",
     ю: "iu",
     я: "ia",
-  } as {[key: string]: string};
+  } as { [key: string]: string };
   // Replace spaces with dashes
   slug = Array.from(slug)
     .map((ch) => CYRILLIC_TO_LATIN_MAP[ch.toLowerCase()] || ch)

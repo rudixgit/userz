@@ -81,14 +81,10 @@ async function receiveMessages() {
 			)
 		} else {
 			console.log('done no new -=====-')
-			return new Promise(resolve => {
-				resolve('')
-			})
+			return ('ok')
 
 		}
 	})
 }
 
-receiveMessages().then(() => {
-
-})
+receiveMessages() 
