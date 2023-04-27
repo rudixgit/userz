@@ -1,8 +1,22 @@
-import type {NextApiRequest, NextApiResponse} from "next";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = req.query.url as string;
+import type { NextRequest } from 'next/server';
+
+
+
+export default async function handler(req: NextRequest) {
+  const params = new URL(req.url).searchParams;
+  const url = params.get("url") as string
   const res2 = await fetch(url);
   const data = await res2.json();
-  res.status(200).json(data);
-};
+
+  return new Response(
+    JSON.stringify(data),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  )
+}
+

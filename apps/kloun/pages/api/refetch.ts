@@ -1,4 +1,4 @@
-import type {NextApiRequest, NextApiResponse} from "next";
+import type { NextRequest } from 'next/server';
 
 import { Buffer } from 'buffer';
 
@@ -8,8 +8,10 @@ export const fbtoken = Buffer.from(
   "hex"
 ).toString("utf8");
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const url = req.query.url as string;
+
+export default async function handler(req: NextRequest) {
+  const params = new URL(req.url).searchParams;
+  const url = params.get("url") as string
   const apiurl = `https://graph.facebook.com/?id=${encodeURIComponent(
     url
   )}&scrape=true&access_token=${fbtoken}`;
@@ -17,5 +19,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     method: "POST",
   });
   const data = await res2.json();
-  res.status(200).json(data);
-};
+
+  return new Response(
+    JSON.stringify(data),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  )
+}
+
+

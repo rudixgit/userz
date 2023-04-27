@@ -1,15 +1,22 @@
-import type {NextApiRequest, NextApiResponse} from "next";
 import db from '@/data/client';
+import type { NextRequest } from 'next/server';
 
 type Params = {
   [key: string]: string;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const {id} = req.query as Params;
+export default async function handler(req: NextRequest) {
+  const params = new URL(req.url).searchParams;
+  const id = params.get("id") as string
   const data = await db.get(id);
-  res.json(data);
+  return new Response(
+    JSON.stringify(data),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  )
 }
+

@@ -1,17 +1,32 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  //output: "standalone",
   output: 'standalone',
   trailingSlash: false,
+  experimental: {
+    runtime: 'experimental-edge'
+  },
   assetPrefix:
     process.env.NODE_ENV === 'production'
       ? 'https://kloun.monext.pages.dev'
       : undefined,
   images: {
-    domains: ['static.dir.bg', 'nstatic.nova.bg', 'cache1.24chasa.bg', 'cache2.24chasa.bg', 'mm.netinfo.bg', 'www.mediapool.bg', 'kloun.pages.dev', 'www.segabg.com', 'img.dnevnik.bg', 'm.dnevnik.bg', 'www.24chasa.bg', 'kloun.monext.pages.dev']
+    domains: [
+      'static.dir.bg',
+      'nstatic.nova.bg',
+      'cache1.24chasa.bg',
+      'cache2.24chasa.bg',
+      'mm.netinfo.bg',
+      'www.mediapool.bg',
+      'kloun.pages.dev',
+      'www.segabg.com',
+      'img.dnevnik.bg',
+      'm.dnevnik.bg',
+      'www.24chasa.bg',
+      'kloun.monext.pages.dev'
+    ]
   },
-  async rewrites() {
+  async rewrites () {
     return [
       {
         source: '/ads.txt',
@@ -87,7 +102,7 @@ const nextConfig = {
       }
     ]
   },
-  async headers() {
+  async headers () {
     return [
       {
         // Apply these headers to all routes in your application.

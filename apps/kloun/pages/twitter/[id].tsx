@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 // import { useRouter } from 'next/router';
 import { eng } from 'stopword';
-import textrank from 'textrank-node';
+//import textrank from 'textrank-node';
 
 import Main from '@/components/Layouts/Main';
 import Meta from '@/components/Layouts/Meta';
@@ -18,7 +18,7 @@ export type Tweet = {
 };
 export type ItemTweet = {
   id: string;
-  text: string | {id: number; text: string}[];
+  text: string | { id: number; text: string }[];
   screenName: string;
 
   name: string;
@@ -71,13 +71,13 @@ function templatizeline(str: string) {
     .match(keywordRegex)
     ?.map((x) => x.replace("--=", "").replace("=--", ""));
 
-  return {substrings, keywordMatch};
+  return { substrings, keywordMatch };
 }
 
 const TemplatizeElement = ({
   obj,
 }: {
-  obj: string | {id: number; text: string}[];
+  obj: string | { id: number; text: string }[];
 }): JSX.Element => {
   let str = obj;
   if (Array.isArray(str)) {
@@ -85,7 +85,7 @@ const TemplatizeElement = ({
   }
   const lines = str.split("\n").map((line) => templatizeline(line));
 
-  const jsx = lines.map(({substrings, keywordMatch}, i) => {
+  const jsx = lines.map(({ substrings, keywordMatch }, i) => {
     return (
       <p key={i} className="ml-14">
         {substrings.map((substring, index) => {
@@ -139,8 +139,7 @@ export default function TwuserPage({
         />
       }
     >
-      <h1 className="text-5xl">{username} summary:</h1>
-      <p className="text-2xl font-thin">{summary}</p>
+
 
       {tweets.tweets.map((t, i) => (
         <div
@@ -210,16 +209,16 @@ export default function TwuserPage({
       ))}
       <Rudsense />
       <NoSSR>
-        <style dangerouslySetInnerHTML={{__html: cssx}} />
+        <style dangerouslySetInnerHTML={{ __html: cssx }} />
       </NoSSR>
     </Main>
   );
 }
 
-export const getServerSideProps = async ({query}: {query: {id: string}}) => {
+export const getServerSideProps = async ({ query }: { query: { id: string } }) => {
   const id = query.id;
   const data = await db.get(id + "_tw");
-  const summarizer = new textrank();
+  //const summarizer = new textrank();
   const cssx = templatizeline(JSON.stringify(data.tweets))
     .keywordMatch?.map(
       (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
@@ -230,7 +229,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
       data.tweets
         .filter((item: ItemTweet) => item.originalPoster)
         .map(
-          (user: {originalPoster: {screenName: string}}) =>
+          (user: { originalPoster: { screenName: string } }) =>
             user.originalPoster.screenName + "_tw"
         )
     )
@@ -240,7 +239,7 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     keys: JSON.stringify(reposts),
     nocdn: "ok",
   });
-  const exist = existget.rows?.map((it: {id: string}) =>
+  const exist = existget.rows?.map((it: { id: string }) =>
     it.id.replace("_tw", "")
   );
   const summary_prepare = data.tweets
@@ -250,12 +249,12 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
         : ""
     )
     .join(". ");
-  const summary = filterWords(summarizer.summarize(summary_prepare, 10));
+  //const summary = filterWords(summarizer.summarize(summary_prepare, 10));
   return {
     props: {
       cssx,
       username: id,
-      summary: summary,
+      //summary: summary,
       exist: exist || null,
       tweets: {
         description: data.description,
@@ -266,5 +265,5 @@ export const getServerSideProps = async ({query}: {query: {id: string}}) => {
     },
   };
 };
- 
+
 //x
