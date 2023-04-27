@@ -27,7 +27,7 @@ importers:
         specifier: ^8.39.0
         version: 8.39.0
 
-  apps/arpecopclick:
+  apps/arpecop:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^6.2.2

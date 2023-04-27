@@ -1,13 +1,12 @@
 {
-  "name": "arpecopclick",
+  "name": "arpecop",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "x": "astro build",
-    "build": "npx wrangler pages dev ./out",
-    "export": "ls",
+    "build": "astro build",
+    "export": "mv dist ./.next",
     "preview": "astro preview",
     "astro": "astro"
   },
