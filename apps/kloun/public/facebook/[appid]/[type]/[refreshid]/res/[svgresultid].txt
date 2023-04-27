@@ -7,6 +7,7 @@ import { optimize } from 'svgo';
 import { INode, parse, stringify } from 'svgson';
 
 import { getKasmet } from '@/components/hooks/facebookhook';
+import { NextRequest } from "next/server";
 
 type Replacement = {
   lookforid: string;
@@ -153,13 +154,13 @@ export function returnStylesOg(text: Wrapper): {
 type Params = {
   [key: string]: string;
 };
+export const config = {
+  runtime: 'edge',
+};
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  res.setHeader("Expires", "0");
+export default async function(req: NextRequest) {
+
+
   const rootfolder = __dirname.split(".next")[0];
   let additional;
 
@@ -193,7 +194,7 @@ export default async function handler(
 
   const rendered = await replaceTextSvg(svgstring, data);
   if (type === "svg") {
-    res.setHeader("Content-Type", "image/svg+xml");
+    // res.setHeader("Content-Type", "image/svg+xml");
     const svgx = await satori(
       <div style={{ display: "flex" }}>
         {rendered.texts.map((text) => (

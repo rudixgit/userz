@@ -73,5 +73,5 @@ export const getServerSideProps = async (context: { query: { page?: string } }) 
     },
   };
 };
-
+export const runtime = "experimental-edge";
 export default Index;

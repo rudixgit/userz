@@ -45,5 +45,5 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 		props: {},
 	};
 }
-
+export const runtime = "experimental-edge";
 export default SiteMap;

@@ -23,7 +23,7 @@ const Index = ({
   pagenum: number;
   items: number;
   letter: string;
-  sections: {key: string; value: number}[];
+  sections: { key: string; value: number }[];
 }): JSX.Element => {
   return (
     <Main
@@ -40,7 +40,7 @@ const Index = ({
       }
     >
       <div className="flex flex-wrap justify-center items-center gap-1 mb-3">
-        {sections.map(({key}) => (
+        {sections.map(({ key }) => (
           <Link
             passHref
             key={key}
@@ -73,11 +73,11 @@ const Index = ({
     </Main>
   );
 };
- 
+
 export const getServerSideProps = async ({
   query,
 }: {
-  query: {page: string; jokecat: string};
+  query: { page: string; jokecat: string };
 }) => {
   const p = query.page;
   const pagenum = p ? Number(query.page.split("_")[1]) : 1 || 1;
@@ -214,5 +214,5 @@ const sections = [
     value: 10569,
   },
 ];
-
+export const runtime = "experimental-edge";
 export default Index;

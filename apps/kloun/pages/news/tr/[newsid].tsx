@@ -1,10 +1,10 @@
-import type {GetServerSideProps} from "next";
-import type {News} from "@/pages/news/";
+import type { GetServerSideProps } from "next";
+import type { News } from "@/pages/news/";
 
 import db from '@/data/client';
 
 const NewsItem = ({
-  newsbg_by_pk: {parsed},
+  newsbg_by_pk: { parsed },
 }: {
   newsbg_by_pk: News;
   slug: string;
@@ -14,7 +14,7 @@ const NewsItem = ({
       <div className="container mx-auto">
         <div className="flex">
           <article className="leading-relaxed" id="article">
-            {parsed?.html.map(({type, content}, i: number) =>
+            {parsed?.html.map(({ type, content }, i: number) =>
               type === "p" ? (
                 <p key={i}>{content}</p>
               ) : (
@@ -29,15 +29,15 @@ const NewsItem = ({
   </>
 );
 
-export const getServerSideProps: GetServerSideProps = async ({query}) => {
-  const {newsid} = query;
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { newsid } = query;
   const data = await db.get(newsid as string);
   const content = data?.content
     ? JSON.parse(data?.content).html.map((x: string) => ({
-        type: "p",
-        content: x,
-      }))
-    : (data?.html as {type: string; content: string}[]);
+      type: "p",
+      content: x,
+    }))
+    : (data?.html as { type: string; content: string }[]);
 
   const props = {
     newsbg_by_pk: {
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
     props,
   };
 };
-
-export default NewsItem;
 export const runtime = "experimental-edge";
+export default NewsItem;
+
 //export const runtime = "experimental-edge";d
