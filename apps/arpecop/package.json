@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "export": "mkdir .next && mv ./dist ./out",
+    "export": "mkdir ./.next && mv ./dist ./out",
     "preview": "astro preview",
     "astro": "astro"
   },
