@@ -21,9 +21,9 @@ export async function parseSanitizedHTML(html) {
 	return sanitized;
 }
 
-// function timeout(ms) {
-// 	return new Promise(resolve => setTimeout(resolve, ms));
-// }
+function timeout(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 
 export const trans = async ({ url, from, to }) => {
@@ -47,6 +47,7 @@ export const trans = async ({ url, from, to }) => {
 			return element && element.textContent === 'император';
 		}, { timeout: 920000 });
 	}
+	await timeout(5000)
 	const myDivHtml = await page.evaluate(() => {
 		const myDiv = document.getElementById("article");
 		return myDiv.innerHTML;
