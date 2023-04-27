@@ -56,34 +56,29 @@ async function receiveMessages() {
 		descending: true,
 		update: true
 	}).then(data => {
-		if (data.rows[0]) {
-			console.log(`new batch start from ${data.rows[0].id}`)
-			async.eachOfLimit(
-				data.rows,
-				25,
-				(message, _key, cb) => {
-					try {
-						go(message.id).then(() => {
-							cb()
-						})
-					} catch (e) {
-						console.log(e)
+		console.log(`new batch start from ${data.rows[0].id}`)
+		async.eachOfLimit(
+			data.rows,
+			5,
+			(message, _key, cb) => {
+				try {
+					go(message.id).then(() => {
 						cb()
-					}
-				},
-				() => {
-					console.log('done -=====-')
-					//receiveMessages()
-					return new Promise(resolve => {
-						resolve('')
 					})
+				} catch (e) {
+					console.log(e)
+					cb()
 				}
-			)
-		} else {
-			console.log('done no new -=====-')
-			return ('ok')
+			},
+			() => {
+				console.log('done -=====-')
+				//receiveMessages()
+				return new Promise(resolve => {
+					resolve('')
+				})
+			}
+		)
 
-		}
 	})
 }
 
