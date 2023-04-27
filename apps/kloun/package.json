@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next build",
+    "export": "mv public out && mkdir ./out/_next && mv .next/static ./out/_next/",
     "lint": "next lint"
   },
   "dependencies": {
