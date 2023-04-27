@@ -7,7 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "export": "mkdir ./.next && cp -a ./dist ./out",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev ./dist",
     "astro": "astro"
   },
   "dependencies": {
