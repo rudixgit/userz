@@ -21,9 +21,9 @@ export async function parseSanitizedHTML(html) {
 	return sanitized;
 }
 
-function timeout(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
-}
+// function timeout(ms) {
+// 	return new Promise(resolve => setTimeout(resolve, ms));
+// }
 
 const browser = await puppeteer.launch({
 	headless: 'new', timeout: 0
@@ -39,12 +39,12 @@ export const trans = async ({ url, from, to }) => {
 		await page.waitForFunction(() => {
 			const element = document.getElementById('emp');
 			return element && element.textContent === 'emperor';
-		}, { timeout: 120000 });
+		}, { timeout: 920000 });
 	} else {
 		await page.waitForFunction(() => {
 			const element = document.getElementById('emp');
 			return element && element.textContent === 'император';
-		}, { timeout: 120000 });
+		}, { timeout: 920000 });
 	}
 	const myDivHtml = await page.evaluate(() => {
 		const myDiv = document.getElementById("article");
