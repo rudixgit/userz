@@ -3,9 +3,7 @@
 const nextConfig = {
   output: 'standalone',
   trailingSlash: false,
-  experimental: {
-    runtime: 'experimental-edge'
-  },
+  runtime: 'edge', // for Edge API Routes only
   assetPrefix:
     process.env.NODE_ENV === 'production'
       ? 'https://kloun.monext.pages.dev'
@@ -26,7 +24,7 @@ const nextConfig = {
       'kloun.monext.pages.dev'
     ]
   },
-  async rewrites () {
+  async rewrites() {
     return [
       {
         source: '/ads.txt',
@@ -102,7 +100,7 @@ const nextConfig = {
       }
     ]
   },
-  async headers () {
+  async headers() {
     return [
       {
         // Apply these headers to all routes in your application.

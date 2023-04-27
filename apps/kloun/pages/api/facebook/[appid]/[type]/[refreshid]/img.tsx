@@ -23,7 +23,7 @@ export default async function handler(req: NextRequest) {
 
   return new ImageResponse(
     (
-      <div style={{display: "flex"}}>
+      <div style={{ display: "flex" }}>
         <img
           src={`${params[3]}//${params[2]}/fbapps/${params[1]}/back.png`}
           alt=""
@@ -35,12 +35,12 @@ export default async function handler(req: NextRequest) {
             left: 0,
           }}
         />
-        <div style={{display: "flex"}}>
+        <div style={{ display: "flex" }}>
           {rendered.map(
             (text: {
               id: string;
               text: string;
-              style: {[key: string]: string};
+              style: { [key: string]: string };
             }) => (
               <div key={text.id} style={text.style}>
                 {text.text}
