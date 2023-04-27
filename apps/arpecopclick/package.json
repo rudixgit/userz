@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "x":"astro build",
+    "build": "npx wrangler pages dev ./out",
     "export": "ls",
     "preview": "astro preview",
     "astro": "astro"
