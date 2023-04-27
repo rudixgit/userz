@@ -25,10 +25,11 @@ export async function parseSanitizedHTML(html) {
 // 	return new Promise(resolve => setTimeout(resolve, ms));
 // }
 
-const browser = await puppeteer.launch({
-	headless: 'new', timeout: 0
-});
+
 export const trans = async ({ url, from, to }) => {
+	const browser = await puppeteer.launch({
+		headless: 'new', timeout: 0, args: ['--disable-dev-shm-usage']
+	});
 	const page = await browser.newPage();
 	await page.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1');
 	await page.goto(
@@ -51,7 +52,7 @@ export const trans = async ({ url, from, to }) => {
 		return myDiv.innerHTML;
 	});
 	await page.close();
-	//await browser.disconnect();
+	await browser.close();
 	const clean = sanitizeHtml(myDivHtml, {
 		allowedTags: ["p", "img"],
 		allowedAttributes: {
