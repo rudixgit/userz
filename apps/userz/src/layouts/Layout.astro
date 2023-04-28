@@ -1,9 +1,11 @@
 ---
-import './base.css';
+import '../../base.css';
 export interface Props {
 	title: string;
+	description?:string
 }
-const { title } = Astro.props;
+const { title,description } = Astro.props;
+
 ---
 
 <!DOCTYPE html>
@@ -13,6 +15,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
+		<meta name="description" content={description || 'Zero in on  social media presence by checking out their  profiles, featuring photos and engaging content'} /> 
 	</head>
 	<body>
 		<slot />
