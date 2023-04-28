@@ -1,0 +1,38 @@
+---
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+ 
+const { username} = Astro.params;
+import textrank from 'textrank-node';
+import db from  '../../../kloun/data/client'
+ //const pagenum = id ? Number(id.split("_")[1]) : 1 || 1;
+const data = await db.get(username+'_tw')
+
+const summary_prepare = data.tweets
+	.flatMap((item: {
+		 
+		  text: string | { id: number; text: string }[];
+		  
+		}) =>
+	  typeof item.text === "string"
+		? item.text.replace(/(?:\r\n|\r|\n)/g, " ")
+		: ""
+	)
+	.join(". ");
+ const summarizer = new textrank();
+ const summary =  summarizer.summarize(summary_prepare, 10) ;
+---
+ 
+<Layout title={username}>
+	<main>
+		<h1  class="text-gradient">userz.net/{username}</h1>
+		<div class="bg-black">dsadsad</div>
+		<p class="instructions">
+			{summary}
+			
+		</p>
+		<a href={'https://kloun.lol/tw/u/'+username}>{username}</a>
+	</main>
+</Layout>
+
+

@@ -115,10 +115,8 @@ export default function TwuserPage({
   tweets,
   cssx,
   exist,
-  summary,
   username,
 }: {
-  summary: string;
   username: string;
   exist?: string[];
   tweets: Tweet;
