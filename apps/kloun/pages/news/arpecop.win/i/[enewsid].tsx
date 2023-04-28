@@ -4,7 +4,8 @@ import type { News } from "@/pages/news/";
 import db from '@/data/client';
 import { shuffle } from "lodash";
 import Head from "next/head";
-import { cyrillicToLatin, slugify } from "@/utils/formatter";
+
+import { transliterate, slugify } from 'transliteration';
 
 const NewsItem = ({
 	title,
@@ -39,7 +40,7 @@ const NewsItem = ({
 		<div className="container mx-auto">
 			{news.map(({ id, title, key }) => (
 				<div key={key}>
-					<a href={"https://arpecop.win/i/" + id}>{cyrillicToLatin(title)}</a>
+					<a href={"http://localhost:3000/news/arpecop.win/i/" + id}>{transliterate(title)}</a>
 				</div>
 			))}
 		</div>
@@ -62,13 +63,13 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 		descending: true,
 		key: data.nid,
 	})
+	console.log(data.nid)
 
 	const news = await db.view("newsbg/newsen", {
-		reduce: false,
 		limit: 10,
 		update: "lazy",
 		start_key: data.nid,
-		descending: true,
+		descending: false,
 		skip: 1,
 	});
 
