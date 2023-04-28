@@ -8,7 +8,6 @@ import Meta from '@/components/Layouts/Meta';
 import NoSSR from '@/components/NoSSR';
 import Rudsense from '@/components/Rudsense';
 import db from '@/data/client';
-
 export type Tweet = {
   screenName: string;
   name: string;
@@ -59,7 +58,6 @@ function removewords(str: string) {
     .replace(hashTags, (match: string) => `--=${match}=--`)
     .replace(userRegex, (match: string) => `--=${match}=--`)
     .replace(urlRegex, (match) => `--=${match}=--`);
-
   return processedSentence;
 }
 
