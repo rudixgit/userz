@@ -12,7 +12,7 @@ export async function get({ params }: { params: { id: string } }) {
     const response = await fetch(data.image);
     const buffer = Buffer.from(await response.arrayBuffer());
     const resizedBuffer = await sharp(buffer)
-        .resize({ height: 120 })
+        .resize({ height: 180 })
         .toBuffer();
 
     return {

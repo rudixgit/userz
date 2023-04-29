@@ -23,8 +23,7 @@ const { key, title, img, date } = Astro.props;
                     alt={title}
                     src={"/api/news/" + key + ".jpg"}
                     loading="lazy"
-                    width={120}
-                    height={180}
+                    class="object-contain"
                 /><img
                     src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
                     alt=""
