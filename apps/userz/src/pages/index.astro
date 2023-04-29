@@ -1,26 +1,54 @@
 ---
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
-//import db from  '../../../kloun/data/client'
- const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const alphabet = [
+	"A",
+	"B",
+	"C",
+	"D",
+	"E",
+	"F",
+	"G",
+	"H",
+	"I",
+	"J",
+	"K",
+	"L",
+	"M",
+	"N",
+	"O",
+	"P",
+	"Q",
+	"R",
+	"S",
+	"T",
+	"U",
+	"V",
+	"W",
+	"X",
+	"Y",
+	"Z",
+];
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<h1>Welcome to <span class="text-gradient">userz.net</span></h1>
 		<p class="instructions">
-			Zero in on   <code>social media</code>   presence by checking out their  profiles, featuring photos and engaging content
+			Zero in on <code>social media</code> presence by checking out their profiles,
+			featuring photos and engaging content
 		</p>
-	 
+
 		<ul role="list" class="link-card-grid">
-		 {alphabet.map(x => (<Card
-				 href={"/cat/"+x}
-				 title={x}
-				 body="Supercharge your project with new frameworks and libraries."
-			 />))}
-			 
+			{
+				alphabet.map((x) => (
+					<Card
+						href={"/cat/" + x}
+						title={x}
+						body="Supercharge your project with new frameworks and libraries."
+					/>
+				))
+			}
 		</ul>
 	</main>
 </Layout>
-
-

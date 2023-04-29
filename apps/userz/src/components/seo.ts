@@ -38,7 +38,6 @@ export const titles = {
 	"z": "Zooming in on [username]'s Twitter strategy: How to build a thriving online presence"
 }
 export const descriptions = {
-
 	"1": "An insider's look into the world of [username], Twitter's rising star",
 	"2": "Behind the tweets: [username]'s journey to social media success",
 	"3": "Candid conversations with [username]: A Twitter influencer's story",
@@ -50,9 +49,6 @@ export const descriptions = {
 	"9": "Inside [username]'s Twitter strategy: A closer look at the tactics of a social media pro",
 	"0": "Journeying through the tweets of [username], a Twitter trailblazer",
 	"-": "Keeping up with [username]: A day in the life of a Twitter sensation",
-
-
-
 	"a": "All about [username]: From their profile to their photos, get the inside scoop on this Twitter superstar",
 	"b": "Browse [username]'s Twitter profile to discover their latest photos, thoughts, and insights",
 	"c": "Check out [username]'s Twitter photos and profile to see what makes this social media influencer stand out",
