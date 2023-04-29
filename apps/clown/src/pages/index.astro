@@ -37,15 +37,21 @@ const cats = catsx.rows
 	<h1>Актуално</h1>
 	<div class="flex flex-wrap">
 		{
-			news.rows.map(({ id, title, date, key, image }) => (
-				<CardNews
-					id={key}
-					title={title}
-					image={image}
-					date={date}
-					key={key}
-				/>
-			))
+			news.rows.map(
+				({
+					title,
+					date,
+					key,
+					image,
+				}: {
+					title: string;
+					date: string;
+					key: string;
+					image: string;
+				}) => (
+					<CardNews title={title} img={image} date={date} key={key} />
+				)
+			)
 		}
 	</div>
 	<ul role="list" class="link-card-grid">
