@@ -25,20 +25,22 @@
   src: url("/images/font/Nunito-Bold.woff2") format("woff2"),
     url("/images/font/Nunito-Bold.woff") format("woff");
 }
-
+:root {
+  --accent: 124, 58, 237;
+  --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #909090 30%, white 60%);
+}
 @layer components {
   .bg {
-    @apply bg-gray-900 dark:bg-gray-400 text-base text-gray-400  dark:text-gray-900;
-  }
-
-  :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #909090 30%, white 60%);
+    @apply bg-gray-900 dark:bg-gray-400  text-gray-400  dark:text-gray-900;
   }
   html {
     @apply m-0 p-0  bg;
-    font-family: system-ui, sans-serif;
+    font-family: "Nunito";
     background-image: url("/images/bgg.svg")
+  }
+  h1, h2,code {
+ 
+    font-family: system-ui, sans-serif;
   }
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,

@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{ts,astro}'],
   darkMode: 'class',
   theme: {
     screens: {
@@ -25,8 +25,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'barkpattern': "url('/images/bgg.svg')",
-        'footer-texture': "url('/img/footer-texture.png')",
+        barkpattern: "url('/images/bgg.svg')",
+        'footer-texture': "url('/img/footer-texture.png')"
       },
       colors: {
         gray: {

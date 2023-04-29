@@ -1,25 +1,58 @@
 ---
+import db from "../../../kloun/data/client";
 import Card from "../components/Card.astro";
+import CardNews from "../components/CardNews.astro";
+import { slugify } from "../components/utils/formatter";
 import Layout from "../layouts/Layout.astro";
+const catsx = await db.view("joke/cat", {
+	reduce: true,
+	update: "lazy",
+	group: true,
+});
+const news = await db.view("newsbg/news", {
+	limit: 30,
+	update: "lazy",
+	descending: true,
+});
+
+const cats = catsx.rows
+	.filter((x: { value: number }) => x.value > 1)
+	.map((x: { key: string; value: number }) => ({
+		cat: x.key.replace("JOK", ""),
+		slug: slugify(x.key.replace("JOK", "")),
+		count: x.value,
+	}))
+	.sort((a: { count: number }, b: { count: number }) => b.count - a.count);
 ---
 
 <Layout
 	title="Вицове и забавни котки и мемета"
 	description="Вицове и забавни котки и мемета"
 >
-	<main>
-		<h1>Welcome to <span class="text-gradient">userz.net</span></h1>
-		<p class="instructions">
-			Zero in on <code>social media</code> presence by checking out their profiles,
-			featuring photos and engaging content
-		</p>
-
-		<ul role="list" class="link-card-grid">
-			<Card
-				href={"/cat/"}
-				title={"dsadas"}
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-		</ul>
-	</main>
+	<h1>Welcome to <span class="text-gradient">userz.net</span></h1>
+	<p class="instructions">
+		Zero in on <code>social media</code> presence by checking out their profiles,
+		featuring photos and engaging content
+	</p>
+	<h1>Актуално</h1>
+	<div class="flex flex-wrap">
+		{
+			news.rows.map(({ id, title, date, key, image }) => (
+				<CardNews
+					id={key}
+					title={title}
+					image={image}
+					date={date}
+					key={key}
+				/>
+			))
+		}
+	</div>
+	<ul role="list" class="link-card-grid">
+		<Card
+			href={"/cat/"}
+			title={"dsadas"}
+			body="Supercharge your project with new frameworks and libraries."
+		/>
+	</ul>
 </Layout>
