@@ -1,4 +1,15 @@
 export const titles = {
+	"1": "All about [username]: From their profile to their photos, get the inside scoop on this Twitter superstar",
+	"2": "Browse [username]'s Twitter profile to discover their latest photos, thoughts, and insights",
+	"3": "Check out [username]'s Twitter photos and profile to see what makes this social media influencer stand out",
+	"4": "Discover the world of [username] through their Twitter profile and photos, and join the conversation today",
+	"5": "Explore [username]'s Twitter profile for an inside look at their life and interests, with photos and more",
+	"6": "Follow [username] on Twitter to stay up-to-date on their latest profile updates, photos, and tweets",
+	"7": "Get to know [username] on Twitter through their profile, photos, and engaging tweets",
+	"8": "Have you checked out [username]'s Twitter profile yet? Discover their photos, interests, and more today",
+	"9": "Questioning the status quo with [username]: A Twitter influencer's perspective",
+	"0": "Rising to the top: [username]'s journey to Twitter fame",
+	"-": "Looking for [username]'s Twitter profile? Look no further! See their photos, thoughts, and more",
 	"a": "An insider's look into the world of [username], Twitter's rising star",
 	"b": "Behind the tweets: [username]'s journey to social media success",
 	"c": "Candid conversations with [username]: A Twitter influencer's story",
@@ -27,6 +38,21 @@ export const titles = {
 	"z": "Zooming in on [username]'s Twitter strategy: How to build a thriving online presence"
 }
 export const descriptions = {
+
+	"1": "An insider's look into the world of [username], Twitter's rising star",
+	"2": "Behind the tweets: [username]'s journey to social media success",
+	"3": "Candid conversations with [username]: A Twitter influencer's story",
+	"4": "Discovering the secrets of [username]'s Twitter feed",
+	"5": "Exploring the mind of [username], a Twitter mastermind",
+	"6": "Following in the footsteps of [username]: Twitter tips and tricks",
+	"7": "Getting to know [username]: A Twitter celebrity in the making",
+	"8": "Hanging out with [username]: An exclusive interview with a Twitter icon",
+	"9": "Inside [username]'s Twitter strategy: A closer look at the tactics of a social media pro",
+	"0": "Journeying through the tweets of [username], a Twitter trailblazer",
+	"-": "Keeping up with [username]: A day in the life of a Twitter sensation",
+
+
+
 	"a": "All about [username]: From their profile to their photos, get the inside scoop on this Twitter superstar",
 	"b": "Browse [username]'s Twitter profile to discover their latest photos, thoughts, and insights",
 	"c": "Check out [username]'s Twitter photos and profile to see what makes this social media influencer stand out",

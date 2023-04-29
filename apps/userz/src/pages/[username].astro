@@ -10,8 +10,21 @@ const data = await db.get(username+'_tw')
 import {titles,descriptions } from '../components/seo' 
  
  
-const title = titles[username.charAt(0).toLowerCase()].replace('[username]', username)
-const mdescription = descriptions[username.charAt(0).toLowerCase()].replace('[username]', username)
+
+const get_chunk = await db.view("company/twuser", {
+     limit: 1,
+     update: 'lazy',
+     key: username+'_tw',
+   });
+   
+   console.log(get_chunk)
+ const chunk = await db.view("company/twuser", {
+       reduce: false,
+       update: 'lazy',
+       key: get_chunk.value,
+     });
+const title = titles[username.charAt(0).toLowerCase()].replace('[username]', username) || ''
+const mdescription = descriptions[username.charAt(0).toLowerCase()].replace('[username]', username) || ''
 ---
  
 <Layout title={title} description={mdescription}>
@@ -21,6 +34,15 @@ const mdescription = descriptions[username.charAt(0).toLowerCase()].replace('[us
 	 {data.description}
 	 </p>
 		<a href={'https://kloun.lol/tw/u/'+username}>{username}</a>
+        <ul role="list" class="link-card-grid">
+        {chunk.rows.map((x:{id:string}) => (
+             <Card
+                  href={"/"+x.id.replace('_tw','')}
+                  title={x.id.replace('_tw','').toLowerCase()}
+                  body="Supercharge your project with new frameworks and libraries."
+              /> 
+         ) )}
+         </ul>
 	</main>
 </Layout>
 
