@@ -41,12 +41,7 @@ const cats = catsx.rows
 	title="Вицове и забавни котки и мемета"
 	description="Вицове и забавни котки и мемета"
 >
-	<h1>Welcome to <span class="text-gradient">userz.net</span></h1>
-	<p class="instructions">
-		Zero in on <code>social media</code> presence by checking out their profiles,
-		featuring photos and engaging content
-	</p>
-	<h1>Актуално</h1>
+	<h1 class="text-5xl text-gradient">Актуално</h1>
 	<div class="flex flex-wrap">
 		{
 			news.map(
@@ -73,6 +68,19 @@ const cats = catsx.rows
 				)
 			)
 		}
+	</div>
+	<div class="flex flex-wrap justify-end my-2">
+		<a class="btn dark:btn-ghost border-2" href="/news">Още новини</a>
+	</div>
+	<h1 class="text-5xl text-gradient">Вицове</h1>
+
+	<div class="flex flex-wrap justify-end my-2">
+		<a class="btn dark:btn-ghost border-2" href="/news">Всички</a>
+	</div>
+
+	<h1 class="text-5xl text-gradient">Забавно в картинки</h1>
+	<div class="flex flex-wrap justify-end my-2">
+		<a class="btn dark:btn-ghost border-2" href="/news">Всички</a>
 	</div>
 	<ul role="list" class="link-card-grid">
 		<Card
