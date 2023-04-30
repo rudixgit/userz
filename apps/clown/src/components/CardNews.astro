@@ -5,15 +5,16 @@ export interface Props {
     title: string;
     img: string;
     date: string;
+    id: string;
 }
 
-const { key, title, date, image } = Astro.props;
+const { key, title, date, img, id } = Astro.props;
 ---
 
 <a
     class="cursor-point md:w-1/2 lg:w-1/3 overflow-hidden"
     style="height: 180px;"
-    href={`/news/i/${slugify(title)}/${key}`}
+    href={`/news/i/${slugify(title)}/${id}`}
 >
     <div class="flex instructions">
         <div
@@ -22,7 +23,7 @@ const { key, title, date, image } = Astro.props;
         >
             <img
                 alt={title}
-                src={image}
+                src={img}
                 loading="lazy"
                 height="100%"
                 class="absolute top-0 left-0 w-full h-full object-cover"

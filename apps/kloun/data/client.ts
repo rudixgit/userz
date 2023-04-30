@@ -9,6 +9,7 @@ const serialize = (obj: Variables) => {
     .join("&");
 };
 async function fetcher(query: { [key: string]: string | number | boolean }) {
+
   const { db, id, _view, _design, params, insert } = query;
   const body = JSON.stringify(query);
   const isPost = body?.includes("_id") || insert;

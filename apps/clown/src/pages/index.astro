@@ -4,16 +4,28 @@ import Card from "../components/Card.astro";
 import CardNews from "../components/CardNews.astro";
 import { slugify } from "../components/utils/formatter";
 import Layout from "../layouts/Layout.astro";
-const catsx = await db.view("joke/cat", {
+const catsy = await db.view("joke/cat", {
 	reduce: true,
 	update: "lazy",
 	group: true,
 });
-const news = await db.view("newsbg/news", {
+const newsx = await db.view("newsbg/news", {
 	limit: 30,
 	update: "lazy",
 	descending: true,
 });
+
+const memes = fetch("http://localhost:3000/api/proxy/promoted").then((res) =>
+	res.json()
+);
+
+const resp = await Promise.all([catsy, newsx, memes]).then((results) => ({
+	catsx: results[0],
+	news: results[1].rows,
+	memes: results[2],
+}));
+
+const { catsx, news } = resp;
 
 const cats = catsx.rows
 	.filter((x: { value: number }) => x.value > 1)
@@ -37,19 +49,27 @@ const cats = catsx.rows
 	<h1>Актуално</h1>
 	<div class="flex flex-wrap">
 		{
-			news.rows.map(
+			news.map(
 				({
+					id,
 					title,
 					date,
 					key,
 					image,
 				}: {
+					id: string;
 					title: string;
 					date: string;
 					key: string;
 					image: string;
 				}) => (
-					<CardNews title={title} img={image} date={date} key={key} />
+					<CardNews
+						title={title}
+						img={image}
+						date={date}
+						key={key}
+						id={id}
+					/>
 				)
 			)
 		}
