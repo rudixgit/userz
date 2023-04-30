@@ -7,7 +7,7 @@ export interface Props {
     date: string;
 }
 
-const { key, title, date } = Astro.props;
+const { key, title, date, image } = Astro.props;
 ---
 
 <a
@@ -22,7 +22,7 @@ const { key, title, date } = Astro.props;
         >
             <img
                 alt={title}
-                src={"/api/news/" + key + ".jpg"}
+                src={image}
                 loading="lazy"
                 height="100%"
                 class="absolute top-0 left-0 w-full h-full object-cover"
