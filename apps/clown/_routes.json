@@ -4,7 +4,6 @@
         "/*"
     ],
     "exclude": [
-        "/_astro/*",
         "/_worker.js",
         "/facebook/*",
         "/fbapps/*",
