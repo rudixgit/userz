@@ -7,17 +7,24 @@ const { username } = Astro.params;
 import db from "../../../kloun/data/client";
 import { descriptions, titles } from "../components/seo";
 //const pagenum = id ? Number(id.split("_")[1]) : 1 || 1;
-const data = await db.get(username + "_tw");
-const get_chunk = await db.view("company/twuser", {
+const datax = db.get(username + "_tw");
+const get_chunkx = db.view("company/twuser", {
      limit: 1,
      update: "lazy",
      key: username + "_tw",
 });
+
+const resp = await Promise.all([datax, get_chunkx]).then((results) => ({
+     data: results[0],
+     get_chunk: results[1],
+}));
+const { data, get_chunk } = resp;
 const chunk = await db.view("company/twuser", {
      reduce: false,
      update: "lazy",
      key: get_chunk.value,
 });
+
 const title = titles[username.charAt(0).toLowerCase()].replace(
      "[username]",
      username
