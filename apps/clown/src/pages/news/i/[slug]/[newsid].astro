@@ -1,6 +1,7 @@
 ---
 import { uniqBy } from "lodash";
 import db from "../../../../../../kloun/data/client";
+import CardNews from "../../../../components/CardNews.astro";
 import RudSense from "../../../../components/RudSense.astro";
 import Layout from "../../../../layouts/Layout.astro";
 function countAlphanumeric(str: string) {
@@ -34,21 +35,22 @@ function getLastP(arr: { type: string; content: string }[]) {
     });
     return arrx;
 }
-const { newsid } = Astro.params as { newsid: string };
-const data = db.get(newsid);
-const news = db.view("newsbg/news", {
+const { newsid, slug } = Astro.params as { newsid: string; slug: string };
+console.log("newsid", slug);
+
+const data = await db.get(newsid);
+console.log("data", data);
+
+const news = await db.view("newsbg/news", {
     reduce: false,
     limit: 10,
     update: "lazy",
-    start_key: newsid,
+    start_key: data.nid,
     descending: true,
     skip: 1,
 });
-const resp = await Promise.all([data, news]).then((results) => ({
-    data: results[0],
-    news: results[1].rows,
-}));
-const { title, image, content, html } = resp.data;
+
+const { title, image, content, html } = data;
 
 const parsed = content
     ? JSON.parse(content).html.map((x: string) => ({
@@ -85,5 +87,33 @@ const parsed = content
             </article>
         </div>
         <RudSense />
+        <div class="clear-both"></div>
+    </div>
+    <div class="flex flex-wrap gap-3">
+        {
+            news.rows.map(
+                ({
+                    id,
+                    title,
+                    date,
+                    key,
+                    image,
+                }: {
+                    id: string;
+                    title: string;
+                    date: string;
+                    key: string;
+                    image: string;
+                }) => (
+                    <CardNews
+                        title={title}
+                        img={image}
+                        date={date}
+                        key={key}
+                        id={id}
+                    />
+                )
+            )
+        }
     </div>
 </Layout>
