@@ -4,10 +4,15 @@ import { defineConfig } from 'astro/config'
 
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare({ mode: 'advanced' }),
   integrations: [
     tailwind({
       config: { applyBaseStyles: false }
     })
-  ]
+  ],
+  adapter: cloudflare({ mode: 'advanced' }),
+  vite: {
+    build: {
+      minify: false
+    }
+  }
 })

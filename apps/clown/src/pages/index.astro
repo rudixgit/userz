@@ -16,14 +16,15 @@ const newsx = await db.view("newsbg/news", {
 	descending: true,
 });
 
-const memesx = fetch(
-	"https://pr0gramm.com/api/items/get?flags=1&promoted=1"
-).then((res) => res.json());
+// const memesx = fetch(
+// 	"https://pr0gramm.com/api/items/get?flags=1&promoted=1"
+// ).then((res) => res.json());
 
-const resp = await Promise.all([catsy, newsx, memesx]).then((results) => ({
+const resp = await Promise.all([catsy, newsx]).then((results) => ({
 	catsx: results[0],
 	news: results[1].rows,
-	memes: results[2].items,
+	//memes: results[2].items,
+	memes: [],
 }));
 
 const { catsx, news, memes } = resp;
@@ -88,7 +89,13 @@ const cats = catsx.rows
 						cat: string;
 						slug: string;
 						count: number;
-					}) => <CatButton title={cat} slug={slug} count={count} />
+					}) => (
+						<CatButton
+							title={cat}
+							url={"/cat/" + slug}
+							count={count}
+						/>
+					)
 				)
 		}
 	</div>
