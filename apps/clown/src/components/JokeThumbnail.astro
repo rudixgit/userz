@@ -1,0 +1,73 @@
+---
+import FormatJoke from "./FormatJoke.astro";
+
+export interface Doc {
+    joke: string;
+    cat: string;
+    id?: string;
+    _id: string;
+    _rev?: string;
+    doc?: object;
+    item?: object;
+}
+export interface Props {
+    item: Doc;
+    id?: string;
+    showcats?: boolean;
+    short: boolean;
+    hideReadMore?: boolean;
+    onClick?: (event: MouseEvent) => void;
+}
+
+const { item, showcats, short, hideReadMore } = Astro.props;
+const { joke, cat } = item;
+const jlen = joke.length <= 150;
+---
+
+<article class="joke relative">
+    {
+        showcats && item.cat !== "Разни" && (
+            <a
+                class="joketop text-shadow"
+                href={`/cat/${cat.replace(/ /g, "%20")}`}
+            >
+                <h2>{cat.replace("JOK", "")}</h2>
+            </a>
+        )
+    }
+
+    <div class="jokewrap">
+        <div class="py-5 font-black text-md">
+            <FormatJoke joke={joke} short={short} />
+        </div>
+    </div>
+    {
+        !hideReadMore &&
+            (!jlen ? (
+                <a
+                    class="btn absolute right-2 -mt-12 flex cursor-pointer border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white rounded-l-none rounded-t-none"
+                    href={`/joke/${item.id}`}
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width={1.5}
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"
+                        />
+                    </svg>
+                </a>
+            ) : (
+                <div class="absolute right-2 -mt-12">
+                    {`https://kloun.lol/joke/${item.id}`}
+                    noWrapper
+                </div>
+            ))
+    }
+</article>

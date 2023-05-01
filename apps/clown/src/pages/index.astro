@@ -37,6 +37,8 @@ const cats = catsx.rows
 		count: x.value,
 	}))
 	.sort((a: { count: number }, b: { count: number }) => b.count - a.count);
+
+console.log(JSON.stringify(cats));
 ---
 
 <Layout
@@ -100,7 +102,7 @@ const cats = catsx.rows
 		}
 	</div>
 	<div class="flex flex-wrap justify-end my-2">
-		<a class="btn dark:btn-ghost border-2" href="/news">Всички</a>
+		<a class="btn dark:btn-ghost border-2" href="/vicove">Всички</a>
 	</div>
 	<RudSense />
 	<h1 class="text-5xl text-gradient">Забавно в картинки</h1>

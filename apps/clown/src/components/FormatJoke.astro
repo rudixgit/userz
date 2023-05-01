@@ -1,0 +1,76 @@
+---
+import RudSense from "./RudSense.astro";
+import { formattedjoke } from "./utils/formatter";
+
+const { joke, short } = Astro.props;
+export const remappedJokeFunction = (joke: string) => {
+    let i1 = 0;
+    return formattedjoke(joke)
+        .split("\n")
+        .map((line, i) => {
+            const num =
+                line.startsWith("-") ||
+                line.startsWith(" -") ||
+                line.startsWith("–") ||
+                line.startsWith("  -")
+                    ? (i1 += 1) % 2 === 0
+                        ? "even"
+                        : "odd"
+                    : false;
+
+            return {
+                key: i,
+                line:
+                    num === "odd" || num === "even"
+                        ? line.replace("-", "").replace("–", "")
+                        : line,
+                ...(num && { oddness: num }),
+            };
+        });
+};
+const remapped = remappedJokeFunction(joke);
+---
+
+<>
+    {
+        remapped.map(
+            ({
+                oddness,
+                line,
+                key,
+            }: {
+                oddness?: string;
+                line: string;
+                key: number;
+            }) =>
+                oddness ? (
+                    <div
+                        class={`flex flex-wrap pb-4 ${
+                            oddness === "even" ? "flex-row-reverse" : ""
+                        }`}
+                    >
+                        <div
+                            class={`relative whitespace-pre-wrap rounded-lg p-2 font-sans font-medium shadow-2xl ${
+                                oddness === "even"
+                                    ? "bg-violet-900 text-right dark:bg-slate-200"
+                                    : "bg-indigo-700 text-left dark:bg-slate-400"
+                            }`}
+                        >
+                            {oddness === "odd" ? (
+                                <div class="absolute -left-4 top-3 inline-block w-4 overflow-hidden">
+                                    <div class="h-16  origin-top-right -rotate-45 bg-indigo-700 dark:bg-slate-400" />
+                                </div>
+                            ) : (
+                                <div class="absolute -right-4 top-3 inline-block w-4 overflow-hidden">
+                                    <div class=" h-16  origin-top-left rotate-45 bg-violet-900 dark:bg-slate-200" />
+                                </div>
+                            )}
+                            {line} {key === 3 && <RudSense />}
+                        </div>
+                    </div>
+                ) : (
+                    <div class="block pb-4 text-lg">{line}</div>
+                )
+        )
+    }
+</>

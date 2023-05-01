@@ -39,7 +39,6 @@ const { newsid, slug } = Astro.params as { newsid: string; slug: string };
 console.log("newsid", slug);
 
 const data = await db.get(newsid);
-console.log("data", data);
 
 const news = await db.view("newsbg/news", {
     reduce: false,
