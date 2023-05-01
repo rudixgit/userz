@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "export": "mkdir ./.next && cp -a ./dist ./out",
+    "export": "mkdir ./.next && cp -a ./dist ./out && rm -rf ./out/_routes.json && mv ./_routes.json ./out/_routes.json",
     "preview": "wrangler pages dev ./dist",
     "astro": "astro"
   },
