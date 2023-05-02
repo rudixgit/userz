@@ -1,0 +1,67 @@
+---
+import db from "../../../../kloun/data/client.js";
+import CardNews from "../../components/CardNews.astro";
+import Pagination from "../../components/Pagination.astro";
+import Layout from "../../layouts/Layout.astro";
+const { newspage } = Astro.params as { newspage: string };
+
+const pagenum = newspage ? Number(newspage) : 1;
+
+const skip = pagenum * 30 - 30;
+const datax = db.view("newsbg/news", {
+    reduce: false,
+    limit: 30,
+    skip: skip,
+    update: "lazy",
+    descending: true,
+});
+const itemsx = db.view("newsbg/agregate", {
+    reduce: true,
+    limit: 1,
+    group: false,
+    update: "lazy",
+});
+
+const resp = await Promise.all([datax, itemsx]).then((values) => {
+    return {
+        articles: values[0].rows,
+        items: values[1].value,
+    };
+});
+---
+
+<Layout title={`Новини от на страница ${pagenum}`} description={`Новини  `}>
+    <div class="flex flex-wrap gap-3">
+        {
+            resp.articles.map(
+                ({
+                    id,
+                    title,
+                    date,
+                    key,
+                    image,
+                }: {
+                    id: string;
+                    title: string;
+                    date: string;
+                    key: string;
+                    image: string;
+                }) => (
+                    <CardNews
+                        title={title}
+                        img={image}
+                        date={date}
+                        key={key}
+                        id={id}
+                    />
+                )
+            )
+        }
+    </div>
+    <Pagination
+        items={resp.items}
+        currentPage={pagenum}
+        pageSize={30}
+        prefix="/news/"
+    />
+</Layout>
