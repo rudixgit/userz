@@ -1,5 +1,6 @@
 ---
 import FormatJoke from "./FormatJoke.astro";
+import Modal from "./Modal.astro";
 
 export interface Doc {
     joke: string;
@@ -20,7 +21,8 @@ export interface Props {
 }
 
 const { item, showcats, short, hideReadMore } = Astro.props;
-const { joke, cat } = item;
+const { joke, cat, id } = item;
+
 const jlen = joke.length <= 150;
 ---
 
@@ -44,29 +46,44 @@ const jlen = joke.length <= 150;
     {
         !hideReadMore &&
             (!jlen ? (
-                <a
-                    class="btn absolute right-2 -mt-12 flex cursor-pointer border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white rounded-l-none rounded-t-none"
-                    href={`/joke/${item.id}`}
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width={1.5}
-                        stroke="currentColor"
-                        class="w-6 h-6"
+                <Modal id={id}>
+                    <a
+                        onclick={`document.getElementById("${id}").showModal()`}
+                        slot="button"
+                        class="btn absolute right-2 -mt-12 flex cursor-pointer border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white rounded-l-none rounded-t-none"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"
-                        />
-                    </svg>
-                </a>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width={1.5}
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"
+                            />
+                        </svg>
+                    </a>
+                </Modal>
             ) : (
                 <div class="absolute right-2 -mt-12">
-                    {`https://kloun.lol/joke/${item.id}`}
-                    noWrapper
+                    <button
+                        onclick={`fbshare('https://kloun.lol/joke/${id}')`}
+                        class="text-white  transition duration-300 max-w-xs w-full rounded-3xl uppercase flex text-sm font-bold p-3  relative   rounded-l-none rounded-t-none bg-transparent false undefined"
+                        style="background-color: transparent;"
+                    >
+                        <svg
+                            class="h-6 w-6 fill-white dark:fill-blue-600 "
+                            role="img"
+                            xmlns="http://w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </button>
                 </div>
             ))
     }

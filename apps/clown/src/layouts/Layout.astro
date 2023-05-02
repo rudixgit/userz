@@ -55,6 +55,12 @@ const { title, description, image, noContainer } = Astro.props;
 	<body>
 		<div class="flex flex-col h-screen">
 			<Header />
+
+			<dialog>
+				<h2>Subscribe to our newsletter</h2>
+
+				<button class="close-modal" value="cancel">No Thanks</button>
+			</dialog>
 			{
 				noContainer ? (
 					<main class="flex z-20 grow">
@@ -66,7 +72,21 @@ const { title, description, image, noContainer } = Astro.props;
 					</main>
 				)
 			}
+
 			<Footer />
 		</div>
+
+		<script id="rendered-js" is:inline>
+			function fbshare(url) {
+				window.open(
+					"http://www.facebook.com/sharer.php?u=" +
+						encodeURIComponent(url),
+					"sharer",
+					"toolbar=0,status=0,width=626,height=436"
+				);
+				return false;
+			}
+			//# sourceURL=pen.js
+		</script>
 	</body>
 </html>

@@ -36,7 +36,6 @@ function getLastP(arr: { type: string; content: string }[]) {
     return arrx;
 }
 const { newsid, slug } = Astro.params as { newsid: string; slug: string };
-console.log("newsid", slug);
 
 const data = await db.get(newsid);
 
