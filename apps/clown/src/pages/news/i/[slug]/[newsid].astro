@@ -49,6 +49,13 @@ const news = await db.view("newsbg/news", {
     skip: 1,
 });
 
+const resp = await Promise.all([datax, countx]).then((values) => {
+    return {
+        jokes: values[0].rows,
+        items: values[1].value,
+    };
+});
+
 const { title, image, content, html } = data;
 
 const parsed = content
