@@ -1,4 +1,4 @@
-import React, { LegacyRef, useEffect, useRef, useState } from 'react';
+import { LegacyRef, useEffect, useRef, useState } from 'react';
 
 export interface Item {
   id: number;
@@ -31,7 +31,7 @@ export interface RootObject {
   qc: number;
 }
 
-const Program = ({limit, className}: {limit?: number; className: string}) => {
+const ProgramReact = ({ limit, className }: { limit?: number; className: string }) => {
   const [items, setItems] = useState<Item[]>([]);
   const [img, setImg] = useState<string | null>(null);
   const checkboxRef: LegacyRef<HTMLInputElement> = useRef(null);
@@ -60,8 +60,7 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
   }, [checkboxRef]);
   async function fetchMyAPI(older?: number) {
     const res2 = await fetch(
-      `/api/proxy?url=https://pr0gramm.com/api/items/get?flags=1&promoted=1${
-        older ? `&older=${older}` : ""
+      `/api/proxy?url=https://pr0gramm.com/api/items/get?flags=1&promoted=1${older ? `&older=${older}` : ""
       }`
     );
     const response = await res2.json();
@@ -154,4 +153,4 @@ const Program = ({limit, className}: {limit?: number; className: string}) => {
     </div>
   );
 };
-export default Program;
+export default ProgramReact;
