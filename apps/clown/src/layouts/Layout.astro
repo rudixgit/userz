@@ -10,6 +10,7 @@ export interface Props {
 	noContainer?: boolean;
 }
 const { title, description, image, noContainer } = Astro.props;
+const currentPath = 'https://kloun.lol'+Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -24,13 +25,14 @@ const { title, description, image, noContainer } = Astro.props;
 			content={description ||
 				"Zero in on  social media presence by checking out their  profiles, featuring photos and engaging content"}
 		/>
+		<link rel="canonical" href={currentPath} />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@site" />
 		<meta name="twitter:creator" content="@handle" />
 		<meta property="fb:app_id" content="281985576166744" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content="https://kloun.lol/" />
+		<meta property="og:url" content={currentPath} />
 		<meta property="og:type" content="article" />
 		<meta
 			property="og:image"
