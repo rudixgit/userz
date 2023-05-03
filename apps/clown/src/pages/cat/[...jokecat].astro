@@ -8,7 +8,7 @@ import Layout from "../../layouts/Layout.astro";
 const { jokecat } = Astro.params as { jokecat: string };
 const x = jokecat.split("/") as string[];
 const cat = jokecats.find((xx) => xx.slug === x[0])?.cat;
-console.log(cat);
+ 
 
 const pagenum = x[1] ? Number(x[1]) : 1;
 

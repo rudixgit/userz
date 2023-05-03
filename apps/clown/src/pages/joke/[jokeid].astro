@@ -7,7 +7,7 @@ import Layout from "../../layouts/Layout.astro";
 const { jokeid } = Astro.params as { jokeid: string };
 
 const joke = await db.get(jokeid);
-console.log(joke);
+ 
 
 if (joke.error) {
     return new Response("Not Found", {
