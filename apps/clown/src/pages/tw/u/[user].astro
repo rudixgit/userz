@@ -3,7 +3,7 @@ import db from "../../../../../kloun/data/client.js";
 import Layout from "../../../layouts/Layout.astro";
 import RudSense from '../../../components/RudSense.astro'
 
-import { normalizestr, templatizeline } from "../../../components/TwitterTemplatize.astro";
+import TwitterTemplatize, { normalizestr, templatizeline } from "../../../components/TwitterTemplatize.astro";
  export type Tweet = {
    screenName: string;
    name: string;
@@ -62,7 +62,7 @@ const cssx = templatizeline(JSON.stringify(data.tweets))
 <Layout title={` Twitter ecosphere  `} description={`Twitter ecosphere   `}>
  
 	 
-	 {data.tweets.map((t, i) => (
+	 {data.tweets.map((t:ItemTweet, i:number) => (
 		 <div
 	 
 		   class="bg-gray-800 dark:bg-white mb-2 rounded-md border boder-1 dark:border-gray-500 pb-2"
@@ -123,6 +123,7 @@ const cssx = templatizeline(JSON.stringify(data.tweets))
 			   </a>
 			 )}
 			 <div class="flex flex-col">
+				 <TwitterTemplatize obj={t.text} />
 			    {t.text}
 			 </div>
 		   </div>
