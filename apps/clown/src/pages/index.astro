@@ -5,10 +5,9 @@ import CatButton from "../components/CatButton.astro";
 import ProgramReact from "../components/ProgramReact.jsx";
 import RudSense from "../components/RudSense.astro";
 import { jokecats } from "../components/utils/data/jokecats";
-import { slugify } from "../components/utils/formatter";
 import Layout from "../layouts/Layout.astro";
  
-const newsx =   db.view("newsbg/news", {
+const newsx = db.view("newsbg/news", {
 	limit: 30,
 	update: "lazy",
 	descending: true,
