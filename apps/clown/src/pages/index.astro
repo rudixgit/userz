@@ -4,14 +4,11 @@ import CardNews from "../components/CardNews.astro";
 import CatButton from "../components/CatButton.astro";
 import ProgramReact from "../components/ProgramReact.jsx";
 import RudSense from "../components/RudSense.astro";
+import { jokecats } from "../components/utils/data/jokecats";
 import { slugify } from "../components/utils/formatter";
 import Layout from "../layouts/Layout.astro";
-const catsy = await db.view("joke/cat", {
-	reduce: true,
-	update: "lazy",
-	group: true,
-});
-const newsx = await db.view("newsbg/news", {
+ 
+const newsx =   db.view("newsbg/news", {
 	limit: 30,
 	update: "lazy",
 	descending: true,
@@ -21,23 +18,13 @@ const newsx = await db.view("newsbg/news", {
 // 	"https://pr0gramm.com/api/items/get?flags=1&promoted=1"
 // ).then((res) => res.json());
 
-const resp = await Promise.all([catsy, newsx]).then((results) => ({
-	catsx: results[0],
-	news: results[1].rows,
-	//	memes: results[2].items,
+const resp = await Promise.all([ newsx]).then((results) => ({
+	news: results[0].rows,
 	memes: [],
 }));
 
-const { catsx, news, memes } = resp;
+const {  news, memes } = resp;
 
-const cats = catsx.rows
-	.filter((x: { value: number }) => x.value > 1)
-	.map((x: { key: string; value: number }) => ({
-		cat: x.key.replace("JOK", ""),
-		slug: slugify(x.key.replace("JOK", "")),
-		count: x.value,
-	}))
-	.sort((a: { count: number }, b: { count: number }) => b.count - a.count);
 ---
 
 <Layout
@@ -79,7 +66,7 @@ const cats = catsx.rows
 	<h1 class="text-5xl">Вицове</h1>
 	<div class="my-3 flex w-full flex-wrap gap-3">
 		{
-			cats
+			jokecats
 				.slice(0, 9)
 				.map(
 					({
@@ -123,7 +110,7 @@ const cats = catsx.rows
 				</label>
 			))
 		}
-	</div>xx<ProgramReact limit={10} className="snap-x flex overflow-auto py-2 snap-proximity programmindex" />xx
+	</div> <ProgramReact limit={10} className="snap-x flex overflow-auto py-2 snap-proximity programmindex" /> 
 	<div class="flex flex-wrap justify-end my-2">
 		<a class="btn dark:btn-ghost border-2" href="/news">Всички</a>
 	</div>

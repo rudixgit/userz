@@ -1,13 +1,30 @@
 ---
+import { chunk } from "lodash";
 import db from "../../../../kloun/data/client";
 import FacebookShare from "../../components/FacebookShare.astro";
 import FormatJoke from "../../components/FormatJoke.astro";
+import JokeThumbnail, { Doc } from "../../components/JokeThumbnail.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const { jokeid } = Astro.params as { jokeid: string };
-
-const joke = await db.get(jokeid);
+const rid = Math.floor(Math.random() * 1938).toString()
+const jokex =  db.get(jokeid);
  
+ const itemsx = db.view("joke/random", {
+     key: rid,
+     update: "lazy",
+ });
+ 
+ const resp = await Promise.all([jokex, itemsx]).then((values) => {
+     return {
+         joke: values[0],
+         chunks: chunk(values[1].rows, 3),
+     };
+ });
+ 
+ console.log(resp.items)
+ 
+ const { joke,chunks} = resp
 
 if (joke.error) {
     return new Response("Not Found", {
@@ -25,4 +42,8 @@ if (joke.error) {
             <FacebookShare url={`https://kloun.lol/joke/${jokeid}`} />
         </div>
     </div>
+    {chunks.map((piece) => (<div class="flex flex-wrap">
+       {piece.map((joke) => <JokeThumbnail item={joke} showcats={false} short /> )}
+        </div>
+    ))}
 </Layout>
