@@ -56,15 +56,12 @@ const cssx = templatizeline(JSON.stringify(data.tweets))
 	const exist = existget.rows?.map((it: { id: string }) =>
 	  it.id.replace("_tw", "")
 	);
- const cssx1 = ''
+ 
 ---
 
-<Layout title={` Twitter ecosphere  `} description={`Twitter ecosphere   `}>
- 
-	 
+<Layout  title={`${user} public tweets on twitter`} description={data.description}>
 	 {data.tweets.map((t:ItemTweet, i:number) => (
 		 <div
-	 
 		   class="bg-gray-800 dark:bg-white mb-2 rounded-md border boder-1 dark:border-gray-500 pb-2"
 		 >
 		   {i === 5 && <RudSense />}
@@ -127,6 +124,5 @@ const cssx = templatizeline(JSON.stringify(data.tweets))
 		   </div>
 		 </div>
 	   ))}
-	 <style is:inline set:html={cssx} />
 </Layout>
-
+<style is:inline set:html={cssx} />
