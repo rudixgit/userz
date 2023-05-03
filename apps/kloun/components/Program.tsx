@@ -31,7 +31,7 @@ export interface RootObject {
   qc: number;
 }
 
-const ProgramReact = ({ limit, className }: { limit?: number; className: string }) => {
+const Program = ({ limit, className }: { limit?: number; className: string }) => {
   const [items, setItems] = useState<Item[]>([]);
   const [img, setImg] = useState<string | null>(null);
   const checkboxRef: LegacyRef<HTMLInputElement> = useRef(null);
@@ -153,4 +153,4 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
     </div>
   );
 };
-export default ProgramReact;
+export default Program;

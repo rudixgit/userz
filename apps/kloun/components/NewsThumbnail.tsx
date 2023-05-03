@@ -1,5 +1,4 @@
 import Link from 'next/link';
-
 import bgStrings from '@/components/bg';
 import { slugify } from '@/utils/formatter';
 import TimeAgo from 'react-timeago';

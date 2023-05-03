@@ -2,6 +2,7 @@
 import db from "../../../kloun/data/client";
 import CardNews from "../components/CardNews.astro";
 import CatButton from "../components/CatButton.astro";
+import ProgramReact from "../components/ProgramReact.jsx";
 import RudSense from "../components/RudSense.astro";
 import { slugify } from "../components/utils/formatter";
 import Layout from "../layouts/Layout.astro";
@@ -43,7 +44,7 @@ const cats = catsx.rows
 	title="Вицове и забавни котки и мемета"
 	description="Вицове и забавни котки и мемета"
 >
-	<h1 class="text-5xl text-gradient">Актуално</h1>
+	<h1 class="text-5xl">Актуално</h1>
 	<div class="flex flex-wrap gap-3">
 		{
 			news.map(
@@ -75,7 +76,7 @@ const cats = catsx.rows
 		<a class="btn dark:btn-ghost border-2" href="/news">Още новини</a>
 	</div>
 	<RudSense />
-	<h1 class="text-5xl text-gradient">Вицове</h1>
+	<h1 class="text-5xl">Вицове</h1>
 	<div class="my-3 flex w-full flex-wrap gap-3">
 		{
 			cats
@@ -103,7 +104,7 @@ const cats = catsx.rows
 		<a class="btn dark:btn-ghost border-2" href="/vicove">Всички</a>
 	</div>
 	<RudSense />
-	<h1 class="text-5xl text-gradient">Забавно в картинки</h1>
+	<h1 class="text-5xl">Забавно в картинки</h1>
 	<div class="snap-x flex overflow-auto py-2 snap-proximity programmindex">
 		{
 			memes.slice(0, 10).map(({ thumb }: { thumb: string }) => (
@@ -122,7 +123,7 @@ const cats = catsx.rows
 				</label>
 			))
 		}
-	</div>
+	</div>xx<ProgramReact limit={10} className="" />xx
 	<div class="flex flex-wrap justify-end my-2">
 		<a class="btn dark:btn-ghost border-2" href="/news">Всички</a>
 	</div>
