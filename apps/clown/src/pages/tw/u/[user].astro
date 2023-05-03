@@ -1,0 +1,132 @@
+---
+import db from "../../../../../kloun/data/client.js";
+import Layout from "../../../layouts/Layout.astro";
+import RudSense from '../../../components/RudSense.astro'
+
+import { normalizestr, templatizeline } from "../../../components/TwitterTemplatize.astro";
+ export type Tweet = {
+   screenName: string;
+   name: string;
+   description: string;
+   profileImageUrl: string;
+   tweets: ItemTweet[];
+ };
+ export type ItemTweet = {
+   id: string;
+   text: string | { id: number; text: string }[];
+   screenName: string;
+ 
+   name: string;
+   profileImageUrl: string;
+   createdAt: string;
+   originalPoster: {
+	 screenName: string;
+	 name: string;
+	 profileImageUrl: string;
+   } | null;
+ };
+ 
+ 
+  
+const { user } = Astro.params as { user: string };
+  
+const data = await db.get(user+'_tw');
+
+const cssx = templatizeline(JSON.stringify(data.tweets))
+	.keywordMatch?.map(
+	  (x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
+	)
+	.join("\n");
+  const reposts = Array.from(
+	new Set(
+	  data.tweets
+		.filter((item: ItemTweet) => item.originalPoster)
+		.map(
+		  (user: { originalPoster: { screenName: string } }) =>
+			user.originalPoster.screenName + "_tw"
+		)
+	)
+  );
+ 
+  const existget = await db.view("twitter/exist", {
+	  update: "lazy",
+	  keys: JSON.stringify(reposts),
+	  nocdn: "ok",
+	});
+	const exist = existget.rows?.map((it: { id: string }) =>
+	  it.id.replace("_tw", "")
+	);
+ 
+---
+
+<Layout title={` Twitter ecosphere  `} description={`Twitter ecosphere   `}>
+ 
+	 
+	 {data.tweets.map((t, i) => (
+		 <div
+	 
+		   class="bg-gray-800 dark:bg-white mb-2 rounded-md border boder-1 dark:border-gray-500 pb-2"
+		 >
+		   {i === 5 && <RudSense />}
+		   {i === 11 && <RudSense />}
+		 
+			 <div class="flex flex-shrink-0 p-2 pb-0">
+			   <div class="flex-shrink-0 group block">
+				 <div class="flex items-center">
+				   <amp-img
+					 width="48"
+					 height="48"
+					 class="inline-block   rounded-full"
+					 src={data.profileImageUrl}
+					 alt=""
+					 layout="fixed"
+				   />
+	 
+				   <div class="ml-2">
+					 <div class="leading-6 font-light text-xl">
+					   {data.name}
+					   <div class="text-xs leading-5 font-light">
+						 {t.createdAt}{" "}
+						 {t.originalPoster ? "| retweeted:" : "| tweeted:"}
+					   </div>
+					 </div>
+				   </div>
+				 </div>
+			   </div>
+			 </div>
+	 
+		   <div>
+			 {t.originalPoster && (
+			   <a
+				 class="flex items-center  bg-black w-fit"
+				 href={
+				   exist?.includes(t.originalPoster.screenName)
+					 ? "/tw/u/" + t.originalPoster.screenName
+					 : "https://twitter.com/" + t.originalPoster.screenName
+				 }
+			   >
+			 
+				   <img
+			 
+					 width="24"
+					 height="24"
+					 class="inline-block   rounded-full ml-14"
+					 src={t.originalPoster.profileImageUrl
+					   .replace("=--", "")
+					   .replace("--=", "")}
+					 alt=""
+				   />
+			 
+				 <div class="text-base leading-6 font-bold pl-2">
+				   {t.originalPoster.name} :
+				 </div>
+			   </a>
+			 )}
+			 <div class="flex flex-col">
+			    {t.text}
+			 </div>
+		   </div>
+		 </div>
+	   ))}
+	   {cssx}
+</Layout>

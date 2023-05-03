@@ -22,12 +22,14 @@
     "sass": "^1.62.1",
     "satori": "^0.7.2",
     "scale-crop-rotate": "^1.0.4",
+    "stopword": "^2.0.8",
     "tailwindcss": "^3.3.1",
     "transliteration": "^2.3.5"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.194",
     "@types/react": "^18.2.0",
+    "@types/stopword": "^2.0.0",
     "wrangler": "^2.17.0"
   }
 }

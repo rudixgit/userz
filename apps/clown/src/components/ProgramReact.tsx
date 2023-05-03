@@ -78,6 +78,7 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
 
     useEffect(() => {
         // initial fetch
+        console.log('initx')
         fetchMyAPI();
     }, []);
 

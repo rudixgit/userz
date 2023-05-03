@@ -1,0 +1,69 @@
+---
+import { eng } from 'stopword';
+export interface Props {
+ obj: string | { id: number; text: string }[];
+}
+
+export function removewords(str: string) {
+  const urlRegex =
+	/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/gi;
+  const userRegex = /@[a-zA-Z]*/g;
+  const hashTags = /#[a-zA-Z]*/g;
+  const expressions = /\b’[a-zA-Z]+\b/gi;
+  const expressions2 = /\b'[a-zA-Z]+\b/gi;
+  const stopWordRegex = new RegExp(`\\b(${eng.join("|")})\\b`, "gi");
+  //const emojiRegex = /[\u2700-\u27bf]|[\ud83c][\udde6-\uddff]|[\ud83d][\udc00-\ude4f]|[\ud83d][\ude80-\udeff]/gi;
+  //.replace(emojiRegex, (match) => `--=${match}=--`);
+
+  const processedSentence = str
+	.replace(expressions, (match: string) => `--=${match}=--`)
+	.replace(expressions2, (match: string) => `--=${match}=--`)
+	.replace(stopWordRegex, (match: string) => `--=${match}=--`)
+	.replace(hashTags, (match: string) => `--=${match}=--`)
+	.replace(userRegex, (match: string) => `--=${match}=--`)
+	.replace(urlRegex, (match) => `--=${match}=--`);
+  return processedSentence;
+}
+export function templatizeline(str: string) {
+  const filtered = removewords(str);
+  const keywordRegex = /--=(.*?)=--/g;
+  const substrings = filtered.split(keywordRegex);
+  const keywordMatch = filtered
+	.match(keywordRegex)
+	?.map((x) => x.replace("--=", "").replace("=--", ""));
+
+  return { substrings, keywordMatch };
+}
+export function normalizestr(str: string) {
+   return str
+	 .replace("@", "")
+	 .replaceAll("'", "")
+	 .replaceAll("/", "")
+	 .replaceAll(".", "")
+	 .replaceAll(":", "");
+ }
+const { obj } = Astro.props;
+ let str = obj;
+  if (Array.isArray(str)) {
+	str = str.map((x) => x.text).join("\n");
+  }
+  const lines = str.split("\n").map((line:string) => templatizeline(line));
+---
+
+<>
+ {lines.map(({ substrings, keywordMatch }:{substrings:string[],keywordMatch:string}) => {
+		 return (
+		   <p  class="ml-14">
+			 {substrings.map((substring:string) => {
+			   if (keywordMatch?.includes(substring)) {
+				 return (
+					 <span class={"pseudo" + normalizestr(substring)} />
+				 );
+			   }
+			   return substring;
+			 })}
+		   </p>
+		 );
+	   })}
+</>
+ 
