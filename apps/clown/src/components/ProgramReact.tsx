@@ -1,4 +1,5 @@
-import { LegacyRef, useEffect, useRef, useState } from 'react';
+import React, { LegacyRef, useEffect, useRef, useState } from 'react';
+
 
 export interface Item {
     id: number;
@@ -63,6 +64,7 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
             `https://pr0gramm.com/api/items/get?flags=1&promoted=1${older ? `&older=${older}` : ""
             }`
         );
+        console.log(res2)
         const response = await res2.json();
 
         if (older) {
@@ -85,6 +87,7 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
 
     return (
         <div className={className}>
+
             {items
                 .slice(0, limit || items.length)
                 .map(
@@ -106,11 +109,11 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
                             onClick={() => setImg(`${image}`)}
                         >
                             <div className="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 m-1 cursor-pointer flex">
-                                <amp-img
+                                <img
                                     width="128"
                                     height="128"
-                                    class="rounded-lg"
-                                    layout="fixed"
+                                    className="rounded-lg"
+
                                     alt="pr0gramm"
                                     src={`https://thumb.pr0gramm.com/${thumb}`}
                                 />
@@ -140,11 +143,10 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
                                 <source src={"https://vid.pr0gramm.com/" + img} />
                             </video>
                         ) : (
-                            <amp-img
+                            <img
                                 src={"https://img.pr0gramm.com/" + img}
                                 alt=""
-                                layout="responsive"
-                                class="aspect-auto max-h-screen rounded-md border-4  border-black z-50"
+                                className="aspect-auto max-h-screen rounded-md border-4  border-black z-50"
                             />
                         )}
                     </div>
