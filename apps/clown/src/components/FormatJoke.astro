@@ -1,8 +1,7 @@
 ---
 import RudSense from "./RudSense.astro";
 import { formattedjoke } from "./utils/formatter";
-
-const { joke, short } = Astro.props;
+const { joke } = Astro.props;
 export const remappedJokeFunction = (joke: string) => {
     let i1 = 0;
     return formattedjoke(joke)

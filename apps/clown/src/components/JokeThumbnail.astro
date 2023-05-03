@@ -1,5 +1,6 @@
 ---
 import FormatJoke from "./FormatJoke.astro";
+import FormatJokeShort from "./FormatJokeShort.astro";
 import Modal from "./Modal.astro";
 
 export interface Doc {
@@ -40,7 +41,7 @@ const jlen = joke.length <= 150;
 
     <div class="jokewrap">
         <div class="py-5 font-black text-md">
-            <FormatJoke joke={joke} short={short} />
+                {short ? <FormatJokeShort joke={joke} />: <FormatJoke joke={joke} />}
         </div>
     </div>
     {
@@ -48,7 +49,8 @@ const jlen = joke.length <= 150;
             (!jlen ? (
                 <Modal id={id}>
                     <a
-                        onclick={`document.getElementById("${id}").showModal()`}
+                        onclick={`(function(e){e.preventDefault(); document.getElementById("${id}").showModal()})(event)`}
+                        href={"/joke/"+id}
                         slot="button"
                         class="btn absolute right-2 -mt-12 flex cursor-pointer border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white rounded-l-none rounded-t-none"
                     >
