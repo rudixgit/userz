@@ -1,9 +1,8 @@
 ---
 import { uniqBy } from "lodash";
-import db from "../../../../../../kloun/data/client";
-import CardNews from "../../../../components/CardNews.astro";
-import RudSense from "../../../../components/RudSense.astro";
-import Layout from "../../../../layouts/Layout.astro";
+import db from "../../../../../kloun/data/client";
+ 
+ 
 function countAlphanumeric(str: string) {
 	const regex = /[a-zA-Z0-9а-яА-Я]/g;
 	const matches = str.match(regex);
@@ -16,39 +15,12 @@ function countAlphanumeric(str: string) {
 //   console.log('nums', nums);
 //   return nums.length > chars.length / 2;
 // }
+ 
+const { id } = Astro.params as { id: string; };
 
-function getLastP(arr: { type: string; content: string }[]) {
-	const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
-	const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
-		if (curr.type === "p") {
-			acc = index;
-		}
-		return acc;
-	}, 0);
-	const filteredArr = arr.slice(0, lastPElemIndex + 1);
-	const removeNoImages = filteredArr.filter(
-		(x) =>
-			x.type === "p" || (x.type === "img" && x.content.includes("http"))
-	);
-	const arrx = uniqBy(removeNoImages, function (e) {
-		return e.content;
-	});
-	return arrx;
-}
-const { newsid } = Astro.params as { newsid: string; slug: string };
-
-const data = await db.get(newsid);
-
-const news = await db.view("newsbg/news", {
-	reduce: false,
-	limit: 10,
-	update: "lazy",
-	start_key: data.nid,
-	descending: true,
-	skip: 1,
-});
-
-const { title, image, content, html } = data;
+const data = await db.get(id);
+ 
+const { title, content, html } = data;
 
 const parsed = content
 	? JSON.parse(content).html.map((x: string) => ({
@@ -57,12 +29,14 @@ const parsed = content
 	  }))
 	: (html as { type: string; content: string }[]);
 ---
-
-<Layout title={title} description={title} image={image}>
+<head>
+  <meta charset="UTF-8">
+</head>
+<div>
 	<h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
     	<article class="leading-relaxed" id="article">
 				{
-					getLastP(parsed).map(
+				 parsed.map(
 						({
 							type,
 							content,
@@ -81,8 +55,4 @@ const parsed = content
 				}
 			</article>
 			<div id="emp">император</div>
-			<div class="fb-comments" data-href={'https://kloun.lol'+Astro.url.pathname} data-width="" data-numposts="5"></div>
-		<div class="clear-both" /> 
- 
-	 
-</Layout>
+</div>
