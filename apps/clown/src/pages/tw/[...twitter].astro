@@ -7,7 +7,7 @@ const alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
   'M', 'N', 'O', 'P', 'Q', 'R',  'S', 'T', 'U', 'V', 'W', 'X',
   'Y', 'Z' ]
 const { twitter } = Astro.params as { twitter: string };
-const x = twitter.split("_") as string[];
+const x = twitter ? twitter.split("_") : ['a'] as string[];
 const pagenum = x[1] ? Number(x[1]) : 1;
 
 const skip = pagenum * 100 - 100;
@@ -34,6 +34,7 @@ const resp = await Promise.all([datax, itemsx]).then((values) => {
 		items: values[1].value,
 	};
 });
+console.log(resp)
 ---
 
 <Layout title={` Twitter ecosphere ${pagenum}`} description={`Twitter ecosphere   `}>
