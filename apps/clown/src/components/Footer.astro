@@ -7,59 +7,32 @@ const { hideFooter } = Astro.props;
 ---
 
 <footer class="relative">
-    <div
-        class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6 pb-6 bg gap-3 container mx-auto px-4"
-    >
+    <div class="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-6 pb-6 bg gap-3 container mx-auto px-4">
         <div class="z-10 text-sm">
-            <h3 class="headingbottom">Services</h3><a
-                class="block"
-                href="/vicove">Вицове</a
-            ><a class="block" href="/news">Новини</a><a
-                class="block"
-                href="https://eziktok.com/">ezikTok</a
-            ><a class="block" href="/business">Бизнес</a>
-        </div><div class="z-10 text-sm text-right sm:text-left">
-            <div class="headingbottom">&nbsp;</div><a
-                class="block"
-                href="/movies">Филми</a
-            ><a class="block" href="/tw">Туитър ДБ (бета)</a><a
-                class="block"
-                href="https://rudixops.eu/">DevOps</a
-            >
-        </div><div class="z-10 text-sm text-right sm:text-left hidden sm:block">
-        </div><div class="z-10 text-sm text-right sm:text-left hidden md:block">
-        </div><div class="z-10 text-sm">
-            <h3 class="headingbottom">Company</h3><a
-                class="block"
-                href="/other/about">За</a
-            ><a class="block" href="/other/contact">Контакт</a>
-        </div><div class="z-10 text-sm">
-            <h3 class="headingbottom text-right">Legal</h3><a
-                class="block text-right"
-                href="/other/terms">Terms of use</a
-            ><a class="block text-right" href="/other/privacy">Privacy policy</a
-            >
+            <h3 class="headingbottom">Services</h3><a class="block" href="/vicove">Вицове</a><a class="block" href="/news">Новини</a><a class="block" href="https://eziktok.com/">ezikTok</a><a class="block" href="/business">Бизнес</a>
         </div>
-    </div><div class="w-full absolute z-0 bottom-0">
-        <svg
-            xmlns="http://w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-            class="w-full z-10 hidden dark:block"
-            ><path
-                fill="#00b894"
-                d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
-            ></path></svg
-        ><svg
-            xmlns="http://w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-            class="w-full z-10 dark:hidden block"
-            ><path
-                fill="#2d3748"
-                d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"
-            ></path></svg
-        ><div
-            class="flex justify-center items-center text-xs text-gray-600 z-10 absolute w-full bottom-2 drop-shadow-md dark:text-white"
-        >
+        <div class="z-10 text-sm text-right sm:text-left">
+            <div class="headingbottom">&nbsp;</div><a class="block" href="/movies">Филми</a>
+            <a class="block" href="/tw">Туитър ДБ (бета)</a><a class="block" href="https://rudixops.com/">DevOps</a>
+        </div>
+        <div class="z-10 text-sm text-right sm:text-left hidden sm:block">
+        </div>
+        <div class="z-10 text-sm text-right sm:text-left hidden md:block">
+        </div>
+        <div class="z-10 text-sm">
+            <h3 class="headingbottom">Company</h3><a class="block" href="/other/about">За</a><a class="block" href="/other/contact">Контакт</a>
+        </div>
+        <div class="z-10 text-sm">
+            <h3 class="headingbottom text-right">Legal</h3><a class="block text-right" href="/other/terms">Terms of use</a><a class="block text-right" href="/other/privacy">Privacy policy</a>
+        </div>
+    </div>
+    <div class="w-full absolute z-0 bottom-0">
+        <svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full z-10 hidden dark:block">
+            <path fill="#00b894" d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"></path>
+        </svg><svg xmlns="http://w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full z-10 dark:hidden block">
+            <path fill="#2d3748" d="m0 224 48 10.7C96 245 192 267 288 240c96-27 192-101 288-96s192 91 288 101.3c96 10.7 192-53.3 288-90.6 96-37.7 192-47.7 240-53.4l48-5.3v224H0Z"></path>
+        </svg>
+        <div class="flex justify-center items-center text-xs text-gray-600 z-10 absolute w-full bottom-2 drop-shadow-md dark:text-white">
             2023 rudixops | All Rights Reserved ®
         </div>
     </div>

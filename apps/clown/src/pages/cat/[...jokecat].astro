@@ -46,57 +46,37 @@ const { jokes, items } = resp;
 	description={`Вицове от ${cat}  `}
 >
 	<div class="text-sm font-bold">
-		<ul class="flex gap-2 items-center">
-			<li>
-				<a href={"/vicove"}>Вицове</a>{" "}
-			</li>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width={1.5}
-				stroke="currentColor"
-				class="w-5 h-5"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
-			</svg>
-			<li>
-				<a href={`/cat/${x[0]}`}>{cat}</a>
-			</li>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width={1.5}
-				stroke="currentColor"
-				class="w-5 h-5"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
-			</svg>
-			<li>
-				<a href={`/cat/${x[0]}/${pagenum}`}>{pagenum}</a>
-			</li>
-		</ul>
+	<ul class="flex gap-2 items-center">
+		<li>
+			<a href={"/vicove"}>Вицове</a>{" "}
+		</li>
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width={1.5} stroke="currentColor" class="w-5 h-5">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+		</svg>
+		<li>
+			<a href={`/cat/${x[0]}`}>{cat}</a>
+		</li>
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width={1.5} stroke="currentColor" class="w-5 h-5">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+		</svg>
+		<li>
+			<a href={`/cat/${x[0]}/${pagenum}`}>{pagenum}</a>
+		</li>
+	</ul>
+</div>
+<div class="flex flex-wrap">
+	<div class="joke">
+		<RudSense />
 	</div>
-	<div class="flex flex-wrap">
-		<div class="joke">
-			<RudSense />
-		</div>
-		{
-			jokes.map((item: Doc) => (
-				<JokeThumbnail item={item} showcats={false} short={true} />
-			))
-		}
-		<div class="joke">
-			<RudSense />
-		</div>
+	{
+	jokes.map((item: Doc) => (
+	<JokeThumbnail item={item} showcats={false} short={true} />
+	))
+	}
+	<div class="joke">
+		<RudSense />
 	</div>
+</div>
 	<Pagination
 		items={items}
 		currentPage={pagenum}
