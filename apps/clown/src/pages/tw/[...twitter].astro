@@ -1,28 +1,52 @@
 ---
 import db from "../../../../kloun/data/client.js";
- 
+
 import Pagination from "../../components/Pagination.astro";
 import Layout from "../../layouts/Layout.astro";
-const alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-  'M', 'N', 'O', 'P', 'Q', 'R',  'S', 'T', 'U', 'V', 'W', 'X',
-  'Y', 'Z' ]
+const alphabet = [
+	"A",
+	"B",
+	"C",
+	"D",
+	"E",
+	"F",
+	"G",
+	"H",
+	"I",
+	"J",
+	"K",
+	"L",
+	"M",
+	"N",
+	"O",
+	"P",
+	"Q",
+	"R",
+	"S",
+	"T",
+	"U",
+	"V",
+	"W",
+	"X",
+	"Y",
+	"Z",
+];
 const { twitter } = Astro.params as { twitter: string };
-const x = twitter ? twitter.split("_") : ['a'] as string[];
+const x = twitter ? twitter.split("_") : (["a"] as string[]);
 const pagenum = x[1] ? Number(x[1]) : 1;
 
 const skip = pagenum * 100 - 100;
 
- 
 const datax = db.view("twitter/byletter", {
 	reduce: false,
-	key: x[0] || 'a',
+	key: x[0] || "a",
 	limit: 100,
 	skip: skip,
 	update: "lazy",
 });
 const itemsx = db.view("twitter/byletter", {
 	reduce: true,
-	key: x[0] || 'a',
+	key: x[0] || "a",
 	limit: 1,
 	group: false,
 	update: "lazy",
@@ -34,16 +58,37 @@ const resp = await Promise.all([datax, itemsx]).then((values) => {
 		items: values[1].value,
 	};
 });
- 
 ---
 
-<Layout title={` Twitter ecosphere ${pagenum}`} description={`Twitter ecosphere   `}>
+<Layout
+	title={` Twitter ecosphere ${pagenum}`}
+	description={`Twitter ecosphere   `}
+>
 	<div class="flex flex-wrap justify-center items-center gap-1 mb-3">
-	 {alphabet.map(x => (<a href={'/tw/'+x.toLowerCase()+'_1'} class="bg-slate-900 p-2 font-bold text-white dark:bg-white dark:text-slate-900 rounded-md">{x}</a>))}
+		{
+			alphabet.map((x) => (
+				<a
+					href={"/tw/" + x.toLowerCase() + "_1"}
+					class="bg-slate-900 p-2 font-bold text-white dark:bg-white dark:text-slate-900 rounded-md"
+				>
+					{x}
+				</a>
+			))
+		}
 	</div>
 	<div class="flex flex-row flex-wrap justify-center p-0 gap-2">
-		{resp.users.map(({id}:{id:string}) => (<a class="active flex  bg-slate-900 font-bold text-white dark:bg-white dark:text-slate-900 px-3 rounded-xl text-sm" href={"/tw/u/"+id.replace('_tw','')}> {id.replace('_tw','')} </a>))}
-		</div>
+		{
+			resp.users.map(({ id }: { id: string }) => (
+				<a
+					class="active flex  bg-slate-900 font-bold text-white dark:bg-white dark:text-slate-900 px-3 rounded-xl text-sm"
+					href={"/tw/u/" + id.replace("_tw", "")}
+				>
+					{" "}
+					{id.replace("_tw", "")}{" "}
+				</a>
+			))
+		}
+	</div>
 	<Pagination
 		items={resp.items}
 		currentPage={pagenum}

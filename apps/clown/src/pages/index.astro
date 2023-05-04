@@ -1,5 +1,4 @@
 ---
-
 import db from "../../../kloun/data/client";
 import CardNews from "../components/CardNews.astro";
 import CatButton from "../components/CatButton.astro";
@@ -7,7 +6,7 @@ import ProgramReact from "../components/ProgramReact.jsx";
 import RudSense from "../components/RudSense.astro";
 import { jokecats } from "../components/utils/data/jokecats";
 import Layout from "../layouts/Layout.astro";
- 
+
 const newsx = db.view("newsbg/news", {
 	limit: 30,
 	update: "lazy",
@@ -18,13 +17,12 @@ const newsx = db.view("newsbg/news", {
 // 	"https://pr0gramm.com/api/items/get?flags=1&promoted=1"
 // ).then((res) => res.json());
 
-const resp = await Promise.all([ newsx]).then((results) => ({
+const resp = await Promise.all([newsx]).then((results) => ({
 	news: results[0].rows,
 	memes: [],
 }));
 
-const {  news, memes } = resp;
-
+const { news, memes } = resp;
 ---
 
 <Layout
@@ -110,7 +108,11 @@ const {  news, memes } = resp;
 				</label>
 			))
 		}
-	</div> <ProgramReact limit={10} className="snap-x flex overflow-auto py-2 snap-proximity programmindex" /> 
+	</div>
+	<ProgramReact
+		limit={10}
+		className="snap-x flex overflow-auto py-2 snap-proximity programmindex"
+	/>
 	<div class="flex flex-wrap justify-end my-2">
 		<a class="btn dark:btn-ghost border-2" href="/news">Всички</a>
 	</div>

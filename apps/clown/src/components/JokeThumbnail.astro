@@ -7,7 +7,7 @@ export interface Doc {
     joke: string;
     cat: string;
     id?: string;
-    title?:string;
+    title?: string;
     _id: string;
     _rev?: string;
     doc?: object;
@@ -43,7 +43,13 @@ const jlen = joke.length <= 150;
 
     <div class="jokewrap">
         <div class="py-5 font-black text-md">
-                {short ? <FormatJokeShort joke={joke} />: <FormatJoke joke={joke} />}
+            {
+                short ? (
+                    <FormatJokeShort joke={joke} />
+                ) : (
+                    <FormatJoke joke={joke} />
+                )
+            }
         </div>
     </div>
     {
@@ -52,7 +58,7 @@ const jlen = joke.length <= 150;
                 <Modal id={id}>
                     <a
                         onclick={`(function(e){e.preventDefault(); document.getElementById("${id}").showModal()})(event)`}
-                        href={"/joke/"+id}
+                        href={"/joke/" + id}
                         slot="button"
                         class="btn absolute right-2 -mt-12 flex cursor-pointer border-gray-800 bg-black shadow-lg dark:border-gray-500 dark:bg-white rounded-l-none rounded-t-none"
                     >

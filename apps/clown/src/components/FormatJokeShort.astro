@@ -1,36 +1,31 @@
 ---
-import RudSense from "./RudSense.astro";
 import { formattedjoke } from "./utils/formatter";
 const { joke } = Astro.props;
 
- const substr = joke.slice(0, 150);
+const substr = joke.slice(0, 150);
 const jlen = joke.length <= 150;
-const lines = formattedjoke(
-  jlen ? joke.replace(/\.../g, "") : `${substr} ...`
-)
-  .split("\n")
-  .slice(0, 3);
- 
- 
+const lines = formattedjoke(jlen ? joke.replace(/\.../g, "") : `${substr} ...`)
+	.split("\n")
+	.slice(0, 3);
 ---
 
- 
-	<>
-		{lines.map((line: string) => (
-		  <p>
-			{line.endsWith("...") ? (
-			  <>
-				{line.replace(/\.../g, "")}{" "}
-				<span class="absolute h-6   w-8 text-4xl">
-				  <span class="absolute ml-1 leading-4 text-purple-600">
-					...
-				  </span>
-				</span>
-			  </>
-			) : (
-			  <>{line}</>
-			)}
-		  </p>
-		))}
-	  </>
- 
+<>
+	{
+		lines.map((line: string) => (
+			<p>
+				{line.endsWith("...") ? (
+					<>
+						{line.replace(/\.../g, "")}{" "}
+						<span class="absolute h-6   w-8 text-4xl">
+							<span class="absolute ml-1 leading-4 text-purple-600">
+								...
+							</span>
+						</span>
+					</>
+				) : (
+					<>{line}</>
+				)}
+			</p>
+		))
+	}
+</>
