@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/vercel/examples.git",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+	"apps/*"
+  ],
+  "devDependencies": {
+	"@types/async": "^3.2.20",
+	"eslint": "^8.39.0"
+  }
+}

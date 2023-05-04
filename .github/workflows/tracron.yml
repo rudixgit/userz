@@ -32,7 +32,7 @@ jobs:
           length=${#response}
           if [[ $length -gt 200 ]]; then
             echo "Output length is greater than 50 characters"
-            npm install
+            npm install puppeteer nano jsdom async sanitize-html
             cd ./.github/crons/trans
             node ./cron.mjs
           else
