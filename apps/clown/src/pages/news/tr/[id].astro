@@ -44,13 +44,7 @@ const parsed = content
 							type: string;
 							content: string;
 						}) =>
-							type === "p" ? (
-								<p class="text-md">{content}</p>
-							) : (
-								<div class="flex justify-center items-center">
-									<img src={content} class="rounded-md" />
-								</div>
-							)
+							type === "p" ? (<p>{content}</p>) : (<img src={content} />)
 					)
 				}
 			</article>
