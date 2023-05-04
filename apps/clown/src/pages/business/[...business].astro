@@ -47,6 +47,7 @@ if(business?.includes("/")) {
 	});
 	items = resp.items
 	firms = resp.firms
+ 
 } else {
 	  cats  = businesses.filter(i => i.value > 1200).sort((a,z) => z.value - a.value) 
 }
@@ -61,8 +62,14 @@ if(business?.includes("/")) {
 				  count={city.value}
 			  />))}
 		  </div>):(<div>
-			  <div class="my-5 flex w-full flex-wrap">
-				  dsadasd
+			  <div class="my-5 flex w-full flex-wrap gap-2">
+				  {firms.map(({value}:{value:string}) => (
+					  <CatButton
+						  title={value}
+						  url={"#" + value}
+					  />
+				  ))}
+			 
 				  </div>
 			  <Pagination
 			 items={items}
