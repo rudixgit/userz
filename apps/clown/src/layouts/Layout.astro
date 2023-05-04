@@ -83,7 +83,15 @@ const currentPath = 'https://kloun.lol'+Astro.url.pathname;
 			}
 			//# sourceURL=pen.js
 		</script>
-		<div id="fb-root"></div>
-		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=281985576166744&autoLogAppEvents=1" nonce="CaQdL6e8"></script>
+		<div id="fb-root"/> 
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=281985576166744&autoLogAppEvents=1" nonce="CaQdL6e8" /> 
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-PDX6T8DTFR" /> 
+		<script is:inline>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'G-PDX6T8DTFR');
+		</script>
 	</body>
 </html>
