@@ -21,9 +21,7 @@ export async function parseSanitizedHTML(html) {
 	return sanitized;
 }
 
-function timeout(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 const browser = await puppeteer.launch({
 	headless: "new", args: ['--disable-dev-shm-usage']
 });
@@ -51,44 +49,34 @@ export const trans = async ({ url, from, to }) => {
 	await page.goto(
 		`https://kloun-lol.translate.goog/news/tr/${url}/?_x_tr_sl=${from}&_x_tr_tl=${to}`, { waitUntil: "domcontentloaded" }
 	);
-	console.log('page loaded')
+
 	await page.waitForSelector("#emp", { visible: true });
-	console.log('emp loaded')
-	let element = await page.$eval('#emp', el => el.innerText)
+
+	async function checkForEmperor(emp) {
+		let element;
+		while (element !== emp) {
+
+			element = await page.$eval('#emp', el => el.innerText);
+
+			await new Promise(resolve => setTimeout(resolve, 1000));
+		}
+
+		return ('ok');
+	}
+
 	if (from === 'bg') {
-		const interval = setInterval(async () => {
-			if (element && element === 'emperor') {
-				console.log('done')
-				clearInterval(interval);
-				return;
-			} else {
-				console.log('trying')
-				element = await page.$eval('#emp font', el => el.innerText)
-				console.log(element)
-			}
-		}, 1000);
-
+		await checkForEmperor('emperor');
 	} else {
-		const interval = setInterval(async () => {
-			if (element && element === 'император') {
-				clearInterval(interval);
-				return;
-			} else {
-
-				element = await page.$eval('#emp font', el => el.innerText)
-				console.log(element)
-			}
-		}, 1000);
-
+		await checkForEmperor('император');
 	}
 
 	const myDivHtml = await page.evaluate(() => {
 		const myDiv = document.getElementById("article");
 		return myDiv.innerHTML;
 	});
-	console.log(myDivHtml)
+
 	await page.close();
-	await browser.close();
+	//await browser.close();
 	const clean = sanitizeHtml(myDivHtml, {
 		allowedTags: ["p", "img"],
 		allowedAttributes: {
