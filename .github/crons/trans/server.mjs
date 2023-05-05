@@ -24,34 +24,69 @@ export async function parseSanitizedHTML(html) {
 function timeout(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
+const browser = await puppeteer.launch({
+	headless: "new", args: ['--disable-dev-shm-usage']
+});
 
+async function waitUntil(condition) {
+	return await new Promise(resolve => {
+		const interval = setInterval(() => {
+			if (condition) {
+				resolve('foo');
+				clearInterval(interval);
+			};
+		}, 500);
+	});
+}
 
 export const trans = async ({ url, from, to }) => {
-	const browser = await puppeteer.launch({
-		headless: 'new', timeout: 0, args: ['--disable-dev-shm-usage']
-	});
+
 	const page = await browser.newPage();
+	await page.setViewport({
+		width: 5640,
+		height: 5480,
+		deviceScaleFactor: 1,
+	});
 	await page.setUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1');
 	await page.goto(
-		`https://kloun-lol.translate.goog/news/tr/${url}/?_x_tr_sl=${from}&_x_tr_tl=${to}`, { waitUntil: "domcontentloaded", timeout: 0 }
+		`https://kloun-lol.translate.goog/news/tr/${url}/?_x_tr_sl=${from}&_x_tr_tl=${to}`, { waitUntil: "domcontentloaded" }
 	);
-	await page.waitForSelector("#emp", { visible: true, timeout: 0 });
+	console.log('page loaded')
+	await page.waitForSelector("#emp", { visible: true });
+	console.log('emp loaded')
+	let element = await page.$eval('#emp', el => el.innerText)
 	if (from === 'bg') {
-		await page.waitForFunction(() => {
-			const element = document.getElementById('emp');
-			return element && element.textContent === 'emperor';
-		}, { timeout: 920000 });
+		const interval = setInterval(async () => {
+			if (element && element === 'emperor') {
+				console.log('done')
+				clearInterval(interval);
+				return;
+			} else {
+				console.log('trying')
+				element = await page.$eval('#emp font', el => el.innerText)
+				console.log(element)
+			}
+		}, 1000);
+
 	} else {
-		await page.waitForFunction(() => {
-			const element = document.getElementById('emp');
-			return element && element.textContent === 'император';
-		}, { timeout: 920000 });
+		const interval = setInterval(async () => {
+			if (element && element === 'император') {
+				clearInterval(interval);
+				return;
+			} else {
+
+				element = await page.$eval('#emp font', el => el.innerText)
+				console.log(element)
+			}
+		}, 1000);
+
 	}
-	await timeout(5000)
+
 	const myDivHtml = await page.evaluate(() => {
 		const myDiv = document.getElementById("article");
 		return myDiv.innerHTML;
 	});
+	console.log(myDivHtml)
 	await page.close();
 	await browser.close();
 	const clean = sanitizeHtml(myDivHtml, {
