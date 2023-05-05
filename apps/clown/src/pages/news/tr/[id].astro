@@ -1,13 +1,9 @@
 ---
-import { uniqBy } from "lodash";
+ 
 import db from "../../../../../kloun/data/client";
  
  
-function countAlphanumeric(str: string) {
-	const regex = /[a-zA-Z0-9а-яА-Я]/g;
-	const matches = str.match(regex);
-	return matches ? matches.length : 0;
-}
+ 
 // function checkNumeric(str: string): boolean {
 //   const chars: string[] = str.split('');
 //   console.log('chars', chars);
