@@ -1,5 +1,5 @@
 ---
-import { uniqBy } from "lodash";
+import { shuffle, uniqBy } from "lodash";
 import db from "../../../../../../kloun/data/client";
 import CardNews from "../../../../components/CardNews.astro";
 import RudSense from "../../../../components/RudSense.astro";
@@ -35,19 +35,38 @@ function getLastP(arr: { type: string; content: string }[]) {
     });
     return arrx;
 }
-const { newsid } = Astro.params as { newsid: string; slug: string };
+const { newsid,slug } = Astro.params as { newsid: string; slug: string };
 
-const data = await db.get(newsid);
+ const keys = slug.split('-').filter(x => x.length > 4)
+ 
+const datax = db.get(newsid);
 
-const news = await db.view("newsbg/news", {
-    reduce: false,
-    limit: 10,
+// const news = await db.view("newsbg/news", {
+//     reduce: false,
+//     limit: 10,
+//     update: "lazy",
+//     start_key: data.nid,
+//     descending: true,
+//     skip: 1,
+// });
+
+const newsx =  db.view("newsbg/search", {
     update: "lazy",
-    start_key: data.nid,
+    keys: JSON.stringify(shuffle(keys)),
     descending: true,
-    skip: 1,
+    include_docs:"true",
+    limit:30
 });
-
+ 
+const resp = await Promise.all([datax, newsx]).then((values) => {
+    return {
+        data: values[0],
+        news: values[1].rows,
+    };
+});
+ 
+const {data,news} = resp
+ 
 const { title, image, content, html } = data;
 
 const parsed = content
@@ -91,30 +110,30 @@ const parsed = content
         <div class="clear-both"></div>
     </div>
     <div class="flex flex-wrap gap-3">
-        {
-            news.rows.map(
-                ({
-                    id,
-                    title,
-                    date,
-                    key,
-                    image,
-                }: {
-                    id: string;
-                    title: string;
-                    date: string;
-                    key: string;
-                    image: string;
-                }) => (
-                    <CardNews
-                        title={title}
-                        img={image}
-                        date={date}
-                        key={key}
-                        id={id}
-                    />
-                )
-            )
-        }
+      {
+          shuffle(news).slice(0,10).map(
+              ({
+                  _id,
+                  title,
+                  date,
+                  nid,
+                  image,
+              }: {
+                  _id: string;
+                  title: string;
+                  date: string;
+                  nid: string;
+                  image: string;
+              }) => (
+                  <CardNews
+                      title={title}
+                      img={image}
+                      date={date}
+                      key={nid}
+                      id={_id}
+                  />
+              )
+          )
+      }
     </div>
 </Layout>

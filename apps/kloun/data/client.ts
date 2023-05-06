@@ -15,6 +15,7 @@ async function fetcher(query: { [key: string]: string | number | boolean }) {
   const isPost = body?.includes("_id") || insert;
   const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
     }${id || ""}`;
+  console.log(buildurl)
   const response = await fetch(buildurl, {
     method: isPost ? "POST" : "GET",
     headers: {
@@ -42,7 +43,7 @@ async function view(id: string, params: Variables) {
     params: serialize(params),
   });
   const rows = d.rows.map((x: { key: string; id: string; value: Variables; doc: Variables }) => {
-    const val = typeof x.value === "string" ? { value: x.value } : { ...x.value, ...x.doc };
+    const val = typeof x.value === "string" ? { value: x.value, ...x.doc } : { ...x.value, ...x.doc };
     return { ...val, id: x.id, key: x.key, value: x.value };
   });
   if (rows.length === 1) {
