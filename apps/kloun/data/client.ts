@@ -15,7 +15,7 @@ async function fetcher(query: { [key: string]: string | number | boolean }) {
   const isPost = body?.includes("_id") || insert;
   const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
     }${id || ""}`;
-  console.log(buildurl)
+
   const response = await fetch(buildurl, {
     method: isPost ? "POST" : "GET",
     headers: {
