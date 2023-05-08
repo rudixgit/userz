@@ -1,5 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+export async function getStaticPaths() {
+  return {};
+}
 ---
 
 <Layout title="" description="">
@@ -14,5 +17,6 @@ import Layout from "../../layouts/Layout.astro";
 			отколкото в магазина. Ако искате да продадете нещо, добавете бързо,
 			лесно и безплатно обява в езикТок. Купувайте и продавайте с езикТок!
 		</p>
+		{new Date().toISOString()}
 	</div>
 </Layout>
