@@ -13,13 +13,13 @@ const newsx = db.view("newsbg/news", {
 	descending: true,
 });
 
-// const memesx = fetch(
-// 	"https://pr0gramm.com/api/items/get?flags=1&promoted=1"
-// ).then((res) => res.json());
+  const memesx = fetch(
+  	"https://img_proxy.kloun.workers.dev/"
+  ).then((res) => res.json());
 
-const resp = await Promise.all([newsx]).then((results) => ({
+const resp = await Promise.all([newsx,memesx]).then((results) => ({
 	news: results[0].rows,
-	memes: [],
+	memes: results[1].items,
 }));
 
 const { news, memes } = resp;
