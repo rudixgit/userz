@@ -24,7 +24,6 @@ export interface Item {
 export interface RootObject {
     atEnd: boolean;
     atStart: boolean;
-
     items: Item[];
     ts: number;
     cache: string;
@@ -61,7 +60,7 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
     }, [checkboxRef]);
     async function fetchMyAPI(older?: number) {
         const res2 = await fetch(
-            `https://pr0gramm.com/api/items/get?flags=1&promoted=1${older ? `&older=${older}` : ""
+            `https://img_proxy.kloun.workers.dev/${older ? `&older=${older}` : ""
             }`
         );
         console.log(res2)
