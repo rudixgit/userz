@@ -17,28 +17,25 @@ const datax = await db.view("twitter/exist", {
 
  
 const data = datax.rows[0]
-
-
-const title = titles[username.charAt(0).toLowerCase()].replace(
-     "[username]",
-     username
-);
-const mdescription = descriptions[username.charAt(0).toLowerCase()].replace(
-     "[username]",
-     username
-);
 const reposts = Array.from(
      new Set(
           data.tweets
-               .filter((item: ItemTweet) => item.originalPoster)
+               .filter((item: {originalPoster:string}) => item.originalPoster)
                .map(
                     (user: { originalPoster: { screenName: string } }) =>
                          user.originalPoster.screenName + "_tw"
                )
      )
 ) as string[]
-console.log(reposts)
-
+const key = username?.charAt(0).toLowerCase() || '' as string
+const title = titles[key].replace(
+     "[username]",
+     username
+) 
+const mdescription = descriptions[key].replace(
+     "[username]",
+     username
+);
 ---
 
 <Layout title={title} description={mdescription}>
