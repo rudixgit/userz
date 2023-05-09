@@ -40,12 +40,12 @@ const mdescription = descriptions[key].replace(
 
 <Layout title={title} description={mdescription}>
      <main>
-          <h1 class="text-gradient">userz.net/{username}</h1>
+          <code class="text-gradient text-xl font-bold">userz.net/{username}</code>
           <p class="instructions">
                {data.description}
           </p>
-          <a href={"https://kloun.lol/tw/u/" + username}>{username}</a>
-          <h1>friends</h1>
+     
+          <h1 class="text-gradient">friends</h1>
           <ul role="list" class="link-card-grid">
                {reposts.map((fr) => (
                     <Card
@@ -55,7 +55,7 @@ const mdescription = descriptions[key].replace(
                     />
                ))}
                </ul>
-          <h1>similar</h1>
+          <h1 class="text-gradient">similar</h1>
           <ul role="list" class="link-card-grid">
                {
                     datax.rows.map((x: { id: string }) => (
