@@ -7,23 +7,17 @@ const { username } = Astro.params;
 import db from "../../../kloun/data/client";
 import { descriptions, titles } from "../components/seo";
 //const pagenum = id ? Number(id.split("_")[1]) : 1 || 1;
-const datax = db.get(username + "_tw");
-const get_chunkx = db.view("company/twuser", {
-     limit: 1,
+ 
+const datax = await db.view("twitter/exist", {
      update: "lazy",
-     key: username + "_tw",
+     start_key: username+"_tw",
+     include_docs:true,
+     limit:10
 });
 
-const resp = await Promise.all([datax, get_chunkx]).then((results) => ({
-     data: results[0],
-     get_chunk: results[1],
-}));
-const { data, get_chunk } = resp;
-const chunk = await db.view("company/twuser", {
-     reduce: false,
-     update: "lazy",
-     key: get_chunk.value,
-});
+ 
+const data = datax.rows[0]
+
 
 const title = titles[username.charAt(0).toLowerCase()].replace(
      "[username]",
@@ -33,6 +27,18 @@ const mdescription = descriptions[username.charAt(0).toLowerCase()].replace(
      "[username]",
      username
 );
+const reposts = Array.from(
+     new Set(
+          data.tweets
+               .filter((item: ItemTweet) => item.originalPoster)
+               .map(
+                    (user: { originalPoster: { screenName: string } }) =>
+                         user.originalPoster.screenName + "_tw"
+               )
+     )
+) as string[]
+console.log(reposts)
+
 ---
 
 <Layout title={title} description={mdescription}>
@@ -42,9 +48,20 @@ const mdescription = descriptions[username.charAt(0).toLowerCase()].replace(
                {data.description}
           </p>
           <a href={"https://kloun.lol/tw/u/" + username}>{username}</a>
+          <h1>friends</h1>
+          <ul role="list" class="link-card-grid">
+               {reposts.map((fr) => (
+                    <Card
+                         href={"https://kloun.lol/tw/u/" + fr.replace("_tw", "")}
+                         title={fr.replace("_tw", "").toLowerCase()}
+                         body=""
+                    />
+               ))}
+               </ul>
+          <h1>similar</h1>
           <ul role="list" class="link-card-grid">
                {
-                    chunk.rows.map((x: { id: string }) => (
+                    datax.rows.map((x: { id: string }) => (
                          <Card
                               href={"/" + x.id.replace("_tw", "")}
                               title={x.id.replace("_tw", "").toLowerCase()}

@@ -1,4 +1,4 @@
-export const titles = {
+export const titles: { [key: string]: string } = {
 	"1": "All about [username]: From their profile to their photos, get the inside scoop on this Twitter superstar",
 	"2": "Browse [username]'s Twitter profile to discover their latest photos, thoughts, and insights",
 	"3": "Check out [username]'s Twitter photos and profile to see what makes this social media influencer stand out",
