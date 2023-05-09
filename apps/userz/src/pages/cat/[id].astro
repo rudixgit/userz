@@ -1,0 +1,38 @@
+---
+import db from "../../../../kloun/data/client";
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+const { id } = Astro.params as { id: string };
+//const pagenum = id ? Number(id.split("_")[1]) : 1 || 1;
+const pagenum = 1;
+const data = await db.view("twitter/byletter", {
+	limit: 150,
+	reduce: false,
+	update: "lazy",
+	key: id.toLowerCase(),
+	skip: pagenum * 150 - 150,
+});
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<h1 class="text-gradient">userz.net/{id}</h1>
+		<p class="instructions">
+			To get started, open the directory <code>src/pages</code> in your project.
+			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message
+			above.
+		</p>
+
+		<ul role="list" class="link-card-grid">
+			{
+				data.rows.map((x: { id: string }) => (
+					<Card
+						href={"/" + x.id.replace("_tw", "")}
+						title={x.id.replace("_tw", "").toLowerCase()}
+						body="Supercharge your project with new frameworks and libraries."
+					/>
+				))
+			}
+		</ul>
+	</main>
+</Layout>
