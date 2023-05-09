@@ -2,7 +2,6 @@
 import db from "../../../kloun/data/client";
 import CardNews from "../components/CardNews.astro";
 import CatButton from "../components/CatButton.astro";
-import ProgramReact from "../components/ProgramReact.jsx";
 import RudSense from "../components/RudSense.astro";
 import { jokecats } from "../components/utils/data/jokecats";
 import Layout from "../layouts/Layout.astro";
@@ -90,10 +89,10 @@ const { news, memes } = resp;
 	</div>
 	<RudSense />
 	<h1 class="text-5xl">Забавно в картинки</h1>
-	<div class="snap-x flex overflow-auto py-2 snap-proximity programmindex">
+	<div class="snap-x flex flex-nowrap py-2 snap-proximity overflow-x-auto">
 		{
-			memes.slice(0, 10).map(({ thumb }: { thumb: string }) => (
-				<label class="hover:animate-pulse snap-center" for="my-modal">
+			memes.slice(0, 20).map(({ thumb }: { thumb: string }) => (
+				<label class="hover:animate-pulse snap-center flex-shrink-0" for="my-modal">
 					<div class="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 m-1 cursor-pointer flex">
 						<img
 							width="128"
@@ -109,10 +108,8 @@ const { news, memes } = resp;
 			))
 		}
 	</div>
-	<ProgramReact
-		limit={10}
-		className="snap-x flex overflow-auto py-2 snap-proximity programmindex"
-	/>
+  
+	
 	<div class="flex flex-wrap justify-end my-2">
 		<a class="btn dark:btn-ghost border-2" href="/memes">Всички</a>
 	</div>
