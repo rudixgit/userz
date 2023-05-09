@@ -351,7 +351,7 @@ importers:
         version: 8.38.0
       eslint-config-next:
         specifier: canary
-        version: 13.4.1-canary.2(eslint@8.38.0)(typescript@4.8.4)
+        version: 13.4.2-canary.3(eslint@8.38.0)(typescript@4.8.4)
       typescript:
         specifier: 4.8.4
         version: 4.8.4
@@ -5119,8 +5119,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/eslint-plugin-next@13.4.1-canary.2:
-    resolution: {integrity: sha512-XoOYNJGQTUjj1RcjmGm+NTDvup1TKVWZfJibsVx1HIXfRI/SRlGta0nHvYrA8cC0Nq9+WNPZJNYYJlqTPmybLA==}
+  /@next/eslint-plugin-next@13.4.2-canary.3:
+    resolution: {integrity: sha512-N102fG5fyY9mCsuAt2bBdFVv1UGSxTB84s+R8DyM+zMoxvI1DexXtOLPwf/Ea29zn/KSJGyasxX8L7CKnw4mUA==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -8841,8 +8841,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-next@13.4.1-canary.2(eslint@8.38.0)(typescript@4.8.4):
-    resolution: {integrity: sha512-rCixZTGErKU7CZlcjDlAPn+GmM6ELZ7TEM4OKd/P04HjJch+scelGKjFV74vvn3s+l+gEd9NfjM4gZNe1zLjZg==}
+  /eslint-config-next@13.4.2-canary.3(eslint@8.38.0)(typescript@4.8.4):
+    resolution: {integrity: sha512-CsRQb3MFydrrlgZbChg1saotlE0fqR0QEr4+3wOriuiXgdjcgksX7QMmeoqGPfVqZbIzdmkxzao2RGd9G2OcrQ==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -8850,7 +8850,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.4.1-canary.2
+      '@next/eslint-plugin-next': 13.4.2-canary.3
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.59.2(eslint@8.38.0)(typescript@4.8.4)
       eslint: 8.38.0
