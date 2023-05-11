@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer  {
+	.bg {
+		@apply bg-slate-900 dark:bg-gray-100 text-gray-400 dark:text-gray-900;
+	}
+
+	html {
+		@apply m-0 p-0 bg;
+		font-family: system-ui, sans-serif;
+	}
+	h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 0;
+	}
+}
+.typed-cursor--blink,.typed-cursor {
+	display: none;
+}

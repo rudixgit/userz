@@ -30,9 +30,13 @@ export type ItemTweet = {
 };
 
 const { user } = Astro.params as { user: string };
-
 const data = await db.get(user + "_tw");
-
+if (data.error) {
+	return new Response("Not Found", {
+		status: 404,
+		statusText: "Not Found",
+	});
+}
 const cssx = templatizeline(JSON.stringify(data.tweets))
 	.keywordMatch?.map(
 		(x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`

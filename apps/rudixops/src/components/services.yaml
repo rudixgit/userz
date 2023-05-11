@@ -1,0 +1,86 @@
+name: RudixOps
+description: AWS DevOps as a Service
+families:
+  - name: Serverless
+    description: Deploy serverless applications using AWS Lambda and related services.
+    services:
+    - name: AWS Lambda
+      description: Run your code without provisioning or managing servers.
+      useCases:
+      - Microservices-based applications
+      - Event-driven applications
+      - Real-time data processing
+    - name: Amazon API Gateway
+      description: Create, publish, and secure APIs at any scale.
+      useCases:
+      - RESTful APIs
+      - Websocket APIs
+      - Microservices-based applications
+    - name: Amazon DynamoDB
+      description: Fully-managed NoSQL database service that provides fast and predictable performance.
+      useCases:
+      - Web and mobile applications
+      - Gaming and social apps
+      - IoT and real-time systems
+    - name: Amazon S3
+      description: Object storage built to store and retrieve any amount of data from anywhere.
+      useCases:
+      - Backup and restore
+      - Data lakes and analytics
+      - Static website hosting
+    - name: AWS Step Functions
+      description: Coordinate the components of your application using visual workflows.
+      useCases:
+      - Microservices-based applications
+      - ETL workflows
+      - Image and media processing
+    - name: AWS AppSync
+      description: Develop and deploy serverless GraphQL APIs with real-time data synchronization and offline programming features.
+      useCases:
+      - Mobile and web applications
+      - IoT applications
+      - Real-time data processing
+    - name: AWS EventBridge
+      description: Serverless event bus that makes it easy to connect applications using data from your own applications, integrated Software-as-a-Service (SaaS) applications, and AWS services.
+      useCases:
+      - Serverless architectures
+      - Data-driven applications
+      - Event-driven architectures
+  - name: Continuous Integration/Continuous Deployment (CI/CD)
+    description: Automate your software development pipeline and deploy your applications with ease.
+    services:
+    - name: AWS CodePipeline
+      description: Build, test, and deploy your code every time there is a code change, based on the release process models you define.
+      useCases:
+      - Web applications
+      - Mobile applications
+      - Serverless applications
+    - name: AWS CodeBuild
+      description: Fully-managed build service that compiles source code, runs tests, and produces software packages that are ready to deploy.
+      useCases:
+      - Web applications
+      - Mobile applications
+      - Serverless applications
+    - name: AWS CodeDeploy
+      description: Automate code deployments to any instance, including Amazon EC2 instances and instances running on-premises.
+      useCases:
+      - Web applications
+      - Mobile applications
+      - Serverless applications
+  - name: Infrastructure as Code
+    description: Provision and manage your AWS infrastructure using code, and avoid manual configuration errors.
+    services:
+    - name: AWS CloudFormation
+      description: Create and manage a collection of related AWS resources, provision them in an orderly and predictable fashion, and manage them as a single unit.
+      useCases:
+      - Cloud infrastructure
+      - On-premises infrastructure
+      - Hybrid infrastructure
+    - name: AWS CDK
+      description: Define cloud infrastructure using familiar programming languages and deploy it using AWS CloudFormation.
+      useCases:
+      - Cloud infrastructure
+      - On-premises infrastructure
+      - Hybrid infrastructure
+    - name: Terraform
+      description: Define infrastructure as code using a simple, declarative language,
