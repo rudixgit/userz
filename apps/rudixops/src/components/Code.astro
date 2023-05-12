@@ -10,6 +10,11 @@ const codex = hljs.highlight(stringx, {
     language: "javascript",
 }).value;
 const lines = Array.from(Array(codex.split("\n").length).keys());
+const nav = [
+    {file:"package.json",selected:true},
+    {file:"package.json"},
+    {file:"package.json"},
+]
 ---
 
 <div class="relative lg:static xl:pl-10">
@@ -52,29 +57,34 @@ const lines = Array.from(Array(codex.split("\n").length).keys());
             >
             </div>
             <div>
+                <div class="p-3 flex">
                 <svg
                     aria-hidden="true"
                     viewBox="0 0 42 10"
                     fill="none"
                     class="h-2.5 w-auto stroke-slate-500/30"
                 >
-                    <circle cx="5" cy="5" r="4.5"></circle>
-                    <circle cx="21" cy="5" r="4.5"></circle>
-                    <circle cx="37" cy="5" r="4.5"></circle>
+                    <circle cx="5" cy="5" r="5" fill="#FF5F57"></circle>
+                    <circle cx="21" cy="5" r="5" fill="#FEBC2F"></circle>
+                    <circle cx="37" cy="5" r="5" fill="#28C840"></circle>
                 </svg>
+                <div class="text-xs w-full -mt-1 text-center font-bold">rudixops</div>
+                </div>
                 <div>
-                    <div class="mt-4 flex text-xs">
-                        <div
-                            class="flex h-6 rounded-t-md bg-gradient-to-r from-sky-400/30 via-sky-400 to-sky-400/30 pt-px px-px font-medium text-sky-300"
-                        >
+                    <div class="-ml-px mt-2 flex text-xs">
+                        {nav.map(({file}:{file:string}) => (
                             <div
-                                class="flex items-center rounded-t-md px-2.5 bg"
+                                class="flex h-6 rounded-t-md  border border-slate-300/5 text-sky-300"
                             >
-                                package.json
+                                <div
+                                    class="flex items-center rounded-t-md px-2.5 bg"
+                                >
+                                   {file}
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
-                    <div class="p-px bg-black -mt-px"></div>
+                    <div class="-mt-px border-t border-slate-300/5"></div>
                 </div>
                 <div class="flex items-start px-1 text-sm">
                     <div
@@ -85,7 +95,7 @@ const lines = Array.from(Array(codex.split("\n").length).keys());
                     <div>
                         {
                             lines.map((_x, i) => (
-                                <div id={"code" + i} class="font-mono" />
+                                <div id={"code" + i} class="font-mono flex" />
                             ))
                         }
                     </div>
@@ -99,33 +109,33 @@ const lines = Array.from(Array(codex.split("\n").length).keys());
 
 <script>
     class AstroGreet extends HTMLElement {
-        constructor() {
-            super();
-            let i = 0;
-            let sum = 0;
-            const message = this.dataset.message;
-            const arrx = this.dataset.arr?.split("\n");
-            console.log(arrx);
-            const arr = message!.split("\n");
-            while (i < arr.length) {
-                sum = sum += arr[i].length;
-                const indent = arrx![i].split("  ").length * 10;
-                const xx = `<div style="width:${indent}px;" class="float-left font-mono relative">
-                    <div class="absolute select-none border-r border-slate-300/5 pr-4 font-mono text-slate-600 text-right w-3">
-                        ${i}
-                    </div>&nbsp;</div> ${arr[i]}
+     constructor() {
+         super();
+         let i = 0;
+         let sum = 0;
+         const message = this.dataset.message;
+         const arrx = this.dataset.arr?.split("\n");
+         console.log(arrx);
+         const arr = message!.split("\n");
+         while (i < arr.length) {
+             sum = sum += arr[i].length;
+             const indent = arrx![i].split("  ").length * 15;
+             const xx = `<div style="width:${indent}px;" class="font-mono relative">
+                    <div class="select-none border-r border-slate-300/5 -ml-4 font-mono text-slate-600 w-8 text-right pr-2">
+                        ${i + 1}
+                    </div> </div> ${arr[i]}
                     </div>`;
-                new Typed("#code" + i, {
-                    strings: [xx],
-                    typeSpeed: 1,
-                    startDelay: sum,
-                });
-                i++;
-            }
-        }
-    }
+             new Typed("#code" + i, {
+                 strings: [xx],
+                 typeSpeed: 1,
+                 startDelay: sum,
+             });
+             i++;
+         }
+     }
+ }
 
-    customElements.define("astro-greet", AstroGreet);
+ customElements.define("astro-greet", AstroGreet);
 </script>
 <script is:inline>
     const message = this.dataset.message;
