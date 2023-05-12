@@ -24,7 +24,11 @@
 		@apply hover:underline;
 		color: #9CDCFE !important;
 		font-weight: bold;
-		 
+	}
+	.hljs-string {
+		@apply float-right;
+		color: #9fdb73 !important;
+		font-weight: bold;
 	}
 	.hljs-punctuation {
 		color: #cfcfcf !important;
@@ -32,9 +36,7 @@
 		font-size: 0.8rem;
 	}
 }
-.typed-cursor--blink,.typed-cursor {
-	display: none;
-}
+ 
 #hero-lightpass img {
 	width: 100%;
 	height: auto;

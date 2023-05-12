@@ -10,96 +10,59 @@ const codex = hljs.highlight(stringx, {
     language: "javascript",
 }).value;
 const lines = Array.from(Array(codex.split("\n").length).keys());
-const nav = [
-    {file:"package.json",selected:true},
-    {file:"package.json"},
-    {file:"package.json"},
-]
 ---
 
-<div class="relative lg:static xl:pl-10">
-    <div class="relative">
-        <img
-            alt=""
-            width="530"
-            height="530"
-            decoding="async"
-            data-nimg="1"
-            class="absolute -right-64 top-64"
-            style="color:transparent"
-            src="/blur-cyan.d28a5585.png"
-        />
-        <img
-            alt=""
-            width="567"
-            height="567"
-            decoding="async"
-            data-nimg="1"
-            class="absolute top-10 -right-44"
-            style="color:transparent"
-            src="/blur-indigo.b752cf77.png"
-        />
+<div class="relative">
+    <img
+        alt=""
+        width="530"
+        height="530"
+        decoding="async"
+        data-nimg="1"
+        class="absolute -right-64 top-64"
+        style="color:transparent"
+        src="/blur-cyan.d28a5585.png"
+    />
+    <img
+        alt=""
+        width="567"
+        height="567"
+        decoding="async"
+        data-nimg="1"
+        class="absolute top-10 -right-44"
+        style="color:transparent"
+        src="/blur-indigo.b752cf77.png"
+    />
+    <div
+        class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
+    >
+    </div>
+    <div
+        class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
+    >
+    </div>
+    <div class="relative rounded-b-2xl bg-[#0A101F]/80 ring-1 ring-white/10">
         <div
-            class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
+            class="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-sky-300/0 via-sky-300/70 to-sky-300/0"
         >
         </div>
         <div
-            class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-sky-300 via-sky-300/70 to-blue-300 opacity-10"
+            class="absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-blue-400/0 via-blue-400 to-blue-400/0"
         >
         </div>
-        <div class="relative rounded-2xl bg-[#0A101F]/80 ring-1 ring-white/10">
+
+        <div class="flex items-start px-1 text-sm">
             <div
-                class="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-sky-300/0 via-sky-300/70 to-sky-300/0"
-            >
-            </div>
-            <div
-                class="absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-blue-400/0 via-blue-400 to-blue-400/0"
+                aria-hidden="true"
+                class="select-none border-r border-slate-300/5 pr-4 font-mono text-slate-600 text-right pb-4"
             >
             </div>
             <div>
-                <div class="p-3 flex">
-                <svg
-                    aria-hidden="true"
-                    viewBox="0 0 42 10"
-                    fill="none"
-                    class="h-2.5 w-auto stroke-slate-500/30"
-                >
-                    <circle cx="5" cy="5" r="5" fill="#FF5F57"></circle>
-                    <circle cx="21" cy="5" r="5" fill="#FEBC2F"></circle>
-                    <circle cx="37" cy="5" r="5" fill="#28C840"></circle>
-                </svg>
-                <div class="text-xs w-full -mt-1 text-center font-bold">rudixops</div>
-                </div>
-                <div>
-                    <div class="-ml-px mt-2 flex text-xs">
-                        {nav.map(({file}:{file:string}) => (
-                            <div
-                                class="flex h-6 rounded-t-md  border border-slate-300/5 text-sky-300"
-                            >
-                                <div
-                                    class="flex items-center rounded-t-md px-2.5 bg"
-                                >
-                                   {file}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div class="-mt-px border-t border-slate-300/5"></div>
-                </div>
-                <div class="flex items-start px-1 text-sm">
-                    <div
-                        aria-hidden="true"
-                        class="select-none border-r border-slate-300/5 pr-4 font-mono text-slate-600 text-right pb-4"
-                    >
-                    </div>
-                    <div>
-                        {
-                            lines.map((_x, i) => (
-                                <div id={"code" + i} class="font-mono flex" />
-                            ))
-                        }
-                    </div>
-                </div>
+                {
+                    lines.map((_x, i) => (
+                        <div id={"code" + i} class="font-mono flex" />
+                    ))
+                }
             </div>
         </div>
     </div>
@@ -109,33 +72,37 @@ const nav = [
 
 <script>
     class AstroGreet extends HTMLElement {
-     constructor() {
-         super();
-         let i = 0;
-         let sum = 0;
-         const message = this.dataset.message;
-         const arrx = this.dataset.arr?.split("\n");
-         console.log(arrx);
-         const arr = message!.split("\n");
-         while (i < arr.length) {
-             sum = sum += arr[i].length;
-             const indent = arrx![i].split("  ").length * 15;
-             const xx = `<div style="width:${indent}px;" class="font-mono relative">
+        constructor() {
+            super();
+
+            let sum = 0;
+            const message = this.dataset.message;
+            const arrx = this.dataset.arr?.split("\n");
+            console.log(arrx);
+            const arr = message!.split("\n");
+            function go(i: number) {
+                sum = sum += arr[i].length;
+                console.log(arrx![i].split("  ").length);
+                const indent = arrx![i].split("  ").length * 15;
+                const xx = `<div style="width:${indent}px;" class="font-mono relative">
                     <div class="select-none border-r border-slate-300/5 -ml-4 font-mono text-slate-600 w-8 text-right pr-2">
                         ${i + 1}
                     </div> </div> ${arr[i]}
                     </div>`;
-             new Typed("#code" + i, {
-                 strings: [xx],
-                 typeSpeed: 1,
-                 startDelay: sum,
-             });
-             i++;
-         }
-     }
- }
-
- customElements.define("astro-greet", AstroGreet);
+                new Typed("#code" + i, {
+                    strings: [xx],
+                    showCursor: false,
+                    typeSpeed: -1,
+                    onComplete: () => {
+                        const next = i + 1;
+                        go(next);
+                    },
+                });
+            }
+            go(0);
+        }
+    }
+    customElements.define("astro-greet", AstroGreet);
 </script>
 <script is:inline>
     const message = this.dataset.message;
