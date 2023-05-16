@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "include": [
+	"/*"
+  ],
+  "exclude": [
+	"/1.txt",
+	"/[id].jpg.txt",
+	"/_astro/_...business_.3a823be5.css",
+	"/_astro/_...jokecat_.de0b1a92.css",
+	"/_astro/client.7e8eeea6.js",
+	"/_astro/page.0fccd9dd.js",
+	"/_worker.js",
+	"/ads.js",
+	"/ads.txt",
+	"/amp.js"
+  ]
+}

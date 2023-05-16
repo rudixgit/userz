@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import db from "../../../../../kloun/data/client.js";
 
+
 export const get: APIRoute = async function get({ params }) {
 	const id = params.id || ''
 
@@ -11,7 +12,7 @@ export const get: APIRoute = async function get({ params }) {
 	});
 
 	const response = await fetch(datax.image);
-	const buffer = Buffer.from(await response.arrayBuffer());
+	const buffer = await response.arrayBuffer()
 
 	return new Response(buffer, {
 		status: 200,
