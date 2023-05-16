@@ -19,12 +19,18 @@ importers:
       '@astrojs/image':
         specifier: ^0.16.7
         version: 0.16.7(astro@2.4.2)
+      '@astrojs/prefetch':
+        specifier: ^0.2.1
+        version: 0.2.1
       '@astrojs/react':
         specifier: ^2.1.3
         version: 2.1.3(@types/react-dom@18.2.4)(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
       '@astrojs/tailwind':
         specifier: ^3.1.2
         version: 3.1.2(astro@2.4.2)(tailwindcss@3.3.2)
+      '@cloudflare/kv-asset-handler':
+        specifier: ^0.3.0
+        version: 0.3.0
       astro:
         specifier: ^2.4.2
         version: 2.4.2(sass@1.62.1)
@@ -351,7 +357,7 @@ importers:
         version: 8.38.0
       eslint-config-next:
         specifier: canary
-        version: 13.4.2-canary.3(eslint@8.38.0)(typescript@4.8.4)
+        version: 13.4.3-canary.0(eslint@8.38.0)(typescript@4.8.4)
       typescript:
         specifier: 4.8.4
         version: 4.8.4
@@ -756,6 +762,12 @@ packages:
       vfile: 5.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@astrojs/prefetch@0.2.1:
+    resolution: {integrity: sha512-kVDhUl0BzN/3D1NJL5ndgKK5Dk/mdSf5LinKrPIVVVND+hrdErkihV53sA3pyffdw488pFvAiFu2+LW/DWhiHA==}
+    dependencies:
+      throttles: 1.0.1
     dev: false
 
   /@astrojs/prism@2.1.1:
@@ -4135,6 +4147,12 @@ packages:
     dependencies:
       mime: 3.0.0
 
+  /@cloudflare/kv-asset-handler@0.3.0:
+    resolution: {integrity: sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==}
+    dependencies:
+      mime: 3.0.0
+    dev: false
+
   /@commitlint/cli@16.3.0:
     resolution: {integrity: sha512-P+kvONlfsuTMnxSwWE1H+ZcPMY3STFaHb2kAacsqoIkNx66O0T7sTpBxpxkMrFPyhkJiLJnJWMhk4bbvYD3BMA==}
     engines: {node: '>=v12'}
@@ -5156,8 +5174,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/eslint-plugin-next@13.4.2-canary.3:
-    resolution: {integrity: sha512-N102fG5fyY9mCsuAt2bBdFVv1UGSxTB84s+R8DyM+zMoxvI1DexXtOLPwf/Ea29zn/KSJGyasxX8L7CKnw4mUA==}
+  /@next/eslint-plugin-next@13.4.3-canary.0:
+    resolution: {integrity: sha512-Q6UsCo/+JhIu1XkdsHQBUeicK0ahE8loKgd0/4hCDyPW+XJyvIDJjluzT7B5wMoTvJpMu81xEgNFYcOO3RYF8A==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -6592,7 +6610,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       '@typescript-eslint/types': 5.59.0
-      eslint-visitor-keys: 3.4.0
+      eslint-visitor-keys: 3.4.1
     dev: true
 
   /@typescript-eslint/visitor-keys@5.59.2:
@@ -8904,8 +8922,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-next@13.4.2-canary.3(eslint@8.38.0)(typescript@4.8.4):
-    resolution: {integrity: sha512-CsRQb3MFydrrlgZbChg1saotlE0fqR0QEr4+3wOriuiXgdjcgksX7QMmeoqGPfVqZbIzdmkxzao2RGd9G2OcrQ==}
+  /eslint-config-next@13.4.3-canary.0(eslint@8.38.0)(typescript@4.8.4):
+    resolution: {integrity: sha512-vzCn94NeWaNUHNa/zopFRH72xDLV6vIGnosaRWhJVcSNE2GKTHfuk1WVucqvqHx44XgGpoGH/oqBi9GclIQxiQ==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -8913,7 +8931,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.4.2-canary.3
+      '@next/eslint-plugin-next': 13.4.3-canary.0
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.59.2(eslint@8.38.0)(typescript@4.8.4)
       eslint: 8.38.0
@@ -15484,6 +15502,11 @@ packages:
 
   /throat@5.0.0:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
+    dev: false
+
+  /throttles@1.0.1:
+    resolution: {integrity: sha512-fab7Xg+zELr9KOv4fkaBoe/b3L0GMGLd0IBSCn16GoE/Qx6/OfCr1eGNyEcDU2pUA79qQfZ8kPQWlRuok4YwTw==}
+    engines: {node: '>=6'}
     dev: false
 
   /through2@2.0.5:
