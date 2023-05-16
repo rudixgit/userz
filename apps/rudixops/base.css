@@ -26,7 +26,6 @@
 		font-weight: bold;
 	}
 	.hljs-string {
-		@apply float-right;
 		color: #9fdb73 !important;
 		font-weight: bold;
 	}

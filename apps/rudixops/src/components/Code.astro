@@ -93,11 +93,10 @@ const lines = Array.from(Array(codex.split("\n").length).keys());
                     strings: [xx],
                     showCursor: false,
                     typeSpeed: -1,
-                    onComplete: () => {
-                        const next = i + 1;
-                        go(next);
-                    },
+                    onComplete: () => {},
                 });
+                const next = i + 1;
+                go(next);
             }
             go(0);
         }
