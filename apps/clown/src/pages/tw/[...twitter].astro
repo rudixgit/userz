@@ -58,6 +58,7 @@ const resp = await Promise.all([datax, itemsx]).then((values) => {
 		items: values[1].value,
 	};
 });
+Astro.response.headers.set('Cache-Control', 'max-age=31536000');
 ---
 
 <Layout

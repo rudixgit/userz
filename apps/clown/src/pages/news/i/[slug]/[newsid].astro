@@ -75,6 +75,7 @@ const parsed = content
           content: x,
       }))
     : (html as { type: string; content: string }[]);
+Astro.response.headers.set('Cache-Control', 'max-age=31536000');
 ---
 
 <Layout title={title} description={title} image={image}>

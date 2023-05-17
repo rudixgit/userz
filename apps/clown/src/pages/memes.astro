@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
   const items = await fetch(
 	  "https://img_proxy.kloun.workers.dev/"
   ).then((res) => res.json());
+Astro.response.headers.set('Cache-Control', 'max-age=7200');
 ---
 <Layout title="memes">
 	<div class="container flex flex-wrap items-center justify-center sm:mx-auto">
