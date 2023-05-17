@@ -55,7 +55,7 @@ async function receiveMessages() {
 		limit: 100,
 		descending: true,
 	}).then(data => {
-		console.log(`new batch start from ${data.rows[0]}`)
+		console.log(`new batch start from`, data.rows[0])
 		async.eachOfLimit(
 			data.rows,
 			5,

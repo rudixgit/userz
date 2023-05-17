@@ -49,18 +49,13 @@ export const trans = async ({ url, from, to }) => {
 	await page.goto(
 		`https://kloun-lol.translate.goog/news/tr/${url}/?_x_tr_sl=${from}&_x_tr_tl=${to}`, { waitUntil: "domcontentloaded" }
 	);
-
 	await page.waitForSelector("#emp", { visible: true });
-
 	async function checkForEmperor(emp) {
 		let element;
 		while (element !== emp) {
-
 			element = await page.$eval('#emp', el => el.innerText);
-
-			await new Promise(resolve => setTimeout(resolve, 1000));
+			await new Promise(resolve => setTimeout(resolve, 5000));
 		}
-
 		return ('ok');
 	}
 
