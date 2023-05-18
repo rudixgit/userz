@@ -1,4 +1,4 @@
-const url = "https://waspcached.arpecop.win/";
+const url = "https://dbcached.kloun.lol/";
 type Variables = { [key: string]: string | number | boolean };
 const serialize = (obj: Variables) => {
   return Object.entries(obj)
