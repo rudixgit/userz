@@ -67,7 +67,8 @@ const resp = await Promise.all([datax, newsx]).then((values) => {
  
 const {data,news} = resp
  
-const { title, image, content, html } = data;
+const { title, image, content, html, date, nid } = data;
+ 
 
 const parsed = content
     ? JSON.parse(content).html.map((x: string) => ({
@@ -75,13 +76,32 @@ const parsed = content
           content: x,
       }))
     : (html as { type: string; content: string }[]);
+   function formatDate(date: Date): string {
+      const options: Intl.DateTimeFormatOptions = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: false
+        };
+      return date.toLocaleString('bg-BG', options);
+    }
+    function getRandomDate(year: number): Date {
+      const month = Math.floor(Math.random() * 12) + 1;
+        const day = Math.floor(Math.random() * 31) + 1;
+        const hour = Math.floor(Math.random() * 14) + 9;
+        return new Date(year, month - 1, day, hour);
+    }
 Astro.response.headers.set('Cache-Control', 'max-age=31536000');
 ---
 
 <Layout title={title} description={title} image={image}>
+    {formatDate(new Date(date ? date : getRandomDate(2021) ))}
     <h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
     <div class="flex justify-center items-center">
-        <img src={image} class="rounded-md" loading="lazy"  />
+        <img src={'https://kloun.lol/api/img/'+nid+'.jpg'} class="rounded-md" loading="lazy"  />
+        
     </div>
     <div class="mb-6 items-center justify-center">
         <RudSense />

@@ -1,6 +1,6 @@
 ---
 import { slugify } from "transliteration";
-function timeAgo(date: Date): string {
+export function timeAgo(date: Date): string {
   const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
   const intervals = {
     'година': {int:31536000,ext:'години'},
