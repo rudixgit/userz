@@ -80,9 +80,11 @@ Astro.response.headers.set('Cache-Control', 'max-age=31536000');
 
 <Layout title={title} description={title} image={image}>
     <h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
+    <div class="flex justify-center items-center">
+        <img src={image} class="rounded-md" loading="lazy"  />
+    </div>
     <div class="mb-6 items-center justify-center">
         <RudSense />
-
         <article class="leading-relaxed" id="article">
             {
                 getLastP(parsed).map(
@@ -91,7 +93,7 @@ Astro.response.headers.set('Cache-Control', 'max-age=31536000');
                             <p class="text-md">{content}</p>
                         ) : (
                             <div class="flex justify-center items-center">
-                                <img src={content} class="rounded-md" />
+                                <img src={content} class="rounded-md" loading="lazy" />
                             </div>
                         )
                 )
@@ -99,15 +101,7 @@ Astro.response.headers.set('Cache-Control', 'max-age=31536000');
         </article>
         <div class="clear-both"></div>
         <RudSense />
-        <div class="flex justify-center items-center">
-            <div
-                class="fb-comments"
-                data-href={"https://kloun.lol" + Astro.url.pathname}
-                data-width=""
-                data-numposts="5"
-            >
-            </div>
-        </div>
+        
         <div class="clear-both"></div>
     </div>
     <div class="flex flex-wrap gap-3">
