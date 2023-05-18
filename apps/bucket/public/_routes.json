@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "include": [
+	"/*"
+  ],
+  "exclude": [
+	"/_astro/client.7e8eeea6.js",
+	"/_astro/page.0fccd9dd.js",
+	"/_worker.js" 
+  ]
+}
