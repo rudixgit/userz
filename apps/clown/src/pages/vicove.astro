@@ -36,7 +36,7 @@ const cats = catsx.rows
         count: x.value,
     }))
     .sort((a: { count: number }, b: { count: number }) => b.count - a.count);
-Astro.response.headers.set('Cache-Control', 'max-age=31536000');
+Astro.response.headers.set("Cache-Control", "max-age=31536000");
 ---
 
 <Layout

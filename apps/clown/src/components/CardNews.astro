@@ -1,24 +1,26 @@
 ---
 import { slugify } from "transliteration";
 export function timeAgo(date: Date): string {
-  const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
-  const intervals = {
-    'година': {int:31536000,ext:'години'},
-    'месец': {int:2592000,ext:'месеца'},
-    'седмица': {int:604800,ext:'седмици'},
-    'ден': {int:86400,ext:'дни'},
-    'час': {int:3600,ext:'часа'},
-    'минута': {int:60,ext:'минути'},
-    'секунда': {int:1,ext:'секунди'}
-  } as { [key:string]:{int:number,ext:string}} 
-  let counter: number;
-  for (const interval in intervals) {
-    counter = Math.floor(seconds / intervals[interval].int);
-    if (counter > 0) {
-      return `преди ${counter === 1 ? '' : counter} ${counter === 1 ? interval : intervals[interval].ext}`;
+    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+    const intervals = {
+        година: { int: 31536000, ext: "години" },
+        месец: { int: 2592000, ext: "месеца" },
+        седмица: { int: 604800, ext: "седмици" },
+        ден: { int: 86400, ext: "дни" },
+        час: { int: 3600, ext: "часа" },
+        минута: { int: 60, ext: "минути" },
+        секунда: { int: 1, ext: "секунди" },
+    } as { [key: string]: { int: number; ext: string } };
+    let counter: number;
+    for (const interval in intervals) {
+        counter = Math.floor(seconds / intervals[interval].int);
+        if (counter > 0) {
+            return `преди ${counter === 1 ? "" : counter} ${
+                counter === 1 ? interval : intervals[interval].ext
+            }`;
+        }
     }
-  }
-  return '';
+    return "";
 }
 export interface Props {
     key: string;
@@ -43,14 +45,14 @@ const { title, date, id, key } = Astro.props;
         >
             <img
                 alt={title}
-                src={'https://kloun.lol/api/img/'+key+'.jpg'}
+                src={"https://kloun.lol/api/img/" + key + ".jpg"}
                 loading="lazy"
                 height="100%"
                 class="absolute top-0 left-0 w-full h-full object-cover"
             />
         </div>
 
-        <div class="flex flex-col  justify-center w-full">
+        <div class="flex flex-col justify-center w-full">
             <h3 class="px-2 font-bold text-slate-300 dark:text-gray-800">
                 {title}
             </h3>
