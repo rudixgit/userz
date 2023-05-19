@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/_astro/_username_.8d2ff997.css",
+    "/_worker.js",
+    "/favicon.ico",
+    "/favicon.svg",
+    "/test.js"
+  ]
+}
