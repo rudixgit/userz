@@ -1,15 +1,6 @@
 ---
- 
-import Layout from "../layouts/Layout.astro";
-Astro.response.headers.set('Cache-Control', 'max-age=31536000');
----
-
-<Layout title="" description="">
- 
-	 
-			<h1>404</h1>
-			<h2>Page not found</h2> 
-	 
-		{new Date().toISOString()}
- 
-</Layout>
+ return new Response("Not Found", {
+	status: 404,
+	statusText: "Not Found",
+});
+--- 
