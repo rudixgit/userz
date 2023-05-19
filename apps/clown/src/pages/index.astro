@@ -12,17 +12,17 @@ const newsx = db.view("newsbg/news", {
 	descending: true,
 });
 
-const memesx = fetch("https://img_proxy.kloun.workers.dev/").then((res) =>
-	res.json()
-);
+  const memesx = fetch(
+  	"https://img_proxy.kloun.workers.dev/"
+  ).then((res) => res.json());
 
-const resp = await Promise.all([newsx, memesx]).then((results) => ({
+const resp = await Promise.all([newsx,memesx]).then((results) => ({
 	news: results[0].rows,
 	memes: results[1].items,
 }));
 
 const { news, memes } = resp;
-Astro.response.headers.set("Cache-Control", "max-age=7200");
+Astro.response.headers.set('Cache-Control', 'max-age=7200');
 ---
 
 <Layout
@@ -93,10 +93,7 @@ Astro.response.headers.set("Cache-Control", "max-age=7200");
 	<div class="snap-x flex flex-nowrap py-2 snap-proximity overflow-x-auto">
 		{
 			memes.slice(0, 20).map(({ thumb }: { thumb: string }) => (
-				<label
-					class="hover:animate-pulse snap-center flex-shrink-0"
-					for="my-modal"
-				>
+				<label class="hover:animate-pulse snap-center flex-shrink-0" for="my-modal">
 					<div class="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 m-1 cursor-pointer flex">
 						<img
 							width="128"

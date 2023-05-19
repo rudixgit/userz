@@ -1,20 +1,19 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-Astro.response.headers.set("Cache-Control", "max-age=31536000");
+Astro.response.headers.set('Cache-Control', 'max-age=31536000');
 ---
-
 <Layout title="" description="">
-	<div>
-		<h1 class="text-center text-3xl font-thin">Contact</h1>
-		<div class="mt-10 flex flex-row items-center justify-center">
-			<div class="mb-8 w-full px-3 lg:mb-0 lg:w-1/5">
-				<p class="mb-2 font-bold lg:mb-4 lg:text-lg">Office</p>
-				<p class="lg:text-lg">14 Parijka Komuna, Varna, Bulgaria</p>
-			</div>
-			<div class="mb-8 w-full px-3 lg:mb-0 lg:w-1/5">
-				<p class="mb-2 font-bold lg:mb-4 lg:text-lg">Contacts</p>
-				<p class="lg:text-lg">(+359) 876 358 115 info@rudixops.com</p>
-			</div>
+<div>
+	<h1 class="text-center text-3xl font-thin">Contact</h1>
+	<div class="mt-10 flex flex-row items-center justify-center">
+		<div class="mb-8 w-full px-3 lg:mb-0 lg:w-1/5">
+			<p class="mb-2 font-bold lg:mb-4 lg:text-lg">Office</p>
+			<p class="lg:text-lg">14 Parijka Komuna, Varna, Bulgaria</p>
+		</div>
+		<div class="mb-8 w-full px-3 lg:mb-0 lg:w-1/5">
+			<p class="mb-2 font-bold lg:mb-4 lg:text-lg">Contacts</p>
+			<p class="lg:text-lg">(+359) 876 358 115 info@rudixops.com</p>
 		</div>
 	</div>
+</div>
 </Layout>

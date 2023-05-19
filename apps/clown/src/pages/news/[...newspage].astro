@@ -28,7 +28,7 @@ const resp = await Promise.all([datax, itemsx]).then((values) => {
         items: values[1].value,
     };
 });
-Astro.response.headers.set("Cache-Control", "max-age=7200");
+Astro.response.headers.set('Cache-Control', 'max-age=7200');
 ---
 
 <Layout title={`Новини от на страница ${pagenum}`} description={`Новини  `}>

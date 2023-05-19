@@ -1,41 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const items = await fetch("https://img_proxy.kloun.workers.dev/").then((res) =>
-	res.json()
-);
-Astro.response.headers.set("Cache-Control", "max-age=7200");
+  const items = await fetch(
+	  "https://img_proxy.kloun.workers.dev/"
+  ).then((res) => res.json());
+Astro.response.headers.set('Cache-Control', 'max-age=7200');
 ---
-
 <Layout title="memes">
-	<div
-		class="container flex flex-wrap items-center justify-center sm:mx-auto"
-	>
-		{
-			items.items.map(
-				({
-					thumb,
-				}: {
-					thumb: string;
-					fullsize?: string;
-					image?: string;
-					id: number;
-					promoted: number;
-				}) => (
-					<label class="hover:animate-pulse snap-center">
-						<div class="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 m-1 cursor-pointer flex">
-							<img
-								loading="lazy"
-								width="128"
-								height="128"
-								class="rounded-lg"
-								alt="pr0gramm"
-								src={`https://thumb.pr0gramm.com/${thumb}`}
-							/>
-						</div>
-					</label>
-				)
-			)
-		}
+	<div class="container flex flex-wrap items-center justify-center sm:mx-auto">
+	{items.items.map(({
+				thumb,
+			}: {
+				thumb: string;
+				fullsize?: string;
+				image?: string;
+				id: number;
+				promoted: number;
+			}) => (<label class="hover:animate-pulse snap-center">
+	<div class="rounded-lg bg-gradient-to-r from-purple-900 to-pink-600 p-1 dark:from-white dark:to-slate-400 m-1 cursor-pointer flex">
+		<img loading="lazy" width="128" height="128" class="rounded-lg" alt="pr0gramm" src={`https://thumb.pr0gramm.com/${thumb}`} />
 	</div>
+</label>)
+		)}
+		</div>
 </Layout>
+ 
+ 

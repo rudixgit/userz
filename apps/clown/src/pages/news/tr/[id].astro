@@ -1,6 +1,9 @@
 ---
+ 
 import db from "../../../../../kloun/data/client";
-
+ 
+ 
+ 
 // function checkNumeric(str: string): boolean {
 //   const chars: string[] = str.split('');
 //   console.log('chars', chars);
@@ -8,32 +11,38 @@ import db from "../../../../../kloun/data/client";
 //   console.log('nums', nums);
 //   return nums.length > chars.length / 2;
 // }
-
-const { id } = Astro.params as { id: string };
+ 
+const { id } = Astro.params as { id: string; };
 
 const data = await db.get(id);
-
+ 
 const { title, content, html } = data;
 
 const parsed = content
 	? JSON.parse(content).html.map((x: string) => ({
-			type: "p",
-			content: x,
+		  type: "p",
+		  content: x,
 	  }))
 	: (html as { type: string; content: string }[]);
 ---
-
 <head>
-	<meta charset="UTF-8" />
+  <meta charset="UTF-8">
 </head>
 <div>
 	<h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
-	<article class="leading-relaxed" id="article">
-		{
-			parsed.map(({ type, content }: { type: string; content: string }) =>
-				type === "p" ? <p>{content}</p> : <img src={content} />
-			)
-		}
-	</article>
-	<div id="emp">император</div>
+    	<article class="leading-relaxed" id="article">
+				{
+				 parsed.map(
+						({
+							type,
+							content,
+						}: {
+							type: string;
+							content: string;
+						}) =>
+							type === "p" ? (<p>{content}</p>) : (<img src={content} />)
+					)
+				}
+			</article>
+			<div id="emp">император</div>
 </div>

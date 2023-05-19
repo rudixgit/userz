@@ -8,9 +8,9 @@ export interface Props {
 	description?: string;
 	image?: string;
 	noContainer?: boolean;
-	hideFooter?: boolean;
+	hideFooter?:boolean
 }
-const { title, description, image, noContainer, hideFooter } = Astro.props;
+const { title, description, image, noContainer,hideFooter } = Astro.props;
 const currentPath = "https://kloun.lol" + Astro.url.pathname;
 ---
 
