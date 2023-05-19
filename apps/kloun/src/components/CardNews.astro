@@ -43,7 +43,7 @@ const { title, date, id, key } = Astro.props;
         >
             <img
                 alt={title}
-                src={'https://kloun.lol/api/img/'+key+'.jpg'}
+                src={'/api/img/'+key+'.jpg'}
                 loading="lazy"
                 height="100%"
                 class="absolute top-0 left-0 w-full h-full object-cover"
