@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
 
 export default defineConfig({
-  output: 'server',
+  output: "hybrid",
   integrations: [
     react(),
     tailwind({
@@ -13,6 +13,9 @@ export default defineConfig({
     })
   ],
   adapter: cloudflare({ mode: 'advanced' }),
+  experimental: {
+    hybridOutput: true
+  },
   vite: {
     build: {
       minify: false

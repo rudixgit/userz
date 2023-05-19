@@ -1,4 +1,5 @@
 ---
+export const prerender = true
 import db from "../../../kloun/data/client";
 import CatButton from "../components/CatButton.astro";
 import RudSense from "../components/RudSense.astro";
@@ -36,7 +37,6 @@ const cats = catsx.rows
         count: x.value,
     }))
     .sort((a: { count: number }, b: { count: number }) => b.count - a.count);
-Astro.response.headers.set('Cache-Control', 'max-age=31536000');
 ---
 
 <Layout

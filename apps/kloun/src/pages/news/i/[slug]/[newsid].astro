@@ -1,5 +1,7 @@
 ---
-import { shuffle, uniqBy } from "lodash";
+export const prerender = false
+import uniqBy from "lodash/uniqBy";
+import  shuffle  from "lodash/shuffle";
 import db from "../../../../../data/client";
 import CardNews from "../../../../components/CardNews.astro";
 import RudSense from "../../../../components/RudSense.astro";
