@@ -38,7 +38,24 @@ function getLastP(arr: { type: string; content: string }[]) {
     return arrx;
 }
 
-const keys = slug.split("-").filter((x) => x.length > 4);
+const keys = slug.split("-").filter((x) => x.length >= 4);
+// const wordsprep = keys.map((x) => x.substring(0, 4));
+// 
+// let exist = [] as string[];
+// const respcheck = await Promise.all(["abdo", "xxxx"]).then(async (value) => {
+//     try {
+//         const response = await fetch(
+//             "https://bucket.monext.pages.dev/words/" + value + ".json"
+//         );
+//         console.log(`https://bucket.monext.pages.dev/words/${value}.json`);
+//         const jsonData = await response.json();
+//         exist.push(jsonData[0]);
+//         return jsonData[0];
+//     } catch (e) {
+//         return "111";
+//     }
+// });
+// console.log(respcheck);
 
 const datax = db.get(newsid);
 
