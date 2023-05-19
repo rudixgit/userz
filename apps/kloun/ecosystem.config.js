@@ -1,11 +1,13 @@
 module.exports = {
   apps: [
     {
-      name: 'kloun',
-      script: './.next/standalone/apps/kloun/server.js',
+      name: 'userz',
+      watch: false,
+      autorestart: false,
+      script: './public/test.js',
       env: {
         NODE_ENV: 'production',
-        PORT: 3001,
+        PORT: 3012,
         RAMDISK_ENABLED: true,
         RAMDISK_SIZE: '150M'
       }
