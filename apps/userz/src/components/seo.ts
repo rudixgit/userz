@@ -37,7 +37,7 @@ export const titles: { [key: string]: string } = {
 	"y": "Yearning for Twitter success? Learn from [username], the social media star",
 	"z": "Zooming in on [username]'s Twitter strategy: How to build a thriving online presence"
 }
-export const descriptions = {
+export const descriptions: { [key: string]: string } = {
 	"1": "An insider's look into the world of [username], Twitter's rising star",
 	"2": "Behind the tweets: [username]'s journey to social media success",
 	"3": "Candid conversations with [username]: A Twitter influencer's story",
