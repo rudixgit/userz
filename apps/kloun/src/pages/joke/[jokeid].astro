@@ -15,7 +15,7 @@ const itemsx = db.view("joke/random", {
     key: rid,
     update: "lazy",
 });
-
+ 
 const resp = await Promise.all([jokex, itemsx]).then((values) => {
     return {
         joke: values[0],
@@ -32,6 +32,7 @@ if (joke.error) {
     });
 }
 Astro.response.headers.set('Cache-Control', 'max-age=31536000');
+// dsadasd
 ---
 
 <Layout
