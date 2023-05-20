@@ -1,6 +1,6 @@
 ---
 export const prerender = false
-Astro.response.headers.set('Cache-Control', 'max-age=200');
+Astro.response.headers.set('Cache-Control', 'max-age=10');
 ---
 
 <h1>{new Date().toISOString()}</h1>
