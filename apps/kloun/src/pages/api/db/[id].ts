@@ -12,10 +12,10 @@ const authToken = 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODQ1MjEwNzYs
 export const get: APIRoute = async function get({ params }) {
 	const id = params.id || ''
 	const client = createClient({ url, authToken });
-	const rs = await client.execute(`select * from example_users where email = '${id}'`);
+	const rs = await client.execute(`select * from keyz where key = '${id}'`);
 	const resp = rs.rows[0] ? rs.rows[0] : { error: true }
 	return new Response(JSON.stringify(resp), {
-		status: 200,
+		status: rs.rows[0] ? 200 : 404,
 		headers: {
 			"Content-Type": "application/json"
 		}

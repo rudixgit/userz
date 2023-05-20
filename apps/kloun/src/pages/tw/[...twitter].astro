@@ -1,6 +1,6 @@
 ---
+export const prerender = false
 import db from "../../../../kloun/data/client.js";
-
 import Pagination from "../../components/Pagination.astro";
 import Layout from "../../layouts/Layout.astro";
 const alphabet = [
@@ -58,6 +58,7 @@ const resp = await Promise.all([datax, itemsx]).then((values) => {
 		items: values[1].value,
 	};
 });
+
 Astro.response.headers.set('Cache-Control', 'max-age=31536000');
 ---
 
