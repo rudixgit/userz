@@ -1,9 +1,6 @@
 ---
 export const prerender = false
 import db from "../../../../data/client";
- 
- 
- 
 // function checkNumeric(str: string): boolean {
 //   const chars: string[] = str.split('');
 //   console.log('chars', chars);
@@ -13,11 +10,8 @@ import db from "../../../../data/client";
 // }
  
 const { id } = Astro.params as { id: string; };
-
 const data = await db.get(id);
- 
 const { title, content, html } = data;
-
 const parsed = content
 	? JSON.parse(content).html.map((x: string) => ({
 		  type: "p",
