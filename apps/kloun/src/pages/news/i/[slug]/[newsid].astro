@@ -3,6 +3,7 @@ export const prerender = false
 import uniqBy from "lodash/uniqBy";
 import  shuffle  from "lodash/shuffle";
 import db from "../../../../../data/client";
+import existBg from "../../../../../data/existbg";
 import CardNews from "../../../../components/CardNews.astro";
 import RudSense from "../../../../components/RudSense.astro";
 import Layout from "../../../../layouts/Layout.astro";
@@ -11,14 +12,10 @@ function countAlphanumeric(str: string) {
     const matches = str.match(regex);
     return matches ? matches.length : 0;
 }
-// function checkNumeric(str: string): boolean {
-//   const chars: string[] = str.split('');
-//   console.log('chars', chars);
-//   const nums: string[] = chars.filter((char: string) => !isNaN(parseInt(char)) && char !== ' ');
-//   console.log('nums', nums);
-//   return nums.length > chars.length / 2;
-// }
-
+ 
+function getUniqueStrings(arr1:string[], arr2:string[]) {
+  return arr1.filter(str => !arr2.includes(str));
+}
 function getLastP(arr: { type: string; content: string }[]) {
     const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
     const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
@@ -39,35 +36,34 @@ function getLastP(arr: { type: string; content: string }[]) {
 }
 const { newsid,slug } = Astro.params as { newsid: string; slug: string };
 
- const keys = slug.split('-').filter(x => x.length > 4)
+const keys:string[] = slug.split('-').filter(x => x.length > 4) 
+ 
+// const newsterms = await sqlquery('select * from keyz where key =  "'+keys.join('" or key = "zxxx')+'"');
+ const terms = await existBg(keys)
+ const differencies = getUniqueStrings(keys,terms)
+ 
  
 const datax = db.get(newsid);
-
-// const news = await db.view("newsbg/news", {
-//     reduce: false,
-//     limit: 10,
-//     update: "lazy",
-//     start_key: data.nid,
-//     descending: true,
-//     skip: 1,
-// });
+ 
 
 const newsx =  db.view("newsbg/search", {
-    update: "lazy",
-    keys: JSON.stringify(shuffle(keys)),
+    update: false,
+    keys: JSON.stringify(shuffle(differencies)),
     descending: true,
-    include_docs:"true",
+    include_docs:true,
+    group:false,
     limit:30
 });
- 
-const resp = await Promise.all([datax, newsx]).then((values) => {
+//  
+const resp = await Promise.all([datax,newsx]).then((values) => {
     return {
         data: values[0],
-        news: values[1].rows,
+        news:  values[1].rows,
     };
 });
- 
+
 const {data,news} = resp
+ 
  
 const { title, image, content, html, date, nid } = data;
  
@@ -103,7 +99,6 @@ Astro.response.headers.set('Cache-Control', 'max-age=31536000');
     <h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
     <div class="flex justify-center items-center">
         <img src={'https://kloun.lol/api/img/'+nid+'.jpg'} class="rounded-md" loading="lazy"  />
-        
     </div>
     <div class="mb-6 items-center justify-center">
         <RudSense />

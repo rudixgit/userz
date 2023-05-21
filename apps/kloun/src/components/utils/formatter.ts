@@ -9,43 +9,43 @@ export interface Cat {
   altcount?: number;
   althref?: string;
 }
-
+var latin = [
+  "a",
+  "b",
+  "v",
+  "g",
+  "d",
+  "e",
+  "zh",
+  "z",
+  "i",
+  "y",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "r",
+  "s",
+  "t",
+  "u",
+  "f",
+  "kh",
+  "ts",
+  "ch",
+  "sh",
+  "shch",
+  "u",
+  "y",
+  "",
+  "e",
+  "yu",
+  "ya"
+];
 export function cyrillicToLatin(text: string) {
   var cyrillic = "абвгдежзийклмнопрстуфхцчшщъыьэюя";
-  var latin = [
-    "a",
-    "b",
-    "v",
-    "g",
-    "d",
-    "e",
-    "zh",
-    "z",
-    "i",
-    "y",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "r",
-    "s",
-    "t",
-    "u",
-    "f",
-    "kh",
-    "ts",
-    "ch",
-    "sh",
-    "shch",
-    "u",
-    "y",
-    "",
-    "e",
-    "yu",
-    "ya"
-  ];
+
 
   // Iterate over each character in the input text
   var output = "";
@@ -99,8 +99,8 @@ export function slugify(string: string) {
     ц: "ts",
     ч: "ch",
     ш: "sh",
-    щ: "sht",
-    ъ: "",
+    щ: "shch",
+    ъ: "u",
     ы: "y",
     ь: "",
     э: "e",
