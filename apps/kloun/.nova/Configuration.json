@@ -2,5 +2,9 @@
   "apexskier.typescript.config.formatDocumentOnSave" : "null",
   "apexskier.typescript.config.isEnabledForJavascript" : "Inherit from Global Settings",
   "apexskier.typescript.config.organizeImportsOnSave" : "null",
+  "index.ignored_file_patterns" : [
+    "node_modules",
+    "public"
+  ],
   "workspace.color" : 9
 }

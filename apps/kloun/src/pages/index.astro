@@ -1,6 +1,8 @@
 ---
 export const prerender = false
+ 
 import db from "../../data/client";
+import fetchWithCloudflare from "../../data/fetch";
 import CardNews from "../components/CardNews.astro";
 import CatButton from "../components/CatButton.astro";
 import RudSense from "../components/RudSense.astro";
@@ -11,10 +13,17 @@ const newsx = db.view("newsbg/news", {
 	limit: 30,
 	update: "lazy",
 	descending: true,
+	cache:1800
 });
 
-  const memesx = fetch(
-  	"https://img_proxy.kloun.workers.dev/"
+  const memesx = fetchWithCloudflare(
+  	"https://img_proxy.kloun.workers.dev/",{
+		  cf:{
+			 cacheTtl: 7200,
+			 cacheEverything: true,
+			 cacheKey: 'klmemesprogram'
+		  }
+	  }
   ).then((res) => res.json());
 
 const resp = await Promise.all([newsx,memesx]).then((results) => ({
@@ -23,8 +32,6 @@ const resp = await Promise.all([newsx,memesx]).then((results) => ({
 }));
 
 const { news, memes } = resp;
- 
-Astro.response.headers.set('Cache-Control', 'public, max-age=7200');
 ---
 
 <Layout
