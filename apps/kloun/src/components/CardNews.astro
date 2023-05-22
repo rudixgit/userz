@@ -2,7 +2,7 @@
 import { slugify } from "./utils/formatter";
 export function timeAgo(date: Date): string {
   const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
-  const intervals = {
+  const intervals:{ [key:string]:{int:number,ext:string}}  = {
     'година': {int:31536000,ext:'години'},
     'месец': {int:2592000,ext:'месеца'},
     'седмица': {int:604800,ext:'седмици'},
@@ -10,7 +10,7 @@ export function timeAgo(date: Date): string {
     'час': {int:3600,ext:'часа'},
     'минута': {int:60,ext:'минути'},
     'секунда': {int:1,ext:'секунди'}
-  } as { [key:string]:{int:number,ext:string}} 
+  }  
   let counter: number;
   for (const interval in intervals) {
     counter = Math.floor(seconds / intervals[interval].int);
