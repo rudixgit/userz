@@ -14,7 +14,8 @@ export default defineConfig({
   ],
   adapter: cloudflare({ mode: 'advanced' }),
   experimental: {
-    hybridOutput: true
+    hybridOutput: true,
+    middleware: true
   },
   vite: {
     build: {

@@ -23,14 +23,15 @@ const resp = await Promise.all([newsx,memesx]).then((results) => ({
 }));
 
 const { news, memes } = resp;
-Astro.response.headers.set('Cache-Control', 'max-age=7200');
+ 
+Astro.response.headers.set('Cache-Control', 'public, max-age=7200');
 ---
 
 <Layout
 	title="Вицове и забавни котки и мемета"
 	description="Вицове и забавни котки и мемета"
 >
-	<h1 class="text-5xl">Актуално</h1>
+	<h1 class="text-5xl">Актуално {JSON.stringify(Astro.locals)}</h1>
 	<div class="flex flex-wrap gap-3">
 		{
 			news.map(

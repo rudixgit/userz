@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
-Astro.response.headers.set('Cache-Control', 'max-age=31536000');
+Astro.response.headers.set('Cache-Control', 'public, max-age=31536000');
 ---
 <Layout title="" description="">
 <div>
