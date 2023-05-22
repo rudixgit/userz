@@ -26,9 +26,9 @@ async function fetcher(query: { [key: string]: string | number | boolean }) {
 			"Content-Type": "application/json",
 		},
 		cf: {
-			cacheTtl: Number(cache) || 5,
+			cacheTtl: Number(cache) || 60,
 			cacheEverything: true,
-			cacheKey: buildurl.replaceAll('/', ''),
+			cacheKey: buildurl.replace(/\W/g, ""),
 		},
 		body: isPost ? body : null,
 	});
