@@ -28,7 +28,7 @@ async function fetcher(query: { [key: string]: string | number | boolean }) {
 		cf: {
 			cacheTtl: Number(cache) || 5,
 			cacheEverything: true,
-			cacheKey: buildurl,
+			cacheKey: buildurl.replaceAll('/', ''),
 		},
 		body: isPost ? body : null,
 	});
