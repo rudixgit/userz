@@ -11,9 +11,8 @@ export const get: APIRoute = async function get({ params }) {
 		update: false,
 	});
 
-	const response = await fetch(datax.image, { cf: { image: { height: 180 } } });
+	const response = await fetch(datax.image);
 	const buffer = await response.arrayBuffer()
-
 	return new Response(buffer, {
 		status: 200,
 		headers: {
