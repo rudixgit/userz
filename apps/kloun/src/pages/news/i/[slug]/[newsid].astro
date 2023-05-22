@@ -52,7 +52,8 @@ const newsx =  db.view("newsbg/search", {
     descending: true,
     include_docs:true,
     group:false,
-    limit:30
+    limit:30,
+    cache: 864000,
 });
 //  
 const resp = await Promise.all([datax,newsx]).then((values) => {

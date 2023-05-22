@@ -15,12 +15,14 @@ const datax = db.view("newsbg/news", {
     skip: skip,
     update: "lazy",
     descending: true,
+    cache: 4000,
 });
 const itemsx = db.view("newsbg/agregate", {
     reduce: true,
     limit: 1,
     group: false,
     update: "lazy",
+    cache: 864000,
 });
 
 const resp = await Promise.all([datax, itemsx]).then((values) => {

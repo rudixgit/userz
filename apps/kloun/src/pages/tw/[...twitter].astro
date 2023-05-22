@@ -42,6 +42,7 @@ const datax = db.view("twitter/byletter", {
 	key: x[0] || "a",
 	limit: 100,
 	skip: skip,
+	cache: 864000,
 	update: "lazy",
 });
 const itemsx = db.view("twitter/byletter", {
@@ -49,6 +50,7 @@ const itemsx = db.view("twitter/byletter", {
 	key: x[0] || "a",
 	limit: 1,
 	group: false,
+	cache: 864000,
 	update: "lazy",
 });
 

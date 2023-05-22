@@ -19,7 +19,7 @@ const datax = db.view("joke/cat", {
 	limit: 30,
 	update: "lazy",
 	reduce: "false",
-	cache: skip > 1000 ? "ok" : "nok",
+	cache: 864000,
 	skip,
 });
 
@@ -27,8 +27,8 @@ const countx = db.view("joke/cat", {
 	key: `JOK${cat}`,
 	limit: 1,
 	update: "lazy",
-	cache: "ok",
 	reduce: true,
+	cache: 864000,
 });
 
 const resp = await Promise.all([datax, countx]).then((values) => {
