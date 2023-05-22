@@ -1,5 +1,3 @@
-import fetchWithCloudflare from "./fetch";
-
 const url = "https://db.kloun.lol/";
 type Variables = { [key: string]: string | number | boolean };
 const serialize = (obj: Variables) => {
@@ -19,18 +17,13 @@ async function fetcher(query: { [key: string]: string }) {
 	console.log(cache, 'cache')
 	const body = JSON.stringify(query);
 	const isPost = body?.includes("_id") || insert;
-	const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
+	const buildurl = `${isPost ? '' : 'https://kloun.lol/api/cache?url='}${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
 		}${id || ""}`;
 
-	const response = await fetchWithCloudflare(buildurl, {
+	const response = await fetch(buildurl, {
 		method: isPost ? "POST" : "GET",
 		headers: {
 			"Content-Type": "application/json",
-		},
-		cf: {
-			cacheTtl: Number(cache) || 60,
-			cacheEverything: true,
-			cacheKey: buildurl.replace(/\W/g, ""),
 		},
 		body: isPost ? body : null,
 	});

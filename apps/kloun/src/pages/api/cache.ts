@@ -1,4 +1,4 @@
-import type { APIRoute } from "astro";
+import type { APIRoute, APIContext } from "astro";
 export const prerender = false
 
 interface CloudflareFetchOptions extends RequestInit {
@@ -13,11 +13,14 @@ async function fetchWithCloudflare(url: string, options: CloudflareFetchOptions)
 }
 
 
-export const get: APIRoute = async function get() {
-	const someCustomKey = `https://baconipsum.com/api/?type=meat-and-filler`;
+export const get: APIRoute = async function get({ request }: APIContext) {
+	const url = request.url.split('?url=')[1]
+	const ttl = url ? Number(url.split('&cache=')[1]) : 5
+
+	const someCustomKey = url;
 	let response = await fetchWithCloudflare(someCustomKey, {
 		cf: {
-			cacheTtl: 5,
+			cacheTtl: ttl,
 			cacheEverything: true,
 			cacheKey: someCustomKey,
 		},
@@ -27,7 +30,7 @@ export const get: APIRoute = async function get() {
 	return new Response(response.body, {
 		status: 200,
 		headers: {
-			"Content-Type": "text/plain"
+			"Content-Type": "application/json"
 		}
 	});
 	// Set cache control headers to cache on browser for 25 minutes
