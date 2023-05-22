@@ -2,6 +2,7 @@
 export const prerender = false
 import  chunk  from "lodash/chunk";
 import db from "../../../data/client";
+ 
 import FacebookShare from "../../components/FacebookShare.astro";
 import FormatJoke from "../../components/FormatJoke.astro";
 import JokeThumbnail, { Doc } from "../../components/JokeThumbnail.astro";
@@ -14,6 +15,7 @@ const jokex = db.get(jokeid);
 const itemsx = db.view("joke/random", {
     key: rid,
     update: "lazy",
+    cache: 864000,
 });
  
 const resp = await Promise.all([jokex, itemsx]).then((values) => {

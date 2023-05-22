@@ -35,8 +35,8 @@ async function fetcher(query: { [key: string]: string | number | boolean }) {
 	const d = await response.json();
 	return d;
 }
-async function get(id: string) {
-	const d = await fetcher({ id, nocdn: "yes" });
+async function get(id: string, cache: number): Promise<Variables> {
+	const d = await fetcher({ id, cache: cache || 1 });
 	if (d.error) {
 		return Promise.resolve({ error: "not found" });
 	}
