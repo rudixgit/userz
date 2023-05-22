@@ -12,9 +12,11 @@ const serialize = (obj: Variables) => {
 };
 
 
-async function fetcher(query: { [key: string]: string | number | boolean }) {
+async function fetcher(query: { [key: string]: string }) {
+	const cache = query.params ? Number(query.params.split('&cache=')[1]) : 60
 
-	const { db, id, _view, _design, params, insert, cache } = query;
+	const { db, id, _view, _design, params, insert } = query;
+	console.log(cache, 'cache')
 	const body = JSON.stringify(query);
 	const isPost = body?.includes("_id") || insert;
 	const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
@@ -35,8 +37,8 @@ async function fetcher(query: { [key: string]: string | number | boolean }) {
 	const d = await response.json();
 	return d;
 }
-async function get(id: string, cache: number): Promise<Variables> {
-	const d = await fetcher({ id, cache: cache || 1 });
+async function get(id: string): Promise<Variables> {
+	const d = await fetcher({ id });
 	if (d.error) {
 		return Promise.resolve({ error: "not found" });
 	}
@@ -60,7 +62,7 @@ async function view(id: string, params: Variables) {
 	}
 	return Promise.resolve({ ...d, rows });
 }
-async function insert(obj: { [key: string]: string | number | boolean }) {
+async function insert(obj: { [key: string]: string }) {
 	const ins = await fetcher(obj);
 	return Promise.resolve(ins);
 }

@@ -19,8 +19,8 @@ const datax = db.view("joke/cat", {
 	limit: 30,
 	update: "lazy",
 	reduce: "false",
-	cache: 864000,
 	skip,
+	cache: 864000,
 });
 
 const countx = db.view("joke/cat", {

@@ -57,7 +57,6 @@ const existget = await db.view("twitter/exist", {
 	update: "lazy",
 	keys: JSON.stringify(reposts),
 	cache: 864000,
-	nocdn: "ok",
 });
 const exist = existget.rows?.map((it: { id: string }) =>
 	it.id.replace("_tw", "")

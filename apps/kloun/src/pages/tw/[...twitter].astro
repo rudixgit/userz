@@ -42,16 +42,16 @@ const datax = db.view("twitter/byletter", {
 	key: x[0] || "a",
 	limit: 100,
 	skip: skip,
-	cache: 864000,
 	update: "lazy",
+	cache: 864000
 });
 const itemsx = db.view("twitter/byletter", {
 	reduce: true,
 	key: x[0] || "a",
 	limit: 1,
 	group: false,
-	cache: 864000,
 	update: "lazy",
+	cache: 864000
 });
 
 const resp = await Promise.all([datax, itemsx]).then((values) => {
