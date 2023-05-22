@@ -11,10 +11,7 @@ const serialize = (obj: Variables) => {
 
 
 async function fetcher(query: { [key: string]: string }) {
-	const cache = query.params ? Number(query.params.split('&cache=')[1]) : 60
-
 	const { db, id, _view, _design, params, insert } = query;
-	console.log(cache, 'cache')
 	const body = JSON.stringify(query);
 	const isPost = body?.includes("_id") || insert;
 	const buildurl = `${isPost ? '' : 'https://kloun.lol/api/cache?url='}${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
