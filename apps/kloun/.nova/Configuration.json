@@ -6,5 +6,9 @@
     "node_modules",
     "public"
   ],
-  "workspace.color" : 9
+  "workspace.color" : 9,
+  "workspace.preview_root" : "src\/pages",
+  "workspace.preview_server_allow_external" : true,
+  "workspace.preview_server_port" : 3000,
+  "workspace.preview_url" : "http:\/\/localhost:3000\/"
 }
