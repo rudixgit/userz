@@ -6,7 +6,8 @@ interface CloudflareFetchOptions extends RequestInit {
 		cacheTtl?: number;
 		cacheEverything?: boolean;
 		cacheKey?: string;
-	};
+	},
+	cache?: string;
 }
 async function fetchWithCloudflare(url: string, options: CloudflareFetchOptions): Promise<Response> {
 	return fetch(url, options);
@@ -29,6 +30,7 @@ export const get: APIRoute = async function get({ request }: APIContext) {
 			cacheEverything: true,
 			cacheKey: convertToFriendlierId(url),
 		},
+		cache: "default"
 	});
 	return new Response(response.body, {
 		status: 200,
