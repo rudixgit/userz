@@ -6,8 +6,7 @@ interface CloudflareFetchOptions extends RequestInit {
 		cacheTtl?: number;
 		cacheEverything?: boolean;
 		cacheKey?: string;
-	},
-	cache?: string;
+	}
 }
 async function fetchWithCloudflare(url: string, options: CloudflareFetchOptions): Promise<Response> {
 	return fetch(url, options);
