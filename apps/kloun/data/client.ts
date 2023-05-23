@@ -16,8 +16,9 @@ async function fetcher(query: { [key: string]: string }) {
 	const isPost = body?.includes("_id") || insert;
 	const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
 		}${id || ""}`;
-	const urlx = `${isPost ? buildurl : `https://kloun.lol/api/cache?url=${encodeURI(buildurl)}`}`
-	console.log(urlx)
+	const urlx = `${isPost ? buildurl : `https://cache.kloun.workers.dev/proxy?url=${encodeURIComponent(buildurl)}`}`
+
+	//console.log(urlx)
 	const response = await fetch(urlx, {
 		method: isPost ? "POST" : "GET",
 		headers: {
