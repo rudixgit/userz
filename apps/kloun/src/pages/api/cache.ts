@@ -21,7 +21,7 @@ function convertToFriendlierId(url: string): string {
 	return friendlyId;
 }
 export const get: APIRoute = async function get({ request }: APIContext) {
-	const url = decodeURI(request.url.split('?url=')[1])
+	const url = decodeURI(request.url).split('?url=')[1]
 	const ttl = url ? Number(url.split('&cache=')[1]) : 5
 	let response = await fetchWithCloudflare(url, {
 		cf: {
