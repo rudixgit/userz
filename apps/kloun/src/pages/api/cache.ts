@@ -23,7 +23,6 @@ function convertToFriendlierId(url: string): string {
 export const get: APIRoute = async function get({ request }: APIContext) {
 	const url = request.url.split('?url=')[1]
 	const ttl = url ? Number(url.split('&cache=')[1]) : 5
-
 	let response = await fetchWithCloudflare(url, {
 		cf: {
 			cacheTtl: ttl,
@@ -35,7 +34,7 @@ export const get: APIRoute = async function get({ request }: APIContext) {
 		status: 200,
 		headers: {
 			"Content-Type": "application/json",
-			'Cache-Control': 'public, max-age=' + ttl.toString()
+			"Cache-Control": "public, max-age=" + ttl.toString()
 		}
 	});
 }

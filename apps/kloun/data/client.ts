@@ -16,7 +16,7 @@ async function fetcher(query: { [key: string]: string }) {
 	const isPost = body?.includes("_id") || insert;
 	const buildurl = `${isPost ? '' : 'http://kloun.lol/api/cache?url='}${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
 		}${id || ""}`;
-
+	console.log(buildurl)
 	const response = await fetch(buildurl, {
 		method: isPost ? "POST" : "GET",
 		headers: {
