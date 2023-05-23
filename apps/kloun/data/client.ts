@@ -14,11 +14,12 @@ async function fetcher(query: { [key: string]: string }) {
 	const { db, id, _view, _design, params, insert } = query;
 	const body = JSON.stringify(query);
 	const isPost = body?.includes("_id") || insert;
-	const buildurl = `${isPost ? '' : 'https://kloun.lol/api/cache?url='}${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
+	const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
 		}${id || ""}`;
 	console.log(buildurl)
-	const response = await fetch(buildurl, {
+	const response = await fetch(`${isPost ? buildurl : `http://kloun.lol/api/cache?url=${encodeURI(buildurl)}`}`, {
 		method: isPost ? "POST" : "GET",
+		cache: "default",
 		headers: {
 			Accept: 'application/json',
 			'User-Agent': 'Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0',

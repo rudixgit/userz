@@ -6,7 +6,7 @@ interface CloudflareFetchOptions extends RequestInit {
 		cacheTtl?: number;
 		cacheEverything?: boolean;
 		cacheKey?: string;
-	}
+	};
 }
 async function fetchWithCloudflare(url: string, options: CloudflareFetchOptions): Promise<Response> {
 	return fetch(url, options);
@@ -21,7 +21,7 @@ function convertToFriendlierId(url: string): string {
 	return friendlyId;
 }
 export const get: APIRoute = async function get({ request }: APIContext) {
-	const url = request.url.split('?url=')[1]
+	const url = decodeURI(request.url.split('?url=')[1])
 	const ttl = url ? Number(url.split('&cache=')[1]) : 5
 	let response = await fetchWithCloudflare(url, {
 		cf: {
@@ -29,7 +29,6 @@ export const get: APIRoute = async function get({ request }: APIContext) {
 			cacheEverything: true,
 			cacheKey: convertToFriendlierId(url),
 		},
-		cache: "default"
 	});
 	return new Response(response.body, {
 		status: 200,
