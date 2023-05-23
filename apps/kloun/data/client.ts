@@ -21,6 +21,7 @@ async function fetcher(query: { [key: string]: string }) {
 		method: isPost ? "POST" : "GET",
 		headers: {
 			"Content-Type": "application/json",
+			"cache": "default",
 		},
 		body: isPost ? body : null,
 	});

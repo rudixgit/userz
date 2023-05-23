@@ -31,11 +31,5 @@ export const get: APIRoute = async function get({ request }: APIContext) {
 			cacheKey: convertToFriendlierId(url),
 		},
 	});
-	return new Response(response.body, {
-		status: 200,
-		headers: {
-			"Content-Type": "application/json",
-			'Cache-Control': 'public, max-age=' + ttl
-		}
-	});
+	return new Response(response.body, response);
 }
