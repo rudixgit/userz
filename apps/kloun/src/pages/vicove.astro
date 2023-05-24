@@ -15,16 +15,12 @@ const catsx = await db.view("joke/cat", {
 // const memesx = fetch(
 // 	"https://pr0gramm.com/api/items/get?flags=1&promoted=1"
 // ).then((res) => res.json());
-
  
-
- 
-
 const cats = catsx.rows
     .filter((x: { value: number }) => x.value > 1)
     .map((x: { key: string; value: number }) => ({
         cat: x.key.replace("JOK", ""),
-        slug: slugify(x.key.replace("JOK", "")),
+        slug: slugify(x.key.replace("JOK", "").replace('ъ',' ')),
         count: x.value,
     }))
     .sort((a: { count: number }, b: { count: number }) => b.count - a.count);
