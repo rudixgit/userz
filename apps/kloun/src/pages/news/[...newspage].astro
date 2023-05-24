@@ -15,7 +15,7 @@ const datax = db.view("newsbg/news", {
     skip: skip,
     update: "lazy",
     descending: true,
-    cache: 4000,
+    cache: skip,
 });
 const itemsx = db.view("newsbg/agregate", {
     reduce: true,

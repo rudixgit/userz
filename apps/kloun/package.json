@@ -24,6 +24,7 @@
     "brotli-wasm": "^1.3.1",
     "itty-router": "^3.0.12",
     "lodash": "^4.17.21",
+    "node-fetch": "2",
     "pako": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
