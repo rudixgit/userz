@@ -1,12 +1,16 @@
 ---
-
+interface Props {
+    main?: boolean;
+}
+const { main } = Astro.props;
 ---
 <div class="flex justify-center items-center">
-    <script 
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
-        crossorigin="anonymous"
-    /> 
+    {main && (<script 
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
+            crossorigin="anonymous"
+        />)}
+   
     <ins 
         class="adsbygoogle w-full rounded-md"
         style="display:block; min-width: 250px;"
@@ -14,7 +18,11 @@
         data-ad-layout-key="-gw-3+1f-3d+2z"
         data-ad-client="ca-pub-5476404733919333"
         data-ad-slot="2115206418"></ins>
-    <script is:inline>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+        
+        {main && (
+            <script is:inline>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        )}
+   
 </div>
