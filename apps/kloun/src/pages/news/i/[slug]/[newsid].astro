@@ -108,7 +108,7 @@ const parsed  = content
         const hour = Math.floor(Math.random() * 14) + 9;
         return new Date(year, month - 1, day, hour);
     }
-Astro.response.headers.set('Cache-Control', 'public, max-age=31536000');
+ 
 ---
 
 <Layout title={title} description={title} image={image}>

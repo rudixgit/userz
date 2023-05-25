@@ -61,7 +61,7 @@ const existget = await db.view("twitter/exist", {
 const exist = existget.rows?.map((it: { id: string }) =>
 	it.id.replace("_tw", "")
 );
-Astro.response.headers.set('Cache-Control', 'public, max-age=31536000');
+ 
 ---
 <Layout
 	title={`${user} public tweets on twitter`}
