@@ -18,7 +18,7 @@ async function fetcher(query: { [key: string]: string }) {
 		}${id || ""}`;
 	//const urlx = `${isPost ? buildurl : `https://cache.kloun.lol/proxy?url=${encodeURIComponent(buildurl)}`}`
 
-	//console.log(urlx)
+
 	const response = await fetch(buildurl, {
 		method: isPost ? "POST" : "GET",
 		headers: {
