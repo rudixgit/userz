@@ -12,6 +12,7 @@ export default defineConfig({
       config: { applyBaseStyles: false }
     })
   ],
+  compressHTML: true,
   adapter: cloudflare({ mode: 'advanced' }),
   experimental: {
     hybridOutput: true,
