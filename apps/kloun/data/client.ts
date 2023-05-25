@@ -16,10 +16,10 @@ async function fetcher(query: { [key: string]: string }) {
 	const isPost = body?.includes("_id") || insert;
 	const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
 		}${id || ""}`;
-	const urlx = `${isPost ? buildurl : `https://cache.kloun.lol/proxy?url=${encodeURIComponent(buildurl)}`}`
+	//const urlx = `${isPost ? buildurl : `https://cache.kloun.lol/proxy?url=${encodeURIComponent(buildurl)}`}`
 
 	//console.log(urlx)
-	const response = await fetch(urlx, {
+	const response = await fetch(buildurl, {
 		method: isPost ? "POST" : "GET",
 		headers: {
 			"Content-Type": "application/json",
