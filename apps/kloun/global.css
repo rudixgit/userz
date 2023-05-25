@@ -33,8 +33,8 @@
   .bg {
     @apply bg-gray-900 dark:bg-gray-400  text-gray-400  dark:text-gray-900;
   }
-  html {
-    @apply m-0 p-0  bg;
+  body {
+    @apply m-0 p-0 bg;
     font-family: "Nunito";
     background-image: url("/images/bgg.svg")
   }
