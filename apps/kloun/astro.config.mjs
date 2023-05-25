@@ -19,6 +19,11 @@ export default defineConfig({
     hybridOutput: true,
     middleware: true
   },
+  server: {
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
+  },
   vite: {
     build: {
       minify: false
