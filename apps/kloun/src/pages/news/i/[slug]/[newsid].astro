@@ -13,9 +13,9 @@ function countAlphanumeric(str: string) {
     return matches ? matches.length : 0;
 }
  
-function getUniqueStrings(arr1:string[], arr2:string[]) {
-  return arr1.filter(str => !arr2.includes(str));
-}
+// function getUniqueStrings(arr1:string[], arr2:string[]) {
+//   return arr1.filter(str => !arr2.includes(str));
+// }
 function getLastP(arr: { type: string; content: string }[]) {
     const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
     const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
@@ -40,7 +40,7 @@ const keys:string[] = slug.split('-').filter(x => x.length > 4)
  
 // const newsterms = await sqlquery('select * from keyz where key =  "'+keys.join('" or key = "zxxx')+'"');
  const terms = await existBg(keys)
- const differencies = getUniqueStrings(keys,terms)
+ //const differencies = getUniqueStrings(keys,terms)
  
  
 const datax = db.get(newsid);
@@ -48,31 +48,49 @@ const datax = db.get(newsid);
 
 const newsx =  db.view("newsbg/search", {
     update: false,
-    keys: JSON.stringify(shuffle(differencies)),
-    descending: true,
+    keys: JSON.stringify(shuffle(terms)),
+    descending: Math.random() >= 0.5 ? true : false,
     include_docs:true,
     group:false,
-    limit:30,
+    limit:130,
     cache: 864000,
 });
 //  
-const resp = await Promise.all([datax,newsx]).then((values) => {
-    return {
-        data: values[0],
-        news:  values[1].rows,
-    };
-});
+const resp = await Promise.all([datax, newsx]).then((values) => {
+  return {
+    data: values[0],
+    news: values[1].rows,
+  };
+}) as {
+  data: {
+    title: string;
+    image: string;
+    content ? : string;
+    date ? : string;
+    html ? : { type: string;content: string; };
+    nid: string;
+  },
+  news: {
+    _id: string;
+    key: string;
+    title: string;
+    image: string;
+    date: string;
+    nid: string;
+  } []
+}
 
-const {data,news} = resp
-const { title, image, content, html, date, nid } = data;
+
+
+const { title, image, html, content, date, nid } = resp.data;
  
 
-const parsed = content
+const parsed  = content
     ? JSON.parse(content).html.map((x: string) => ({
           type: "p",
           content: x,
       }))
-    : (html as { type: string; content: string }[]);
+    :  html ;
    function formatDate(date: Date): string {
       const options: Intl.DateTimeFormatOptions = {
           year: 'numeric',
@@ -122,19 +140,13 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=31536000');
     </div>
     <div class="flex flex-wrap gap-3">
       {
-          shuffle(news).slice(0,10).map(
+          shuffle(resp.news).slice(0,10).map(
               ({
                   _id,
                   title,
                   date,
                   nid,
                   image,
-              }: {
-                  _id: string;
-                  title: string;
-                  date: string;
-                  nid: string;
-                  image: string;
               }) => (
                   <CardNews
                       title={title}
