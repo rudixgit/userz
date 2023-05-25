@@ -18,7 +18,7 @@ const currentPath = "https://kloun.lol" + Astro.url.pathname;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 		<meta
@@ -49,11 +49,11 @@ const currentPath = "https://kloun.lol" + Astro.url.pathname;
 			media="(prefers-color-scheme: light)"
 			content="light"
 		/>
-		<script
+		{!hideFooter && (<script
 			async
 			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
 			crossorigin="anonymous"
-		></script>
+		></script>)}
 	</head>
 	<body>
 		<div class="flex flex-col h-screen">
@@ -85,13 +85,6 @@ const currentPath = "https://kloun.lol" + Astro.url.pathname;
 			//# sourceURL=pen.js
 		</script>
 		<div id="fb-root"></div>
-		<script
-			async
-			defer
-			crossorigin="anonymous"
-			src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0&appId=281985576166744&autoLogAppEvents=1"
-			nonce="CaQdL6e8"
-		></script>
 		<script
 			async
 			src="https://www.googletagmanager.com/gtag/js?id=G-PDX6T8DTFR"
