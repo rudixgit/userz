@@ -15,6 +15,7 @@ export default defineConfig({
   compressHTML: true,
   adapter: cloudflare({ mode: 'advanced' }),
   experimental: {
+    inlineStylesheets: "never",
     hybridOutput: true,
     middleware: true
   },
