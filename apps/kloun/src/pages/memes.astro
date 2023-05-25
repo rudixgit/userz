@@ -2,7 +2,7 @@
 export const prerender = false
 import Layout from "../layouts/Layout.astro";
 const items = await fetch(
-	   `https://cache.kloun.lol/proxy?url=${encodeURIComponent('https://pr0gramm.com/api/items/get?flags=1&promoted=1&cache=7200')}`
+	   `https://cache.kloun.workers.dev/proxy?url=${encodeURIComponent('https://pr0gramm.com/api/items/get?flags=1&promoted=1&cache=7200')}`
    ).then((res) => res.json());
 ---
 <Layout title="memes">
