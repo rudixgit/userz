@@ -15,7 +15,7 @@ const pagenum = x[1] ? Number(x[1]) : 1;
 const skip = pagenum * 30 - 30;
 
 const datax = db.view("joke/cat", {
-	key: `JOK${cat}`,
+	key: `JOK${cat?.toString()}`,
 	limit: 30,
 	update: "lazy",
 	reduce: "false",
@@ -24,7 +24,7 @@ const datax = db.view("joke/cat", {
 });
 
 const countx = db.view("joke/cat", {
-	key: `JOK${cat}`,
+	key: `JOK${cat?.toString()}`,
 	limit: 1,
 	update: "lazy",
 	reduce: true,
