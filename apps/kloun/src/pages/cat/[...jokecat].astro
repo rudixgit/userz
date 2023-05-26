@@ -13,8 +13,6 @@ const pagenum = x[1] ? Number(x[1]) : 1;
 
 const skip = pagenum * 30 - 30;
 
-
- 
 const datax = db.view("joke/cat", {
 	key: 'JOK'+encodeURI(cat || ''),
 	limit: 30,
