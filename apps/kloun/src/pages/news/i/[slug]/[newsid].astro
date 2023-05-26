@@ -36,53 +36,44 @@ function getLastP(arr: { type: string; content: string }[]) {
 }
 const { newsid,slug } = Astro.params as { newsid: string; slug: string };
 
-const keys:string[] = slug.split('-').filter(x => x.length > 4) 
+//const keys:string[] = slug.split('-').filter(x => x.length > 4) 
  
 // const newsterms = await sqlquery('select * from keyz where key =  "'+keys.join('" or key = "zxxx')+'"');
- const terms = await existBg(keys)
+ 
  //const differencies = getUniqueStrings(keys,terms)
+const getnid = await db.get(newsid)
  
- 
-const datax = db.get(newsid);
  
 
-const newsx =  db.view("newsbg/search", {
+const newsx =  await db.view("newsbg/news", {
     update: false,
-    keys: JSON.stringify(shuffle(terms)),
-    descending: Math.random() >= 0.5 ? true : false,
+    start_key: getnid.nid,
+    descending: true,
     include_docs:true,
-    group:false,
-    limit:130,
+    limit:16,
     cache: 864000,
 });
-//  
-const resp = await Promise.all([datax, newsx]).then((values) => {
-  return {
-    data: values[0],
-    news: values[1].rows,
-  };
-}) as {
-  data: {
-    title: string;
-    image: string;
-    content ? : string;
-    date ? : string;
-    html ? : { type: string;content: string; };
-    nid: string;
-  },
-  news: {
-    _id: string;
-    key: string;
-    title: string;
-    image: string;
-    date: string;
-    nid: string;
-  } []
+ 
+const news = newsx.rows.slice(1,15) as {
+  _id: string;
+  key: string;
+  title: string;
+  image: string;
+  date: string;
+  nid: string;
+} []
+const data = newsx.rows[0] as  {
+  title: string;
+  image: string;
+  content ? : string;
+  date ? : string;
+  html ? : { type: string;content: string; };
+  nid: string;
 }
+ 
 
 
-
-const { title, image, html, content, date, nid } = resp.data;
+const { title, image, html, content, date, nid } = data;
  
 
 const parsed  = content
@@ -139,7 +130,7 @@ const parsed  = content
     </div>
     <div class="flex flex-wrap gap-3">
       {
-          shuffle(resp.news).slice(0,10).map(
+           news.map(
               ({
                   _id,
                   title,
