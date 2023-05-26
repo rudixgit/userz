@@ -9,7 +9,6 @@ import Layout from "../../layouts/Layout.astro";
 const { jokecat } = Astro.params as { jokecat: string };
 const x = jokecat.split("/") as string[];
 const cat = jokecats.find((xx) => xx.slug === x[0])?.cat;
-
 const pagenum = x[1] ? Number(x[1]) : 1;
 
 const skip = pagenum * 30 - 30;
@@ -17,7 +16,7 @@ const skip = pagenum * 30 - 30;
 
  
 const datax = db.view("joke/cat", {
-	key: 'JOK'+cat,
+	key: 'JOK'+encodeURI(cat || ''),
 	limit: 30,
 	update: "lazy",
 	reduce: "false",
@@ -26,7 +25,7 @@ const datax = db.view("joke/cat", {
 });
 
 const countx = db.view("joke/cat", {
-	key: 'JOK'+cat,
+	key: 'JOK'+encodeURI(cat || ''),
 	limit: 1,
 	update: "lazy",
 	reduce: true,
