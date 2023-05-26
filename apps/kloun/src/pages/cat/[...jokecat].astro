@@ -20,7 +20,7 @@ const datax = db.view("joke/cat", {
 	update: "lazy",
 	reduce: "false",
 	skip,
-	cache: 864000,
+	//cache: 864000,
 });
 
 const countx = db.view("joke/cat", {
@@ -28,7 +28,7 @@ const countx = db.view("joke/cat", {
 	limit: 1,
 	update: "lazy",
 	reduce: true,
-	cache: 864000,
+	//cache: 864000,
 });
 
 const resp = await Promise.all([datax, countx]).then((values) => {
@@ -40,7 +40,6 @@ const resp = await Promise.all([datax, countx]).then((values) => {
 
 const { jokes, items } = resp;
 ---
-
 <Layout
 	title={`Вицове от ${cat} на страница ${pagenum}`}
 	description={`Вицове от ${cat}  `}
