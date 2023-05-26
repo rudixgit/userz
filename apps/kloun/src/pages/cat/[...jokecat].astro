@@ -13,13 +13,11 @@ const cat = jokecats.find((xx) => xx.slug === x[0])?.cat;
 const pagenum = x[1] ? Number(x[1]) : 1;
 
 const skip = pagenum * 30 - 30;
-const cyrillicString = 'JOK'+cat;
-const encodedBytes = new TextEncoder().encode(cyrillicString);
-const decodedString = new TextDecoder('utf-8').decode(encodedBytes);
+
 
  
 const datax = db.view("joke/cat", {
-	key: decodedString,
+	key: 'JOK'+cat,
 	limit: 30,
 	update: "lazy",
 	reduce: "false",
@@ -28,7 +26,7 @@ const datax = db.view("joke/cat", {
 });
 
 const countx = db.view("joke/cat", {
-	key: decodedString,
+	key: 'JOK'+cat,
 	limit: 1,
 	update: "lazy",
 	reduce: true,
