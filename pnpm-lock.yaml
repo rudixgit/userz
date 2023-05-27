@@ -314,7 +314,7 @@ importers:
         version: 8.38.0
       eslint-config-next:
         specifier: canary
-        version: 13.4.3-canary.2(eslint@8.38.0)(typescript@4.8.4)
+        version: 13.4.5-canary.0(eslint@8.38.0)(typescript@4.8.4)
       typescript:
         specifier: 4.8.4
         version: 4.8.4
@@ -400,6 +400,9 @@ importers:
       '@types/stopword':
         specifier: ^2.0.0
         version: 2.0.0
+      network-information-types:
+        specifier: ^0.1.1
+        version: 0.1.1(typescript@4.9.5)
       prettier:
         specifier: ^2.8.7
         version: 2.8.8
@@ -5286,8 +5289,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/eslint-plugin-next@13.4.3-canary.2:
-    resolution: {integrity: sha512-wwoJvVV3fozvJWQJoI0tco+gSp+Wr6vdIZRefULzm3AVm5Vuv8xBY8LZmn6aWpn60fLPAh09VlrFYOGqkdwf6w==}
+  /@next/eslint-plugin-next@13.4.5-canary.0:
+    resolution: {integrity: sha512-3MYCBhlg/FyOagzkidkbWjkhDBHiMvL3fiDEqajFYCm2QJO8adL2SyDmgmqUq33WaI5736weB8hkcAVPKFK6zg==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -8861,8 +8864,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-next@13.4.3-canary.2(eslint@8.38.0)(typescript@4.8.4):
-    resolution: {integrity: sha512-qfu5oTzUY1OjUShK12+k2A/+w17/tElP5r1wekzeawV3HlvFiogVvY1aHP8Qni/E5MQSyEQJ+/viqXQDDupewQ==}
+  /eslint-config-next@13.4.5-canary.0(eslint@8.38.0)(typescript@4.8.4):
+    resolution: {integrity: sha512-YSl28RTa0ZGcpa6Bdsj+EVjNsJP4NqTucrlv5lAN3I25xTKTMcih5OsIInbdCm0VTcz8t3vpsMW9pOu/aBwIaA==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -8870,7 +8873,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.4.3-canary.2
+      '@next/eslint-plugin-next': 13.4.5-canary.0
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.59.6(eslint@8.38.0)(typescript@4.8.4)
       eslint: 8.38.0
@@ -12445,6 +12448,14 @@ packages:
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: false
+
+  /network-information-types@0.1.1(typescript@4.9.5):
+    resolution: {integrity: sha512-mLXNafJYOkiJB6IlF727YWssTRpXitR+tKSLyA5VAdBi3SOvLf5gtizHgxf241YHPWocnAO/fAhVrB/68tPHDw==}
+    peerDependencies:
+      typescript: '>= 3.0.0'
+    dependencies:
+      typescript: 4.9.5
+    dev: true
 
   /next-seo@5.15.0(next@13.3.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-LGbcY91yDKGMb7YI+28n3g+RuChUkt6pXNpa8FkfKkEmNiJkeRDEXTnnjVtwT9FmMhG6NH8qwHTelGrlYm9rgg==}

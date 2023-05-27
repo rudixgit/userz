@@ -1,13 +1,17 @@
-import cloudflare from '@astrojs/cloudflare'
-import react from '@astrojs/react'
-import tailwind from '@astrojs/tailwind'
+import cloudflare from '@astrojs/cloudflare';
+import prefetch from '@astrojs/prefetch';
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 
-import { defineConfig } from 'astro/config'
+import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   output: "hybrid",
   integrations: [
     react(),
+    prefetch({
+      throttle: 15
+    }),
     tailwind({
       config: { applyBaseStyles: false }
     })
