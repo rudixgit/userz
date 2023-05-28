@@ -1,9 +1,9 @@
 ---
 export const prerender = false
 import uniqBy from "lodash/uniqBy";
-import  shuffle  from "lodash/shuffle";
+ 
 import db from "../../../../../data/client";
-import existBg from "../../../../../data/existbg";
+ 
 import CardNews from "../../../../components/CardNews.astro";
 import RudSense from "../../../../components/RudSense.astro";
 import Layout from "../../../../layouts/Layout.astro";
@@ -34,46 +34,43 @@ function getLastP(arr: { type: string; content: string }[]) {
     });
     return arrx;
 }
-const { newsid,slug } = Astro.params as { newsid: string; slug: string };
+const { newsid } = Astro.params as { newsid: string; slug?: string };
 
 //const keys:string[] = slug.split('-').filter(x => x.length > 4) 
  
 // const newsterms = await sqlquery('select * from keyz where key =  "'+keys.join('" or key = "zxxx')+'"');
  
  //const differencies = getUniqueStrings(keys,terms)
-const getnid = await db.get(newsid)
- 
- 
-
+ type Doc = {
+   random:number;
+   title: string;
+   key?:string;
+   _id?:string;
+   id?:string;
+   image: string;
+   content ? : string;
+   date ? : string;
+   html ? : { type: string;content: string; };
+   nid: string;
+ } 
+const getnid  = await db.get(newsid)  
 const newsx =  await db.view("newsbg/news", {
     update: false,
     start_key: getnid.nid,
     descending: true,
-    include_docs:true,
-    limit:16,
+    limit:10,
+    skip:getnid.random,
     cache: 864000,
 });
  
-const news = newsx.rows.slice(1,15) as {
-  _id: string;
-  key: string;
-  title: string;
-  image: string;
-  date: string;
-  nid: string;
-} []
-const data = newsx.rows[0] as  {
-  title: string;
-  image: string;
-  content ? : string;
-  date ? : string;
-  html ? : { type: string;content: string; };
-  nid: string;
-}
+
+ 
+const news = newsx.rows  as Doc []
+ 
  
 
 
-const { title, image, html, content, date, nid } = data;
+const { title, image, html, content, date, nid } = getnid as any
  
 
 const parsed  = content
@@ -132,18 +129,18 @@ const parsed  = content
       {
            news.map(
               ({
-                  _id,
+                  id,
                   title,
+                  key,
                   date,
-                  nid,
                   image,
               }) => (
                   <CardNews
                       title={title}
                       img={image}
-                      date={date}
-                      key={nid}
-                      id={_id}
+                      date={date || ''}
+                      key={key || ''}
+                      id={id || ''}
                   />
               )
           )
