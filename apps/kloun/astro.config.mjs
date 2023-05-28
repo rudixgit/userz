@@ -1,5 +1,5 @@
 import cloudflare from '@astrojs/cloudflare';
-import prefetch from '@astrojs/prefetch';
+
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
@@ -9,9 +9,7 @@ export default defineConfig({
   output: "hybrid",
   integrations: [
     react(),
-    prefetch({
-      throttle: 15
-    }),
+
     tailwind({
       config: { applyBaseStyles: false }
     })
