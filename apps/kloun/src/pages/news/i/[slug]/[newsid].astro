@@ -16,7 +16,8 @@ function countAlphanumeric(str: string) {
 // function getUniqueStrings(arr1:string[], arr2:string[]) {
 //   return arr1.filter(str => !arr2.includes(str));
 // }
-function getLastP(arr: { type: string; content: string }[]) {
+function getLastP(arrz: { type: string; content: string }[]) {
+   const arr = arrz.map((x,i:number)=> ({...x,i}))
     const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
     const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
         if (curr.type === "p") {
@@ -64,7 +65,7 @@ const newsx =  await db.view("newsbg/news", {
 });
 
 const news = newsx.rows  as Doc []
-const { title, image, html, content, date, nid } = getnid as any
+const { title, image, html, content, date } = getnid as any
 const parsed  = content
     ? JSON.parse(content).html.map((x: string) => ({
           type: "p",
@@ -101,12 +102,12 @@ const parsed  = content
         <article class="leading-relaxed" id="article">
             {
                 getLastP(parsed).map(
-                    ({ type, content }: { type: string; content: string },i:number) =>
+                    ({ type, content,i }: { type: string; content: string,i:number }) =>
                         type === "p" ? (
                             <p class="text-md">{content}</p>
                         ) : (
                             <div class="flex justify-center items-center">
-                                <img src={'https://imgnews.kloun.lol/api/img/'+newsid+'--'+i+'.jpg'} class="rounded-md" loading="lazy" /> {'https://imgnews.kloun.lol/api/img/'+getnid.nid+'--'+i+'.jpg'} {i}
+                                <img src={'https://imgnews.kloun.lol/api/img/'+newsid+'--'+i+'.jpg'} class="rounded-md" loading="lazy" />   {i}
                             </div>
                         )
                 )
