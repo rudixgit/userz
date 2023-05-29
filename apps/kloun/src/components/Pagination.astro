@@ -68,6 +68,7 @@ const pagesToRenderMobile = makeArray({
         {
             pagesToRender.map((page: number) => (
                 <a
+                    rel="prefetch"
                     href={
                         page === currentPage
                             ? "#"
