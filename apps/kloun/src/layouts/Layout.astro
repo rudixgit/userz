@@ -96,6 +96,33 @@ const currentPath = "https://kloun.lol" + Astro.url.pathname;
 			}
 			gtag("js", new Date());
 			gtag("config", "G-PDX6T8DTFR");
+			//
+			window.addEventListener('load', function() {
+			  // Get all <a> elements with rel="refetch"
+			  const refetchLinks = Array.from(document.querySelectorAll('a[rel="prefetch"]'));
+			
+			  // Extract the href values
+			  const hrefs = refetchLinks.map(link => link.href);
+			  console.log(hrefs)
+		 
+			  fetch('https://imgnews.kloun.lol/fetch-urls', {
+				method: 'POST',
+				headers: {
+				  'Content-Type': 'application/json', 
+				},
+				body: JSON.stringify({urls:hrefs})
+			  })
+			  .then(response => {
+				if (response.ok) {
+				  console.log('POST request successful');
+				} else {
+				  console.error('Error:', response.status);
+				}
+			  })
+			  .catch(error => {
+				console.error('Error:', error);
+			  });
+			});
 		</script>
 	</body>
 </html>
