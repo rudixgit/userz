@@ -100,25 +100,27 @@ const parsed  = content
         </div>
     </div>
     <div class="mb-6 items-center justify-center">
-        <RudSense />
+        <RudSense type="inarticle" />
         <article class="leading-relaxed" id="article">
             {
                 getLastP(parsed).map(
                     ({ type, content,i }: { type: string; content: string,i:number }) =>
                         type === "p" ? (
-                            <p class="text-lg">{content}</p>
+                            <p class="text-lg">{content} {(i === 3 || i === 9 || i === 12 )&& (<RudSense type="inarticle" />)}</p>
                         ) : (
                             <div class="flex justify-center items-center">
                                <div class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500">
                                 <img src={'https://imgnews.kloun.lol/api/img/'+newsid+'--'+i+'.jpg'} class="rounded-md" loading="lazy" /> 
                                 </div>  
+                                {(i === 3 || i === 9 || i === 12 )&& (<RudSense type="inarticle" />)}
                             </div>
                         )
                 )
             }
         </article>
         <div class="clear-both"></div>
-        <RudSense main={true} />
+   
+           <RudSense type="inarticle" main={true} />
         
         <div class="clear-both"></div>
     </div>

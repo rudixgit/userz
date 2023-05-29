@@ -1,8 +1,15 @@
 ---
 interface Props {
     main?: boolean;
+    type?: string;
 }
-const { main } = Astro.props;
+const { main,type } = Astro.props;
+const types = {"inarticle":{html:`<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5476404733919333"
+     data-ad-slot="2065828237"></ins>`}}
 ---
 <div class="flex justify-center items-center">
     {main && (<script 
@@ -10,15 +17,15 @@ const { main } = Astro.props;
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476404733919333"
             crossorigin="anonymous"
         />)}
-   
-    <ins 
-        class="adsbygoogle w-full rounded-md"
-        style="display:block; min-width: 250px;"
-        data-ad-format="fluid"
-        data-ad-layout-key="-gw-3+1f-3d+2z"
-        data-ad-client="ca-pub-5476404733919333"
-        data-ad-slot="2115206418"></ins>
-        
+   {!type && (<ins 
+       class="adsbygoogle w-full rounded-md"
+       style="display:block; min-width: 250px;"
+       data-ad-format="fluid"
+       data-ad-layout-key="-gw-3+1f-3d+2z"
+       data-ad-client="ca-pub-5476404733919333"
+       data-ad-slot="2115206418"></ins> )}
+       
+        {type && (<div set:html={types[type].html} />)}
         {main && (
             <script is:inline>
                 (adsbygoogle = window.adsbygoogle || []).push({});

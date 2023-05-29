@@ -25,6 +25,8 @@ const resp = await Promise.all([jokex, itemsx]).then((values) => {
     };
 }) as { joke: Doc; chunks: [Doc[]] };
 
+ 
+
 const { joke, chunks } = resp ;
 
 if (joke.error) {

@@ -10,14 +10,15 @@ const serialize = (obj: Variables) => {
 };
 
 
-async function fetcher(query: { [key: string]: string }) {
+async function fetcher(query: { [key: string]: string }, rd?: number) {
 	const { db, id, _view, _design, params, insert } = query;
 	const body = JSON.stringify(query);
 	const isPost = body?.includes("_id") || insert;
+	const rdm = (rd || 100).toString()
 	const buildurl = `${url}${db ? db + "/" : "db/"}${_design ? `_design/${_design}/_view/${_view}?${params}` : ""
-		}${id || ""}`;
+		}${id ? `${id}?rd=${rdm}` : `&rd=${rdm}`}`;
 	//const urlx = `${isPost ? buildurl : `https://cache.kloun.lol/proxy?url=${encodeURIComponent(buildurl)}`}`
-
+	console.log(buildurl)
 
 	const response = await fetch(buildurl, {
 		method: isPost ? "POST" : "GET",
@@ -29,8 +30,8 @@ async function fetcher(query: { [key: string]: string }) {
 	const d = await response.json();
 	return d;
 }
-async function get(id: string): Promise<Variables> {
-	const d = await fetcher({ id });
+async function get(id: string, rd?: number): Promise<Variables> {
+	const d = await fetcher({ id }, rd || 100);
 	if (d.error) {
 		return Promise.resolve({ error: "not found" });
 	}
