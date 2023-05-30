@@ -1,9 +1,9 @@
 
-import { JSDOM } from 'jsdom'
 import { Readability } from "@mozilla/readability";
+import { JSDOM } from 'jsdom';
+import * as Nano from "nano";
 import * as sanitizeHtml from "sanitize-html";
 import { ulid } from 'ulid';
-import * as Nano from "nano";
 let nano = Nano('https://db.kloun.lol');
 let db = nano.db.use('db')
 export type SanitizedHTMLObject = { type: 'p' | 'img', content: string };
@@ -51,7 +51,7 @@ export const scrheaders = {
     "Mozilla/5.0 (iPhone; CPU iPhone OS 16_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1",
 };
 
-export async function scrapeArticle(url: string, filters: string[]) {
+export async function scrapeArticle(url: string, filters: string[], type?: string) {
   const exist = await db.get(url).catch(() => { })
   if (exist) {
     console.log('exist');
@@ -81,7 +81,7 @@ export async function scrapeArticle(url: string, filters: string[]) {
     title: article?.title.replace('- Mediapool.bg', '').replace('- новини СЕГА', '') as string,
     html: filterSanitizedHTML(pimgtags, filters),
     nid: ulid(),
-    type: 'NewsBG',
+    type: type || 'NewsBG',
     date: new Date().toLocaleString("en-US", { timeZone: "Europe/Sofia" }),
     link: url,
     image: image || '',
