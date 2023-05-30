@@ -70,7 +70,11 @@ const currentPath = "https://kloun.lol" + Astro.url.pathname;
 			}
 			<Footer />
 		</div>
-
+		<div id="fb-root"></div>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-PDX6T8DTFR"
+		></script>
 		<script id="rendered-js" is:inline>
 			function fbshare(url) {
 				window.open(
@@ -81,14 +85,6 @@ const currentPath = "https://kloun.lol" + Astro.url.pathname;
 				);
 				return false;
 			}
-			//# sourceURL=pen.js
-		</script>
-		<div id="fb-root"></div>
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-PDX6T8DTFR"
-		></script>
-		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
 				dataLayer.push(arguments);
