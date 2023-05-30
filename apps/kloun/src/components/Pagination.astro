@@ -60,48 +60,25 @@ const pagesToRenderMobile = makeArray({
     currentPage,
 });
 ---
-
-<div
-    class="fixed bottom-2 left-2 right-2 z-20 flex justify-center bg-black/30 p-4 backdrop-blur-sm rounded-xl"
->
-    <div class="btn-group hidden sm:flex">
-        {
-            pagesToRender.map((page: number) => (
-                <a
-                    rel="prefetch"
-                    href={
-                        page === currentPage
-                            ? "#"
-                            : `${prefix}${
-                                  page === 1
-                                      ? prefix.includes("_")
-                                          ? 1
-                                          : ""
-                                      : page
-                              }/`
-                    }
-                    class={
-                        page === currentPage
-                            ? "btn px-4 font-bold bg-gray-700 dark:bg-gray-500"
-                            : "btn px-4 font-bold"
-                    }
-                >
-                    {page}
-                </a>
-            ))
-        }
-    </div>
-    <div class="block xs:hidden sm:hidden">
-        <div class="btn-group">
+{pagesToRender[1] && (<div
+        class="fixed bottom-2 left-2 right-2 z-20 flex justify-center bg-black/30 p-4 backdrop-blur-sm rounded-xl"
+    >
+        <div class="btn-group hidden sm:flex">
             {
-                pagesToRenderMobile.map((page: number) => (
+                pagesToRender.map((page: number) => (
                     <a
+                        rel="prefetch"
                         href={
                             page === currentPage
                                 ? "#"
-                                : `${prefix}${page === 1 ? "" : page}/`
+                                : `${prefix}${
+                                      page === 1
+                                          ? prefix.includes("_")
+                                              ? 1
+                                              : ""
+                                          : page
+                                  }/`
                         }
-                        rel="nofollow"
                         class={
                             page === currentPage
                                 ? "btn px-4 font-bold bg-gray-700 dark:bg-gray-500"
@@ -113,5 +90,28 @@ const pagesToRenderMobile = makeArray({
                 ))
             }
         </div>
-    </div>
-</div>
+        <div class="block xs:hidden sm:hidden">
+            <div class="btn-group">
+                {
+                    pagesToRenderMobile.map((page: number) => (
+                        <a
+                            href={
+                                page === currentPage
+                                    ? "#"
+                                    : `${prefix}${page === 1 ? "" : page}/`
+                            }
+                            rel="nofollow"
+                            class={
+                                page === currentPage
+                                    ? "btn px-4 font-bold bg-gray-700 dark:bg-gray-500"
+                                    : "btn px-4 font-bold"
+                            }
+                        >
+                            {page}
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>)}
+
