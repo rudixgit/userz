@@ -14,7 +14,10 @@ const userAgents = [
 	'Slurp', // Yahoo Slurp crawler
 	'DuckDuckBot', // DuckDuckGo crawler
 	'Baiduspider', // Baidu spider
-	'YandexBot' // Yandex crawler // Googlebot crawler
+	'YandexBot', // Yandex crawler // Googlebot crawler
+	'facebookexternalhit',
+	'Twitterbot',
+	'TwitterBot'
 ];
 
 export function onRequest({ locals, request }: { locals: { url: string }, request: { url: string, headers: { get: (x: string) => string } } }, next: () => void) {
