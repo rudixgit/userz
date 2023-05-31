@@ -2,7 +2,7 @@
 
 import { JSDOM } from "jsdom";
 
-import { scrapeArticle, scrheaders, unique, updateview } from "./sanitize";
+import { getUniqueStrings, scrapeArticle, scrheaders, updateview } from "./sanitize";
 
 const go = async () => {
   const response = await fetch("https://www.24chasa.bg/novini", {
@@ -13,7 +13,7 @@ const go = async () => {
   const links1 = Array.from(new JSDOM(d).window.document.querySelectorAll("a"))
     .map((link: HTMLElement) => link.getAttribute("href"))
     .filter((href) => href !== null && href.includes('article')) as string[];
-  const links = links1.filter(unique);
+  const links = getUniqueStrings(links1)
 
 
   await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "])));

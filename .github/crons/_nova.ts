@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom";
 
-import { scrapeArticle, scrheaders, unique, updateview } from "./sanitize";
+import { getUniqueStrings, scrapeArticle, scrheaders, updateview } from "./sanitize";
 
 const go = async () => {
   const response = await fetch("https://nova.bg/filter/all", {
@@ -11,7 +11,7 @@ const go = async () => {
   const links1 = Array.from(new JSDOM(d).window.document.querySelectorAll("a"))
     .map((link: HTMLElement) => link.getAttribute("href"))
     .filter((href) => href !== null && !href.includes('javascript:') && href.includes('/news/view') && !href.includes('viber:')) as string[];
-  const links = links1.filter(unique)
+  const links = getUniqueStrings(links1)
   await Promise.all(links.map((link) => scrapeArticle(link, ['Снимка: ', 'Новините на NOVA'])));
   await updateview()
   return links;

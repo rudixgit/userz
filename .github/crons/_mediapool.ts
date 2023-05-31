@@ -1,7 +1,7 @@
 
 import { JSDOM } from "jsdom";
 
-import { scrapeArticle, scrheaders, unique, updateview } from "./sanitize";
+import { getUniqueStrings, scrapeArticle, scrheaders, updateview } from "./sanitize";
 
 
 const go = async () => {
@@ -13,7 +13,7 @@ const go = async () => {
   const links1 = Array.from(new JSDOM(d).window.document.querySelectorAll("a"))
     .map((link: HTMLElement) => link.getAttribute("href"))
     .filter((href) => href !== null && !href.includes('-cat') && !href.includes('/users') && href.includes('.html') && !href.includes('/page') && href.split('-').length >= 3) as string[];
-  const links = links1.filter(unique)
+  const links = getUniqueStrings(links1)
 
 
   await Promise.all(links.map((link) => scrapeArticle(link, ["подкрепете ни", "Ще се радваме, ако ни подкрепите", "Екипът на Mediapool Ви", "Редакцията не носи отговорност", "Коментирането под", "Прочетете нашите правила", "За да коментирате,"])));

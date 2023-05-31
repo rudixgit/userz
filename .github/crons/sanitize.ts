@@ -35,15 +35,15 @@ export function filterSanitizedHTML(sanitized: SanitizedHTMLObject[], filters: s
     return true; // Keep this object
   });
 }
-
+export const getUniqueStrings = (inputArray: string[]): string[] => {
+  return Array.from(new Set(inputArray));
+}
 export function extractOpenGraphImage(html: string): string | null {
   const dom = new JSDOM(html);
   const meta = dom.window.document.querySelector('meta[property="og:image"]');
   return meta ? meta.getAttribute('content') : null;
 }
-export const unique = (value, index, self) => {
-  return self.indexOf(value) === index
-}
+
 export const scrheaders = {
   Accept:
     "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
