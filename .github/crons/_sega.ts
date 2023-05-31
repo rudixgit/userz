@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom";
 
-import { scrapeArticle, scrheaders, unique, updateview } from "./sanitize";
+import { getUniqueStrings, scrapeArticle, scrheaders, updateview } from "./sanitize";
 
 
 const go = async () => {
@@ -12,7 +12,7 @@ const go = async () => {
   const links1 = Array.from(new JSDOM(d).window.document.querySelectorAll("a"))
     .map((link: HTMLElement) => link.getAttribute("href"))
     .filter((href) => href !== null && href.split('-').length >= 5 && !href.includes('video') && href.split('/').length === 3) as string[];
-  const links = links1.filter(unique).map((link) => `https://www.segabg.com${link}`);
+  const links = getUniqueStrings(links1).map((link) => `https://www.segabg.com${link}`);
   console.log(links);
 
   await Promise.all(links.map((link) => scrapeArticle(link, [" Ако искате да подкрепите"])));
