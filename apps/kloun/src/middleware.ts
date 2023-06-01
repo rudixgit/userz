@@ -27,10 +27,19 @@ export function onRequest({ locals, request }: { locals: { url: string }, reques
 	locals.url = request.url
 	const isSupportedBrowser = userAgents.some(agent => userAgent.includes(agent));
 	if (isSupportedBrowser) {
+		if (request.url.includes('www.')) {
+			return new Response('', {
+				status: 301,
+				headers: {
+					'Location': request.url.replace('www.', '')
+				}
+			});
+		}
 		return next()
 	} else {
 		return new Response('Method not Allowed', {
 			status: 405,
 		});
 	}
+
 };
