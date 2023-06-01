@@ -69,14 +69,14 @@ export async function scrapeArticle(url: string, filters: string[], type?: strin
     .querySelector('meta[property="og:image"]')
     ?.getAttribute("content");
   const article = reader.parse();
+  console.log(article?.content)
   const sanit = sanitizeHtml(article?.content || "", {
-    allowedTags: ["p", "img"],
+    allowedTags: ["p", "img", "picture"],
     allowedAttributes: {
       img: ["src"],
     },
   });
   const pimgtags = await parseSanitizedHTML(sanit);
-
   const docx = {
     title: article?.title.replace('- Mediapool.bg', '').replace('- новини СЕГА', '') as string,
     html: filterSanitizedHTML(pimgtags, filters),
@@ -96,7 +96,6 @@ export async function scrapeArticle(url: string, filters: string[], type?: strin
     console.log(docx.title, ' forbidden title');
     return null
   }
-
 }
 
 export async function updateview() {
