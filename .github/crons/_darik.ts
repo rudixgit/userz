@@ -1,7 +1,7 @@
 
 import { JSDOM } from "jsdom";
 
-import { getUniqueStrings, scrapeArticle, scrheaders, updateview } from "./sanitize";
+import { getUniqueStrings, scrapeArticle, scrheaders } from "./sanitize";
 
 const go = async () => {
   const response = await fetch("https://dariknews.bg/novini", {
@@ -14,7 +14,7 @@ const go = async () => {
     .filter((href) => href !== null && href.includes('dariknews.bg') && href.split('-').length >= 4) as string[];
   const links = getUniqueStrings(links1).map((link) => `https:${link}`);
   console.log(links);
-  await updateview()
+
   await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "])));
   return links;
 };

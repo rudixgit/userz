@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom";
 
-import { getUniqueStrings, scrapeArticle, scrheaders, updateview } from "./sanitize";
+import { getUniqueStrings, scrapeArticle, scrheaders } from "./sanitize";
 
 
 const go = async () => {
@@ -14,9 +14,7 @@ const go = async () => {
     .filter((href) => href !== null && href.split('-').length >= 5 && !href.includes('video') && href.split('/').length === 3) as string[];
   const links = getUniqueStrings(links1).map((link) => `https://www.segabg.com${link}`);
   console.log(links);
-
   await Promise.all(links.map((link) => scrapeArticle(link, [" Ако искате да подкрепите"])));
-  await updateview()
   return links;
 };
 //getArticle('https://www.segabg.com/category-movie-release/dzhon-uik-i-izkustvoto-da-ubivash').then(() => console.log('done'));

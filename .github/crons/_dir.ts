@@ -2,7 +2,7 @@
 
 import { JSDOM } from "jsdom";
 
-import { getUniqueStrings, scrapeArticle, scrheaders, updateview } from "./sanitize";
+import { getUniqueStrings, scrapeArticle, scrheaders } from "./sanitize";
 //d
 const go = async () => {
   const response = await fetch("https://m.dir.bg/dnes/latest-news", {
@@ -18,8 +18,6 @@ const go = async () => {
 
   console.log(links);
   await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "])));
-
-  await updateview()
   return links;
 };
 
