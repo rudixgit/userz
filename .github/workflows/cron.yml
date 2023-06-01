@@ -64,3 +64,7 @@ jobs:
         run: |
           tsc ./.github/crons/_en_variety.ts
           node ./.github/crons/_en_variety.js
+      - name: en_buzzfeed
+        run: |
+          tsc ./.github/crons/_en_buzzfeed.ts
+          node ./.github/crons/_en_buzzfeed.js
