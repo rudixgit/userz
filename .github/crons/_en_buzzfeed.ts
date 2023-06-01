@@ -12,14 +12,14 @@ const go = async () => {
 		.map((link: HTMLElement) => link.getAttribute("href"))
 		.filter((href) => href !== null && href.includes('https') && href.split('-').length > 4 && href.length < 700) as string[];
 	const links = getUniqueStrings(links1)
-	//console.log(links)
-	//await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsENProcess")));
-	//await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsEN")));
+	console.log(links)
+	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsENProcess")));
+	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsEN")));
 	await updateview()
 	return links;
 };
-scrapeArticle('https://www.buzzfeed.com/leylamohammed/kris-jenner-pursuit-of-fame-cost-the-kardashians?origin=x1x', ['xxx'], "TestEN").then(() => console.log('done'));
+// scrapeArticle('https://www.buzzfeed.com/leylamohammed/kris-jenner-pursuit-of-fame-cost-the-kardashians?origin=x1x', ['xxx'], "TestEN").then(() => console.log('done'));
 
-//go().then((links) => console.log(links.length));
+go().then((links) => console.log(links.length));
 
 
