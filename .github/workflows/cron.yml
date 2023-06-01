@@ -68,3 +68,7 @@ jobs:
         run: |
           tsc ./.github/crons/_en_buzzfeed.ts
           node ./.github/crons/_en_buzzfeed.js
+      - name: en_theverge
+        run: |
+          tsc ./.github/crons/_en_theverge.ts
+          node ./.github/crons/_en_theverge.js
