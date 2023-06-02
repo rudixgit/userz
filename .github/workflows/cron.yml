@@ -72,3 +72,7 @@ jobs:
         run: |
           tsc ./.github/crons/_en_theverge.ts
           node ./.github/crons/_en_theverge.js
+      - name: en_vice
+        run: |
+          tsc ./.github/crons/_en_theverge.ts
+          node ./.github/crons/_en_theverge.js
