@@ -78,7 +78,7 @@ export const trans = async ({ url, from, to }) => {
 
 export async function go(id, sourcelang) {
 	const bodyprod = await dbprod.get(id)
-	const structure = sourcelang === 'bg' ? { from: 'bg', to: 'en' } : { from: 'en', to: 'bg' }
+	const structure = sourcelang === 'bg' ? { from: 'bg', to: 'en', type: 'NewsBGEN' } : { from: 'en', to: 'bg', type: 'NewsBG' }
 	const structureopposite = sourcelang === 'bg' ? { from: 'en', to: 'bg' } : { from: 'bg', to: 'en' }
 	const bodylen = JSON.stringify(bodyprod).length
 	if (bodylen < 500) {
@@ -96,7 +96,7 @@ export async function go(id, sourcelang) {
 	const engdb = await dbprod.insert({
 		...bodyprod,
 		html: enx,
-		type: 'NewsBGEN'
+		...structure
 	})
 	const bgx = await trans({ url: engdb.id, ...structureopposite })
 	console.log([
