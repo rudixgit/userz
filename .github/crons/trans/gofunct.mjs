@@ -33,7 +33,6 @@ export async function parseSanitizedHTML(html) {
 
 
 export const trans = async ({ url, from, to }) => {
-
 	const page = await browser.newPage();
 	await page.setViewport({
 		width: 5640,
@@ -64,16 +63,20 @@ export const trans = async ({ url, from, to }) => {
 		const myDiv = document.getElementById("article");
 		return myDiv.innerHTML;
 	});
+	const title = await page.evaluate(() => {
+		const myDiv = document.getElementById("title");
+		return myDiv.innerHTML;
+	});
 
 	await page.close();
 	//await browser.close();
-	const clean = sanitizeHtml(myDivHtml, {
+	const html = sanitizeHtml(myDivHtml, {
 		allowedTags: ["p", "img"],
 		allowedAttributes: {
 			img: ["src"],
 		},
 	});
-	return parseSanitizedHTML(clean)
+	return parseSanitizedHTML({ title, html })
 };
 
 export async function go(id, sourcelang) {
@@ -95,8 +98,8 @@ export async function go(id, sourcelang) {
 	const enx = await trans({ url: id, ...structure })
 	const engdb = await dbprod.insert({
 		...bodyprod,
-		html: enx,
-		...structure
+		...structure,
+		...enx,
 	})
 	const bgx = await trans({ url: engdb.id, ...structureopposite })
 	console.log([
@@ -109,7 +112,7 @@ export async function go(id, sourcelang) {
 			...bodyprod,
 			_id: id,
 			trans: '1',
-			html: bgx
+			...bgx
 		})
 		return new Promise(resolve => {
 			resolve(`${id} done`)

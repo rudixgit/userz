@@ -11,19 +11,19 @@ import db from "../../../../data/client";
  
 const { id } = Astro.params as { id: string; };
 const data = await db.get(id);
-const { title, content, html } = data;
+const { title, content, html } = data as {title:string; content?:string; html: string};
 const parsed = content
 	? JSON.parse(content).html.map((x: string) => ({
 		  type: "p",
 		  content: x,
 	  }))
-	: (html as { type: string; content: string }[]);
+	:  html;
 ---
 <head>
   <meta charset="UTF-8">
 </head>
 <div>
-	<h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
+	<h1 class="font-bold sm:text-2xl md:text-4xl" id="title">{title}</h1>
     	<article class="leading-relaxed" id="article">
 				{
 				 parsed.map(
