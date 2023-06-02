@@ -123,8 +123,6 @@ export async function go(id, sourcelang) {
 }
 
 export const receiveMessages = async (view, sourcelang) => {
-
-
 	dbprod.view('company', view, {
 		limit: 100,
 		descending: true,
