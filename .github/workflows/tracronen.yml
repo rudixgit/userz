@@ -1,4 +1,4 @@
-name: Tron 🇧🇬
+name: TronEn 🇺🇸
 on:
   schedule:
     - cron: '*/5 9-23 * * *'
@@ -27,14 +27,14 @@ jobs:
            ${{ runner.os }}-
      - name: 😳 Build
        run: |
-          url="https://db.kloun.lol/db/_design/company/_view/cronews?limit=100"
+          url="https://db.kloun.lol/db/_design/company/_view/cronewsen?limit=100"
           response=$(curl -s "$url")
           length=${#response}
           if [[ $length -gt 200 ]]; then
             echo "Output length is greater than 50 characters"
             npm install puppeteer nano jsdom async sanitize-html
             cd ./.github/crons/trans
-            node ./server.mjs
+            node ./server_en.mjs
           else
             echo "Output length is less than or equal to 50 characters"
           fi
