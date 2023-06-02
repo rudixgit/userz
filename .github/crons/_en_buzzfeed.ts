@@ -14,7 +14,7 @@ const go = async () => {
 	const links = getUniqueStrings(links1)
 	console.log(links)
 	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsENProcess")));
-	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsEN")));
+
 	return links;
 };
 // scrapeArticle('https://www.buzzfeed.com/leylamohammed/kris-jenner-pursuit-of-fame-cost-the-kardashians?origin=x1x', ['xxx'], "TestEN").then(() => console.log('done'));

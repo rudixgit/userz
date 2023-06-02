@@ -14,7 +14,6 @@ const go = async () => {
 	const links = getUniqueStrings(links1)
 	console.log(links)
 	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsENProcess")));
-	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsEN")));
 	return links;
 };
 //scrapeArticle('https://variety.com/2023/film/news/box-office-spider-man-across-the-spider-verse-the-bogeyman-little-mermaid-1235628447/?x=1dxddx1', ['xxx'], "TestEN").then(() => console.log('done'));

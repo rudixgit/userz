@@ -14,7 +14,7 @@ const go = async () => {
 	const links = getUniqueStrings(links1)
 	console.log(links)
 	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsENProcess")));
-	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsEN")));
+
 	await updateview()
 	return links;
 };
