@@ -12,7 +12,7 @@ const browser = await puppeteer.launch({
 const dbprod = n1.use('db')
 
 
-export async function parseSanitizedHTML(html) {
+export async function parseSanitizedHTML({ title, html }) {
 	const dom = new JSDOM(html);
 	const elements = dom.window.document.body.children;
 	const sanitized = [];
@@ -28,7 +28,7 @@ export async function parseSanitizedHTML(html) {
 		}
 	}
 
-	return sanitized;
+	return ({ title, html: sanitized });
 }
 
 
@@ -110,9 +110,9 @@ export async function go(id, sourcelang) {
 		delete bodyprod.content
 		await dbprod.insert({
 			...bodyprod,
+			...bgx,
 			_id: id,
 			trans: '1',
-			...bgx
 		})
 		return new Promise(resolve => {
 			resolve(`${id} done`)
