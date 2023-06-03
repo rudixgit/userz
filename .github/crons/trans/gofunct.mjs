@@ -65,7 +65,7 @@ export const trans = async ({ url, from, to }) => {
 	});
 	const title = await page.evaluate(() => {
 		const myDiv = document.getElementById("title");
-		return myDiv.innerHTML;
+		return myDiv.innerText;
 	});
 
 	await page.close();
