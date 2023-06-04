@@ -1,11 +1,11 @@
 
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from 'jsdom';
-import * as Nano from "nano";
-import * as sanitizeHtml from "sanitize-html";
+import nano from "nano";
+import sanitizeHtml from "sanitize-html";
 import { ulid } from 'ulid';
-let nano = Nano('https://db.kloun.lol');
-let db = nano.db.use('db')
+let nanoz = nano('https://db.kloun.lol');
+let db = nanoz.db.use('db')
 export type SanitizedHTMLObject = { type: 'p' | 'img', content: string };
 export async function parseSanitizedHTML(html: string): Promise<SanitizedHTMLObject[]> {
   const dom = new JSDOM(html);
@@ -36,7 +36,8 @@ export function filterSanitizedHTML(sanitized: SanitizedHTMLObject[], filters: s
   });
 }
 export const getUniqueStrings = (inputArray: string[]): string[] => {
-  return Array.from(new Set(inputArray));
+  const xx = inputArray.map(x => x.split('?')[0])
+  return Array.from(new Set(xx));
 }
 export function extractOpenGraphImage(html: string): string | null {
   const dom = new JSDOM(html);
