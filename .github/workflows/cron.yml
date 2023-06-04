@@ -76,3 +76,7 @@ jobs:
         run: |
           tsc ./.github/crons/_en_theverge.ts
           node ./.github/crons/_en_theverge.js
+      - name: en_fortune
+        run: |
+          tsc ./.github/crons/_en_fortune_well.ts
+          node ./.github/crons/_en_fortune_well.js
