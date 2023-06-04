@@ -98,8 +98,8 @@ export async function go(id, sourcelang) {
 	const enx = await trans({ url: id, ...structure })
 	const engdb = await dbprod.insert({
 		...bodyprod,
-		...structure,
 		...enx,
+		...structure
 	})
 	const bgx = await trans({ url: engdb.id, ...structureopposite })
 	console.log([
