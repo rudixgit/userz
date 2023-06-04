@@ -33,50 +33,50 @@ jobs:
           npm install jsdom @mozilla/readability sanitize-html @swc/wasm nano @types/node ulid node-fetch@2 @types/jsdom @types/node-fetch @types/sanitize-html
       - name: twentyfour
         run: |
-          tsc ./.github/crons/_24.ts
-          node ./.github/crons/_24.js
+          ts-node ./.github/crons/_24.ts
+# node ./.github/crons/_24.js
       - name: dnevnik
         run: |
-          tsc ./.github/crons/_dnevnik.ts
-          node ./.github/crons/_dnevnik.js
+          ts-node ./.github/crons/_dnevnik.ts
+# node ./.github/crons/_dnevnik.js
       - name: nova
         run: |
-          tsc ./.github/crons/_nova.ts
-          node ./.github/crons/_nova.js
+          ts-node ./.github/crons/_nova.ts
+# node ./.github/crons/_nova.js
       - name: mediapool
         run: |
-          tsc ./.github/crons/_mediapool.ts
-          node ./.github/crons/_mediapool.js
+          ts-node ./.github/crons/_mediapool.ts
+# node ./.github/crons/_mediapool.js
       - name: darik
         run: |
-          tsc ./.github/crons/_darik.ts
-          node ./.github/crons/_darik.js
+          ts-node ./.github/crons/_darik.ts
+# node ./.github/crons/_darik.js
       - name: sega
         run: |
-          tsc ./.github/crons/_sega.ts
-          node ./.github/crons/_sega.js
+          ts-node ./.github/crons/_sega.ts
+# node ./.github/crons/_sega.js
       - name: dir
         run: |
-          tsc ./.github/crons/_dir.ts
-          node ./.github/crons/_dir.js
+          ts-node ./.github/crons/_dir.ts
+# node ./.github/crons/_dir.js
   #en 
       - name: en_variety
         run: |
-          tsc ./.github/crons/_en_variety.ts
-          node ./.github/crons/_en_variety.js
+          ts-node ./.github/crons/_en_variety.ts
+# node ./.github/crons/_en_variety.js
       - name: en_buzzfeed
         run: |
-          tsc ./.github/crons/_en_buzzfeed.ts
-          node ./.github/crons/_en_buzzfeed.js
+          ts-node ./.github/crons/_en_buzzfeed.ts
+# node ./.github/crons/_en_buzzfeed.js
       - name: en_theverge
         run: |
-          tsc ./.github/crons/_en_theverge.ts
-          node ./.github/crons/_en_theverge.js
+          ts-node ./.github/crons/_en_theverge.ts
+# node ./.github/crons/_en_theverge.js
       - name: en_vice
         run: |
-          tsc ./.github/crons/_en_theverge.ts
-          node ./.github/crons/_en_theverge.js
+          ts-node ./.github/crons/_en_theverge.ts
+# node ./.github/crons/_en_theverge.js
       - name: en_fortune
         run: |
-          tsc ./.github/crons/_en_fortune_well.ts
-          node ./.github/crons/_en_fortune_well.js
+          ts-node ./.github/crons/_en_fortune_well.ts
+# node ./.github/crons/_en_fortune_well.js
