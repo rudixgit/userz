@@ -111,8 +111,7 @@ export async function go(id, sourcelang) {
 		await dbprod.insert({
 			...bodyprod,
 			...bgx,
-			_id: id,
-			trans: '1',
+			_id: id
 		})
 		return new Promise(resolve => {
 			resolve(`${id} done`)
