@@ -10,8 +10,6 @@ const browser = await puppeteer.launch({
 });
 
 const dbprod = n1.use('db')
-
-
 export async function parseSanitizedHTML({ title, html }) {
 	const dom = new JSDOM(html);
 	const elements = dom.window.document.body.children;
