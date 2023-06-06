@@ -36,7 +36,7 @@ export function filterSanitizedHTML(sanitized: SanitizedHTMLObject[], filters: s
   });
 }
 export const getUniqueStrings = (inputArray: string[]): string[] => {
-  console.log(inputArray)
+
   const xx = Array.from(inputArray.map(x => x.split('?')[0]))
   return Array.from(new Set(xx));
 }
