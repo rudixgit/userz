@@ -11,7 +11,7 @@ import db from "../../../../data/client";
  
 const { id } = Astro.params as { id: string; };
 const data = await db.get(id);
-const { title, content, html } = data as {title:string; content?:string; html: string};
+const { title, content, html,type } = data as {title:string; content?:string; html: string};
 const parsed = content
 	? JSON.parse(content).html.map((x: string) => ({
 		  type: "p",
@@ -38,5 +38,6 @@ const parsed = content
 					)
 				}
 			</article>
-			<div id="emp">император</div>
+			{type}
+			<div id="emp">{type === 'NewsBG' ? 'император': 'emperor'}</div>
 </div>
