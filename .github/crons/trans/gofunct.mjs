@@ -123,13 +123,13 @@ export async function go(id, sourcelang) {
 
 export const receiveMessages = async (view, sourcelang) => {
 	dbprod.view('company', view, {
-		limit: 300,
+		limit: 500,
 		descending: true,
 	}).then(data => {
 		console.log(`new batch start from`, data.rows[0])
 		async.eachOfLimit(
 			data.rows,
-			15,
+			100,
 			(message, _key, cb) => {
 				go(message.id, sourcelang).then(() => {
 					cb()
