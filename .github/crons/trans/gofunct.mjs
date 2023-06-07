@@ -25,7 +25,6 @@ export async function parseSanitizedHTML({ title, html }) {
 			}
 		}
 	}
-
 	return ({ title, html: sanitized });
 }
 

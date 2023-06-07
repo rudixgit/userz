@@ -71,7 +71,6 @@ export async function scrapeArticle(url: string, filters: string[], type?: strin
     .querySelector('meta[property="og:image"]')
     ?.getAttribute("content");
   const article = reader.parse();
-  console.log(article?.content)
   const sanit = sanitizeHtml(article?.content || "", {
     allowedTags: ["p", "img", "picture"],
     allowedAttributes: {
