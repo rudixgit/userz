@@ -45,17 +45,11 @@ export const trans = async ({ url, from, to }) => {
 		let element;
 		while (element !== emp) {
 			element = await page.$eval('#emp', el => el.innerText);
-			await new Promise(resolve => setTimeout(resolve, 5000));
+			await new Promise(resolve => setTimeout(resolve, 2500));
 		}
 		return ('ok');
 	}
-
-	if (from === 'bg') {
-		await checkForEmperor('emperor');
-	} else {
-		await checkForEmperor('император');
-	}
-
+	await checkForEmperor(from === 'bg' ? 'emperor' : 'император');
 	const myDivHtml = await page.evaluate(() => {
 		const myDiv = document.getElementById("article");
 		return myDiv.innerHTML;
