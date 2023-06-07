@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom";
 import fetch from 'node-fetch';
-import { getUniqueStrings, scrapeArticle, scrheaders } from "./sanitize";
+import { getUniqueStrings, scrheaders } from "./sanitize";
 
 const go = async () => {
 	const response = await fetch("https://www.buzzfeed.com", {
@@ -10,10 +10,10 @@ const go = async () => {
 	const d = await response.text();
 	const links1 = Array.from(new JSDOM(d).window.document.querySelectorAll("a"))
 		.map((link: HTMLElement) => link.getAttribute("href"))
-		.filter((href) => href !== null && href.includes('https') && href.split('-').length > 4 && href.length < 700).sort() as string[];
+		.filter((href) => href !== null && href.includes('https') && href.includes('buzzfeed') && href.split('-').length > 4 && href.length < 700).sort() as string[];
 	const links = getUniqueStrings(links1)
 	console.log(links)
-	await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsENProcess")));
+	//await Promise.all(links.map((link) => scrapeArticle(link, ["Снимка: "], "NewsENProcess")));
 
 	return links;
 };
