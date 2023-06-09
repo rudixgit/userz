@@ -126,7 +126,7 @@ export const receiveMessages = async (view, sourcelang) => {
 		console.log(`new batch start from`, data.rows[0])
 		async.eachOfLimit(
 			data.rows,
-			10,
+			20,
 			(message, _key, cb) => {
 				go(message.id, sourcelang).then(() => {
 					cb()
