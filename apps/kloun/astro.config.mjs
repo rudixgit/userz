@@ -13,7 +13,7 @@ export default defineConfig({
   ],
   adapter: cloudflare({ mode: 'advanced' }),
   experimental: {
-    inlineStylesheets: "never",
+
     hybridOutput: true,
     middleware: true
   },
