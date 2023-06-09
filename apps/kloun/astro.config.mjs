@@ -12,11 +12,7 @@ export default defineConfig({
     })
   ],
   adapter: cloudflare({ mode: 'advanced' }),
-  experimental: {
 
-    hybridOutput: true,
-    middleware: true
-  },
   server: {
     headers: {
       "Access-Control-Allow-Origin": "*"
