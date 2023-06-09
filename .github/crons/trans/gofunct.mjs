@@ -73,8 +73,8 @@ export const trans = async ({ url, from, to }) => {
 
 export async function go(id, sourcelang) {
 	const bodyprod = await dbprod.get(id)
-	const structure = sourcelang === 'bg' ? { from: 'bg', to: 'en', type: 'NewsENProcess', trans: '1' } : { from: 'en', to: 'bg', type: 'NewsBG', trans: '1' }
-	const structureopposite = sourcelang === 'bg' ? { from: 'en', to: 'bg', type: 'NewsBG', trans: '1' } : { from: 'bg', to: 'en', type: 'NewsENProcess', trans: '1' }
+	const structure = sourcelang === 'bg' ? { from: 'bg', to: 'en', type: 'NewsEN', trans: '1' } : { from: 'en', to: 'bg', type: 'NewsBG', trans: '1' }
+	const structureopposite = sourcelang === 'bg' ? { from: 'en', to: 'bg', type: 'NewsBG', trans: '1' } : { from: 'bg', to: 'en', type: 'NewsEN', trans: '1' }
 	const bodylen = JSON.stringify(bodyprod).length
 	if (bodylen < 500) {
 		await dbprod.insert({
@@ -128,7 +128,6 @@ export const receiveMessages = async (view, sourcelang) => {
 			data.rows,
 			10,
 			(message, _key, cb) => {
-
 				go(message.id, sourcelang).then(() => {
 					cb()
 				})
