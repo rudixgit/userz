@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 
-import { createClient } from "@libsql/client/web";
+import { createClient } from '@libsql/client/web';
+
 export const prerender = false
 export interface Env {
 	LIBSQL_DB_URL?: string;

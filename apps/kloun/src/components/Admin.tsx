@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 const ProgramReact = () => {
 	const [filterstring, setFiterString] = useState<string | null>(null);
 	const [url, setUrl] = useState<string>('https://db.kloun.lol/db/_design/newsbg/_view/news?descending=true&limit=100&include_docs=true');

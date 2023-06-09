@@ -1,6 +1,5 @@
 import React, { LegacyRef, useEffect, useRef, useState } from 'react';
 
-
 export interface Item {
     id: number;
     promoted: number;
