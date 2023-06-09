@@ -1,5 +1,5 @@
 ---
-export const prerender = false
+export const prerender = false;
 import db from "../../../kloun/data/client";
 import CatButton from "../components/CatButton.astro";
 import RudSense from "../components/RudSense.astro";
@@ -11,16 +11,16 @@ const catsx = await db.view("joke/cat", {
     group: true,
     cache: 864000,
 });
- 
+
 // const memesx = fetch(
 // 	"https://pr0gramm.com/api/items/get?flags=1&promoted=1"
 // ).then((res) => res.json());
- 
+
 const cats = catsx.rows
     .filter((x: { value: number }) => x.value > 1)
     .map((x: { key: string; value: number }) => ({
         cat: x.key.replace("JOK", ""),
-        slug: slugify(x.key.replace("JOK", "").replace('ъ',' ')),
+        slug: slugify(x.key.replace("JOK", "").replace("ъ", " ")),
         count: x.value,
     }))
     .sort((a: { count: number }, b: { count: number }) => b.count - a.count);

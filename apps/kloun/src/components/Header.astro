@@ -29,7 +29,8 @@ import DarkSwitchher from "./DarkSwitchher.astro";
                         alt=""
                         src="/images/logodark.png"
                         class="i-amphtml-fill-content i-amphtml-replaced-content i-amphtml-ghost"
-                    /></amp-img>
+                    /></amp-img
+                >
                 <img
                     src="/images/logodark.png"
                     width="140"
@@ -47,7 +48,7 @@ import DarkSwitchher from "./DarkSwitchher.astro";
             </li><li>
                 <a class="text-shadow font-bold" href="/fb">Късметчета</a>
             </li><li>
-              <DarkSwitchher />
+                <DarkSwitchher />
             </li>
         </ul>
     </div><div class="z-40 top-0 fixed">
@@ -76,7 +77,7 @@ import DarkSwitchher from "./DarkSwitchher.astro";
                 </li><li>
                     <a class="text-shadow font-bold" href="/fb">Късметчета</a>
                 </li><li>
-                  <DarkSwitchher />
+                    <DarkSwitchher />
                 </li>
             </ul>
         </div>
@@ -84,56 +85,63 @@ import DarkSwitchher from "./DarkSwitchher.astro";
 </header>
 
 <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
+const theme = (() => {
+    if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+    ) {
+        return localStorage.getItem("theme");
     }
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "light";
+        return "light";
     }
     return "dark";
-  })();
-  
-  localStorage.setItem('theme', theme);
-  
-  var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-  var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-  
-  // Change the icons inside the button based on previous settings
-  if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      themeToggleLightIcon.classList.remove('hidden');
-  } else {
-      themeToggleDarkIcon.classList.remove('hidden');
-  }
-  
-  var themeToggleBtn = document.getElementById('theme-toggle');
-  
-  themeToggleBtn.addEventListener('click', function() {
-  
-      // toggle icons inside button
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-  
-      // if set via local storage previously
-      if (localStorage.getItem('theme')) {
-          if (localStorage.getItem('theme') === 'light') {
-              document.documentElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
-          } else {
-              document.documentElement.classList.remove('dark');
-              localStorage.setItem('theme', 'light');
-          }
-  
-      // if NOT set via local storage previously
-      } else {
-          if (document.documentElement.classList.contains('dark')) {
-              document.documentElement.classList.remove('dark');
-              localStorage.setItem('theme', 'light');
-          } else {
-              document.documentElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
-          }
-      }
-      
-  });
+})();
+
+localStorage.setItem("theme", theme);
+
+var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+var themeToggleLightIcon = document.getElementById(
+    "theme-toggle-light-icon"
+);
+
+// Change the icons inside the button based on previous settings
+if (
+    localStorage.getItem("theme") === "dark" ||
+    (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+    themeToggleLightIcon.classList.remove("hidden");
+} else {
+    themeToggleDarkIcon.classList.remove("hidden");
+}
+
+var themeToggleBtn = document.getElementById("theme-toggle");
+
+themeToggleBtn.addEventListener("click", function () {
+    // toggle icons inside button
+    themeToggleDarkIcon.classList.toggle("hidden");
+    themeToggleLightIcon.classList.toggle("hidden");
+
+    // if set via local storage previously
+    if (localStorage.getItem("theme")) {
+        if (localStorage.getItem("theme") === "light") {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+        }
+
+        // if NOT set via local storage previously
+    } else {
+        if (document.documentElement.classList.contains("dark")) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+            } else {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+            }
+        }
+    });
 </script>

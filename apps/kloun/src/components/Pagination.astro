@@ -60,12 +60,12 @@ const pagesToRenderMobile = makeArray({
     currentPage,
 });
 ---
-{pagesToRender[1] && (<div
-        class="fixed bottom-2 left-2 right-2 z-20 flex justify-center bg-black/30 p-4 backdrop-blur-sm rounded-xl"
-    >
-        <div class="btn-group hidden sm:flex">
-            {
-                pagesToRender.map((page: number) => (
+
+{
+    pagesToRender[1] && (
+        <div class="fixed bottom-2 left-2 right-2 z-20 flex justify-center bg-black/30 p-4 backdrop-blur-sm rounded-xl">
+            <div class="btn-group hidden sm:flex">
+                {pagesToRender.map((page: number) => (
                     <a
                         rel="prefetch"
                         href={
@@ -87,13 +87,11 @@ const pagesToRenderMobile = makeArray({
                     >
                         {page}
                     </a>
-                ))
-            }
-        </div>
-        <div class="block xs:hidden sm:hidden">
-            <div class="btn-group">
-                {
-                    pagesToRenderMobile.map((page: number) => (
+                ))}
+            </div>
+            <div class="block xs:hidden sm:hidden">
+                <div class="btn-group">
+                    {pagesToRenderMobile.map((page: number) => (
                         <a
                             href={
                                 page === currentPage
@@ -109,9 +107,9 @@ const pagesToRenderMobile = makeArray({
                         >
                             {page}
                         </a>
-                    ))
-                }
+                    ))}
+                </div>
             </div>
         </div>
-    </div>)}
-
+    )
+}

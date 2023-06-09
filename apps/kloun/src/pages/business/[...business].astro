@@ -1,5 +1,5 @@
 ---
-export const prerender = false
+export const prerender = false;
 import db from "../../../data/client";
 import CatButton from "../../components/CatButton.astro";
 import Pagination from "../../components/Pagination.astro";
@@ -25,19 +25,19 @@ if (business?.includes("/")) {
 
 	const datax = db.view("company/companiesbg", {
 		reduce: false,
-		key:encodeURI(key),
+		key: encodeURI(key),
 		limit: 100,
 		skip: skip,
 		update: "lazy",
-		cache: 864000
+		cache: 864000,
 	});
 	const itemsx = db.view("company/companiesbg", {
 		reduce: true,
-		key:encodeURI(key),
+		key: encodeURI(key),
 		limit: 1,
 		group: false,
 		update: "lazy",
-		cache: 864000
+		cache: 864000,
 	});
 	resp = await Promise.all([datax, itemsx]).then((values) => {
 		return {

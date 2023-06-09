@@ -1,5 +1,5 @@
 ---
-export const prerender = false
+export const prerender = false;
 import db from "../../../data/client.js";
 import JokeThumbnail, { Doc } from "../../components/JokeThumbnail.astro";
 import Pagination from "../../components/Pagination.astro";
@@ -14,7 +14,7 @@ const pagenum = x[1] ? Number(x[1]) : 1;
 const skip = pagenum * 30 - 30;
 
 const datax = db.view("joke/cat", {
-	key: 'JOK'+encodeURI(cat || ''),
+	key: "JOK" + encodeURI(cat || ""),
 	limit: 30,
 	update: "lazy",
 	reduce: "false",
@@ -23,7 +23,7 @@ const datax = db.view("joke/cat", {
 });
 
 const countx = db.view("joke/cat", {
-	key: 'JOK'+encodeURI(cat || ''),
+	key: "JOK" + encodeURI(cat || ""),
 	limit: 1,
 	update: "lazy",
 	reduce: true,
@@ -39,6 +39,7 @@ const resp = await Promise.all([datax, countx]).then((values) => {
 
 const { jokes, items } = resp;
 ---
+
 <Layout
 	title={`Вицове от ${cat} на страница ${pagenum}`}
 	description={`Вицове от ${cat}  `}

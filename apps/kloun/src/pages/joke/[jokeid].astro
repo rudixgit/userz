@@ -1,8 +1,8 @@
 ---
-export const prerender = false
-import  chunk  from "lodash/chunk";
+export const prerender = false;
+import chunk from "lodash/chunk";
 import db from "../../../data/client";
- 
+
 import FacebookShare from "../../components/FacebookShare.astro";
 import FormatJoke from "../../components/FormatJoke.astro";
 import JokeThumbnail, { Doc } from "../../components/JokeThumbnail.astro";
@@ -17,17 +17,15 @@ const itemsx = db.view("joke/random", {
     update: "lazy",
     cache: 864000,
 });
- 
-const resp = await Promise.all([jokex, itemsx]).then((values) => {
+
+const resp = (await Promise.all([jokex, itemsx]).then((values) => {
     return {
         joke: values[0],
         chunks: chunk(values[1].rows, 3),
     };
-}) as { joke: Doc; chunks: [Doc[]] };
+})) as { joke: Doc; chunks: [Doc[]] };
 
- 
-
-const { joke, chunks } = resp ;
+const { joke, chunks } = resp;
 
 if (joke.error) {
     return new Response("Not Found", {
@@ -39,7 +37,7 @@ if (joke.error) {
 
 <Layout
     title={joke.title || ""}
-    description={joke.title   || ""}
+    description={joke.title || ""}
     image={`https://kloun.lol/api/joke/og/?idx=${jokeid}`}
 >
     <div class="my-10 flex w-full flex-col text-center">

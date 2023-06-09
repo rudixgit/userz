@@ -1,5 +1,5 @@
 ---
-export const prerender = false
+export const prerender = false;
 import db from "../../../../kloun/data/client.js";
 import Pagination from "../../components/Pagination.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -43,7 +43,7 @@ const datax = db.view("twitter/byletter", {
 	limit: 100,
 	skip: skip,
 	update: "lazy",
-	cache: 864000
+	cache: 864000,
 });
 const itemsx = db.view("twitter/byletter", {
 	reduce: true,
@@ -51,7 +51,7 @@ const itemsx = db.view("twitter/byletter", {
 	limit: 1,
 	group: false,
 	update: "lazy",
-	cache: 864000
+	cache: 864000,
 });
 
 const resp = await Promise.all([datax, itemsx]).then((values) => {
@@ -95,6 +95,6 @@ const resp = await Promise.all([datax, itemsx]).then((values) => {
 		items={resp.items}
 		currentPage={pagenum}
 		pageSize={100}
-		prefix={"/tw/"+x[0]+"_"}
+		prefix={"/tw/" + x[0] + "_"}
 	/>
 </Layout>
