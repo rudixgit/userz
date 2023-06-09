@@ -5,9 +5,7 @@ import puppeteer from "puppeteer";
 import sanitizeHtml from "sanitize-html";
 const n1 = nano('https://secede.kloun.lol')
 
-const browser = await puppeteer.launch({
-	headless: "new", args: ['--disable-dev-shm-usage']
-});
+
 
 const dbprod = n1.use('db')
 export async function parseSanitizedHTML({ title, html }) {
@@ -30,6 +28,9 @@ export async function parseSanitizedHTML({ title, html }) {
 
 
 export const trans = async ({ url, from, to }) => {
+	const browser = await puppeteer.launch({
+		headless: "new", args: ['--disable-dev-shm-usage']
+	});
 	const page = await browser.newPage();
 	await page.setViewport({
 		width: 5640,
@@ -60,7 +61,7 @@ export const trans = async ({ url, from, to }) => {
 	});
 
 	await page.close();
-	//await browser.close();
+	await browser.close();
 	const html = sanitizeHtml(myDivHtml, {
 		allowedTags: ["p", "img"],
 		allowedAttributes: {
@@ -90,7 +91,8 @@ export async function go(id, sourcelang) {
 	const engdb = await dbprod.insert({
 		...bodyprod,
 		...enx,
-		...structure
+		...structure,
+		trans: "1",
 	})
 	const bgx = await trans({ url: engdb.id, ...structureopposite })
 	console.log([
@@ -102,7 +104,8 @@ export async function go(id, sourcelang) {
 		await dbprod.insert({
 			...bodyprod,
 			...bgx,
-			_id: id
+			_id: id,
+			trans: "1",
 		})
 		return new Promise(resolve => {
 			resolve(`${id} done`)
@@ -117,14 +120,15 @@ export async function go(id, sourcelang) {
 
 export const receiveMessages = async (view, sourcelang) => {
 	dbprod.view('company', view, {
-		limit: 500,
+		limit: 5000,
 		descending: true,
 	}).then(data => {
 		console.log(`new batch start from`, data.rows[0])
 		async.eachOfLimit(
 			data.rows,
-			100,
+			10,
 			(message, _key, cb) => {
+
 				go(message.id, sourcelang).then(() => {
 					cb()
 				})
