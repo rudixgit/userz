@@ -1,4 +1,4 @@
-import type { APIRoute, APIContext } from "astro";
+import type { APIContext, APIRoute } from "astro";
 export const prerender = false
 
 interface CloudflareFetchOptions extends RequestInit {

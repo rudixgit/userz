@@ -1,9 +1,9 @@
 ---
-export const prerender = false
+export const prerender = false;
 import uniqBy from "lodash/uniqBy";
- 
+
 import db from "../../../../../data/client";
- 
+
 import CardNews from "../../../../components/CardNews.astro";
 import RudSense from "../../../../components/RudSense.astro";
 import Layout from "../../../../layouts/Layout.astro";
@@ -12,12 +12,12 @@ function countAlphanumeric(str: string) {
     const matches = str.match(regex);
     return matches ? matches.length : 0;
 }
- 
+
 // function getUniqueStrings(arr1:string[], arr2:string[]) {
 //   return arr1.filter(str => !arr2.includes(str));
 // }
 function getLastP(arrz: { type: string; content: string }[]) {
-   const arr = arrz.map((x,i:number)=> ({...x,i}))
+    const arr = arrz.map((x, i: number) => ({ ...x, i }));
     const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
     const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
         if (curr.type === "p") {
@@ -37,66 +37,78 @@ function getLastP(arrz: { type: string; content: string }[]) {
 }
 const { newsid } = Astro.params as { newsid: string; slug?: string };
 
-//const keys:string[] = slug.split('-').filter(x => x.length > 4) 
- 
+//const keys:string[] = slug.split('-').filter(x => x.length > 4)
+
 // const newsterms = await sqlquery('select * from keyz where key =  "'+keys.join('" or key = "zxxx')+'"');
- 
- //const differencies = getUniqueStrings(keys,terms)
- type Doc = {
-   random:number;
-   title: string;
-   key?:string;
-   _id?:string;
-   id?:string;
-   image: string;
-   content ? : string;
-   date ? : string;
-   html ? : { type: string;content: string; };
-   nid: string;
- } 
-const getnid  = await db.get(newsid)  
-const newsx =  await db.view("newsbg/news", {
+
+//const differencies = getUniqueStrings(keys,terms)
+type Doc = {
+    random: number;
+    title: string;
+    key?: string;
+    _id?: string;
+    id?: string;
+    image: string;
+    content?: string;
+    date?: string;
+    html?: { type: string; content: string };
+    nid: string;
+};
+const getnid = await db.get(newsid);
+const newsx = await db.view("newsbg/news", {
     update: false,
     start_key: getnid.nid,
     descending: true,
-    limit:10,
-    skip:getnid.random,
+    limit: 10,
+    skip: getnid.random,
     cache: 864000,
 });
 
-const news = newsx.rows  as Doc[]
-const { title,  html, content, date } = getnid as any
-const parsed  = content
+const news = newsx.rows as Doc[];
+const { title, html, content, date } = getnid as any;
+const parsed = content
     ? JSON.parse(content).html.map((x: string) => ({
           type: "p",
           content: x,
       }))
-    :  html ;
-   function formatDate(date: Date): string {
-      const options: Intl.DateTimeFormatOptions = {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: false
-        };
-      return date.toLocaleString('bg-BG', options);
-    }
-    function getRandomDate(year: number): Date {
-      const month = Math.floor(Math.random() * 12) + 1;
-        const day = Math.floor(Math.random() * 31) + 1;
-        const hour = Math.floor(Math.random() * 14) + 9;
-        return new Date(year, month - 1, day, hour);
-    }
+    : html;
+function formatDate(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false,
+    };
+    return date.toLocaleString("bg-BG", options);
+}
+function getRandomDate(year: number): Date {
+    const month = Math.floor(Math.random() * 12) + 1;
+    const day = Math.floor(Math.random() * 31) + 1;
+    const hour = Math.floor(Math.random() * 14) + 9;
+    return new Date(year, month - 1, day, hour);
+}
 ---
 
-<Layout title={title} description={title} image={'https://imgnews.kloun.lol/api/img/'+newsid+'.jpg'} hideFooter={true}>
-    {formatDate(new Date(date ? date : getRandomDate(2021) ))}
+<Layout
+    title={title}
+    description={title}
+    image={"https://imgnews.kloun.lol/api/img/" + newsid + ".jpg"}
+    hideFooter={true}
+>
+    {formatDate(new Date(date ? date : getRandomDate(2021)))}
     <h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
     <div class="flex justify-center items-center">
-       <div class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500">
-        <img src={'https://imgnews.kloun.lol/api/img/'+newsid+'.jpg'} class="rounded-md" loading="lazy" alt={title}  />
+        <div
+            class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500"
+        >
+            <img
+                src={"https://imgnews.kloun.lol/api/img/" + newsid + ".jpg"}
+                class="rounded-md"
+                loading="lazy"
+                alt={title}
+            />
         </div>
     </div>
     <div class="mb-6 items-center justify-center">
@@ -104,45 +116,62 @@ const parsed  = content
         <article class="leading-relaxed" id="article">
             {
                 getLastP(parsed).map(
-                    ({ type, content,i }: { type: string; content: string,i:number }) =>
+                    ({
+                        type,
+                        content,
+                        i,
+                    }: {
+                        type: string;
+                        content: string;
+                        i: number;
+                    }) =>
                         type === "p" ? (
-                            <p class="text-lg">{content} {(i === 3 || i === 9 || i === 12 )&& (<RudSense type="inarticle" />)}</p>
+                            <p class="text-lg">
+                                {content}{" "}
+                                {(i === 3 || i === 9 || i === 12) && (
+                                    <RudSense type="inarticle" />
+                                )}
+                            </p>
                         ) : (
                             <div class="flex justify-center items-center">
-                               <div class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500">
-                                <img src={'https://imgnews.kloun.lol/api/img/'+newsid+'--'+i+'.jpg'} class="rounded-md" loading="lazy" /> 
-                                </div>  
-                                {(i === 3 || i === 9 || i === 12 )&& (<RudSense type="inarticle" />)}
+                                <div class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500">
+                                    <img
+                                        src={
+                                            "https://imgnews.kloun.lol/api/img/" +
+                                            newsid +
+                                            "--" +
+                                            i +
+                                            ".jpg"
+                                        }
+                                        class="rounded-md"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                {(i === 3 || i === 9 || i === 12) && (
+                                    <RudSense type="inarticle" />
+                                )}
                             </div>
                         )
                 )
             }
         </article>
         <div class="clear-both"></div>
-   
-           <RudSense type="inarticle" main={true} />
-        
+
+        <RudSense type="inarticle" main={true} />
+
         <div class="clear-both"></div>
     </div>
     <div class="flex flex-wrap gap-3">
-      {
-           news.map(
-              ({
-                  id,
-                  title,
-                  key,
-                  date,
-                  image,
-              }) => (
-                  <CardNews
-                      title={title}
-                      img={image}
-                      date={date || ''}
-                      key={key || ''}
-                      id={id || ''}
-                  />
-              )
-          )
-      }
+        {
+            news.map(({ id, title, key, date, image }) => (
+                <CardNews
+                    title={title}
+                    img={image}
+                    date={date || ""}
+                    key={key || ""}
+                    id={id || ""}
+                />
+            ))
+        }
     </div>
 </Layout>

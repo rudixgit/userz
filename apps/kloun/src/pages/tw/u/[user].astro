@@ -14,6 +14,7 @@ export type Tweet = {
 	description: string;
 	profileImageUrl: string;
 	tweets: ItemTweet[];
+	error?: boolean;
 };
 export type ItemTweet = {
 	id: string;
@@ -23,15 +24,16 @@ export type ItemTweet = {
 	name: string;
 	profileImageUrl: string;
 	createdAt: string;
-	originalPoster: {
+	originalPoster?: {
 		screenName: string;
 		name: string;
 		profileImageUrl: string;
-	} | null;
+	};
 };
 
 const { user } = Astro.params as { user: string };
-const data = await db.get(user + "_tw");
+const datax = await db.get(user + "_tw");
+const data = datax as unknown as Tweet;
 if (data.error) {
 	return new Response("Not Found", {
 		status: 404,
@@ -43,16 +45,19 @@ const cssx = templatizeline(JSON.stringify(data.tweets))
 		(x) => `.pseudo${normalizestr(x)}::before { content: "${x}";}`
 	)
 	.join("\n");
+
 const reposts = Array.from(
 	new Set(
 		data.tweets
-			.filter((item: ItemTweet) => item.originalPoster)
+			.filter((item) => item.originalPoster)
 			.map(
-				(user: { originalPoster: { screenName: string } }) =>
-					user.originalPoster.screenName + "_tw"
+				(user: { originalPoster?: { screenName: string } }) =>
+					`${user.originalPoster?.screenName}_tw`
 			)
 	)
 );
+console.log(reposts);
+
 const existget = await db.view("twitter/exist", {
 	update: "lazy",
 	keys: JSON.stringify(reposts),
