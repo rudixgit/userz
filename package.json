@@ -1,0 +1,47 @@
+{
+  "name": "kloun",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev --host",
+    "build": "astro build",
+    "export": "mkdir ./.next && cp -a ./dist ./out && rm -rf ./out/_routes.json && mv ./_routes.json ./out/_routes.json",
+    "preview": "astro build && rm -rf ./dist/_routes.json && cp ./public/_routes.json ./dist/ && wrangler pages dev ./dist",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^6.8.0",
+    "@astrojs/image": "^0.16.9",
+    "@astrojs/markdown-remark": "^2.2.1",
+    "@astrojs/prefetch": "^0.2.3",
+    "@astrojs/react": "^2.3.2",
+    "@astrojs/tailwind": "^3.1.3",
+    "@cloudflare/kv-asset-handler": "^0.3.0",
+    "@libsql/client": "^0.1.6",
+    "astro": "^2.10.12",
+    "brotli": "^1.3.3",
+    "brotli-wasm": "^1.3.1",
+    "itty-router": "^3.0.12",
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.6.13",
+    "pako": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.66.1",
+    "stopword": "^2.0.8",
+    "tailwindcss": "^3.3.3",
+    "transliteration": "^2.3.5"
+  },
+  "devDependencies": {
+    "@types/brotli": "^1.3.1",
+    "@types/lodash": "^4.14.197",
+    "@types/pako": "^2.0.0",
+    "@types/react": "^18.2.20",
+    "@types/stopword": "^2.0.0",
+    "network-information-types": "^0.1.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.9.1",
+    "wrangler": "^2.20.0"
+  }
+}
