@@ -13,7 +13,7 @@ export const viewh = (params: { view: string, limit: number, offset: number, sta
 		})
 	})
 
-		.then(response => response.json())
+		.then(response => response.json()).catch(e => console.log(e))
 	return res
 }
 
@@ -27,7 +27,7 @@ export const geth = (id: string) => {
 		}
 	})
 
-		.then(response => response.json())
+		.then(response => response.json()).catch(e => console.log(e))
 	return res
 }
 

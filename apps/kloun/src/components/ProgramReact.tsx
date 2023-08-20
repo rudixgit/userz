@@ -59,7 +59,7 @@ const ProgramReact = ({ limit, className }: { limit?: number; className: string 
     }, [checkboxRef]);
     async function fetchMyAPI(older?: number) {
         const res2 = await fetch(
-            `https://img_proxy.kloun.workers.dev/${older ? `&older=${older}` : ""
+            `https://img_proxy.monastro.workers.dev/${older ? `&older=${older}` : ""
             }`
         );
         console.log(res2)
