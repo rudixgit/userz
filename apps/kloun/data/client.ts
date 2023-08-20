@@ -1,4 +1,5 @@
 const url = "https://cache.kloun.lol/";
+
 type Variables = { [key: string]: string | number | boolean };
 const serialize = (obj: Variables) => {
 	return Object.entries(obj)
@@ -71,11 +72,13 @@ async function multiple(db: string, obj: string[]) {
 	return Promise.resolve(d.rows);
 }
 
+
 const db = {
 	view,
 	get,
 	insert,
 	multiple,
+
 };
 
 export default db;

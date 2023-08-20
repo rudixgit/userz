@@ -2,38 +2,37 @@
 export const prerender = false;
 import uniqBy from "lodash/uniqBy";
 
-import db from "../../../../../data/client";
+import { geth } from "../../../../../data/hasura.js";
 
 import CardNews from "../../../../components/CardNews.astro";
 import RudSense from "../../../../components/RudSense.astro";
 import Layout from "../../../../layouts/Layout.astro";
 function countAlphanumeric(str: string) {
-    const regex = /[a-zA-Z0-9а-яА-Я]/g;
-    const matches = str.match(regex);
-    return matches ? matches.length : 0;
+  const regex = /[a-zA-Z0-9а-яА-Я]/g;
+  const matches = str.match(regex);
+  return matches ? matches.length : 0;
 }
 
 // function getUniqueStrings(arr1:string[], arr2:string[]) {
 //   return arr1.filter(str => !arr2.includes(str));
 // }
 function getLastP(arrz: { type: string; content: string }[]) {
-    const arr = arrz.map((x, i: number) => ({ ...x, i }));
-    const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
-    const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
-        if (curr.type === "p") {
-            acc = index;
-        }
-        return acc;
-    }, 0);
-    const filteredArr = arr.slice(0, lastPElemIndex + 1);
-    const removeNoImages = filteredArr.filter(
-        (x) =>
-            x.type === "p" || (x.type === "img" && x.content.includes("http"))
-    );
-    const arrx = uniqBy(removeNoImages, function (e) {
-        return e.content;
-    });
-    return arrx;
+  const arr = arrz.map((x, i: number) => ({ ...x, i }));
+  const emptylines = arr.filter((x) => countAlphanumeric(x.content) !== 0);
+  const lastPElemIndex = emptylines.reduce((acc, curr, index) => {
+    if (curr.type === "p") {
+      acc = index;
+    }
+    return acc;
+  }, 0);
+  const filteredArr = arr.slice(0, lastPElemIndex + 1);
+  const removeNoImages = filteredArr.filter(
+    (x) => x.type === "p" || (x.type === "img" && x.content.includes("http"))
+  );
+  const arrx = uniqBy(removeNoImages, function (e) {
+    return e.content;
+  });
+  return arrx;
 }
 const { newsid } = Astro.params as { newsid: string; slug?: string };
 
@@ -43,135 +42,127 @@ const { newsid } = Astro.params as { newsid: string; slug?: string };
 
 //const differencies = getUniqueStrings(keys,terms)
 type Doc = {
-    random: number;
-    title: string;
-    key?: string;
-    _id?: string;
-    id?: string;
-    image: string;
-    content?: string;
-    date?: string;
-    html?: { type: string; content: string };
-    nid: string;
+  random: number;
+  title: string;
+  key?: string;
+  _id?: string;
+  id?: string;
+  image: string;
+  content?: string;
+  date?: string;
+  html?: { type: string; content: string };
+  nid: string;
 };
-const getnid = await db.get(newsid);
-const newsx = await db.view("newsbg/news", {
-    update: false,
-    start_key: getnid.nid,
-    descending: true,
-    limit: 10,
-    skip: getnid.random,
-    cache: 864000,
-});
+const getnid = geth(`news/id/${newsid}`);
+const newsx = geth(`news/start_key/${newsid}`);
 
-const news = newsx.rows as Doc[];
-const { title, html, content, date } = getnid as any;
-const parsed = content
-    ? JSON.parse(content).html.map((x: string) => ({
-          type: "p",
-          content: x,
-      }))
-    : html;
+const resp = await Promise.all([getnid, newsx]).then((results) => ({
+  article: results[0],
+  news: results[1],
+}));
+const { news, article } = resp;
+console.log(resp);
+
+const { title, html, date } = article.newsbg_by_pk as any;
+const parsed = html;
 function formatDate(date: Date): string {
-    const options: Intl.DateTimeFormatOptions = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: false,
-    };
-    return date.toLocaleString("bg-BG", options);
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+  };
+  return date.toLocaleString("bg-BG", options);
 }
 function getRandomDate(year: number): Date {
-    const month = Math.floor(Math.random() * 12) + 1;
-    const day = Math.floor(Math.random() * 31) + 1;
-    const hour = Math.floor(Math.random() * 14) + 9;
-    return new Date(year, month - 1, day, hour);
+  const month = Math.floor(Math.random() * 12) + 1;
+  const day = Math.floor(Math.random() * 31) + 1;
+  const hour = Math.floor(Math.random() * 14) + 9;
+  return new Date(year, month - 1, day, hour);
 }
 ---
 
 <Layout
-    title={title}
-    description={title}
-    image={"https://imgnews.kloun.lol/api/img/" + newsid + ".jpg"}
-    hideFooter={true}
+  title={title}
+  description={title}
+  image={"https://imgnews.kloun.lol/api/img/" + newsid + ".jpg"}
+  hideFooter={true}
 >
-    {formatDate(new Date(date ? date : getRandomDate(2021)))}
-    <h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
-    <div class="flex justify-center items-center">
-        <div
-            class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500"
-        >
-            <img
-                src={"https://imgnews.kloun.lol/api/img/" + newsid + ".jpg"}
-                class="rounded-md"
-                loading="lazy"
-                alt={title}
-            />
-        </div>
+  {formatDate(new Date(date ? date : getRandomDate(2021)))}
+  <h1 class="font-bold sm:text-2xl md:text-4xl">{title}</h1>
+  <div class="flex justify-center items-center">
+    <div class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500">
+      <img
+        src={"https://imgnews.kloun.lol/api/img/" + newsid + ".jpg"}
+        class="rounded-md"
+        loading="lazy"
+        alt={title}
+      />
     </div>
-    <div class="mb-6 items-center justify-center">
-        <RudSense type="inarticle" />
-        <article class="leading-relaxed" id="article">
-            {
-                getLastP(parsed).map(
-                    ({
-                        type,
-                        content,
-                        i,
-                    }: {
-                        type: string;
-                        content: string;
-                        i: number;
-                    }) =>
-                        type === "p" ? (
-                            <p class="text-lg">
-                                {content}{" "}
-                                {(i === 3 || i === 9 || i === 12) && (
-                                    <RudSense type="inarticle" />
-                                )}
-                            </p>
-                        ) : (
-                            <div class="flex justify-center items-center">
-                                <div class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500">
-                                    <img
-                                        src={
-                                            "https://imgnews.kloun.lol/api/img/" +
-                                            newsid +
-                                            "--" +
-                                            i +
-                                            ".jpg"
-                                        }
-                                        class="rounded-md"
-                                        loading="lazy"
-                                    />
-                                </div>
-                                {(i === 3 || i === 9 || i === 12) && (
-                                    <RudSense type="inarticle" />
-                                )}
-                            </div>
-                        )
-                )
-            }
-        </article>
-        <div class="clear-both"></div>
+  </div>
+  <div class="mb-6 items-center justify-center">
+    <RudSense type="inarticle" />
+    <article class="leading-relaxed" id="article">
+      {
+        getLastP(parsed).map(
+          ({
+            type,
+            content,
+            i,
+          }: {
+            type: string;
+            content: string;
+            i: number;
+          }) =>
+            type === "p" ? (
+              <p class="text-lg">
+                {content}{" "}
+                {(i === 3 || i === 9 || i === 12) && (
+                  <RudSense type="inarticle" />
+                )}
+              </p>
+            ) : (
+              <div class="flex justify-center items-center">
+                <div class="p-1 rounded-lg bg-gradient-to-r from-fuchsia-500 to-cyan-500">
+                  <img
+                    src={
+                      "https://imgnews.kloun.lol/api/img/" +
+                      newsid +
+                      "--" +
+                      i +
+                      ".jpg"
+                    }
+                    class="rounded-md"
+                    loading="lazy"
+                  />
+                </div>
+                {(i === 3 || i === 9 || i === 12) && (
+                  <RudSense type="inarticle" />
+                )}
+              </div>
+            )
+        )
+      }
+    </article>
+    <div class="clear-both"></div>
 
-        <RudSense type="inarticle" main={true} />
+    <RudSense type="inarticle" main={true} />
 
-        <div class="clear-both"></div>
-    </div>
-    <div class="flex flex-wrap gap-3">
-        {
-            news.map(({ id, title, key, date, image }) => (
-                <CardNews
-                    title={title}
-                    img={image}
-                    date={date || ""}
-                    key={key || ""}
-                    id={id || ""}
-                />
-            ))
-        }
-    </div>
+    <div class="clear-both"></div>
+  </div>
+  <div class="flex flex-wrap gap-3">
+    {
+      news.newsbg.map(({ id, title, key, date, image }) => (
+        <CardNews
+          title={title}
+          img={image}
+          date={date || ""}
+          key={key || ""}
+          id={id || ""}
+        />
+      ))
+    }
+  </div>
 </Layout>
